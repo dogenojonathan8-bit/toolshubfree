@@ -17,8 +17,6 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--sky);min-height:100vh}
-
-/* HEADER */
 header{background:var(--sky);position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,.35)}
 .hi{max-width:1160px;margin:0 auto;padding:13px 24px;display:flex;align-items:center;justify-content:space-between}
 .logo{font-family:'Fraunces',serif;font-weight:900;font-size:1.45rem;color:#fff;letter-spacing:-.5px}
@@ -28,8 +26,6 @@ header{background:var(--sky);position:sticky;top:0;z-index:100;box-shadow:0 2px 
 .ltb{padding:5px 13px;border:none;background:transparent;border-radius:6px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.78rem;color:rgba(255,255,255,.6);transition:all .2s}
 .ltb.active{background:var(--gold);color:var(--sky)}
 .hbg{background:var(--gold);color:var(--sky);font-size:.66rem;font-weight:700;padding:4px 11px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px}
-
-/* HERO */
 .hero{background:linear-gradient(150deg,var(--sky) 0%,var(--sky-m) 50%,var(--sky-l) 100%);padding:56px 24px 48px;text-align:center;position:relative;overflow:hidden}
 .hero::before{content:'🏡';position:absolute;right:-40px;top:-20px;font-size:18rem;opacity:.04;line-height:1}
 .hero::after{content:'';position:absolute;bottom:-60px;left:-60px;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(245,200,66,.1) 0%,transparent 65%)}
@@ -38,30 +34,20 @@ header{background:var(--sky);position:sticky;top:0;z-index:100;box-shadow:0 2px 
 .hero p{color:rgba(255,255,255,.72);font-size:.98rem;max-width:540px;margin:0 auto 24px;line-height:1.65;position:relative}
 .hbs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;position:relative}
 .hb{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.88);padding:5px 14px;border-radius:20px;font-size:.74rem;font-weight:600}
-
-/* MAIN */
 .main{max-width:1160px;margin:0 auto;padding:30px 20px 60px;display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start}
 @media(max-width:900px){.main{grid-template-columns:1fr}}
-
-/* CARD */
 .card{background:var(--white);border-radius:var(--r);box-shadow:var(--shadow);padding:26px;margin-bottom:20px}
 .ct{font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;color:var(--sky);margin-bottom:16px;display:flex;align-items:center;gap:8px}
 .ct .ic{width:28px;height:28px;background:var(--cream-d);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
-
-/* MODE TABS */
 .mtabs{display:flex;background:var(--cream-d);border-radius:10px;padding:4px;margin-bottom:20px;width:fit-content}
 .mtb{padding:8px 20px;border:none;background:transparent;border-radius:7px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.85rem;color:#888;transition:all .2s}
 .mtb.active{background:var(--sky);color:#fff;box-shadow:0 2px 8px rgba(11,61,145,.25)}
-
-/* INPUTS */
 .ig label{display:block;font-size:.7rem;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
 .ig input,.ig select{width:100%;padding:10px 13px;border:2px solid var(--cream-d);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:.92rem;color:var(--sky);background:var(--white);transition:border-color .2s;outline:none;font-weight:500}
 .ig input:focus,.ig select:focus{border-color:var(--sky-l)}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
 .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px}
 @media(max-width:520px){.row2,.row3{grid-template-columns:1fr 1fr}}
-
-/* SLIDER */
 .slider-wrap{margin-bottom:14px}
 .slider-wrap label{display:block;font-size:.7rem;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
 .slider-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
@@ -69,8 +55,6 @@ header{background:var(--sky);position:sticky;top:0;z-index:100;box-shadow:0 2px 
 input[type=range]{width:100%;height:6px;border-radius:3px;appearance:none;background:var(--cream-d);cursor:pointer;outline:none}
 input[type=range]::-webkit-slider-thumb{appearance:none;width:20px;height:20px;border-radius:50%;background:var(--sky);box-shadow:0 2px 6px rgba(11,61,145,.3);transition:transform .2s}
 input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
-
-/* AFFORDABILITY METER */
 .meter-wrap{margin-bottom:16px}
 .meter-labels{display:flex;justify-content:space-between;font-size:.72rem;font-weight:600;margin-bottom:6px}
 .meter-track{height:14px;background:var(--cream-d);border-radius:7px;overflow:hidden;position:relative}
@@ -78,16 +62,10 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 .meter-zones{position:absolute;inset:0;display:flex}
 .mz{flex:1;border-right:2px solid rgba(255,255,255,.4)}
 .mz:last-child{border-right:none}
-
-/* CALC BTN */
 .calc-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--sky),var(--sky-m));color:#fff;border:none;border-radius:12px;font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;cursor:pointer;transition:all .2s;box-shadow:0 4px 18px rgba(11,61,145,.35);margin-top:6px;letter-spacing:.2px}
 .calc-btn:hover{transform:translateY(-2px);box-shadow:0 6px 26px rgba(11,61,145,.45)}
-
-/* RESULTS */
 .res{display:none}.res.vis{display:block;animation:fU .35s ease}
 @keyframes fU{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-
-/* VERDICT BANNER */
 .verdict{border-radius:14px;padding:22px;margin-bottom:18px;text-align:center}
 .verdict.good{background:linear-gradient(135deg,#1B5E20,#2E7D32)}
 .verdict.ok{background:linear-gradient(135deg,#E65100,#F57C00)}
@@ -95,8 +73,6 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 .verdict-emoji{font-size:2.2rem;margin-bottom:8px;display:block}
 .verdict-title{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:900;color:#fff;margin-bottom:4px}
 .verdict-sub{font-size:.85rem;color:rgba(255,255,255,.8);line-height:1.5}
-
-/* STAT GRID */
 .rg{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:16px}
 .rs{background:var(--cream);border-radius:12px;padding:15px;text-align:center}
 .rs.hl{background:linear-gradient(135deg,var(--sky),var(--sky-m));color:#fff}
@@ -110,8 +86,6 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 .rs.gd .sv{color:var(--sky)}
 .ss{font-size:.72rem;color:#bbb;margin-top:3px}
 .rs.hl .ss,.rs.mn .ss{color:rgba(255,255,255,.6)}
-
-/* PAYMENT BREAKDOWN */
 .pay-breakdown{background:var(--cream);border-radius:12px;padding:18px;margin-bottom:16px}
 .pb-title{font-family:'Fraunces',serif;font-weight:700;font-size:.92rem;color:var(--sky);margin-bottom:12px}
 .pb-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
@@ -121,8 +95,6 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 .pb-bar-track{height:8px;background:var(--cream-d);border-radius:4px;overflow:hidden}
 .pb-bar-fill{height:100%;border-radius:4px;transition:width .6s ease}
 .pb-val{width:72px;text-align:right;font-weight:700;font-size:.83rem;color:var(--sky);flex-shrink:0}
-
-/* SCENARIOS */
 .scenarios{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px}
 @media(max-width:520px){.scenarios{grid-template-columns:1fr}}
 .sc{border-radius:12px;padding:14px;text-align:center;border:2px solid transparent}
@@ -135,13 +107,9 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 .sc.max .sc-label{color:#C62828}
 .sc-price{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:900;color:var(--sky);margin-bottom:3px}
 .sc-pmt{font-size:.75rem;color:#888}
-
-/* ACTION ROW */
 .ar{display:flex;gap:9px;margin-top:14px;flex-wrap:wrap}
 .pbtn{flex:1;min-width:100px;padding:10px;border:2px solid var(--cream-d);background:var(--white);border-radius:9px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.84rem;color:var(--sky);transition:all .2s;display:flex;align-items:center;justify-content:center;gap:5px}
 .pbtn:hover{border-color:var(--sky);background:var(--cream)}
-
-/* SIDEBAR */
 .lender-card{background:linear-gradient(150deg,var(--sky),var(--sky-m));border-radius:var(--r);padding:22px;margin-bottom:18px}
 .lct{font-family:'Fraunces',serif;font-weight:900;font-size:1.1rem;color:#fff;margin-bottom:6px}
 .lcs{font-size:.8rem;color:rgba(255,255,255,.7);margin-bottom:14px;line-height:1.55}
@@ -153,43 +121,47 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 .ll-name{font-weight:700;font-size:.86rem;color:#fff}
 .ll-sub{font-size:.7rem;color:rgba(255,255,255,.55)}
 .ll-badge{background:var(--gold);color:var(--sky);font-size:.65rem;font-weight:800;padding:2px 7px;border-radius:8px}
-
 .tip-card{background:var(--gold-ll);border-left:4px solid var(--gold-d);border-radius:0 12px 12px 0;padding:16px;margin-bottom:18px}
 .tc-t{font-weight:700;font-size:.78rem;color:var(--gold-d);text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px}
 .tip-card p{font-size:.82rem;color:#554400;line-height:1.55}
-
 .rate-card{background:var(--white);border-radius:var(--r);box-shadow:var(--shadow);padding:20px;margin-bottom:18px}
 .rate-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--cream-d);font-size:.85rem}
 .rate-row:last-child{border-bottom:none}
 .rr-label{color:#666;font-weight:500}
 .rr-val{font-weight:700;color:var(--sky)}
-
 .xlinks{display:flex;flex-direction:column;gap:7px}
 .xl{display:block;padding:11px 14px;border-radius:9px;background:var(--cream);text-decoration:none;font-weight:600;font-size:.85rem;color:var(--sky);transition:all .2s;border:2px solid transparent}
 .xl:hover{border-color:var(--sky-l);background:rgba(34,114,232,.06)}
 
+/* ===== AMAZON SECTION ===== */
+.amz-section{background:linear-gradient(135deg,#232F3E,#37475A);border-radius:var(--r);padding:22px;margin-bottom:18px}
+.amz-header{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.amz-logo{background:#FF9900;color:#111;font-family:'Fraunces',serif;font-weight:900;font-size:.9rem;padding:4px 10px;border-radius:6px}
+.amz-title{font-family:'Fraunces',serif;font-weight:800;font-size:1rem;color:#fff}
+.amz-sub{font-size:.8rem;color:rgba(255,255,255,.7);margin-bottom:14px;line-height:1.5}
+.amz-products{display:flex;flex-direction:column;gap:8px}
+.amz-product{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:11px 13px;text-decoration:none;transition:all .2s}
+.amz-product:hover{background:rgba(255,153,0,.15);border-color:#FF9900;transform:translateX(2px)}
+.amz-pl{display:flex;align-items:center;gap:10px}
+.amz-icon{font-size:1.3rem}
+.amz-pname{font-weight:600;font-size:.85rem;color:#fff}
+.amz-psub{font-size:.7rem;color:rgba(255,255,255,.55)}
+.amz-arrow{color:#FF9900;font-weight:700}
+.amz-badge{display:inline-flex;align-items:center;background:rgba(255,153,0,.2);border:1px solid rgba(255,153,0,.4);color:#FF9900;padding:3px 9px;border-radius:12px;font-size:.68rem;font-weight:700;margin-bottom:12px}
+.amz-disclaimer{font-size:.65rem;color:rgba(255,255,255,.35);margin-top:10px;text-align:center}
+
 footer{background:var(--sky);color:rgba(255,255,255,.45);text-align:center;padding:22px;font-size:.75rem;line-height:1.7}
 footer a{color:var(--gold);text-decoration:none}
-@media print{header,.hero,.sidebar,.calc-btn,.ar,footer,.lender-card{display:none!important}.main{grid-template-columns:1fr;padding:0}.card{box-shadow:none;border:1px solid #ddd}}
+@media print{header,.hero,.sidebar,.calc-btn,.ar,footer,.lender-card,.amz-section{display:none!important}.main{grid-template-columns:1fr;padding:0}.card{box-shadow:none;border:1px solid #ddd}}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907111543523765" crossorigin="anonymous"></script>
-  <link rel="manifest" href="/manifest.json">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="ToolsHub">
-  <meta name="theme-color" content="#0D1B2A">
-  <meta name="keywords" content="how much house can I afford, home affordability calculator 2026, mortgage calculator by zip code, first time home buyer calculator, how much mortgage can I afford on my salary">
-  <meta name="author" content="SmartToolsHub">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="SmartToolsHub - Free Financial & Home Calculators">
-  <meta property="og:description" content="Free home affordability calculator 2026. Enter your salary and ZIP code to find exactly how much house you can afford. Includes local property taxes, 3 budget scenarios, and mortgage pre-approval links.">
-  <meta property="og:url" content="https://toolshubfree.netlify.app/homebuycalc.html">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SmartToolsHub - Free Calculators">
-  <meta name="twitter:description" content="Free home affordability calculator 2026. Enter your salary and ZIP code to find exactly how much house you can afford. Includes local property taxes, 3 budget scenarios, and mortgage pre-approval links.">
-  <meta name="fo-verify" content="9435c51b-fadd-4ca3-a6d5-d79a730b51cf" />
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0D1B2A">
+<meta name="keywords" content="how much house can I afford, home affordability calculator 2026, mortgage calculator by zip code, first time home buyer calculator">
+<meta name="robots" content="index, follow">
+<meta name="fo-verify" content="9435c51b-fadd-4ca3-a6d5-d79a730b51cf" />
 </head>
 <body>
 
@@ -220,8 +192,6 @@ footer a{color:var(--gold);text-decoration:none}
 
 <div class="main">
 <div>
-
-<!-- MODE TABS -->
 <div style="margin-bottom:8px">
   <div class="mtabs">
     <button class="mtb active" id="mSal" onclick="setMode('salary',this)" data-t="modeSal">By Salary</button>
@@ -229,133 +199,57 @@ footer a{color:var(--gold);text-decoration:none}
   </div>
 </div>
 
-<!-- INCOME CARD -->
 <div class="card">
   <div class="ct"><span class="ic">💼</span> <span data-t="yourIncome">Your Income & Debts</span></div>
   <div class="row3">
-    <div class="ig">
-      <label data-t="annIncome">Annual Salary ($)</label>
-      <input type="number" id="income" value="75000" min="0" step="1000" placeholder="e.g. 75000">
-    </div>
-    <div class="ig">
-      <label data-t="zipLabel">ZIP Code</label>
-      <input type="text" id="zip" placeholder="e.g. 33101" maxlength="5" value="33101">
-    </div>
-    <div class="ig">
-      <label data-t="filing">Filing Status</label>
-      <select id="filing">
-        <option value="single" data-t="single">Single</option>
-        <option value="married" data-t="married">Married</option>
-        <option value="hoh" data-t="hoh">Head of Household</option>
-      </select>
-    </div>
+    <div class="ig"><label data-t="annIncome">Annual Salary ($)</label><input type="number" id="income" value="75000" min="0" step="1000"></div>
+    <div class="ig"><label data-t="zipLabel">ZIP Code</label><input type="text" id="zip" placeholder="e.g. 33101" maxlength="5" value="33101"></div>
+    <div class="ig"><label data-t="filing">Filing Status</label><select id="filing"><option value="single" data-t="single">Single</option><option value="married" data-t="married">Married</option><option value="hoh" data-t="hoh">Head of Household</option></select></div>
   </div>
   <div class="row3">
-    <div class="ig">
-      <label data-t="carPay">Car Payment ($/mo)</label>
-      <input type="number" id="carPay" value="0" min="0" placeholder="0">
-    </div>
-    <div class="ig">
-      <label data-t="studentLoan">Student Loans ($/mo)</label>
-      <input type="number" id="studentLoan" value="0" min="0" placeholder="0">
-    </div>
-    <div class="ig">
-      <label data-t="otherDebt">Other Debts ($/mo)</label>
-      <input type="number" id="otherDebt" value="0" min="0" placeholder="0">
-    </div>
+    <div class="ig"><label data-t="carPay">Car Payment ($/mo)</label><input type="number" id="carPay" value="0" min="0"></div>
+    <div class="ig"><label data-t="studentLoan">Student Loans ($/mo)</label><input type="number" id="studentLoan" value="0" min="0"></div>
+    <div class="ig"><label data-t="otherDebt">Other Debts ($/mo)</label><input type="number" id="otherDebt" value="0" min="0"></div>
   </div>
-
-  <!-- PAYMENT MODE ONLY -->
   <div id="paymentModeInputs" style="display:none">
     <div class="row2">
-      <div class="ig">
-        <label data-t="maxPay">Max Monthly Payment ($)</label>
-        <input type="number" id="maxPayment" value="1800" min="0" step="50">
-      </div>
-      <div class="ig">
-        <label data-t="zipLabel2">ZIP Code</label>
-        <input type="text" id="zip2" placeholder="e.g. 33101" maxlength="5" value="33101">
-      </div>
+      <div class="ig"><label data-t="maxPay">Max Monthly Payment ($)</label><input type="number" id="maxPayment" value="1800" min="0" step="50"></div>
+      <div class="ig"><label data-t="zipLabel2">ZIP Code</label><input type="text" id="zip2" placeholder="e.g. 33101" maxlength="5" value="33101"></div>
     </div>
   </div>
 </div>
 
-<!-- LOAN DETAILS CARD -->
 <div class="card">
   <div class="ct"><span class="ic">🏦</span> <span data-t="loanDetails">Loan Details</span></div>
   <div class="row2" style="margin-bottom:16px">
-    <div class="ig">
-      <label data-t="loanType">Loan Type</label>
-      <select id="loanType">
-        <option value="conv30">Conventional 30-yr</option>
-        <option value="conv15">Conventional 15-yr</option>
-        <option value="fha30">FHA 30-yr (3.5% min down)</option>
-        <option value="va30">VA 30-yr (0% down)</option>
-      </select>
-    </div>
-    <div class="ig">
-      <label data-t="rate">Interest Rate (%)</label>
-      <input type="number" id="rate" value="6.85" min="1" max="20" step="0.05">
-    </div>
+    <div class="ig"><label data-t="loanType">Loan Type</label><select id="loanType"><option value="conv30">Conventional 30-yr</option><option value="conv15">Conventional 15-yr</option><option value="fha30">FHA 30-yr (3.5% min down)</option><option value="va30">VA 30-yr (0% down)</option></select></div>
+    <div class="ig"><label data-t="rate">Interest Rate (%)</label><input type="number" id="rate" value="6.85" min="1" max="20" step="0.05"></div>
   </div>
-
-  <!-- DOWN PAYMENT SLIDER -->
   <div class="slider-wrap">
     <div class="slider-header">
       <label data-t="downPay">Down Payment</label>
       <div class="slider-val" id="dpDisplay">20% — $40,000</div>
     </div>
     <input type="range" id="dpSlider" min="3" max="30" value="20" step="1" oninput="updateDP()">
-    <div style="display:flex;justify-content:space-between;font-size:.7rem;color:#aaa;margin-top:4px">
-      <span>3%</span><span>10%</span><span>20%</span><span>30%</span>
-    </div>
+    <div style="display:flex;justify-content:space-between;font-size:.7rem;color:#aaa;margin-top:4px"><span>3%</span><span>10%</span><span>20%</span><span>30%</span></div>
   </div>
-
   <div class="row2">
-    <div class="ig">
-      <label data-t="hoa">HOA Fees ($/mo)</label>
-      <input type="number" id="hoa" value="0" min="0" placeholder="0">
-    </div>
-    <div class="ig">
-      <label data-t="creditScore">Credit Score Range</label>
-      <select id="creditScore">
-        <option value="0">Excellent (760+)</option>
-        <option value="0.25">Good (700–759)</option>
-        <option value="0.5" selected>Fair (650–699)</option>
-        <option value="0.75">Below Average (600–649)</option>
-      </select>
-    </div>
+    <div class="ig"><label data-t="hoa">HOA Fees ($/mo)</label><input type="number" id="hoa" value="0" min="0"></div>
+    <div class="ig"><label data-t="creditScore">Credit Score Range</label><select id="creditScore"><option value="0">Excellent (760+)</option><option value="0.25">Good (700–759)</option><option value="0.5" selected>Fair (650–699)</option><option value="0.75">Below Average (600–649)</option></select></div>
   </div>
 </div>
 
 <button class="calc-btn" onclick="calculate()" data-t="calcBtn">🏡 Calculate My Home Budget</button>
 
-<!-- RESULTS -->
 <div class="res card" id="resSec">
   <div class="ct"><span class="ic">✅</span> <span data-t="yourResult">Your Home Buying Power</span></div>
-
-  <!-- VERDICT -->
-  <div class="verdict" id="verdictBanner">
-    <span class="verdict-emoji" id="verdictEmoji">🏡</span>
-    <div class="verdict-title" id="verdictTitle">Loading...</div>
-    <div class="verdict-sub" id="verdictSub"></div>
-  </div>
-
-  <!-- STAT GRID -->
+  <div class="verdict" id="verdictBanner"><span class="verdict-emoji" id="verdictEmoji">🏡</span><div class="verdict-title" id="verdictTitle">Loading...</div><div class="verdict-sub" id="verdictSub"></div></div>
   <div class="rg" id="rGrid"></div>
-
-  <!-- 3 SCENARIOS -->
   <div class="card" style="margin-bottom:16px;padding:18px">
     <div class="ct" style="margin-bottom:14px"><span class="ic">📊</span> <span data-t="scenarios">Your 3 Budget Scenarios</span></div>
     <div class="scenarios" id="scenarioGrid"></div>
   </div>
-
-  <!-- MONTHLY PAYMENT BREAKDOWN -->
-  <div class="pay-breakdown" id="payBreak">
-    <div class="pb-title" data-t="monthlyBreak">Monthly Payment Breakdown</div>
-  </div>
-
-  <!-- DTI METER -->
+  <div class="pay-breakdown" id="payBreak"><div class="pb-title" data-t="monthlyBreak">Monthly Payment Breakdown</div></div>
   <div class="card" style="padding:18px;margin-bottom:16px">
     <div class="ct" style="margin-bottom:12px"><span class="ic">📏</span> <span data-t="dtiTitle">Debt-to-Income Ratio (DTI)</span></div>
     <div class="meter-wrap">
@@ -364,34 +258,22 @@ footer a{color:var(--gold);text-decoration:none}
         <span style="color:#E65100;font-weight:700" data-t="stretch">Stretching (28–36%)</span>
         <span style="color:#C62828;font-weight:700" data-t="tooMuch">Too Much (&gt;36%)</span>
       </div>
-      <div class="meter-track">
-        <div class="meter-fill" id="dtiBar" style="width:0%;background:var(--mint)"></div>
-        <div class="meter-zones">
-          <div class="mz" style="flex:2.8"></div>
-          <div class="mz" style="flex:0.8"></div>
-          <div class="mz" style="flex:6.4"></div>
-        </div>
-      </div>
+      <div class="meter-track"><div class="meter-fill" id="dtiBar" style="width:0%;background:var(--mint)"></div><div class="meter-zones"><div class="mz" style="flex:2.8"></div><div class="mz" style="flex:0.8"></div><div class="mz" style="flex:6.4"></div></div></div>
       <div style="text-align:center;margin-top:8px;font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700" id="dtiLabel"></div>
     </div>
   </div>
-
   <div id="stateNote" style="background:var(--cream);border-radius:10px;padding:13px;font-size:.82rem;color:#555;line-height:1.55;margin-bottom:14px"></div>
-
   <div class="ar">
     <button class="pbtn" onclick="window.print()">🖨️ <span data-t="print">Print</span></button>
     <button class="pbtn" onclick="copyResult()">📋 <span data-t="copy">Copy</span></button>
     <button class="pbtn" onclick="document.getElementById('resSec').classList.remove('vis');window.scrollTo({top:0,behavior:'smooth'})">🔄 <span data-t="reset">Reset</span></button>
   </div>
-
-  <!-- CTA TO PAYCALCPRO -->
   <div style="background:linear-gradient(135deg,var(--sky),var(--sky-m));border-radius:12px;padding:18px;margin-top:14px;text-align:center">
     <p style="color:rgba(255,255,255,.8);font-size:.82rem;margin-bottom:10px" data-t="ctaText">Want to see your exact take-home pay first?</p>
     <a href="paycalcpro.html" style="display:inline-block;padding:11px 24px;background:var(--gold);color:var(--sky);border-radius:8px;text-decoration:none;font-family:'Fraunces',serif;font-weight:700;font-size:.9rem" data-t="ctaBtn">💰 Open PayCalc Pro →</a>
   </div>
 </div>
-
-</div><!-- /left -->
+</div>
 
 <!-- SIDEBAR -->
 <div class="sidebar">
@@ -401,35 +283,58 @@ footer a{color:var(--gold);text-decoration:none}
     <div class="lcs" data-t="preApprovedSub">See your real rate in minutes. No commitment. These lenders pay us a referral fee — never costs you extra.</div>
     <div class="lend-links">
       <a class="ll" href="https://www.rocketmortgage.com" target="_blank" rel="noopener">
-        <div class="ll-left">
-          <div class="ll-logo" style="background:#E31837;color:#fff">RM</div>
-          <div><div class="ll-name">Rocket Mortgage</div><div class="ll-sub">Check rate in 3 min</div></div>
-        </div>
+        <div class="ll-left"><div class="ll-logo" style="background:#E31837;color:#fff">RM</div><div><div class="ll-name">Rocket Mortgage</div><div class="ll-sub">Check rate in 3 min</div></div></div>
         <span class="ll-badge">$0 fee</span>
       </a>
       <a class="ll" href="https://www.lendingtree.com/home/mortgage" target="_blank" rel="noopener">
-        <div class="ll-left">
-          <div class="ll-logo" style="background:#00A550;color:#fff">LT</div>
-          <div><div class="ll-name">LendingTree</div><div class="ll-sub">Compare multiple lenders</div></div>
-        </div>
+        <div class="ll-left"><div class="ll-logo" style="background:#00A550;color:#fff">LT</div><div><div class="ll-name">LendingTree</div><div class="ll-sub">Compare multiple lenders</div></div></div>
         <span class="ll-badge">Free</span>
       </a>
       <a class="ll" href="https://www.zillow.com/mortgage-rates" target="_blank" rel="noopener">
-        <div class="ll-left">
-          <div class="ll-logo" style="background:#006AFF;color:#fff">Z</div>
-          <div><div class="ll-name">Zillow Home Loans</div><div class="ll-sub">Instant online quotes</div></div>
-        </div>
+        <div class="ll-left"><div class="ll-logo" style="background:#006AFF;color:#fff">Z</div><div><div class="ll-name">Zillow Home Loans</div><div class="ll-sub">Instant online quotes</div></div></div>
         <span class="ll-badge">Free</span>
       </a>
       <a class="ll" href="https://www.betterway.com" target="_blank" rel="noopener">
-        <div class="ll-left">
-          <div class="ll-logo" style="background:#00B386;color:#fff">B</div>
-          <div><div class="ll-name">Better Mortgage</div><div class="ll-sub">100% online, no commissions</div></div>
-        </div>
+        <div class="ll-left"><div class="ll-logo" style="background:#00B386;color:#fff">B</div><div><div class="ll-name">Better Mortgage</div><div class="ll-sub">100% online, no commissions</div></div></div>
         <span class="ll-badge">$0 fee</span>
       </a>
     </div>
   </div>
+
+  <!-- ===== AMAZON HOME BUYING SECTION — tag: toolshubfree-20 ===== -->
+  <div class="amz-section">
+    <div class="amz-header"><div class="amz-logo">amazon</div><div class="amz-title">First-Time Buyer Essentials</div></div>
+    <div class="amz-badge">⭐ Top Rated · Fast Delivery</div>
+    <div class="amz-sub">Everything you need as a new homeowner — trusted by millions of buyers.</div>
+    <div class="amz-products">
+      <a class="amz-product" href="https://www.amazon.com/s?k=home+inspection+checklist+book&tag=toolshubfree-20" target="_blank" rel="noopener">
+        <div class="amz-pl"><span class="amz-icon">📋</span><div><div class="amz-pname">Home Buying Books</div><div class="amz-psub">First-time buyer guides</div></div></div>
+        <span class="amz-arrow">→</span>
+      </a>
+      <a class="amz-product" href="https://www.amazon.com/s?k=home+improvement+tools+kit&tag=toolshubfree-20" target="_blank" rel="noopener">
+        <div class="amz-pl"><span class="amz-icon">🔧</span><div><div class="amz-pname">Home Tool Kits</div><div class="amz-psub">Essential for new homeowners</div></div></div>
+        <span class="amz-arrow">→</span>
+      </a>
+      <a class="amz-product" href="https://www.amazon.com/s?k=smart+home+security+system&tag=toolshubfree-20" target="_blank" rel="noopener">
+        <div class="amz-pl"><span class="amz-icon">🔐</span><div><div class="amz-pname">Home Security Systems</div><div class="amz-psub">Protect your investment</div></div></div>
+        <span class="amz-arrow">→</span>
+      </a>
+      <a class="amz-product" href="https://www.amazon.com/s?k=moving+boxes+packing+supplies&tag=toolshubfree-20" target="_blank" rel="noopener">
+        <div class="amz-pl"><span class="amz-icon">📦</span><div><div class="amz-pname">Moving & Packing Supplies</div><div class="amz-psub">Boxes, tape, bubble wrap</div></div></div>
+        <span class="amz-arrow">→</span>
+      </a>
+      <a class="amz-product" href="https://www.amazon.com/s?k=smart+thermostat+nest&tag=toolshubfree-20" target="_blank" rel="noopener">
+        <div class="amz-pl"><span class="amz-icon">🌡️</span><div><div class="amz-pname">Smart Thermostats</div><div class="amz-psub">Save on energy bills</div></div></div>
+        <span class="amz-arrow">→</span>
+      </a>
+      <a class="amz-product" href="https://www.amazon.com/s?k=home+warranty+appliance+protection&tag=toolshubfree-20" target="_blank" rel="noopener">
+        <div class="amz-pl"><span class="amz-icon">🏠</span><div><div class="amz-pname">Home Appliance Bundles</div><div class="amz-psub">Washer, dryer & more</div></div></div>
+        <span class="amz-arrow">→</span>
+      </a>
+    </div>
+    <div class="amz-disclaimer">As an Amazon Associate, SmartToolsHub earns from qualifying purchases.</div>
+  </div>
+  <!-- ===== END AMAZON SECTION ===== -->
 
   <div class="rate-card">
     <div class="ct" style="margin-bottom:12px"><span class="ic">📈</span> <span data-t="rates2026">2026 Mortgage Rates</span></div>
@@ -456,7 +361,7 @@ footer a{color:var(--gold);text-decoration:none}
   </div>
 
 </div>
-</div><!-- /main -->
+</div>
 
 <footer>
   <strong style="color:rgba(255,255,255,.85)">HomeBuyCalc</strong> — <span data-t="footerText">Free Home Affordability Calculator · All 50 States · 2026 Mortgage Data</span><br>
@@ -465,343 +370,28 @@ footer a{color:var(--gold);text-decoration:none}
 </footer>
 
 <script>
-// ===================== TRANSLATIONS =====================
-const LANG={
-  en:{
-    heroTitle:'How Much House',heroSpan:'Can You Afford?',
-    heroSub:'Enter your salary and ZIP code. Get the exact home price you can safely afford based on your real take-home pay, local property taxes, and 2026 mortgage rates.',
-    b1:'📍 ZIP-Based Property Tax',b2:'💰 Salary → Take-Home Link',b3:'🏦 2026 Mortgage Rates',b4:'📊 3 Budget Scenarios',b5:'🌎 English & Español',
-    modeSal:'By Salary',modePay:'By Payment',
-    yourIncome:'Your Income & Debts',annIncome:'Annual Salary ($)',zipLabel:'ZIP Code',zipLabel2:'ZIP Code',
-    filing:'Filing Status',single:'Single',married:'Married',hoh:'Head of Household',
-    carPay:'Car Payment ($/mo)',studentLoan:'Student Loans ($/mo)',otherDebt:'Other Debts ($/mo)',
-    maxPay:'Max Monthly Payment ($)',
-    loanDetails:'Loan Details',loanType:'Loan Type',rate:'Interest Rate (%)',
-    downPay:'Down Payment',hoa:'HOA Fees ($/mo)',creditScore:'Credit Score Range',
-    calcBtn:'🏡 Calculate My Home Budget',
-    yourResult:'Your Home Buying Power',scenarios:'Your 3 Budget Scenarios',
-    monthlyBreak:'Monthly Payment Breakdown',
-    dtiTitle:'Debt-to-Income Ratio (DTI)',safe:'Safe (<28%)',stretch:'Stretching (28–36%)',tooMuch:'Too Much (>36%)',
-    getPreApproved:'Get Pre-Approved Today',preApprovedSub:'See your real rate in minutes. No commitment. These lenders pay us a referral fee — never costs you extra.',
-    rates2026:'2026 Mortgage Rates',tipTitle:'💡 The 28/36 Rule',
-    tipText:'No more than 28% of your gross monthly income should go to housing. No more than 36% to ALL debt combined. These are the two numbers lenders use to approve or deny your mortgage.',
-    moreTools:'More Free Tools',xlPay:'Paycheck Calculator',xlReno:'Renovation Cost Estimator',xlFloor:'Flooring Calculator',
-    ctaText:'Want to see your exact take-home pay first?',ctaBtn:'💰 Open PayCalc Pro →',
-    print:'Print',copy:'Copy',reset:'Reset',
-    footerText:'Free Home Affordability Calculator · All 50 States · 2026 Mortgage Data',
-    footerDisc:'Estimates only. Not financial advice. Always consult a licensed mortgage professional.',
-    free2026:'Free · 2026',
-    scSafe:'✅ Safe Budget',scStretch:'⚠️ Stretching',scMax:'🔴 Max Limit',
-    perMonth:'per month'
-  },
-  es:{
-    heroTitle:'¿Cuánta Casa',heroSpan:'Puedes Pagar?',
-    heroSub:'Ingresa tu salario y código postal. Obtén el precio exacto de la casa que puedes pagar basado en tu sueldo neto, impuestos locales y tasas hipotecarias 2026.',
-    b1:'📍 Impuesto por ZIP',b2:'💰 Salario → Sueldo Neto',b3:'🏦 Tasas 2026',b4:'📊 3 Escenarios',b5:'🌎 Inglés & Español',
-    modeSal:'Por Salario',modePay:'Por Pago Mensual',
-    yourIncome:'Tus Ingresos y Deudas',annIncome:'Salario Anual ($)',zipLabel:'Código Postal',zipLabel2:'Código Postal',
-    filing:'Estado Civil',single:'Soltero/a',married:'Casado/a',hoh:'Jefe/a de Familia',
-    carPay:'Pago de Auto ($/mes)',studentLoan:'Préstamos Estudiantiles ($/mes)',otherDebt:'Otras Deudas ($/mes)',
-    maxPay:'Pago Mensual Máximo ($)',
-    loanDetails:'Detalles del Préstamo',loanType:'Tipo de Préstamo',rate:'Tasa de Interés (%)',
-    downPay:'Pago Inicial',hoa:'Cuotas HOA ($/mes)',creditScore:'Rango de Crédito',
-    calcBtn:'🏡 Calcular Mi Presupuesto de Casa',
-    yourResult:'Tu Poder de Compra',scenarios:'Tus 3 Escenarios de Presupuesto',
-    monthlyBreak:'Desglose del Pago Mensual',
-    dtiTitle:'Relación Deuda-Ingreso (DTI)',safe:'Seguro (<28%)',stretch:'Ajustado (28–36%)',tooMuch:'Demasiado (>36%)',
-    getPreApproved:'Obtén Pre-Aprobación Hoy',preApprovedSub:'Ve tu tasa real en minutos. Sin compromiso.',
-    rates2026:'Tasas Hipotecarias 2026',tipTitle:'💡 La Regla 28/36',
-    tipText:'No más del 28% de tu ingreso mensual debe ir a vivienda. No más del 36% a TODAS las deudas combinadas.',
-    moreTools:'Más Herramientas Gratis',xlPay:'Calculadora de Cheque',xlReno:'Estimador de Renovación',xlFloor:'Calculadora de Pisos',
-    ctaText:'¿Quieres ver tu sueldo neto primero?',ctaBtn:'💰 Abrir PayCalc Pro →',
-    print:'Imprimir',copy:'Copiar',reset:'Reiniciar',
-    footerText:'Calculadora de Asequibilidad Gratis · 50 Estados · Datos 2026',
-    footerDisc:'Solo estimaciones. No es asesoramiento financiero.',
-    free2026:'Gratis · 2026',
-    scSafe:'✅ Presupuesto Seguro',scStretch:'⚠️ Ajustado',scMax:'🔴 Límite Máximo',
-    perMonth:'por mes'
-  }
-};
+const LANG={en:{heroTitle:'How Much House',heroSpan:'Can You Afford?',heroSub:'Enter your salary and ZIP code. Get the exact home price you can safely afford based on your real take-home pay, local property taxes, and 2026 mortgage rates.',b1:'📍 ZIP-Based Property Tax',b2:'💰 Salary → Take-Home Link',b3:'🏦 2026 Mortgage Rates',b4:'📊 3 Budget Scenarios',b5:'🌎 English & Español',modeSal:'By Salary',modePay:'By Payment',yourIncome:'Your Income & Debts',annIncome:'Annual Salary ($)',zipLabel:'ZIP Code',zipLabel2:'ZIP Code',filing:'Filing Status',single:'Single',married:'Married',hoh:'Head of Household',carPay:'Car Payment ($/mo)',studentLoan:'Student Loans ($/mo)',otherDebt:'Other Debts ($/mo)',maxPay:'Max Monthly Payment ($)',loanDetails:'Loan Details',loanType:'Loan Type',rate:'Interest Rate (%)',downPay:'Down Payment',hoa:'HOA Fees ($/mo)',creditScore:'Credit Score Range',calcBtn:'🏡 Calculate My Home Budget',yourResult:'Your Home Buying Power',scenarios:'Your 3 Budget Scenarios',monthlyBreak:'Monthly Payment Breakdown',dtiTitle:'Debt-to-Income Ratio (DTI)',safe:'Safe (<28%)',stretch:'Stretching (28–36%)',tooMuch:'Too Much (>36%)',getPreApproved:'Get Pre-Approved Today',preApprovedSub:'See your real rate in minutes. No commitment. These lenders pay us a referral fee — never costs you extra.',rates2026:'2026 Mortgage Rates',tipTitle:'💡 The 28/36 Rule',tipText:'No more than 28% of your gross monthly income should go to housing. No more than 36% to ALL debt combined. These are the two numbers lenders use to approve or deny your mortgage.',moreTools:'More Free Tools',xlPay:'Paycheck Calculator',xlReno:'Renovation Cost Estimator',xlFloor:'Flooring Calculator',ctaText:'Want to see your exact take-home pay first?',ctaBtn:'💰 Open PayCalc Pro →',print:'Print',copy:'Copy',reset:'Reset',footerText:'Free Home Affordability Calculator · All 50 States · 2026 Mortgage Data',footerDisc:'Estimates only. Not financial advice. Always consult a licensed mortgage professional.',free2026:'Free · 2026',scSafe:'✅ Safe Budget',scStretch:'⚠️ Stretching',scMax:'🔴 Max Limit',perMonth:'per month'},es:{heroTitle:'¿Cuánta Casa',heroSpan:'Puedes Pagar?',heroSub:'Ingresa tu salario y código postal. Obtén el precio exacto de la casa que puedes pagar basado en tu sueldo neto, impuestos locales y tasas hipotecarias 2026.',b1:'📍 Impuesto por ZIP',b2:'💰 Salario → Sueldo Neto',b3:'🏦 Tasas 2026',b4:'📊 3 Escenarios',b5:'🌎 Inglés & Español',modeSal:'Por Salario',modePay:'Por Pago Mensual',yourIncome:'Tus Ingresos y Deudas',annIncome:'Salario Anual ($)',zipLabel:'Código Postal',zipLabel2:'Código Postal',filing:'Estado Civil',single:'Soltero/a',married:'Casado/a',hoh:'Jefe/a de Familia',carPay:'Pago de Auto ($/mes)',studentLoan:'Préstamos Estudiantiles ($/mes)',otherDebt:'Otras Deudas ($/mes)',maxPay:'Pago Mensual Máximo ($)',loanDetails:'Detalles del Préstamo',loanType:'Tipo de Préstamo',rate:'Tasa de Interés (%)',downPay:'Pago Inicial',hoa:'Cuotas HOA ($/mes)',creditScore:'Rango de Crédito',calcBtn:'🏡 Calcular Mi Presupuesto de Casa',yourResult:'Tu Poder de Compra',scenarios:'Tus 3 Escenarios de Presupuesto',monthlyBreak:'Desglose del Pago Mensual',dtiTitle:'Relación Deuda-Ingreso (DTI)',safe:'Seguro (<28%)',stretch:'Ajustado (28–36%)',tooMuch:'Demasiado (>36%)',getPreApproved:'Obtén Pre-Aprobación Hoy',preApprovedSub:'Ve tu tasa real en minutos. Sin compromiso.',rates2026:'Tasas Hipotecarias 2026',tipTitle:'💡 La Regla 28/36',tipText:'No más del 28% de tu ingreso mensual debe ir a vivienda. No más del 36% a TODAS las deudas combinadas.',moreTools:'Más Herramientas Gratis',xlPay:'Calculadora de Cheque',xlReno:'Estimador de Renovación',xlFloor:'Calculadora de Pisos',ctaText:'¿Quieres ver tu sueldo neto primero?',ctaBtn:'💰 Abrir PayCalc Pro →',print:'Imprimir',copy:'Copiar',reset:'Reiniciar',footerText:'Calculadora de Asequibilidad Gratis · 50 Estados · Datos 2026',footerDisc:'Solo estimaciones. No es asesoramiento financiero.',free2026:'Gratis · 2026',scSafe:'✅ Presupuesto Seguro',scStretch:'⚠️ Ajustado',scMax:'🔴 Límite Máximo',perMonth:'por mes'}};
 let lang='en';
-function setLang(l,btn){
-  lang=l;
-  document.querySelectorAll('.ltb').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('[data-t]').forEach(el=>{
-    const k=el.getAttribute('data-t');
-    if(LANG[l][k])el.textContent=LANG[l][k];
-  });
-}
-
-// ===================== ZIP → PROPERTY TAX =====================
-const ZIP_TAX={
-  '0':1.1,'1':1.7,'2':0.9,'3':0.85,'4':1.3,'5':1.1,'6':1.5,'7':1.4,'8':0.55,'9':0.75
-};
-// State income tax for take-home estimate
-const ZIP_ITAX={
-  '0':4.0,'1':7.5,'2':2.0,'3':1.0,'4':3.5,'5':5.0,'6':4.5,'7':2.5,'8':3.5,'9':9.0
-};
-// Regional median home price multiplier
-const ZIP_MED={
-  '0':290000,'1':450000,'2':380000,'3':310000,'4':260000,'5':280000,'6':300000,'7':295000,'8':380000,'9':680000
-};
-
-// ===================== FEDERAL TAX (simplified) =====================
-function fedTax(taxable,status){
-  const B={
-    single:[[11925,.10],[48475,.12],[103350,.22],[197300,.24],[250525,.32],[626350,.35],[Infinity,.37]],
-    married:[[23850,.10],[96950,.12],[206700,.22],[394600,.24],[501050,.32],[751600,.35],[Infinity,.37]],
-    hoh:[[17000,.10],[64850,.12],[103350,.22],[197300,.24],[250500,.32],[626350,.35],[Infinity,.37]]
-  };
-  const br=B[status]||B.single;
-  let tax=0,prev=0;
-  for(const[top,rate]of br){if(taxable<=prev)break;tax+=(Math.min(taxable,top)-prev)*rate;prev=top;if(top===Infinity)break;}
-  return Math.max(0,tax);
-}
-
-// ===================== MORTGAGE PAYMENT =====================
-function monthlyMortgage(principal,annualRate,years){
-  if(annualRate===0)return principal/(years*12);
-  const r=annualRate/100/12;
-  const n=years*12;
-  return principal*(r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1);
-}
-
+function setLang(l,btn){lang=l;document.querySelectorAll('.ltb').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('[data-t]').forEach(el=>{const k=el.getAttribute('data-t');if(LANG[l][k])el.textContent=LANG[l][k];});}
+const ZIP_TAX={'0':1.1,'1':1.7,'2':0.9,'3':0.85,'4':1.3,'5':1.1,'6':1.5,'7':1.4,'8':0.55,'9':0.75};
+const ZIP_ITAX={'0':4.0,'1':7.5,'2':2.0,'3':1.0,'4':3.5,'5':5.0,'6':4.5,'7':2.5,'8':3.5,'9':9.0};
+const ZIP_MED={'0':290000,'1':450000,'2':380000,'3':310000,'4':260000,'5':280000,'6':300000,'7':295000,'8':380000,'9':680000};
+function fedTax(taxable,status){const B={single:[[11925,.10],[48475,.12],[103350,.22],[197300,.24],[250525,.32],[626350,.35],[Infinity,.37]],married:[[23850,.10],[96950,.12],[206700,.22],[394600,.24],[501050,.32],[751600,.35],[Infinity,.37]],hoh:[[17000,.10],[64850,.12],[103350,.22],[197300,.24],[250500,.32],[626350,.35],[Infinity,.37]]};const br=B[status]||B.single;let tax=0,prev=0;for(const[top,rate]of br){if(taxable<=prev)break;tax+=(Math.min(taxable,top)-prev)*rate;prev=top;if(top===Infinity)break;}return Math.max(0,tax);}
+function monthlyMortgage(principal,annualRate,years){if(annualRate===0)return principal/(years*12);const r=annualRate/100/12;const n=years*12;return principal*(r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1);}
 const fmt=n=>'$'+Math.round(n).toLocaleString();
 const fmtK=n=>n>=1000000?'$'+(n/1000000).toFixed(2)+'M':'$'+(n/1000).toFixed(0)+'K';
-
-// ===================== DP SLIDER =====================
-function updateDP(){
-  const dp=parseInt(document.getElementById('dpSlider').value);
-  const inc=parseFloat(document.getElementById('income').value)||200000;
-  const estHome=inc*3.5;
-  const dpAmt=Math.round(estHome*(dp/100));
-  document.getElementById('dpDisplay').textContent=dp+'% — '+fmt(dpAmt);
-}
-
-// ===================== MODE =====================
+function updateDP(){const dp=parseInt(document.getElementById('dpSlider').value);const inc=parseFloat(document.getElementById('income').value)||200000;const estHome=inc*3.5;const dpAmt=Math.round(estHome*(dp/100));document.getElementById('dpDisplay').textContent=dp+'% — '+fmt(dpAmt);}
 let calcMode='salary';
-function setMode(m,btn){
-  calcMode=m;
-  document.getElementById('mSal').classList.toggle('active',m==='salary');
-  document.getElementById('mPay').classList.toggle('active',m==='payment');
-  document.getElementById('paymentModeInputs').style.display=m==='payment'?'block':'none';
-  document.querySelectorAll('#income,#zip,#filing').forEach(el=>{
-    el.closest('.row3').style.display=m==='salary'?'grid':'none';
-  });
-}
-
-// ===================== MAIN CALCULATE =====================
-function calculate(){
-  const zip=(calcMode==='salary'?document.getElementById('zip'):document.getElementById('zip2')).value.trim()||'33101';
-  const prefix=zip[0]||'3';
-  const propTaxRate=(ZIP_TAX[prefix]||1.0)/100;
-  const stateTaxRate=(ZIP_ITAX[prefix]||3.0)/100;
-  const medianHome=ZIP_MED[prefix]||320000;
-  const loanType=document.getElementById('loanType').value;
-  const baseRate=parseFloat(document.getElementById('rate').value)||6.85;
-  const dp=parseInt(document.getElementById('dpSlider').value)||20;
-  const hoa=parseFloat(document.getElementById('hoa').value)||0;
-  const creditAdj=parseFloat(document.getElementById('creditScore').value)||0;
-  const adjRate=baseRate+creditAdj;
-  const carPay=parseFloat(document.getElementById('carPay').value)||0;
-  const studentLoan=parseFloat(document.getElementById('studentLoan').value)||0;
-  const otherDebt=parseFloat(document.getElementById('otherDebt').value)||0;
-  const totalOtherDebt=carPay+studentLoan+otherDebt;
-  const loanYears=loanType.includes('15')?15:30;
-  const minDP=loanType.includes('va')?0:loanType.includes('fha')?3.5:3;
-  const actualDP=Math.max(dp,minDP);
-
-  let annualIncome, monthlyGross;
-  if(calcMode==='payment'){
-    const maxPay=parseFloat(document.getElementById('maxPayment').value)||1800;
-    // reverse: from payment find max home
-    const r=adjRate/100/12;
-    const n=loanYears*12;
-    const loanFromPayment=maxPay/(r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1));
-    // rough annual income estimate
-    annualIncome=maxPay*12/0.28;
-    monthlyGross=annualIncome/12;
-  } else {
-    annualIncome=parseFloat(document.getElementById('income').value)||75000;
-    monthlyGross=annualIncome/12;
-  }
-
-  // Take-home after taxes (for display)
-  const filing=document.getElementById('filing').value;
-  const stdDed=filing==='married'?32200:16100;
-  const taxable=Math.max(0,annualIncome-stdDed);
-  const fedTaxAmt=fedTax(taxable,filing);
-  const ficaAmt=Math.min(annualIncome*0.062,184500*0.062)+annualIncome*0.0145;
-  const stateTaxAmt=annualIncome*stateTaxRate;
-  const annualTakeHome=annualIncome-fedTaxAmt-ficaAmt-stateTaxAmt;
-  const monthlyTakeHome=annualTakeHome/12;
-
-  // 28% rule → max housing payment
-  const maxHousingPmt28=monthlyGross*0.28;
-  // 36% rule → max total debt
-  const maxTotalDebt36=monthlyGross*0.36;
-  const maxHousingAfterDebt=maxTotalDebt36-totalOtherDebt;
-  const maxHousingPmt=Math.min(maxHousingPmt28,maxHousingAfterDebt);
-
-  // For a given home price → find max affordable
-  function maxHomePrice(pmt){
-    // pmt = mortgage + tax + insurance + HOA + PMI
-    // approx: mortgage ≈ 75% of total payment
-    const mortgagePmt=pmt*0.72;
-    const r=adjRate/100/12;
-    const n=loanYears*12;
-    const loanAmt=mortgagePmt/(r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1));
-    return loanAmt/(1-actualDP/100);
-  }
-
-  // 3 scenarios
-  const safeHome=maxHomePrice(maxHousingPmt*0.85);
-  const stretchHome=maxHomePrice(maxHousingPmt);
-  const maxHome=maxHomePrice(maxTotalDebt36-totalOtherDebt);
-
-  // Use stretch as primary
-  const homePrice=stretchHome;
-  const loanAmt=homePrice*(1-actualDP/100);
-  const downAmt=homePrice*(actualDP/100);
-  const mortPmt=monthlyMortgage(loanAmt,adjRate,loanYears);
-  const propTaxMo=(homePrice*propTaxRate)/12;
-  const insuranceMo=(homePrice*0.006)/12;
-  const pmi=actualDP<20?(loanAmt*0.009)/12:0;
-  const totalMoPmt=mortPmt+propTaxMo+insuranceMo+pmi+hoa;
-  const dti=((totalMoPmt+totalOtherDebt)/monthlyGross)*100;
-
-  // Verdict
-  let vClass,vEmoji,vTitle,vSub;
-  if(dti<=28){
-    vClass='good';vEmoji='🏡';
-    vTitle=fmtK(homePrice)+' — Comfortably Affordable!';
-    vSub='Your DTI is '+dti.toFixed(1)+'%. You\'re well within safe lending limits. You have room to spare.';
-  } else if(dti<=36){
-    vClass='ok';vEmoji='⚠️';
-    vTitle=fmtK(homePrice)+' — Stretching a Bit';
-    vSub='Your DTI is '+dti.toFixed(1)+'%. Most lenders will approve this, but leave less cushion for emergencies.';
-  } else {
-    vClass='tight';vEmoji='🔴';
-    vTitle='Consider a Lower Price';
-    vSub='Your DTI would be '+dti.toFixed(1)+'%. Consider a smaller home, larger down payment, or paying off debts first.';
-  }
-
-  const vb=document.getElementById('verdictBanner');
-  vb.className='verdict '+vClass;
-  document.getElementById('verdictEmoji').textContent=vEmoji;
-  document.getElementById('verdictTitle').textContent=vTitle;
-  document.getElementById('verdictSub').textContent=vSub;
-
-  // Stats
-  document.getElementById('rGrid').innerHTML=`
-    <div class="rs hl"><div class="sl">Max Home Price</div><div class="sv">${fmtK(stretchHome)}</div><div class="ss">Based on 36% DTI rule</div></div>
-    <div class="rs hl"><div class="sl">Safe Home Price</div><div class="sv">${fmtK(safeHome)}</div><div class="ss">Based on 28% DTI rule</div></div>
-    <div class="rs gd"><div class="sl">Down Payment (${actualDP}%)</div><div class="sv">${fmtK(downAmt)}</div><div class="ss">Needed upfront${actualDP<20?' + PMI':''}</div></div>
-    <div class="rs mn"><div class="sl">Monthly Take-Home</div><div class="sv">${fmt(monthlyTakeHome)}</div><div class="ss">After taxes & FICA</div></div>
-    <div class="rs" style="grid-column:span 2"><div class="sl">Est. Monthly Payment on ${fmtK(stretchHome)} home</div><div class="sv" style="font-size:2rem">${fmt(totalMoPmt)}</div><div class="ss">Principal + Interest + Tax + Insurance${pmi>0?' + PMI':''}${hoa>0?' + HOA':''}</div></div>`;
-
-  // 3 scenarios
-  const L=LANG[lang];
-  function scCard(cls,label,hp,pmt){
-    return `<div class="sc ${cls}"><div class="sc-label">${label}</div><div class="sc-price">${fmtK(hp)}</div><div class="sc-pmt">${fmt(pmt)}/${L.perMonth||'mo'}</div></div>`;
-  }
-  const safePmt=monthlyMortgage(safeHome*(1-actualDP/100),adjRate,loanYears)+(safeHome*propTaxRate/12)+(safeHome*0.006/12);
-  const stretchPmt=totalMoPmt;
-  const maxPmt=monthlyMortgage(maxHome*(1-actualDP/100),adjRate,loanYears)+(maxHome*propTaxRate/12)+(maxHome*0.006/12);
-  document.getElementById('scenarioGrid').innerHTML=
-    scCard('safe',L.scSafe||'✅ Safe Budget',safeHome,safePmt)+
-    scCard('stretch',L.scStretch||'⚠️ Stretching',stretchHome,stretchPmt)+
-    scCard('max',L.scMax||'🔴 Max Limit',maxHome,maxPmt);
-
-  // Payment breakdown bars
-  const items=[
-    {label:'Principal & Interest',val:mortPmt,color:'var(--sky)'},
-    {label:'Property Tax',val:propTaxMo,color:'var(--gold-d)'},
-    {label:'Home Insurance',val:insuranceMo,color:'var(--mint-d)'},
-  ];
-  if(pmi>0)items.push({label:'PMI (< 20% down)',val:pmi,color:'var(--amber)'});
-  if(hoa>0)items.push({label:'HOA Fees',val:hoa,color:'#8E44AD'});
-  if(totalOtherDebt>0)items.push({label:'Other Debts',val:totalOtherDebt,color:'var(--red)'});
-  const pb=document.getElementById('payBreak');
-  pb.innerHTML=`<div class="pb-title">${L.monthlyBreak||'Monthly Payment Breakdown'}</div>`+
-    items.map(it=>`<div class="pb-row">
-      <span class="pb-label">${it.label}</span>
-      <div class="pb-bar-wrap"><div class="pb-bar-track"><div class="pb-bar-fill" style="width:${Math.min(it.val/totalMoPmt*100,100).toFixed(1)}%;background:${it.color}"></div></div></div>
-      <span class="pb-val">${fmt(it.val)}/mo</span>
-    </div>`).join('');
-
-  // DTI meter
-  const dtiPct=Math.min(dti,50);
-  const dtiColor=dti<=28?'var(--mint)':dti<=36?'var(--amber)':'var(--red)';
-  document.getElementById('dtiBar').style.width=(dtiPct/50*100)+'%';
-  document.getElementById('dtiBar').style.background=dtiColor;
-  document.getElementById('dtiLabel').style.color=dtiColor;
-  document.getElementById('dtiLabel').textContent='Your DTI: '+dti.toFixed(1)+'%';
-
-  // ZIP note
-  const zipRegions={
-    '0':'Northeast/CT/MA','1':'Northeast/NY/NJ/PA','2':'Mid-Atlantic','3':'Southeast/FL/GA',
-    '4':'Midwest/OH/IN','5':'Upper Midwest','6':'Central/IL','7':'South/TX/LA','8':'Mountain West','9':'West Coast/CA'
-  };
-  const region=zipRegions[prefix]||'your area';
-  document.getElementById('stateNote').innerHTML=
-    `📍 <strong>ZIP ${zip} (${region})</strong> — Estimated property tax rate: <strong>${(propTaxRate*100).toFixed(2)}%/yr</strong>. Median home price in this region: <strong>${fmtK(medianHome)}</strong>. Rates vary — always verify with your county tax assessor.`;
-
-  // Update DP display
-  document.getElementById('dpDisplay').textContent=actualDP+'% — '+fmt(downAmt);
-
-  const s=document.getElementById('resSec');
-  s.classList.add('vis');
-  s.scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-function copyResult(){
-  const v=document.getElementById('verdictTitle').textContent;
-  const g=document.getElementById('rGrid');
-  const vals=[...g.querySelectorAll('.sv')].map(e=>e.textContent).join(' | ');
-  navigator.clipboard.writeText('HomeBuyCalc Result\n'+v+'\n'+vals).then(()=>alert('Copied!'));
-}
-
-// Init DP display
+function setMode(m,btn){calcMode=m;document.getElementById('mSal').classList.toggle('active',m==='salary');document.getElementById('mPay').classList.toggle('active',m==='payment');document.getElementById('paymentModeInputs').style.display=m==='payment'?'block':'none';document.querySelectorAll('#income,#zip,#filing').forEach(el=>{el.closest('.row3').style.display=m==='salary'?'grid':'none';});}
+function calculate(){const zip=(calcMode==='salary'?document.getElementById('zip'):document.getElementById('zip2')).value.trim()||'33101';const prefix=zip[0]||'3';const propTaxRate=(ZIP_TAX[prefix]||1.0)/100;const stateTaxRate=(ZIP_ITAX[prefix]||3.0)/100;const medianHome=ZIP_MED[prefix]||320000;const loanType=document.getElementById('loanType').value;const baseRate=parseFloat(document.getElementById('rate').value)||6.85;const dp=parseInt(document.getElementById('dpSlider').value)||20;const hoa=parseFloat(document.getElementById('hoa').value)||0;const creditAdj=parseFloat(document.getElementById('creditScore').value)||0;const adjRate=baseRate+creditAdj;const carPay=parseFloat(document.getElementById('carPay').value)||0;const studentLoan=parseFloat(document.getElementById('studentLoan').value)||0;const otherDebt=parseFloat(document.getElementById('otherDebt').value)||0;const totalOtherDebt=carPay+studentLoan+otherDebt;const loanYears=loanType.includes('15')?15:30;const minDP=loanType.includes('va')?0:loanType.includes('fha')?3.5:3;const actualDP=Math.max(dp,minDP);let annualIncome,monthlyGross;if(calcMode==='payment'){const maxPay=parseFloat(document.getElementById('maxPayment').value)||1800;annualIncome=maxPay*12/0.28;monthlyGross=annualIncome/12;}else{annualIncome=parseFloat(document.getElementById('income').value)||75000;monthlyGross=annualIncome/12;}const filing=document.getElementById('filing').value;const stdDed=filing==='married'?32200:16100;const taxable=Math.max(0,annualIncome-stdDed);const fedTaxAmt=fedTax(taxable,filing);const ficaAmt=Math.min(annualIncome*0.062,184500*0.062)+annualIncome*0.0145;const stateTaxAmt=annualIncome*stateTaxRate;const annualTakeHome=annualIncome-fedTaxAmt-ficaAmt-stateTaxAmt;const monthlyTakeHome=annualTakeHome/12;const maxHousingPmt28=monthlyGross*0.28;const maxTotalDebt36=monthlyGross*0.36;const maxHousingAfterDebt=maxTotalDebt36-totalOtherDebt;const maxHousingPmt=Math.min(maxHousingPmt28,maxHousingAfterDebt);function maxHomePrice(pmt){const mortgagePmt=pmt*0.72;const r=adjRate/100/12;const n=loanYears*12;const loanAmt=mortgagePmt/(r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1));return loanAmt/(1-actualDP/100);}const safeHome=maxHomePrice(maxHousingPmt*0.85);const stretchHome=maxHomePrice(maxHousingPmt);const maxHome=maxHomePrice(maxTotalDebt36-totalOtherDebt);const homePrice=stretchHome;const loanAmt=homePrice*(1-actualDP/100);const downAmt=homePrice*(actualDP/100);const mortPmt=monthlyMortgage(loanAmt,adjRate,loanYears);const propTaxMo=(homePrice*propTaxRate)/12;const insuranceMo=(homePrice*0.006)/12;const pmi=actualDP<20?(loanAmt*0.009)/12:0;const totalMoPmt=mortPmt+propTaxMo+insuranceMo+pmi+hoa;const dti=((totalMoPmt+totalOtherDebt)/monthlyGross)*100;let vClass,vEmoji,vTitle,vSub;if(dti<=28){vClass='good';vEmoji='🏡';vTitle=fmtK(homePrice)+' — Comfortably Affordable!';vSub='Your DTI is '+dti.toFixed(1)+'%. You\'re well within safe lending limits.';}else if(dti<=36){vClass='ok';vEmoji='⚠️';vTitle=fmtK(homePrice)+' — Stretching a Bit';vSub='Your DTI is '+dti.toFixed(1)+'%. Most lenders will approve this, but leave less cushion.';}else{vClass='tight';vEmoji='🔴';vTitle='Consider a Lower Price';vSub='Your DTI would be '+dti.toFixed(1)+'%. Consider a smaller home or paying off debts first.';}const vb=document.getElementById('verdictBanner');vb.className='verdict '+vClass;document.getElementById('verdictEmoji').textContent=vEmoji;document.getElementById('verdictTitle').textContent=vTitle;document.getElementById('verdictSub').textContent=vSub;document.getElementById('rGrid').innerHTML=`<div class="rs hl"><div class="sl">Max Home Price</div><div class="sv">${fmtK(stretchHome)}</div><div class="ss">Based on 36% DTI rule</div></div><div class="rs hl"><div class="sl">Safe Home Price</div><div class="sv">${fmtK(safeHome)}</div><div class="ss">Based on 28% DTI rule</div></div><div class="rs gd"><div class="sl">Down Payment (${actualDP}%)</div><div class="sv">${fmtK(downAmt)}</div><div class="ss">Needed upfront${actualDP<20?' + PMI':''}</div></div><div class="rs mn"><div class="sl">Monthly Take-Home</div><div class="sv">${fmt(monthlyTakeHome)}</div><div class="ss">After taxes & FICA</div></div><div class="rs" style="grid-column:span 2"><div class="sl">Est. Monthly Payment on ${fmtK(stretchHome)} home</div><div class="sv" style="font-size:2rem">${fmt(totalMoPmt)}</div><div class="ss">Principal + Interest + Tax + Insurance${pmi>0?' + PMI':''}${hoa>0?' + HOA':''}</div></div>`;const L=LANG[lang];function scCard(cls,label,hp,pmt){return `<div class="sc ${cls}"><div class="sc-label">${label}</div><div class="sc-price">${fmtK(hp)}</div><div class="sc-pmt">${fmt(pmt)}/${L.perMonth||'mo'}</div></div>`;}const safePmt=monthlyMortgage(safeHome*(1-actualDP/100),adjRate,loanYears)+(safeHome*propTaxRate/12)+(safeHome*0.006/12);const stretchPmt=totalMoPmt;const maxPmt=monthlyMortgage(maxHome*(1-actualDP/100),adjRate,loanYears)+(maxHome*propTaxRate/12)+(maxHome*0.006/12);document.getElementById('scenarioGrid').innerHTML=scCard('safe',L.scSafe||'✅ Safe Budget',safeHome,safePmt)+scCard('stretch',L.scStretch||'⚠️ Stretching',stretchHome,stretchPmt)+scCard('max',L.scMax||'🔴 Max Limit',maxHome,maxPmt);const items=[{label:'Principal & Interest',val:mortPmt,color:'var(--sky)'},{label:'Property Tax',val:propTaxMo,color:'var(--gold-d)'},{label:'Home Insurance',val:insuranceMo,color:'var(--mint-d)'}];if(pmi>0)items.push({label:'PMI (< 20% down)',val:pmi,color:'var(--amber)'});if(hoa>0)items.push({label:'HOA Fees',val:hoa,color:'#8E44AD'});if(totalOtherDebt>0)items.push({label:'Other Debts',val:totalOtherDebt,color:'var(--red)'});const pb=document.getElementById('payBreak');pb.innerHTML=`<div class="pb-title">${L.monthlyBreak||'Monthly Payment Breakdown'}</div>`+items.map(it=>`<div class="pb-row"><span class="pb-label">${it.label}</span><div class="pb-bar-wrap"><div class="pb-bar-track"><div class="pb-bar-fill" style="width:${Math.min(it.val/totalMoPmt*100,100).toFixed(1)}%;background:${it.color}"></div></div></div><span class="pb-val">${fmt(it.val)}/mo</span></div>`).join('');const dtiPct=Math.min(dti,50);const dtiColor=dti<=28?'var(--mint)':dti<=36?'var(--amber)':'var(--red)';document.getElementById('dtiBar').style.width=(dtiPct/50*100)+'%';document.getElementById('dtiBar').style.background=dtiColor;document.getElementById('dtiLabel').style.color=dtiColor;document.getElementById('dtiLabel').textContent='Your DTI: '+dti.toFixed(1)+'%';const zipRegions={'0':'Northeast/CT/MA','1':'Northeast/NY/NJ/PA','2':'Mid-Atlantic','3':'Southeast/FL/GA','4':'Midwest/OH/IN','5':'Upper Midwest','6':'Central/IL','7':'South/TX/LA','8':'Mountain West','9':'West Coast/CA'};const region=zipRegions[prefix]||'your area';document.getElementById('stateNote').innerHTML=`📍 <strong>ZIP ${zip} (${region})</strong> — Estimated property tax rate: <strong>${(propTaxRate*100).toFixed(2)}%/yr</strong>. Median home price: <strong>${fmtK(medianHome)}</strong>.`;document.getElementById('dpDisplay').textContent=actualDP+'% — '+fmt(downAmt);const s=document.getElementById('resSec');s.classList.add('vis');s.scrollIntoView({behavior:'smooth',block:'start'});}
+function copyResult(){const v=document.getElementById('verdictTitle').textContent;const g=document.getElementById('rGrid');const vals=[...g.querySelectorAll('.sv')].map(e=>e.textContent).join(' | ');navigator.clipboard.writeText('HomeBuyCalc Result\n'+v+'\n'+vals).then(()=>alert('Copied!'));}
 updateDP();
-</script>
-<div id="installBanner" style="display:none;position:fixed;bottom:20px;right:20px;z-index:9999">
-  <button id="installBtn" onclick="installApp()" style="display:none;background:#C8F135;color:#0D1B2A;border:none;padding:12px 20px;border-radius:50px;font-weight:900;font-size:.9rem;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.3);font-family:sans-serif">
-    📲 Install App
-  </button>
-</div>
-<script>
-var btn=document.getElementById("installBtn");
-if(btn){btn.style.display="block";}
 </script>
 <script>
 let deferredPrompt;
-window.addEventListener("beforeinstallprompt", function(e){
-  e.preventDefault();
-  deferredPrompt = e;
-  var btn = document.getElementById("installBtn");
-  if(btn){ btn.style.display = "block"; }
-});
-function installApp(){
-  if(deferredPrompt){
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(function(r){
-      deferredPrompt = null;
-      var btn = document.getElementById("installBtn");
-      if(btn){ btn.style.display = "none"; }
-    });
-  }
-}
-</script>
-<script>
-if("serviceWorker" in navigator){
-  window.addEventListener("load",function(){
-    navigator.serviceWorker.register("/sw.js")
-      .then(function(r){console.log("SW ready");})
-      .catch(function(e){console.log("SW error",e);});
-  });
-}
+window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();deferredPrompt=e;var btn=document.getElementById("installBtn");if(btn){btn.style.display="block";}});
+function installApp(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(function(r){deferredPrompt=null;});}}
+if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js");});}
 </script>
 </body>
 </html>
