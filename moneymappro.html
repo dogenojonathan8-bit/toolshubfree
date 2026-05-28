@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MoneyMap Pro – Free Money Command Center 2026 | Budget, Car & Savings Calculator</title>
+<meta name="description" content="Free money command center. See exactly what comes in, what goes out, what your free money is, how much car you can afford, and track annual expenses. All 50 states. No signup.">
+<meta name="keywords" content="how much car can I afford, free budget calculator, annual expense tracker, subscription tracker, 50/30/20 budget rule, free money calculator, how much money do I have left over, personal finance calculator 2026">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0C0F14;--bg2:#141820;--bg3:#1C2230;--bg4:#232B3A;
+  --green:#00E5A0;--green-d:#00B87D;--green-glow:rgba(0,229,160,0.15);
+  --yellow:#FFD23F;--yellow-d:#E5B800;
+  --red:#FF4757;--red-d:#CC1A2A;
+  --blue:#4E9FFF;--blue-d:#1A6FCC;
+  --purple:#9B72FF;
+  --white:#F0F4FF;--gray:#6B7A99;--border:rgba(255,255,255,0.07);
+  --r:14px;--shadow:0 8px 40px rgba(0,0,0,0.5);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--white);min-height:100vh}
+
+/* HEADER */
+header{background:var(--bg2);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+.hi{max-width:1100px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--white);letter-spacing:1px}
+.logo span{color:var(--green)}
+.hbg{background:var(--green);color:var(--bg);font-size:.65rem;font-weight:800;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px}
+
+/* HERO */
+.hero{background:var(--bg2);padding:44px 20px 36px;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(0,229,160,.06) 0%,transparent 65%);pointer-events:none}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,6vw,3.8rem);letter-spacing:2px;line-height:1;margin-bottom:10px;position:relative}
+.hero h1 .hl{color:var(--green)}
+.hero p{color:var(--gray);font-size:.95rem;max-width:500px;margin:0 auto 20px;line-height:1.65}
+.step-badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.sb{background:rgba(255,255,255,.05);border:1px solid var(--border);color:rgba(255,255,255,.65);padding:4px 12px;border-radius:20px;font-size:.73rem;font-weight:600;display:flex;align-items:center;gap:5px}
+.sb .n{background:var(--green);color:var(--bg);width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;flex-shrink:0}
+
+/* MAIN */
+.main{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+
+/* SECTION CARD */
+.sec{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:22px;margin-bottom:18px;position:relative;overflow:hidden}
+.sec::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--r) var(--r) 0 0}
+.sec.green::before{background:linear-gradient(90deg,var(--green),var(--green-d))}
+.sec.yellow::before{background:linear-gradient(90deg,var(--yellow),var(--yellow-d))}
+.sec.red::before{background:linear-gradient(90deg,var(--red),var(--red-d))}
+.sec.blue::before{background:linear-gradient(90deg,var(--blue),var(--blue-d))}
+.sec.purple::before{background:linear-gradient(90deg,var(--purple),#6A3FCC)}
+
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:1.5px;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.sec-title .ic{font-size:1.2rem}
+.sec-title .badge{font-size:.65rem;font-weight:800;padding:2px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:.5px}
+.badge-green{background:rgba(0,229,160,.15);color:var(--green)}
+.badge-yellow{background:rgba(255,210,63,.15);color:var(--yellow)}
+.badge-red{background:rgba(255,71,87,.15);color:var(--red)}
+
+/* INPUTS */
+.ig label{display:block;font-size:.68rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.ig input,.ig select{width:100%;padding:10px 13px;background:var(--bg3);border:1.5px solid var(--border);border-radius:9px;font-family:'Manrope',sans-serif;font-size:.9rem;color:var(--white);outline:none;transition:border-color .2s}
+.ig input:focus,.ig select:focus{border-color:var(--green)}
+.ig input::placeholder{color:var(--gray)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px}
+@media(max-width:520px){.row2,.row3{grid-template-columns:1fr 1fr}}
+
+/* TOGGLE ROWS */
+.bill-list{display:flex;flex-direction:column;gap:8px}
+.bill-row{display:flex;align-items:center;gap:10px;background:var(--bg3);border-radius:9px;padding:10px 14px;transition:all .2s}
+.bill-row.active{border-left:3px solid var(--green)}
+.br-left{display:flex;align-items:center;gap:8px;flex:1}
+.br-icon{font-size:1.1rem;flex-shrink:0}
+.br-label{font-size:.86rem;font-weight:600;color:var(--white)}
+.br-sub{font-size:.72rem;color:var(--gray);margin-top:1px}
+.br-input{width:100px;padding:6px 10px;background:var(--bg4);border:1.5px solid var(--border);border-radius:7px;font-family:'Manrope',sans-serif;font-size:.85rem;color:var(--white);outline:none;text-align:right;flex-shrink:0}
+.br-input:focus{border-color:var(--green)}
+.tog{width:34px;height:20px;background:var(--bg4);border-radius:10px;position:relative;cursor:pointer;transition:background .2s;flex-shrink:0}
+.tog::after{content:'';position:absolute;left:3px;top:3px;width:14px;height:14px;background:var(--gray);border-radius:50%;transition:all .2s}
+.tog.on{background:var(--green)}
+.tog.on::after{left:17px;background:var(--bg)}
+
+/* ANNUAL ITEMS */
+.ann-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+@media(max-width:480px){.ann-grid{grid-template-columns:1fr}}
+.ann-item{background:var(--bg3);border-radius:9px;padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.ai-left{display:flex;align-items:center;gap:8px}
+.ai-icon{font-size:1rem;flex-shrink:0}
+.ai-label{font-size:.8rem;font-weight:600}
+.ai-sub{font-size:.68rem;color:var(--gray)}
+.ai-input{width:90px;padding:5px 8px;background:var(--bg4);border:1.5px solid var(--border);border-radius:7px;font-family:'Manrope',sans-serif;font-size:.82rem;color:var(--white);outline:none;text-align:right}
+.ai-input:focus{border-color:var(--yellow)}
+
+/* CALCULATE BTN */
+.calc-btn{width:100%;padding:16px;background:var(--green);color:var(--bg);border:none;border-radius:12px;font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:2px;cursor:pointer;transition:all .2s;box-shadow:0 4px 20px var(--green-glow);margin-top:6px}
+.calc-btn:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(0,229,160,.3)}
+
+/* RESULTS */
+.results{display:none}
+.results.vis{display:block;animation:fU .4s ease}
+@keyframes fU{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* FREE MONEY HERO */
+.money-hero{border-radius:var(--r);padding:28px 24px;text-align:center;margin-bottom:16px;position:relative;overflow:hidden}
+.money-hero.green-bg{background:linear-gradient(135deg,rgba(0,229,160,.15),rgba(0,184,125,.1));border:1px solid rgba(0,229,160,.25)}
+.money-hero.yellow-bg{background:linear-gradient(135deg,rgba(255,210,63,.12),rgba(229,184,0,.08));border:1px solid rgba(255,210,63,.2)}
+.money-hero.red-bg{background:linear-gradient(135deg,rgba(255,71,87,.12),rgba(204,26,42,.08));border:1px solid rgba(255,71,87,.2)}
+.mh-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--gray);margin-bottom:8px}
+.mh-amount{font-family:'Bebas Neue',sans-serif;font-size:4rem;letter-spacing:2px;line-height:1}
+.money-hero.green-bg .mh-amount{color:var(--green)}
+.money-hero.yellow-bg .mh-amount{color:var(--yellow)}
+.money-hero.red-bg .mh-amount{color:var(--red)}
+.mh-sub{font-size:.85rem;color:var(--gray);margin-top:8px;line-height:1.5}
+.mh-verdict{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;font-size:.78rem;font-weight:700;margin-top:10px}
+.verdict-green{background:rgba(0,229,160,.15);color:var(--green)}
+.verdict-yellow{background:rgba(255,210,63,.15);color:var(--yellow)}
+.verdict-red{background:rgba(255,71,87,.15);color:var(--red)}
+
+/* STAT GRID */
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+@media(max-width:500px){.stat-grid{grid-template-columns:1fr 1fr}}
+.stat{background:var(--bg3);border-radius:10px;padding:14px;text-align:center}
+.stat.hl{background:var(--bg4);border:1px solid var(--border)}
+.stat-lbl{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--gray);margin-bottom:5px}
+.stat-val{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:1px;color:var(--white)}
+.stat-sub{font-size:.68rem;color:var(--gray);margin-top:2px}
+
+/* BAR CHART */
+.bar-section{background:var(--bg3);border-radius:10px;padding:16px;margin-bottom:14px}
+.bar-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--gray);margin-bottom:12px}
+.brow{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.brow:last-child{margin-bottom:0}
+.bl{width:120px;font-size:.8rem;font-weight:600;flex-shrink:0}
+.bt{flex:1;background:var(--bg4);border-radius:4px;height:10px;overflow:hidden}
+.bf{height:100%;border-radius:4px;transition:width .7s cubic-bezier(.4,0,.2,1)}
+.bv{width:70px;text-align:right;font-size:.8rem;font-weight:700;flex-shrink:0}
+
+/* 50/30/20 */
+.rule-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+@media(max-width:480px){.rule-grid{grid-template-columns:1fr}}
+.rule-box{border-radius:10px;padding:14px;text-align:center}
+.rule-box.needs{background:rgba(78,159,255,.08);border:1px solid rgba(78,159,255,.2)}
+.rule-box.wants{background:rgba(155,114,255,.08);border:1px solid rgba(155,114,255,.2)}
+.rule-box.savings{background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.2)}
+.rb-pct{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:1px}
+.rule-box.needs .rb-pct{color:var(--blue)}
+.rule-box.wants .rb-pct{color:var(--purple)}
+.rule-box.savings .rb-pct{color:var(--green)}
+.rb-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--gray);margin:4px 0}
+.rb-target{font-size:.75rem;color:var(--gray)}
+.rb-actual{font-size:.82rem;font-weight:700;margin-top:4px}
+.rb-status{font-size:.68rem;margin-top:2px}
+
+/* CAR RESULTS */
+.car-result{background:var(--bg3);border-radius:10px;padding:16px;margin-bottom:14px}
+.cr-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--gray);margin-bottom:12px}
+.car-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.cstat{background:var(--bg4);border-radius:8px;padding:12px;text-align:center}
+.cs-lbl{font-size:.65rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
+.cs-val{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:1px}
+.cs-val.green{color:var(--green)}
+.cs-val.yellow{color:var(--yellow)}
+.cs-val.red{color:var(--red)}
+
+/* SAVINGS GOALS */
+.goal-list{display:flex;flex-direction:column;gap:10px}
+.goal-item{background:var(--bg3);border-radius:10px;padding:14px}
+.gi-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.gi-name{font-size:.88rem;font-weight:700}
+.gi-time{font-size:.75rem;color:var(--green);font-weight:700}
+.gi-bar-track{background:var(--bg4);border-radius:4px;height:8px;overflow:hidden;margin-bottom:6px}
+.gi-bar-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--green-d));border-radius:4px;transition:width .7s ease}
+.gi-footer{display:flex;justify-content:space-between;font-size:.72rem;color:var(--gray)}
+
+/* AFFILIATE LINKS */
+.aff-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:440px){.aff-grid{grid-template-columns:1fr}}
+.aff-link{display:flex;align-items:center;gap:9px;padding:11px 13px;background:var(--bg3);border:1px solid var(--border);border-radius:9px;text-decoration:none;transition:all .2s}
+.aff-link:hover{border-color:var(--green);transform:translateX(2px)}
+.aff-logo{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#fff;flex-shrink:0}
+.aff-name{font-size:.82rem;font-weight:700;color:var(--white)}
+.aff-sub{font-size:.68rem;color:var(--gray)}
+
+/* ACTION ROW */
+.ar{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.abtn{flex:1;min-width:90px;padding:9px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;cursor:pointer;font-family:'Manrope',sans-serif;font-weight:700;font-size:.8rem;color:var(--gray);transition:all .2s;display:flex;align-items:center;justify-content:center;gap:4px}
+.abtn:hover{border-color:var(--green);color:var(--white)}
+
+/* BACK TO TOOLS */
+.back-bar{background:var(--bg2);border-top:1px solid var(--border);padding:16px 20px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.bt-link{padding:8px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;text-decoration:none;font-size:.78rem;font-weight:700;color:var(--gray);transition:all .2s;display:flex;align-items:center;gap:5px}
+.bt-link:hover{border-color:var(--green);color:var(--white)}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);color:var(--gray);text-align:center;padding:20px;font-size:.74rem;line-height:1.7}
+footer a{color:var(--green);text-decoration:none}
+
+@media print{header,.hero,.back-bar,footer,.calc-btn,.ar{display:none!important}.main{padding:0}.sec{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hi">
+    <div class="logo">Money<span>Map</span> Pro</div>
+    <div class="hbg">Free 2026</div>
+  </div>
+</header>
+
+<div class="hero">
+  <h1>YOUR COMPLETE<br><span class="hl">MONEY COMMAND CENTER</span></h1>
+  <p>See exactly what comes in, what goes out, how much car you can afford, and your real FREE MONEY — all in one place.</p>
+  <div class="step-badges">
+    <span class="sb"><span class="n">1</span>Enter Income</span>
+    <span class="sb"><span class="n">2</span>Add Your Bills</span>
+    <span class="sb"><span class="n">3</span>Check Annual Costs</span>
+    <span class="sb"><span class="n">4</span>See Free Money</span>
+    <span class="sb"><span class="n">5</span>Plan Your Goals</span>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- SECTION 1: INCOME -->
+<div class="sec green">
+  <div class="sec-title"><span class="ic">💵</span> Step 1: Money Coming IN <span class="badge badge-green">Monthly</span></div>
+  <div class="row3">
+    <div class="ig"><label>Annual Salary ($)</label><input type="number" id="salary" value="55000" min="0" step="1000" placeholder="e.g. 55000"></div>
+    <div class="ig">
+      <label>State</label>
+      <select id="state">
+        <option value="0|FL">Florida (No tax)</option>
+        <option value="0|TX">Texas (No tax)</option>
+        <option value="13.3|CA">California (13.3%)</option>
+        <option value="10.9|NY">New York (10.9%)</option>
+        <option value="4.95|IL">Illinois (4.95%)</option>
+        <option value="5.75|GA">Georgia (5.75%)</option>
+        <option value="0|WA">Washington (No tax)</option>
+        <option value="5.25|NC">North Carolina (5.25%)</option>
+        <option value="3.07|PA">Pennsylvania (3.07%)</option>
+        <option value="4.4|CO">Colorado (4.4%)</option>
+        <option value="0|NV">Nevada (No tax)</option>
+        <option value="5.75|VA">Virginia (5.75%)</option>
+        <option value="0|AK">Alaska (No tax)</option>
+        <option value="2.5|AZ">Arizona (2.5%)</option>
+        <option value="4.7|AR">Arkansas (4.7%)</option>
+        <option value="6.99|CT">Connecticut (6.99%)</option>
+        <option value="0|SD">South Dakota (No tax)</option>
+        <option value="0|TN">Tennessee (No tax)</option>
+        <option value="0|WY">Wyoming (No tax)</option>
+        <option value="9.9|OR">Oregon (9.9%)</option>
+        <option value="9.85|MN">Minnesota (9.85%)</option>
+        <option value="5|MA">Massachusetts (5%)</option>
+        <option value="4.05|MI">Michigan (4.05%)</option>
+        <option value="4.0|AL">Alabama (4%)</option>
+        <option value="6|IA">Iowa (6%)</option>
+        <option value="5|KY">Kentucky (5%)</option>
+        <option value="7.15|ME">Maine (7.15%)</option>
+        <option value="5.75|MD">Maryland (5.75%)</option>
+        <option value="5|MS">Mississippi (5%)</option>
+        <option value="5.4|MO">Missouri (5.4%)</option>
+        <option value="6.75|MT">Montana (6.75%)</option>
+        <option value="6.64|NE">Nebraska (6.64%)</option>
+        <option value="10.75|NJ">New Jersey (10.75%)</option>
+        <option value="5.9|NM">New Mexico (5.9%)</option>
+        <option value="2.9|ND">North Dakota (2.9%)</option>
+        <option value="3.99|OH">Ohio (3.99%)</option>
+        <option value="4.75|OK">Oklahoma (4.75%)</option>
+        <option value="5.99|RI">Rhode Island (5.99%)</option>
+        <option value="7|SC">South Carolina (7%)</option>
+        <option value="4.85|UT">Utah (4.85%)</option>
+        <option value="8.75|VT">Vermont (8.75%)</option>
+        <option value="6.5|WV">West Virginia (6.5%)</option>
+        <option value="7.65|WI">Wisconsin (7.65%)</option>
+      </select>
+    </div>
+    <div class="ig"><label>Side Hustle / Other ($/mo)</label><input type="number" id="sideIncome" value="0" min="0" placeholder="0"></div>
+  </div>
+  <div class="row2">
+    <div class="ig"><label>Pay Frequency</label>
+      <select id="payFreq">
+        <option value="26" selected>Bi-Weekly (26x/yr)</option>
+        <option value="52">Weekly (52x/yr)</option>
+        <option value="24">Semi-Monthly (24x/yr)</option>
+        <option value="12">Monthly (12x/yr)</option>
+      </select>
+    </div>
+    <div class="ig"><label>401(k) Contribution (%)</label><input type="number" id="k401" value="0" min="0" max="100" step="0.5" placeholder="0"></div>
+  </div>
+</div>
+
+<!-- SECTION 2: FIXED MONTHLY BILLS -->
+<div class="sec blue">
+  <div class="sec-title"><span class="ic">🏠</span> Step 2: Monthly Bills <span class="badge" style="background:rgba(78,159,255,.15);color:var(--blue)">Toggle On/Off</span></div>
+  <p style="font-size:.78rem;color:var(--gray);margin-bottom:14px">Toggle each bill on and enter your amount. Only add what actually applies to you.</p>
+  <div class="bill-list" id="billList">
+    <div class="bill-row" id="br_rent"><div class="br-left"><span class="br-icon">🏠</span><div><div class="br-label">Rent / Mortgage</div><div class="br-sub">Monthly housing cost</div></div></div><input class="br-input" type="number" id="b_rent" value="1200" min="0" placeholder="0"><div class="tog on" onclick="togBill('rent')"></div></div>
+    <div class="bill-row" id="br_car"><div class="br-left"><span class="br-icon">🚗</span><div><div class="br-label">Car Payment</div><div class="br-sub">Monthly auto loan</div></div></div><input class="br-input" type="number" id="b_car" value="0" min="0" placeholder="0"><div class="tog" onclick="togBill('car')"></div></div>
+    <div class="bill-row" id="br_insurance"><div class="br-left"><span class="br-icon">🛡️</span><div><div class="br-label">Auto Insurance</div><div class="br-sub">Monthly premium</div></div></div><input class="br-input" type="number" id="b_insurance" value="0" min="0" placeholder="0"><div class="tog" onclick="togBill('insurance')"></div></div>
+    <div class="bill-row" id="br_phone"><div class="br-left"><span class="br-icon">📱</span><div><div class="br-label">Phone Bill</div><div class="br-sub">Cell service monthly</div></div></div><input class="br-input" type="number" id="b_phone" value="85" min="0" placeholder="0"><div class="tog on" onclick="togBill('phone')"></div></div>
+    <div class="bill-row" id="br_internet"><div class="br-left"><span class="br-icon">📡</span><div><div class="br-label">Internet</div><div class="br-sub">Home WiFi monthly</div></div></div><input class="br-input" type="number" id="b_internet" value="70" min="0" placeholder="0"><div class="tog on" onclick="togBill('internet')"></div></div>
+    <div class="bill-row" id="br_utilities"><div class="br-left"><span class="br-icon">⚡</span><div><div class="br-label">Utilities</div><div class="br-sub">Electric, gas, water avg</div></div></div><input class="br-input" type="number" id="b_utilities" value="150" min="0" placeholder="0"><div class="tog on" onclick="togBill('utilities')"></div></div>
+    <div class="bill-row" id="br_groceries"><div class="br-left"><span class="br-icon">🛒</span><div><div class="br-label">Groceries / Food</div><div class="br-sub">Monthly food budget</div></div></div><input class="br-input" type="number" id="b_groceries" value="400" min="0" placeholder="0"><div class="tog on" onclick="togBill('groceries')"></div></div>
+    <div class="bill-row" id="br_gas"><div class="br-left"><span class="br-icon">⛽</span><div><div class="br-label">Gas / Transportation</div><div class="br-sub">Monthly fuel cost</div></div></div><input class="br-input" type="number" id="b_gas" value="0" min="0" placeholder="0"><div class="tog" onclick="togBill('gas')"></div></div>
+    <div class="bill-row" id="br_health"><div class="br-left"><span class="br-icon">🏥</span><div><div class="br-label">Health Insurance</div><div class="br-sub">If not taken from paycheck</div></div></div><input class="br-input" type="number" id="b_health" value="0" min="0" placeholder="0"><div class="tog" onclick="togBill('health')"></div></div>
+    <div class="bill-row" id="br_student"><div class="br-left"><span class="br-icon">🎓</span><div><div class="br-label">Student Loans</div><div class="br-sub">Monthly payment</div></div></div><input class="br-input" type="number" id="b_student" value="0" min="0" placeholder="0"><div class="tog" onclick="togBill('student')"></div></div>
+    <div class="bill-row" id="br_cc"><div class="br-left"><span class="br-icon">💳</span><div><div class="br-label">Credit Cards</div><div class="br-sub">Minimum monthly payment</div></div></div><input class="br-input" type="number" id="b_cc" value="0" min="0" placeholder="0"><div class="tog" onclick="togBill('cc')"></div></div>
+    <div class="bill-row" id="br_childcare"><div class="br-left"><span class="br-icon">👶</span><div><div class="br-label">Childcare / Daycare</div><div class="br-sub">Monthly cost</div></div></div><input class="br-input" type="number" id="b_childcare" value="0" min="0" placeholder="0"><div class="tog" onclick="togBill('childcare')"></div></div>
+    <div class="bill-row" id="br_gym"><div class="br-left"><span class="br-icon">💪</span><div><div class="br-label">Gym / Fitness</div><div class="br-sub">Monthly membership</div></div></div><input class="br-input" type="number" id="b_gym" value="0" min="0" placeholder="0"><div class="tog" onclick="togBill('gym')"></div></div>
+    <div class="bill-row" id="br_streaming"><div class="br-left"><span class="br-icon">📺</span><div><div class="br-label">Streaming Services</div><div class="br-sub">Netflix, Hulu, Disney+ etc.</div></div></div><input class="br-input" type="number" id="b_streaming" value="45" min="0" placeholder="0"><div class="tog on" onclick="togBill('streaming')"></div></div>
+    <div class="bill-row" id="br_other"><div class="br-left"><span class="br-icon">➕</span><div><div class="br-label">Other Monthly Bills</div><div class="br-sub">Anything else monthly</div></div></div><input class="br-input" type="number" id="b_other" value="0" min="0" placeholder="0"><div class="tog" onclick="togBill('other')"></div></div>
+  </div>
+</div>
+
+<!-- SECTION 3: ANNUAL EXPENSES -->
+<div class="sec yellow">
+  <div class="sec-title"><span class="ic">📅</span> Step 3: Annual Expenses <span class="badge badge-yellow">The Ones People Forget</span></div>
+  <p style="font-size:.78rem;color:var(--gray);margin-bottom:14px">Enter yearly costs — we'll break them into monthly so nothing surprises you.</p>
+  <div class="ann-grid">
+    <div class="ann-item"><div class="ai-left"><span class="ai-icon">🚗</span><div><div class="ai-label">Car Registration</div><div class="ai-sub">Annual DMV fee</div></div></div><input class="ai-input" type="number" id="a_carreg" value="150" min="0" placeholder="0"></div>
+    <div class="ann-item"><div class="ai-left"><span class="ai-icon">📄</span><div><div class="ai-label">Tax Preparation</div><div class="ai-sub">CPA or TurboTax</div></div></div><input class="ai-input" type="number" id="a_tax" value="100" min="0" placeholder="0"></div>
+    <div class="ann-item"><div class="ai-left"><span class="ai-icon">🏠</span><div><div class="ai-label">Home/Renters Insurance</div><div class="ai-sub">Annual premium</div></div></div><input class="ai-input" type="number" id="a_homeins" value="800" min="0" placeholder="0"></div>
+    <div class="ann-item"><div class="ai-left"><span class="ai-icon">🎄</span><div><div class="ai-label">Holiday / Gifts</div><div class="ai-sub">Christmas, birthdays</div></div></div><input class="ai-input" type="number" id="a_holiday" value="600" min="0" placeholder="0"></div>
+    <div class="ann-item"><div class="ai-left"><span class="ai-icon">✈️</span><div><div class="ai-label">Vacation / Travel</div><div class="ai-sub">Annual trips</div></div></div><input class="ai-input" type="number" id="a_vacation" value="0" min="0" placeholder="0"></div>
+    <div class="ann-item"><div class="ai-left"><span class="ai-icon">📦</span><div><div class="ai-label">Amazon Prime / Annual Subs</div><div class="ai-sub">Yearly memberships</div></div></div><input class="ai-input" type="number" id="a_amazon" value="139" min="0" placeholder="0"></div>
+    <div class="ann-item"><div class="ai-left"><span class="ai-icon">🔧</span><div><div class="ai-label">Car Maintenance</div><div class="ai-sub">Oil changes, tires, repairs</div></div></div><input class="ai-input" type="number" id="a_carmaint" value="600" min="0" placeholder="0"></div>
+    <div class="ann-item"><div class="ai-left"><span class="ai-icon">🏡</span><div><div class="ai-label">Home Repairs / HOA</div><div class="ai-sub">Maintenance, HOA fees</div></div></div><input class="ai-input" type="number" id="a_home" value="0" min="0" placeholder="0"></div>
+    <div class="ann-item"><div class="ai-left"><span class="ai-icon">👗</span><div><div class="ai-label">Clothing / Shopping</div><div class="ai-sub">Annual wardrobe budget</div></div></div><input class="ai-input" type="number" id="a_clothing" value="500" min="0" placeholder="0"></div>
+    <div class="ann-item"><div class="ai-left"><span class="ai-icon">🏥</span><div><div class="ai-label">Medical / Dental</div><div class="ai-sub">Copays, prescriptions</div></div></div><input class="ai-input" type="number" id="a_medical" value="300" min="0" placeholder="0"></div>
+  </div>
+</div>
+
+<!-- SECTION 4: CAR AFFORDABILITY -->
+<div class="sec purple">
+  <div class="sec-title"><span class="ic">🚗</span> Step 4: Car Affordability <span class="badge" style="background:rgba(155,114,255,.15);color:var(--purple)">Optional</span></div>
+  <div class="row3">
+    <div class="ig"><label>Down Payment ($)</label><input type="number" id="carDown" value="3000" min="0" step="500" placeholder="e.g. 3000"></div>
+    <div class="ig"><label>Loan Term</label>
+      <select id="carTerm">
+        <option value="36">3 Years (36 mo)</option>
+        <option value="48">4 Years (48 mo)</option>
+        <option value="60" selected>5 Years (60 mo)</option>
+        <option value="72">6 Years (72 mo)</option>
+      </select>
+    </div>
+    <div class="ig"><label>Interest Rate (%)</label><input type="number" id="carRate" value="7.5" min="0" max="30" step="0.1" placeholder="7.5"></div>
+  </div>
+  <div class="ig" style="margin-bottom:0">
+    <label>Your ZIP Code (for AutoTrader search)</label>
+    <input type="text" id="carZip" placeholder="e.g. 33101" maxlength="5" value="33101">
+  </div>
+</div>
+
+<!-- SECTION 5: SAVINGS GOALS -->
+<div class="sec green">
+  <div class="sec-title"><span class="ic">🎯</span> Step 5: Savings Goals <span class="badge badge-green">Optional</span></div>
+  <div class="row3">
+    <div class="ig"><label>Emergency Fund Goal ($)</label><input type="number" id="g_emergency" value="10000" min="0" placeholder="e.g. 10000"></div>
+    <div class="ig"><label>Already Saved ($)</label><input type="number" id="g_saved" value="0" min="0" placeholder="0"></div>
+    <div class="ig"><label>Monthly Savings Amount ($)</label><input type="number" id="g_monthly" value="200" min="0" placeholder="200"></div>
+  </div>
+  <div class="row2">
+    <div class="ig"><label>Vacation / Fun Goal ($)</label><input type="number" id="g_vacation" value="2000" min="0" placeholder="e.g. 2000"></div>
+    <div class="ig"><label>Down Payment Goal ($)</label><input type="number" id="g_downpay" value="20000" min="0" placeholder="e.g. 20000"></div>
+  </div>
+</div>
+
+<button class="calc-btn" onclick="calculate()">🗺️ SHOW MY MONEY MAP</button>
+
+<!-- RESULTS -->
+<div class="results" id="results">
+
+  <!-- FREE MONEY HERO -->
+  <div class="money-hero" id="moneyHero" style="margin-top:18px">
+    <div class="mh-label">YOUR FREE MONEY EVERY MONTH</div>
+    <div class="mh-amount" id="freeMoneyAmt">$0</div>
+    <div class="mh-sub" id="moneySubtitle"></div>
+    <div class="mh-verdict" id="moneyVerdict"></div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stat-grid" id="statGrid"></div>
+
+  <!-- BAR CHART -->
+  <div class="bar-section" id="barSection">
+    <div class="bar-title">WHERE YOUR MONEY GOES EVERY MONTH</div>
+    <div id="bars"></div>
+  </div>
+
+  <!-- 50/30/20 RULE -->
+  <div class="sec blue" style="margin-bottom:14px">
+    <div class="sec-title"><span class="ic">📊</span> 50/30/20 Budget Check</div>
+    <div class="rule-grid" id="ruleGrid"></div>
+    <p style="font-size:.75rem;color:var(--gray);margin-top:8px">Rule: 50% needs · 30% wants · 20% savings. Based on take-home pay.</p>
+  </div>
+
+  <!-- CAR AFFORDABILITY RESULT -->
+  <div class="sec purple" id="carSection">
+    <div class="sec-title"><span class="ic">🚗</span> Your Car Budget</div>
+    <div class="car-result">
+      <div class="cr-title">BASED ON YOUR INCOME & FREE MONEY</div>
+      <div class="car-grid" id="carGrid"></div>
+    </div>
+    <p style="font-size:.75rem;color:var(--gray);margin-bottom:10px">The 20/4/10 rule: 20% down, max 4yr loan, total car costs under 10% of gross income</p>
+    <div class="aff-grid">
+      <a class="aff-link" id="autotraderLink" href="#" target="_blank" rel="noopener">
+        <div class="aff-logo" style="background:#E53238">AT</div>
+        <div><div class="aff-name">AutoTrader</div><div class="aff-sub">Search your ZIP</div></div>
+        <span style="color:var(--green);margin-left:auto">→</span>
+      </a>
+      <a class="aff-link" href="https://www.carvana.com" target="_blank" rel="noopener">
+        <div class="aff-logo" style="background:#00A0DC">CV</div>
+        <div><div class="aff-name">Carvana</div><div class="aff-sub">Online car buying</div></div>
+        <span style="color:var(--green);margin-left:auto">→</span>
+      </a>
+      <a class="aff-link" href="https://www.carmax.com" target="_blank" rel="noopener">
+        <div class="aff-logo" style="background:#00008B">CM</div>
+        <div><div class="aff-name">CarMax</div><div class="aff-sub">Certified used cars</div></div>
+        <span style="color:var(--green);margin-left:auto">→</span>
+      </a>
+      <a class="aff-link" href="https://www.lendingtree.com/auto" target="_blank" rel="noopener">
+        <div class="aff-logo" style="background:#00A550">LT</div>
+        <div><div class="aff-name">Auto Loan Rates</div><div class="aff-sub">Compare lenders</div></div>
+        <span style="color:var(--green);margin-left:auto">→</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- SAVINGS GOALS -->
+  <div class="sec green" id="goalsSection">
+    <div class="sec-title"><span class="ic">🎯</span> Your Savings Goals Timeline</div>
+    <div class="goal-list" id="goalList"></div>
+  </div>
+
+  <!-- ANNUAL EXPENSE BREAKDOWN -->
+  <div class="sec yellow" id="annualSection">
+    <div class="sec-title"><span class="ic">📅</span> Annual Expense Breakdown</div>
+    <div id="annualBreakdown"></div>
+  </div>
+
+  <!-- FINANCIAL HEALTH TIPS -->
+  <div class="sec blue" id="tipsSection">
+    <div class="sec-title"><span class="ic">💡</span> Your Personalized Money Tips</div>
+    <div id="tipsList"></div>
+  </div>
+
+  <div class="ar">
+    <button class="abtn" onclick="window.print()">🖨️ Print</button>
+    <button class="abtn" onclick="copyResults()">📋 Copy</button>
+    <button class="abtn" onclick="shareResults()">📲 Share</button>
+    <button class="abtn" onclick="document.getElementById('results').classList.remove('vis');window.scrollTo({top:0,behavior:'smooth'})">🔄 Reset</button>
+  </div>
+
+</div><!-- /results -->
+</div><!-- /main -->
+
+<div class="back-bar">
+  <a class="bt-link" href="index.html">🏠 Home</a>
+  <a class="bt-link" href="paycalcpro.html">💰 PayCalc Pro</a>
+  <a class="bt-link" href="homebuycalc.html">🏡 HomeBuy Calc</a>
+  <a class="bt-link" href="homefixtcost.html">🔨 HomeFixCost</a>
+  <a class="bt-link" href="floorcalcpro.html">🪵 FloorCalc</a>
+  <a class="bt-link" href="homestyleai.html">🤖 HomeStyle AI</a>
+</div>
+
+<footer>
+  <strong style="color:rgba(255,255,255,.8)">MoneyMap Pro</strong> — Free Personal Finance Command Center · Part of SmartToolsHub<br>
+  Estimates only. Not financial advice. Always consult a financial professional for major decisions.<br>
+  <a href="#">Privacy</a> · <a href="#">About</a> · <a href="#">Disclaimer</a>
+</footer>
+
+<script>
+// ============ STATE ============
+let bills = {rent:true,car:false,insurance:false,phone:true,internet:true,utilities:true,groceries:true,gas:false,health:false,student:false,cc:false,childcare:false,gym:false,streaming:true,other:false};
+
+function togBill(key) {
+  bills[key] = !bills[key];
+  const row = document.getElementById('br_' + key);
+  const tog = row.querySelector('.tog');
+  tog.classList.toggle('on', bills[key]);
+  row.classList.toggle('active', bills[key]);
+}
+
+// ============ TAXES ============
+function fedTax(taxable, filing='single') {
+  const B = [[11925,.10],[48475,.12],[103350,.22],[197300,.24],[250525,.32],[626350,.35],[Infinity,.37]];
+  let tax=0,prev=0;
+  for(const[top,rate]of B){if(taxable<=prev)break;tax+=(Math.min(taxable,top)-prev)*rate;prev=top;if(top===Infinity)break;}
+  return Math.max(0,tax);
+}
+
+const fmt = n => '$' + Math.round(Math.abs(n)).toLocaleString();
+const fmtK = n => n >= 1000 ? '$' + (n/1000).toFixed(0) + 'K' : '$' + Math.round(n);
+
+// ============ CALCULATE ============
+function calculate() {
+  // INCOME
+  const annSal = parseFloat(document.getElementById('salary').value)||0;
+  const stateVal = document.getElementById('state').value.split('|');
+  const stateRate = parseFloat(stateVal[0])||0;
+  const sideInc = parseFloat(document.getElementById('sideIncome').value)||0;
+  const k401pct = (parseFloat(document.getElementById('k401').value)||0)/100;
+  const freq = parseInt(document.getElementById('payFreq').value)||26;
+
+  // Calculate take-home
+  const stdDed = 16100;
+  const k401ann = annSal * k401pct;
+  const taxable = Math.max(0, annSal - k401ann - stdDed);
+  const fedT = fedTax(taxable);
+  const ss = Math.min(annSal * 0.062, 184500*0.062);
+  const med = annSal * 0.0145;
+  const stateT = (annSal - k401ann) * (stateRate/100);
+  const annTakeHome = annSal - fedT - ss - med - stateT - k401ann;
+  const monthlyTakeHome = annTakeHome/12 + sideInc;
+  const monthlyGross = annSal/12;
+
+  // MONTHLY BILLS
+  let totalBills = 0;
+  const billKeys = Object.keys(bills);
+  billKeys.forEach(k => {
+    if(bills[k]) {
+      const val = parseFloat(document.getElementById('b_'+k).value)||0;
+      totalBills += val;
+    }
+  });
+
+  // ANNUAL EXPENSES → monthly
+  const annItems = ['carreg','tax','homeins','holiday','vacation','amazon','carmaint','home','clothing','medical'];
+  let totalAnn = 0;
+  annItems.forEach(k => {
+    totalAnn += parseFloat(document.getElementById('a_'+k).value)||0;
+  });
+  const annMonthly = totalAnn / 12;
+
+  // FREE MONEY
+  const totalOut = totalBills + annMonthly;
+  const freeMoney = monthlyTakeHome - totalOut;
+  const freeMoneyAnn = freeMoney * 12;
+
+  // PERCENTAGES
+  const needsPct = (totalBills / monthlyTakeHome * 100);
+  const annPct = (annMonthly / monthlyTakeHome * 100);
+  const freePct = (freeMoney / monthlyTakeHome * 100);
+
+  // ---- FREE MONEY HERO ----
+  const hero = document.getElementById('moneyHero');
+  const amtEl = document.getElementById('freeMoneyAmt');
+  const subEl = document.getElementById('moneySubtitle');
+  const verdEl = document.getElementById('moneyVerdict');
+  amtEl.textContent = fmt(freeMoney) + '/mo';
+  subEl.textContent = fmt(Math.abs(freeMoneyAnn)) + ' per year · ' + fmt(monthlyTakeHome - totalBills) + ' before annual expenses';
+
+  if(freeMoney >= monthlyTakeHome * 0.2) {
+    hero.className = 'money-hero green-bg';
+    verdEl.className = 'mh-verdict verdict-green';
+    verdEl.textContent = '✅ Healthy — You\'re in great shape';
+  } else if(freeMoney > 0) {
+    hero.className = 'money-hero yellow-bg';
+    verdEl.className = 'mh-verdict verdict-yellow';
+    verdEl.textContent = '⚠️ Tight — Room to improve';
+  } else {
+    hero.className = 'money-hero red-bg';
+    verdEl.className = 'mh-verdict verdict-red';
+    verdEl.textContent = '🔴 Over Budget — Action needed';
+  }
+
+  // ---- STATS ----
+  document.getElementById('statGrid').innerHTML = `
+    <div class="stat"><div class="stat-lbl">Take-Home/Mo</div><div class="stat-val">${fmt(monthlyTakeHome)}</div><div class="stat-sub">After all taxes</div></div>
+    <div class="stat"><div class="stat-lbl">Total Bills/Mo</div><div class="stat-val" style="color:var(--red)">${fmt(totalBills)}</div><div class="stat-sub">Fixed monthly</div></div>
+    <div class="stat"><div class="stat-lbl">Annual/Mo</div><div class="stat-val" style="color:var(--yellow)">${fmt(annMonthly)}</div><div class="stat-sub">Yearly ÷ 12</div></div>
+    <div class="stat hl"><div class="stat-lbl">Per Paycheck</div><div class="stat-val" style="color:var(--blue)">${fmt(annTakeHome/freq)}</div><div class="stat-sub">${freq===52?'weekly':freq===26?'bi-weekly':freq===24?'semi-mo':'monthly'}</div></div>
+    <div class="stat hl"><div class="stat-lbl">Total Out/Mo</div><div class="stat-val" style="color:var(--red)">${fmt(totalOut)}</div><div class="stat-sub">Bills + annual</div></div>
+    <div class="stat hl"><div class="stat-lbl">Free Money/Yr</div><div class="stat-val" style="color:var(--green)">${fmtK(freeMoneyAnn)}</div><div class="stat-sub">Per year</div></div>`;
+
+  // ---- BARS ----
+  const barsData = [
+    {label:'💵 Take-Home',val:monthlyTakeHome,color:'var(--green)',pct:100},
+    {label:'🏠 Housing',val:bills.rent?(parseFloat(document.getElementById('b_rent').value)||0):0,color:'var(--blue)'},
+    {label:'🚗 Transportation',val:(bills.car?(parseFloat(document.getElementById('b_car').value)||0):0)+(bills.insurance?(parseFloat(document.getElementById('b_insurance').value)||0):0)+(bills.gas?(parseFloat(document.getElementById('b_gas').value)||0):0),color:'var(--purple)'},
+    {label:'🍕 Food',val:bills.groceries?(parseFloat(document.getElementById('b_groceries').value)||0):0,color:'var(--yellow)'},
+    {label:'📅 Annual/Mo',val:annMonthly,color:'#FF8C5A'},
+    {label:'💰 Free Money',val:Math.max(0,freeMoney),color:freeMoney>0?'var(--green)':'var(--red)'},
+  ];
+  document.getElementById('bars').innerHTML = barsData.map(b => {
+    const p = Math.max(0,Math.min(100,b.val/monthlyTakeHome*100));
+    return `<div class="brow"><span class="bl">${b.label}</span><div class="bt"><div class="bf" style="width:${p.toFixed(1)}%;background:${b.color}"></div></div><span class="bv" style="color:${b.color}">${fmt(b.val)}</span></div>`;
+  }).join('');
+
+  // ---- 50/30/20 ----
+  const rent = bills.rent?(parseFloat(document.getElementById('b_rent').value)||0):0;
+  const utilTotal = (bills.utilities?(parseFloat(document.getElementById('b_utilities').value)||0):0)+(bills.internet?(parseFloat(document.getElementById('b_internet').value)||0):0)+(bills.health?(parseFloat(document.getElementById('b_health').value)||0):0)+(bills.student?(parseFloat(document.getElementById('b_student').value)||0):0)+(bills.cc?(parseFloat(document.getElementById('b_cc').value)||0):0)+(bills.childcare?(parseFloat(document.getElementById('b_childcare').value)||0):0);
+  const needs = rent + utilTotal + (bills.groceries?(parseFloat(document.getElementById('b_groceries').value)||0):0) + (bills.car?(parseFloat(document.getElementById('b_car').value)||0):0) + annMonthly;
+  const wants = (bills.phone?(parseFloat(document.getElementById('b_phone').value)||0):0)+(bills.streaming?(parseFloat(document.getElementById('b_streaming').value)||0):0)+(bills.gym?(parseFloat(document.getElementById('b_gym').value)||0):0)+(bills.gas?(parseFloat(document.getElementById('b_gas').value)||0):0)+(bills.other?(parseFloat(document.getElementById('b_other').value)||0):0);
+  const savingsAmt = Math.max(0,freeMoney);
+
+  const nPct = (needs/monthlyTakeHome*100).toFixed(0);
+  const wPct = (wants/monthlyTakeHome*100).toFixed(0);
+  const sPct = (savingsAmt/monthlyTakeHome*100).toFixed(0);
+
+  function ruleStatus(actual, target) {
+    const diff = actual - target;
+    if(Math.abs(diff) <= 5) return {cls:'',txt:'✅ On target'};
+    if(diff > 0) return {cls:'color:var(--red)',txt:`⚠️ ${diff.toFixed(0)}% over`};
+    return {cls:'color:var(--green)',txt:`✅ ${Math.abs(diff).toFixed(0)}% under`};
+  }
+  const ns=ruleStatus(parseFloat(nPct),50),ws=ruleStatus(parseFloat(wPct),30),ss2=ruleStatus(parseFloat(sPct),20,'under');
+  document.getElementById('ruleGrid').innerHTML = `
+    <div class="rule-box needs"><div class="rb-pct">${nPct}%</div><div class="rb-label">Needs</div><div class="rb-target">Target: 50%</div><div class="rb-actual" style="${ns.cls}">${fmt(needs)}/mo</div><div class="rb-status" style="${ns.cls}">${ns.txt}</div></div>
+    <div class="rule-box wants"><div class="rb-pct">${wPct}%</div><div class="rb-label">Wants</div><div class="rb-target">Target: 30%</div><div class="rb-actual" style="${ws.cls}">${fmt(wants)}/mo</div><div class="rb-status" style="${ws.cls}">${ws.txt}</div></div>
+    <div class="rule-box savings"><div class="rb-pct">${sPct}%</div><div class="rb-label">Free/Save</div><div class="rb-target">Target: 20%</div><div class="rb-actual" style="${ss2.cls}">${fmt(savingsAmt)}/mo</div><div class="rb-status" style="${ss2.cls}">${ss2.txt}</div></div>`;
+
+  // ---- CAR ----
+  const carDown = parseFloat(document.getElementById('carDown').value)||0;
+  const carTerm = parseInt(document.getElementById('carTerm').value)||60;
+  const carRate = parseFloat(document.getElementById('carRate').value)||7.5;
+  const carZip = document.getElementById('carZip').value||'33101';
+  const maxCarPmt = monthlyGross * 0.10; // 10% of gross for ALL car costs
+  const insurEst = 150, gasEst = 100, maintEst = 50;
+  const maxLoanPmt = Math.max(0, maxCarPmt - insurEst - gasEst - maintEst);
+  const r = carRate/100/12;
+  const maxLoan = maxLoanPmt > 0 ? maxLoanPmt * (Math.pow(1+r,carTerm)-1) / (r*Math.pow(1+r,carTerm)) : 0;
+  const maxCarPrice = maxLoan + carDown;
+  const safeCarPrice = maxCarPrice * 0.85;
+  const carPmt = r > 0 ? maxLoan*(r*Math.pow(1+r,carTerm))/(Math.pow(1+r,carTerm)-1) : maxLoan/carTerm;
+  const totalCarCost = carPmt + insurEst + gasEst + maintEst;
+
+  document.getElementById('carGrid').innerHTML = `
+    <div class="cstat"><div class="cs-lbl">Safe Car Price</div><div class="cs-val green">${fmtK(safeCarPrice)}</div></div>
+    <div class="cstat"><div class="cs-lbl">Max Car Price</div><div class="cs-val yellow">${fmtK(maxCarPrice)}</div></div>
+    <div class="cstat"><div class="cs-lbl">Est. Monthly Payment</div><div class="cs-val">${fmt(carPmt)}</div></div>
+    <div class="cstat"><div class="cs-lbl">True Monthly Cost</div><div class="cs-val red">${fmt(totalCarCost)}</div></div>`;
+
+  document.getElementById('autotraderLink').href = `https://www.autotrader.com/cars-for-sale/used-cars?zip=${carZip}&maxPrice=${Math.round(maxCarPrice)}&searchRadius=50`;
+
+  // ---- SAVINGS GOALS ----
+  const emergGoal = parseFloat(document.getElementById('g_emergency').value)||0;
+  const saved = parseFloat(document.getElementById('g_saved').value)||0;
+  const mSave = parseFloat(document.getElementById('g_monthly').value)||Math.max(0,freeMoney*0.5);
+  const vacGoal = parseFloat(document.getElementById('g_vacation').value)||0;
+  const dpGoal = parseFloat(document.getElementById('g_downpay').value)||0;
+
+  function goalItem(name,goal,already,monthly,icon) {
+    if(!goal||monthly<=0) return '';
+    const needed = Math.max(0,goal-already);
+    const months = Math.ceil(needed/monthly);
+    const pct = Math.min(100, already/goal*100);
+    const yrs = months > 12 ? (months/12).toFixed(1)+' years' : months+' months';
+    return `<div class="goal-item">
+      <div class="gi-header"><span class="gi-name">${icon} ${name}</span><span class="gi-time">${months<=0?'✅ Done!':yrs+' away'}</span></div>
+      <div class="gi-bar-track"><div class="gi-bar-fill" style="width:${pct.toFixed(0)}%"></div></div>
+      <div class="gi-footer"><span>${fmt(already)} saved</span><span>Goal: ${fmt(goal)}</span></div>
+    </div>`;
+  }
+  document.getElementById('goalList').innerHTML =
+    goalItem('Emergency Fund',emergGoal,saved,mSave,'🛡️') +
+    goalItem('Vacation Fund',vacGoal,0,mSave*0.3,'✈️') +
+    goalItem('Down Payment',dpGoal,saved,mSave*0.7,'🏡') ||
+    '<p style="color:var(--gray);font-size:.85rem">Enter goals above to see your savings timeline.</p>';
+
+  // ---- ANNUAL BREAKDOWN ----
+  const annLabels = {carreg:'🚗 Car Registration',tax:'📄 Tax Prep',homeins:'🏠 Home/Renters Insurance',holiday:'🎄 Holiday & Gifts',vacation:'✈️ Vacation',amazon:'📦 Annual Subscriptions',carmaint:'🔧 Car Maintenance',home:'🏡 Home Repairs/HOA',clothing:'👗 Clothing',medical:'🏥 Medical/Dental'};
+  let annHTML = '<div class="ann-grid">';
+  annItems.forEach(k => {
+    const val = parseFloat(document.getElementById('a_'+k).value)||0;
+    if(val > 0) {
+      annHTML += `<div class="ann-item" style="background:var(--bg4)"><div class="ai-left"><span class="ai-icon">${annLabels[k].split(' ')[0]}</span><div><div class="ai-label">${annLabels[k].substring(2)}</div><div class="ai-sub">${fmt(val/12)}/mo · ${fmt(val)}/yr</div></div></div></div>`;
+    }
+  });
+  annHTML += `</div><div style="margin-top:12px;background:rgba(255,210,63,.08);border:1px solid rgba(255,210,63,.2);border-radius:8px;padding:12px;font-size:.83rem;color:var(--yellow)">📅 Total annual costs: <strong>${fmt(totalAnn)}/year</strong> = <strong>${fmt(annMonthly)}/month</strong> — already included in your free money calculation above.</div>`;
+  document.getElementById('annualBreakdown').innerHTML = annHTML;
+
+  // ---- TIPS ----
+  const tips = [];
+  if(freeMoney < 0) tips.push({icon:'🔴',txt:`You're spending <strong>${fmt(Math.abs(freeMoney))}/month MORE than you make</strong>. Immediate action: cut streaming, eating out, or subscriptions first. Small cuts add up fast.`,col:'var(--red)'});
+  if(parseFloat(nPct) > 60) tips.push({icon:'⚠️',txt:`Your needs are <strong>${nPct}% of income</strong> — over the 50% target. Your housing cost is likely the main culprit. Can you get a roommate, refinance, or find cheaper rent?`,col:'var(--yellow)'});
+  if(carDown < 3000) tips.push({icon:'🚗',txt:`A <strong>larger down payment</strong> on a car lowers your monthly payment AND your interest paid. Try to save at least 10–20% down before buying.`,col:'var(--purple)'});
+  if(freeMoney > 0 && freeMoney < 500) tips.push({icon:'💡',txt:`Your free money is tight at <strong>${fmt(freeMoney)}/month</strong>. Even saving $50/month adds up to $600/year. Look for one subscription to cancel — the average American wastes $329/month on forgotten subscriptions.`,col:'var(--blue)'});
+  if(freeMoney > 1000) tips.push({icon:'✅',txt:`You have <strong>${fmt(freeMoney)}/month</strong> free. Put at least 50% ($${Math.round(freeMoney*0.5)}) into savings automatically. "Pay yourself first" is the #1 wealth-building habit.`,col:'var(--green)'});
+  if(k401pct === 0) tips.push({icon:'💰',txt:`You're contributing <strong>0% to your 401(k)</strong>. Even 3–6% saves you $1,000–$3,000 in taxes per year AND if your employer matches — that's free money you're leaving on the table.`,col:'var(--green)'});
+  if(parseFloat(document.getElementById('b_cc').value)||0 > 0) tips.push({icon:'💳',txt:`You have credit card debt. The <strong>avalanche method</strong>: pay minimums on all cards, throw all extra money at the highest interest rate card first. This saves the most money overall.`,col:'var(--red)'});
+  tips.push({icon:'📅',txt:`Your annual expenses cost you <strong>${fmt(annMonthly)}/month</strong> when spread out. Open a separate savings account and automatically transfer this amount monthly so annual bills never surprise you.`,col:'var(--yellow)'});
+
+  document.getElementById('tipsList').innerHTML = tips.map(t =>
+    `<div style="display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)"><span style="font-size:1.1rem;flex-shrink:0">${t.icon}</span><p style="font-size:.83rem;line-height:1.6;color:rgba(255,255,255,.8)">${t.txt}</p></div>`
+  ).join('').replace(/<div[^>]*>(<[^>]*>.*<\/[^>]*>)<\/div>$/,'<div>$1</div>');
+
+  const res = document.getElementById('results');
+  res.classList.add('vis');
+  res.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function copyResults() {
+  const free = document.getElementById('freeMoneyAmt').textContent;
+  const verdict = document.getElementById('moneyVerdict').textContent;
+  navigator.clipboard.writeText(`MoneyMap Pro Results\n${verdict}\nFree Money: ${free}\nSee your full money map at toolshubfree — SmartToolsHub`).then(()=>alert('Results copied!'));
+}
+
+function shareResults() {
+  const free = document.getElementById('freeMoneyAmt').textContent;
+  const url = 'https://dogenojonathan8-bit.github.io/toolshubfree/moneymappro.html';
+  if(navigator.share){
+    navigator.share({title:'My MoneyMap Pro Results',text:`My free money this month: ${free} — Check yours free at SmartToolsHub`,url});
+  } else {
+    navigator.clipboard.writeText(url).then(()=>alert('Link copied!'));
+  }
+}
+</script>
+</body>
+</html>

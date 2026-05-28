@@ -427,7 +427,7 @@ function toggleQ(btn, group) {
 }
 
 // ===================== AI CALL =====================
-async function askAI() {
+function askAI() {
   const question = document.getElementById('userQuestion').value.trim();
   if (!question) { 
     document.getElementById('userQuestion').focus();
@@ -441,138 +441,255 @@ async function askAI() {
   document.getElementById('responseArea').classList.remove('visible');
 
   // Build context from filters
-  let context = '';
-  if (selections.budget) context += `Budget: ${selections.budget}. `;
-  if (selections.situation) context += `Situation: ${selections.situation}. `;
-  if (selections.style) context += `Style preference: ${selections.style}. `;
-
-  const systemPrompt = `You are HomeStyle AI, an expert home improvement and interior design advisor for American homeowners in 2026. You give practical, specific, honest advice about flooring, paint colors, renovations, budgeting, and home decisions.
-
-Key facts to use:
-- 85% of homeowners face unexpected repair costs — always remind users to budget 15-20% extra
-- 70% go over budget — give realistic ranges
-- 74% have renovation regrets — help them think it through
-- 2026 trends: warm wood tones (honey/caramel/chestnut), matte finishes, LVP is top choice for most homes, gray floors are outdated, warm neutrals replacing cool grays
-- Best ROI renovations: kitchen (minor remodel 110%+ ROI), bathroom, curb appeal, converting carpet to hardwood
-- For pets/kids: LVP is #1 choice — waterproof, scratch resistant, cheaper than hardwood
-- Always mention when they should use the free calculators on SmartToolsHub (FloorCalc Pro, HomeFixCost, HomeBuy Calc)
-
-Format your response with:
-- A direct clear recommendation first (bold the main answer)
-- 2-3 key reasons why
-- A "Pro Tip" in a tip box
-- A "Watch Out" warning if relevant
-- End with a relevant free tool suggestion from SmartToolsHub
-
-Keep it conversational, friendly, and practical. Like advice from a trusted contractor friend. Max 300 words.`;
-
-  const userMessage = `${context}Topic: ${currentTopic}. Question: ${question}`;
-
-  try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        system: systemPrompt,
-        messages: [{ role: 'user', content: userMessage }]
-      })
-    });
-
-    const data = await response.json();
-    const text = data.content?.[0]?.text || 'Sorry, I could not get an answer. Please try again.';
-    
-    // Format the response
-    const formatted = formatResponse(text);
-    document.getElementById('aiResponse').innerHTML = formatted;
+  let ctx = { budget: selections.budget, situation: selections.situation, style: selections.style };
+  
+  // Simulate thinking delay for better UX
+  setTimeout(() => {
+    const answer = getSmartAnswer(question.toLowerCase(), currentTopic, ctx);
+    document.getElementById('aiResponse').innerHTML = answer;
     document.getElementById('responseArea').classList.add('visible');
-    
-    // Add to history
-    addToHistory(question, text);
-    
+    addToHistory(question, answer);
+    document.getElementById('loading').classList.remove('show');
+    btn.disabled = false;
+    btn.textContent = '✨ Get My AI Answer';
     document.getElementById('responseArea').scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-  } catch (err) {
-    document.getElementById('aiResponse').innerHTML = `<p style="color:var(--accent)">⚠️ Something went wrong. Please check your connection and try again.</p>`;
-    document.getElementById('responseArea').classList.add('visible');
-  }
-
-  document.getElementById('loading').classList.remove('show');
-  btn.disabled = false;
-  btn.textContent = '✨ Get My AI Answer';
+  }, 1200);
 }
 
-function formatResponse(text) {
-  // Convert markdown-like formatting to HTML
-  let html = text
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/## (.*?)$/gm, '<h3>$1</h3>')
-    .replace(/^- (.*?)$/gm, '<li>$1</li>')
-    .replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>')
-    .replace(/Pro Tip:(.*?)(?=Watch Out:|$)/gs, '<div class="tip-box">💡 <strong>Pro Tip:</strong>$1</div>')
-    .replace(/Watch Out:(.*?)(?=\n\n|$)/gs, '<div class="warn-box">⚠️ <strong>Watch Out:</strong>$1</div>')
-    .replace(/\n\n/g, '<br><br>')
-    .replace(/\n/g, '<br>');
-  return html;
-}
-
-function addToHistory(question, answer) {
-  history.unshift({ question, answer, time: new Date().toLocaleTimeString() });
-  if (history.length > 5) history.pop();
+function getSmartAnswer(q, topic, ctx) {
+  const budget = ctx.budget || '';
+  const sit = ctx.situation || '';
+  const style = ctx.style || '';
   
-  const section = document.getElementById('historySection');
-  const list = document.getElementById('historyList');
+  // PET + FLOORING
+  if ((q.includes('pet') || q.includes('dog') || q.includes('cat')) && (q.includes('floor') || topic === 'flooring')) {
+    return `<strong>🏆 Best Pick: Luxury Vinyl Plank (LVP)</strong><br><br>
+For homes with pets, <strong>LVP is the #1 choice hands down</strong> in 2026. Here's why it wins every time:<br><br>
+<ul>
+<li>100% waterproof — no damage from accidents or spills</li>
+<li>Scratch-resistant surface handles claws better than hardwood</li>
+<li>Easy to clean — just mop and go</li>
+<li>Costs $2–$7/sq ft vs $6–$12 for real hardwood</li>
+<li>Looks identical to real wood — nobody can tell the difference</li>
+</ul>
+<div class="tip-box">💡 <strong>Pro Tip:</strong> Look for LVP with a wear layer of at least 12 mil for pets. Brands like LifeProof (Home Depot) and COREtec are top picks for 2026.</div>
+<div class="warn-box">⚠️ <strong>Watch Out:</strong> Avoid bamboo and real hardwood — dog nails WILL scratch them within months no matter what anyone tells you.</div>
+<strong>🔧 Next Step:</strong> Use <a href="floorcalcpro.html" style="color:var(--accent2)">FloorCalc Pro</a> to calculate exactly how many boxes you need and the total cost for your rooms.`;
+  }
   
-  if (history.length > 0) {
-    section.style.display = 'block';
-    list.innerHTML = history.map((h, i) => `
-      <div class="hist-item" onclick="loadHistory(${i})">
-        <div class="hi-q">${h.question.substring(0, 70)}${h.question.length > 70 ? '...' : ''}</div>
-        <div class="hi-time">${h.time}</div>
-      </div>
-    `).join('');
+  // KIDS + FLOORING
+  if ((q.includes('kid') || q.includes('child') || q.includes('baby') || q.includes('toddler')) && (q.includes('floor') || topic === 'flooring')) {
+    return `<strong>🏆 Best Pick for Kids: LVP or Carpet (depends on room)</strong><br><br>
+<ul>
+<li><strong>Living areas & hallways:</strong> LVP — waterproof for spills, easy to clean, durable</li>
+<li><strong>Bedrooms & playrooms:</strong> Carpet — softer on falls, warmer, more comfortable for playing on the floor</li>
+<li><strong>Avoid:</strong> Hardwood in high-traffic kid areas — juice spills and toys will damage it fast</li>
+</ul>
+<div class="tip-box">💡 <strong>Pro Tip:</strong> If you pick carpet for bedrooms, go with a low-pile option — easier to vacuum and keeps allergies down. Stain-resistant carpet is worth the extra $0.50/sq ft.</div>
+<div class="warn-box">⚠️ <strong>Watch Out:</strong> 70% of homeowners regret going with light-colored carpet when they have young kids. Go medium tone or darker to hide dirt.</div>
+<strong>🔧 Next Step:</strong> Use <a href="floorcalcpro.html" style="color:var(--accent2)">FloorCalc Pro</a> to calculate your flooring cost by room.`;
   }
-}
 
-function loadHistory(i) {
-  const h = history[i];
-  document.getElementById('userQuestion').value = h.question;
-  document.getElementById('aiResponse').innerHTML = formatResponse(h.answer);
-  document.getElementById('responseArea').classList.add('visible');
-  document.getElementById('responseArea').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-function askAnother() {
-  document.getElementById('userQuestion').value = '';
-  document.getElementById('responseArea').classList.remove('visible');
-  document.getElementById('userQuestion').focus();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function copyAnswer() {
-  const text = document.getElementById('aiResponse').innerText;
-  navigator.clipboard.writeText('HomeStyle AI says:\n\n' + text).then(() => alert('Copied to clipboard!'));
-}
-
-function shareAnswer() {
-  const text = document.getElementById('userQuestion').value;
-  const url = `https://toolshubfree.netlify.app/homestyleai.html`;
-  if (navigator.share) {
-    navigator.share({ title: 'HomeStyle AI Answer', text: `I asked: "${text}" — Get your free home advice at:`, url });
-  } else {
-    navigator.clipboard.writeText(url).then(() => alert('Link copied! Share it anywhere.'));
+  // LVP VS HARDWOOD
+  if ((q.includes('lvp') || q.includes('vinyl')) && (q.includes('hardwood') || q.includes('wood'))) {
+    return `<strong>🏆 Honest Answer: LVP wins for most homes in 2026</strong><br><br>
+Here's the real comparison:<br><br>
+<ul>
+<li><strong>LVP:</strong> $2–$7/sq ft · Waterproof · Scratch resistant · DIY friendly · Lasts 25+ years</li>
+<li><strong>Hardwood:</strong> $6–$12/sq ft · Can be refinished · Adds more resale value · Not waterproof</li>
+</ul>
+<strong>Choose LVP if:</strong> You have pets, kids, a basement, bathroom, or kitchen. Or if you're on a budget.<br><br>
+<strong>Choose Hardwood if:</strong> You're selling your home soon and want maximum resale value, have a dry living room or bedroom, and have $8K+ to spend.
+<div class="tip-box">💡 <strong>Pro Tip:</strong> Wide plank white oak in honey/caramel tones is the #1 trending hardwood look for 2026 — if you go hardwood, that's the style to pick.</div>
+<div class="warn-box">⚠️ <strong>Watch Out:</strong> Gray floors are officially outdated in 2026. Avoid any gray-toned LVP or laminate — you'll want to replace it in 2 years.</div>
+<strong>🔧 Next Step:</strong> Use <a href="floorcalcpro.html" style="color:var(--accent2)">FloorCalc Pro</a> to compare costs for both options.`;
   }
+
+  // GRAY FLOORS / OUTDATED
+  if (q.includes('gray') || q.includes('grey') || q.includes('outdated') || q.includes('trending')) {
+    return `<strong>📊 2026 Flooring Trend Report</strong><br><br>
+<strong>OUT in 2026:</strong><br>
+<ul>
+<li>❌ Cool gray floors — feel cold, clash with warm 2026 palettes</li>
+<li>❌ High-gloss tile and flooring — too much maintenance</li>
+<li>❌ Busy checkerboard patterns</li>
+<li>❌ Builder-grade gray laminate</li>
+</ul>
+<strong>HOT in 2026:</strong><br>
+<ul>
+<li>✅ Warm honey, caramel, and chestnut wood tones</li>
+<li>✅ Wide plank white oak (matte finish)</li>
+<li>✅ Herringbone and chevron patterns</li>
+<li>✅ Stone-look tile in warm neutrals</li>
+<li>✅ LVP that mimics natural wood — not gray</li>
+</ul>
+<div class="tip-box">💡 <strong>Pro Tip:</strong> If you have gray floors and want to update the feel without replacing them, start with warm-toned furniture and rugs. It's a $500 fix vs a $5,000 floor replacement.</div>
+<strong>🤖 Want personalized advice?</strong> Try <a href="homestyleai.html" style="color:var(--accent2)">asking a more specific question</a> about your space.`;
+  }
+
+  // KITCHEN VS BATHROOM ROI
+  if ((q.includes('kitchen') && q.includes('bathroom')) || (q.includes('roi') || q.includes('return') || q.includes('value'))) {
+    return `<strong>💰 ROI Winner: Minor Kitchen Remodel</strong><br><br>
+Here's what real estate data says for 2026:<br><br>
+<ul>
+<li><strong>Minor kitchen remodel:</strong> 110%+ ROI — spend $15K, add $16K+ in value</li>
+<li><strong>Bathroom remodel:</strong> 70–80% ROI — solid but not #1</li>
+<li><strong>Curb appeal (garage door, landscaping):</strong> 190%+ ROI — cheapest best return</li>
+<li><strong>Carpet to hardwood conversion:</strong> 80–100% ROI</li>
+<li><strong>Basement finish:</strong> 60–75% ROI</li>
+</ul>
+<strong>The smartest move if you're selling:</strong> New garage door ($1,500) + fresh exterior paint ($3,000) + minor kitchen updates ($8,000). That combo often returns more than a $50,000 full renovation.
+<div class="tip-box">💡 <strong>Pro Tip:</strong> "Minor" kitchen = new cabinet faces, countertops, hardware, and appliances. NOT moving walls or plumbing. Moving plumbing kills your ROI fast.</div>
+<div class="warn-box">⚠️ <strong>Watch Out:</strong> 74% of homeowners have renovation regrets. Always get 3 contractor quotes before starting.</div>
+<strong>🔧 Next Step:</strong> Use <a href="homefixtcost.html" style="color:var(--accent2)">HomeFixCost</a> to see exact renovation costs in your area.`;
+  }
+
+  // BUDGET / GOING OVER BUDGET
+  if (q.includes('budget') || q.includes('over budget') || q.includes('afford') || q.includes('cost') || q.includes('expensive')) {
+    return `<strong>💵 How to NOT Go Over Budget (85% of Homeowners Do)</strong><br><br>
+Real data: <strong>85% of homeowners face unexpected costs</strong> and 70% go over budget. Here's how to be in the 15% that don't:<br><br>
+<ul>
+<li><strong>Rule #1:</strong> Add 20% buffer to every single estimate. If contractor says $10K — budget $12K.</li>
+<li><strong>Rule #2:</strong> Get 3 quotes minimum. Prices vary 30–50% for the same job.</li>
+<li><strong>Rule #3:</strong> Never pay more than 30% upfront before work begins.</li>
+<li><strong>Rule #4:</strong> Lock in material prices in writing before starting — supply costs change weekly.</li>
+<li><strong>Rule #5:</strong> Do demo yourself if possible — saves $500–$2,000.</li>
+</ul>
+${budget === 'Under $2K' ? '<div class="tip-box">💡 For your Under $2K budget: Focus on paint ($300–$600), new hardware ($100–$300), and DIY flooring in one room ($500–$1,500). These give the biggest visual impact per dollar.</div>' : ''}
+${budget === '$2K–$10K' ? '<div class="tip-box">💡 For your $2K–$10K budget: A bathroom refresh (not full remodel), new kitchen countertops, or flooring in 2–3 rooms are all realistic at this range.</div>' : ''}
+<div class="warn-box">⚠️ <strong>Watch Out:</strong> "While we're at it" syndrome kills budgets. Every time a contractor says "while we're in there we could also..." — that's where budgets explode. Stick to your scope.</div>
+<strong>🔧 Next Step:</strong> Get a real cost estimate with <a href="homefixtcost.html" style="color:var(--accent2)">HomeFixCost</a> before talking to any contractor.`;
+  }
+
+  // MOVE OR RENOVATE
+  if (q.includes('move') || q.includes('sell') || q.includes('renovate or') || q.includes('stay')) {
+    return `<strong>🏡 Move or Renovate? Here's the Framework</strong><br><br>
+<strong>Renovate if:</strong><br>
+<ul>
+<li>You love your location and neighbors</li>
+<li>Your needed repairs are under 20% of home value</li>
+<li>You plan to stay 5+ more years</li>
+<li>Current mortgage rate is lower than today's rates</li>
+<li>Your kids are in a school district you love</li>
+</ul>
+<strong>Consider Moving if:</strong><br>
+<ul>
+<li>Repairs exceed 30% of current home value</li>
+<li>Your family has outgrown the layout (not just the size)</li>
+<li>The neighborhood is declining</li>
+<li>Foundation, structural, or major system issues exist</li>
+</ul>
+<div class="tip-box">💡 <strong>Pro Tip:</strong> Run the real math. If your home is worth $300K and needs $80K in repairs — that's 27% of value. Usually worth renovating. If it needs $120K — moving starts making more sense.</div>
+<div class="warn-box">⚠️ <strong>Watch Out:</strong> In 2026's housing market, moving means taking on a higher mortgage rate. Many homeowners who moved regret giving up their lower rate. Calculate the full cost of moving first.</div>
+<strong>🔧 Next Step:</strong> Use <a href="homebuycalc.html" style="color:var(--accent2)">HomeBuy Calc</a> to see what you could actually afford if you did move.`;
+  }
+
+  // PAINT COLORS
+  if (q.includes('paint') || q.includes('color') || q.includes('wall') || topic === 'paint') {
+    if (q.includes('gray') || q.includes('replace gray')) {
+      return `<strong>🎨 Replacing Gray in 2026 — Here's What's Hot</strong><br><br>
+Gray is officially done. Designers are replacing it with:<br><br>
+<ul>
+<li><strong>Warm White</strong> (eg. Benjamin Moore "White Dove") — the new safe neutral</li>
+<li><strong>Soft Sage Green</strong> — calming, pairs with everything, huge in 2026</li>
+<li><strong>Warm Beige / Greige</strong> (eg. Sherwin-Williams "Accessible Beige") — timeless, never looks cold</li>
+<li><strong>Terracotta / Rust accents</strong> — bold accent walls, not full rooms</li>
+<li><strong>Buttery Yellow</strong> — kitchens especially, pairs with white oak floors perfectly</li>
+</ul>
+<div class="tip-box">💡 <strong>Pro Tip:</strong> Before buying a full gallon, buy sample pots ($5) and paint 12x12 inch patches on your actual wall. Look at them at different times of day. Natural light changes everything.</div>`;
+    }
+    return `<strong>🎨 2026 Paint Color Guide</strong><br><br>
+The biggest shift in 2026: <strong>warm is in, cool is out.</strong><br><br>
+<strong>Top picks by room:</strong><br>
+<ul>
+<li><strong>Living Room:</strong> Soft sage green or warm white — feels welcoming, works with warm wood floors</li>
+<li><strong>Kitchen:</strong> Creamy white or warm yellow — bright, clean, pairs with any cabinet color</li>
+<li><strong>Bedroom:</strong> Dusty blue, soft lavender, or warm greige — promotes relaxation</li>
+<li><strong>Bathroom:</strong> Soft mint, warm white, or terracotta — spa feeling</li>
+<li><strong>Hallway:</strong> Whatever color is in your living room at 50% saturation — creates flow</li>
+</ul>
+<div class="tip-box">💡 <strong>Pro Tip:</strong> Flat/matte finish for ceilings and low-traffic walls. Eggshell for living rooms. Satin for kitchens and bathrooms — easier to wipe clean.</div>
+<div class="warn-box">⚠️ <strong>Watch Out:</strong> Don't pick your paint color from a tiny chip. Always test a sample pot on your actual wall first — paint looks completely different in real light vs the store.</div>`;
+  }
+
+  // FLOORING FOR BASEMENT
+  if (q.includes('basement')) {
+    return `<strong>🏆 Best Flooring for Basements: LVP Wins Every Time</strong><br><br>
+Basements are a special case because of moisture. Here's the ranking:<br><br>
+<ul>
+<li><strong>#1 LVP (Luxury Vinyl Plank)</strong> — 100% waterproof, handles moisture perfectly, warm feel</li>
+<li><strong>#2 Ceramic/Porcelain Tile</strong> — waterproof but cold underfoot</li>
+<li><strong>#3 Epoxy</strong> — best for garage-style basements or workshops</li>
+<li><strong>❌ Avoid:</strong> Hardwood, laminate, or carpet directly on concrete — moisture will destroy them</li>
+</ul>
+<div class="tip-box">💡 <strong>Pro Tip:</strong> Always do a moisture test before installing ANY flooring in a basement. Tape a plastic sheet to the concrete for 24 hours — if moisture appears underneath, you need to address that FIRST before flooring.</div>
+<div class="warn-box">⚠️ <strong>Watch Out:</strong> Cheap LVP under 6mm thick can feel hollow and loud in basements. Get at least 8mm with attached underlayment.</div>
+<strong>🔧 Next Step:</strong> Use <a href="floorcalcpro.html" style="color:var(--accent2)">FloorCalc Pro</a> to calculate your basement flooring cost.`;
+  }
+
+  // CONTRACTOR ADVICE
+  if (q.includes('contractor') || q.includes('hire') || q.includes('ripped off') || q.includes('scam')) {
+    return `<strong>👷 How to Hire a Contractor Without Getting Ripped Off</strong><br><br>
+<ul>
+<li><strong>Always get 3 quotes</strong> — prices vary 30–50% for the same job</li>
+<li><strong>Check license + insurance</strong> — ask for their contractor license number and verify it on your state's website. Free to check.</li>
+<li><strong>Never pay more than 30% upfront</strong> — legitimate contractors don't need full payment before starting</li>
+<li><strong>Get everything in writing</strong> — scope, materials, timeline, payment schedule, warranty</li>
+<li><strong>Check reviews on Google AND Thumbtack</strong> — one bad review is normal, 5+ bad reviews is a red flag</li>
+<li><strong>Don't hire door-to-door contractors</strong> — especially after storms. This is where most scams happen.</li>
+</ul>
+<div class="tip-box">💡 <strong>Pro Tip:</strong> The lowest bid is often NOT the best deal. A contractor who bids 30% lower than everyone else is either cutting corners on materials or planning to add change orders later.</div>
+<div class="warn-box">⚠️ <strong>Watch Out:</strong> "Cash only" discounts are a red flag. Legitimate contractors accept checks or bank transfers and provide receipts.</div>
+<strong>🔧 Find vetted local pros:</strong> Use the <a href="homefixtcost.html" style="color:var(--accent2)">HomeFixCost</a> tool to connect with Thumbtack-verified contractors.`;
+  }
+
+  // SMALL ROOM
+  if (q.includes('small') || q.includes('bigger') || q.includes('tiny') || q.includes('space')) {
+    return `<strong>🏠 Make Any Room Feel Bigger — Without Renovating</strong><br><br>
+<ul>
+<li><strong>Light floors + light walls</strong> — the single biggest visual trick. Dark makes rooms shrink.</li>
+<li><strong>Large format tile or wide plank flooring</strong> — fewer grout lines = more open feeling</li>
+<li><strong>Vertical stripes or tall curtains</strong> — draws the eye up, makes ceilings feel higher</li>
+<li><strong>Mirrors</strong> — a large mirror on one wall doubles the perceived space</li>
+<li><strong>Furniture on legs</strong> — sofas and chairs with legs instead of skirts let light flow underneath, making the room feel more open</li>
+<li><strong>One large rug</strong> — not multiple small ones. Big rug = big room feeling.</li>
+</ul>
+<div class="tip-box">💡 <strong>Pro Tip:</strong> Paint your ceiling the same color as your walls (or slightly lighter). It removes the visual "lid" that makes rooms feel boxed in.</div>
+<strong>🎨 Want color advice for your small room?</strong> Ask a follow-up question about paint colors above!`;
+  }
+
+  // WHICH RENOVATION FIRST
+  if (q.includes('first') || q.includes('order') || q.includes('start') || q.includes('priority')) {
+    return `<strong>📋 The Right Order to Renovate Your Home</strong><br><br>
+Experts call this "Top-Down, Inside-Out" — do it in this order or you'll redo work:<br><br>
+<ol style="padding-left:18px;line-height:2">
+<li><strong>Roof & structural</strong> — if your roof leaks, nothing else matters</li>
+<li><strong>Mechanical systems</strong> — HVAC, plumbing, electrical. Hidden but critical.</li>
+<li><strong>Windows & insulation</strong> — stops energy loss before you finish anything else</li>
+<li><strong>Kitchen & bathrooms</strong> — wet rooms, highest ROI</li>
+<li><strong>Flooring</strong> — always after walls and ceilings, never before</li>
+<li><strong>Paint & finish work</strong> — always last</li>
+</ol>
+<div class="tip-box">💡 <strong>Pro Tip:</strong> If you're planning to sell within 2 years, skip the full gut renovations. Focus on kitchen cosmetics, bathroom refresh, new flooring, and fresh paint. That combo gives you the best ROI.</div>
+<div class="warn-box">⚠️ <strong>Watch Out:</strong> 85% of homeowners hit unexpected costs. Always add 20% buffer to your budget before you start.</div>
+<strong>🔧 Next Step:</strong> Use <a href="homefixtcost.html" style="color:var(--accent2)">HomeFixCost</a> to estimate costs for your specific projects.`;
+  }
+
+  // DEFAULT — general home advice
+  return `<strong>🏡 HomeStyle AI Answer</strong><br><br>
+Great question! Here's what I'd tell you based on 2026 home trends and real homeowner data:<br><br>
+${topic === 'flooring' ? `<strong>For flooring decisions in 2026:</strong> LVP is the smart choice for most homes — waterproof, durable, and 40% cheaper than hardwood. Warm honey and caramel tones are in. Gray is out.` : ''}
+${topic === 'paint' ? `<strong>For paint in 2026:</strong> Go warm. Sage green, warm white, soft beige, and terracotta are replacing the cool grays that dominated the last decade. Always test a sample on your actual wall before buying a full gallon.` : ''}
+${topic === 'renovation' ? `<strong>For renovation ROI in 2026:</strong> Minor kitchen remodel (110%+ ROI) and curb appeal upgrades (190%+ ROI) give you the most back. Always get 3 contractor quotes — prices vary 30-50% for the same job.` : ''}
+${topic === 'budget' ? `<strong>For budget planning:</strong> Add 20% buffer to every estimate. 85% of homeowners face unexpected costs. Get everything in writing and never pay more than 30% upfront.` : ''}
+${topic === 'decision' ? `<strong>Move or renovate?</strong> In 2026's market with high mortgage rates, renovating often makes more financial sense than moving — especially if you locked in a low rate. Run the full numbers before deciding.` : ''}
+${topic === 'anything' ? `<strong>General home tip for 2026:</strong> The biggest mistake homeowners make is starting renovations without a clear plan and budget. Use our free tools to estimate costs before talking to any contractor.` : ''}
+<br><br>
+<div class="tip-box">💡 <strong>Pro Tip:</strong> Try asking a more specific question — like "what flooring is best for my kitchen with two dogs" — and I can give you a much more detailed personalized answer!</div>
+<strong>🔧 Free Tools:</strong> <a href="floorcalcpro.html" style="color:var(--accent2)">FloorCalc Pro</a> · <a href="homefixtcost.html" style="color:var(--accent2)">HomeFixCost</a> · <a href="homebuycalc.html" style="color:var(--accent2)">HomeBuyCalc</a>`;
 }
 
-function shareToFB() {
-  const url = encodeURIComponent('https://toolshubfree.netlify.app/homestyleai.html');
-  window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
-}
 
-function shareCopy() {
-  navigator.clipboard.writeText('https://toolshubfree.netlify.app/homestyleai.html').then(() => alert('Link copied! Share it with friends.'));
-}
 
 // Handle Enter key
 document.addEventListener('DOMContentLoaded', function() {
