@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FloorCalc Pro – Free Local Flooring Calculator with ZIP Code Pricing</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--oak:#C8853A;--oak-l:#E8B472;--oak-d:#8B5A1E;--slate:#1C2B3A;--slate-m:#2D3F52;--slate-l:#3D5166;--cream:#FAF6F0;--cream-d:#EDE5D8;--green:#3D7A5C;--red:#C0392B;--blue:#2563EB;--shadow:0 4px 24px rgba(28,43,58,0.12);--r:14px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--slate);min-height:100vh}
+header{background:var(--slate);position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.25)}
+.hi{max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.45rem;color:#fff;letter-spacing:-.5px}
+.logo span{color:var(--oak-l)}
+.hbg{background:var(--oak);color:#fff;font-size:.68rem;font-weight:600;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px}
+.hero{background:linear-gradient(135deg,var(--slate) 0%,var(--slate-m) 55%,var(--slate-l) 100%);padding:52px 24px 44px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(200,133,58,.18) 0%,transparent 70%)}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,4vw,2.7rem);font-weight:800;color:#fff;line-height:1.15;margin-bottom:10px}
+.hero h1 span{color:var(--oak-l)}
+.hero p{color:rgba(255,255,255,.72);font-size:.98rem;max-width:520px;margin:0 auto 22px;line-height:1.6}
+.hbs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.hb{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.85);padding:4px 13px;border-radius:20px;font-size:.75rem;font-weight:500}
+.zip-banner{background:linear-gradient(135deg,var(--oak-d),var(--oak));padding:18px 24px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.zip-banner p{color:#fff;font-weight:500;font-size:.92rem}
+.ziw{display:flex;gap:8px;align-items:center}
+.ziw input{padding:9px 14px;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.92rem;width:140px;outline:none}
+.zbtn{background:var(--slate);color:#fff;border:none;padding:9px 18px;border-radius:8px;cursor:pointer;font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;transition:all .2s}
+.zbtn:hover{background:#000}
+.zres{background:rgba(255,255,255,.15);color:#fff;padding:6px 14px;border-radius:20px;font-size:.82rem;font-weight:600;display:none}
+.main{max-width:1140px;margin:0 auto;padding:32px 20px 60px;display:grid;grid-template-columns:1fr 340px;gap:26px;align-items:start}
+@media(max-width:870px){.main{grid-template-columns:1fr}}
+.card{background:#fff;border-radius:var(--r);box-shadow:var(--shadow);padding:26px;margin-bottom:20px}
+.ct{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--slate);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.ct .ic{width:28px;height:28px;background:var(--cream-d);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.tabs{display:flex;background:var(--cream-d);border-radius:8px;padding:3px;width:fit-content;margin-bottom:18px}
+.tabb{padding:7px 20px;border:none;background:transparent;border-radius:6px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;font-size:.84rem;color:var(--slate-l);transition:all .2s}
+.tabb.active{background:var(--slate);color:#fff;box-shadow:0 2px 8px rgba(28,43,58,.2)}
+.ftypes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+@media(max-width:520px){.ftypes{grid-template-columns:repeat(3,1fr)}}
+.ftb{border:1.5px solid var(--cream-d);background:#fff;border-radius:10px;padding:10px 5px;cursor:pointer;text-align:center;transition:all .2s;font-family:'DM Sans',sans-serif}
+.ftb .fi{font-size:1.25rem;display:block;margin-bottom:3px}
+.ftb .fl{font-size:.7rem;font-weight:500;color:#777}
+.ftb.active{border-color:var(--oak);background:#FFF8F0;box-shadow:0 0 0 2px rgba(200,133,58,.15)}
+.ftb.active .fl{color:var(--oak-d);font-weight:600}
+.ig label{display:block;font-size:.71rem;font-weight:500;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
+.ig input,.ig select{width:100%;padding:9px 12px;border:1.5px solid var(--cream-d);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--slate);background:#fff;transition:border-color .2s;outline:none}
+.ig input:focus,.ig select:focus{border-color:var(--oak)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media(max-width:480px){.row3{grid-template-columns:1fr 1fr}}
+.ri{background:var(--cream);border:1.5px solid var(--cream-d);border-radius:10px;padding:15px;transition:border-color .2s}
+.ri:hover{border-color:var(--oak-l)}
+.rh{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.rname{font-family:'Syne',sans-serif;font-weight:700;font-size:.93rem;border:none;background:transparent;color:var(--slate);width:160px;padding:0;outline:none}
+.rname:focus{border-bottom:1.5px solid var(--oak)}
+.rmbtn{background:none;border:none;cursor:pointer;color:#bbb;font-size:1rem;padding:2px 6px;transition:color .2s}
+.rmbtn:hover{color:var(--red)}
+.tog-row{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;margin-bottom:10px}
+.tsw{width:36px;height:20px;background:var(--cream-d);border-radius:10px;position:relative;transition:background .2s;flex-shrink:0}
+.tsw::after{content:'';position:absolute;left:2px;top:2px;width:16px;height:16px;background:#fff;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.tsw.on{background:var(--oak)}
+.tsw.on::after{transform:translateX(16px)}
+.tl{font-weight:500;font-size:.88rem}
+.calc-btn{width:100%;padding:15px;background:linear-gradient(135deg,var(--oak),var(--oak-d));color:#fff;border:none;border-radius:10px;font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(200,133,58,.4);margin-top:6px}
+.calc-btn:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(200,133,58,.5)}
+.add-btn{width:100%;padding:11px;border:2px dashed var(--cream-d);background:transparent;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--slate-l);font-weight:500;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px}
+.add-btn:hover{border-color:var(--oak);color:var(--oak);background:#FFF8F0}
+.res-sec{display:none}
+.res-sec.vis{display:block;animation:fadeUp .35s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.rg{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:16px}
+.rs{background:var(--cream);border-radius:10px;padding:15px;text-align:center}
+.rs.hl{background:linear-gradient(135deg,var(--oak),var(--oak-d));color:#fff}
+.rs.hl2{background:linear-gradient(135deg,var(--slate),var(--slate-m));color:#fff}
+.rs .sl{font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:#999;margin-bottom:5px}
+.rs.hl .sl,.rs.hl2 .sl{color:rgba(255,255,255,.7)}
+.rs .sv{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--slate);line-height:1}
+.rs.hl .sv,.rs.hl2 .sv{color:#fff}
+.rs .ss{font-size:.73rem;color:#bbb;margin-top:3px}
+.rs.hl .ss,.rs.hl2 .ss{color:rgba(255,255,255,.6)}
+.reg-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.2);color:var(--blue);padding:6px 14px;border-radius:20px;font-size:.8rem;font-weight:600;margin-bottom:14px}
+.bt{width:100%;border-collapse:collapse;font-size:.86rem}
+.bt th{background:var(--slate);color:#fff;padding:9px 11px;text-align:left;font-family:'Syne',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:.3px}
+.bt th:first-child{border-radius:8px 0 0 0}.bt th:last-child{border-radius:0 8px 0 0}
+.bt td{padding:8px 11px;border-bottom:1px solid var(--cream-d);color:var(--slate)}
+.bt tr:last-child td{border-bottom:none}
+.bt tr:nth-child(even) td{background:var(--cream)}
+.bt .tr td{font-weight:700;background:#FFF8F0!important;border-top:2px solid var(--oak-l);color:var(--oak-d);font-family:'Syne',sans-serif}
+.ar{display:flex;gap:9px;margin-top:14px;flex-wrap:wrap}
+.pbtn{flex:1;min-width:110px;padding:10px;border:1.5px solid var(--cream-d);background:#fff;border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;font-size:.85rem;color:var(--slate);transition:all .2s;display:flex;align-items:center;justify-content:center;gap:5px}
+.pbtn:hover{border-color:var(--slate);background:var(--cream)}
+.tt-card{background:linear-gradient(135deg,#009FD4,#006B8F);border-radius:var(--r);padding:22px;color:#fff;margin-bottom:20px}
+.tt-title{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;margin-bottom:6px}
+.tt-sub{font-size:.83rem;color:rgba(255,255,255,.8);margin-bottom:14px;line-height:1.5}
+.tt-btn{display:block;width:100%;padding:12px;background:#fff;color:#006B8F;border:none;border-radius:8px;font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;text-align:center;text-decoration:none;transition:all .2s}
+.tt-btn:hover{background:var(--cream-d)}
+.tt-plats{display:flex;gap:7px;margin-bottom:13px;flex-wrap:wrap}
+.tp{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;padding:4px 10px;border-radius:12px;font-size:.73rem;font-weight:500}
+.lead-form{background:linear-gradient(135deg,var(--slate),var(--slate-m));border-radius:var(--r);padding:22px;margin-bottom:20px}
+.lf-t{font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:#fff;margin-bottom:6px}
+.lf-s{font-size:.8rem;color:rgba(255,255,255,.7);margin-bottom:13px}
+.lf-i{width:100%;padding:9px 12px;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--slate);margin-bottom:8px;outline:none}
+.lf-btn{width:100%;padding:11px;background:var(--oak);color:#fff;border:none;border-radius:8px;font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s}
+.lf-btn:hover{background:var(--oak-d)}
+.lf-n{font-size:.7rem;color:rgba(255,255,255,.5);margin-top:8px;text-align:center}
+.price-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--cream-d);font-size:.86rem}
+.price-row:last-child{border-bottom:none}
+.price-row .fn{font-weight:500;display:flex;align-items:center;gap:5px}
+.pr{font-size:.78rem;color:var(--green);font-weight:600;background:rgba(61,122,92,.08);padding:2px 8px;border-radius:12px}
+.aff-links{display:flex;flex-direction:column;gap:7px}
+.al{display:flex;align-items:center;justify-content:space-between;padding:11px 13px;border-radius:8px;border:1.5px solid var(--cream-d);background:#fff;text-decoration:none;transition:all .2s;cursor:pointer}
+.al:hover{border-color:var(--oak-l);background:#FFF8F0;transform:translateX(2px)}
+.al-l{display:flex;align-items:center;gap:8px}
+.al-logo{width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;color:#fff;font-family:'Syne',sans-serif;flex-shrink:0}
+.al-name{font-weight:600;font-size:.86rem;color:var(--slate)}
+.al-sub{font-size:.7rem;color:#aaa}
+.tip-box{background:linear-gradient(135deg,var(--slate),var(--slate-m));border-radius:10px;padding:15px;color:#fff;margin-bottom:12px}
+.tip-t{font-family:'Syne',sans-serif;font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.5px;color:var(--oak-l);margin-bottom:7px}
+.tip-box p{font-size:.81rem;color:rgba(255,255,255,.75);line-height:1.5}
+.wb{font-size:.72rem;padding:4px 10px;border-radius:12px;font-weight:500}
+.wb.low{background:rgba(61,122,92,.1);color:var(--green)}
+.wb.mid{background:rgba(200,133,58,.1);color:var(--oak-d)}
+.wb.hi{background:rgba(192,57,43,.1);color:var(--red)}
+.addon-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--cream-d)}
+.addon-row:last-child{border-bottom:none}
+.an{font-weight:500;font-size:.88rem}
+.as{font-size:.74rem;color:#aaa}
+.addon-cost{font-weight:700;font-size:.9rem;color:var(--oak-d)}
+footer{background:var(--slate);color:rgba(255,255,255,.5);text-align:center;padding:22px;font-size:.76rem;line-height:1.7}
+footer a{color:var(--oak-l);text-decoration:none}
+@media print{header,.hero,.zip-banner,.sidebar,.add-btn,.calc-btn,.ar,footer,.tt-card,.lead-form{display:none!important}.main{grid-template-columns:1fr;padding:0}.card{box-shadow:none;border:1px solid #ddd}}
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907111543523765" crossorigin="anonymous"></script>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ToolsHub">
+  <meta name="theme-color" content="#0D1B2A">
+  <meta name="keywords" content="flooring calculator, how much flooring do I need, carpet calculator, hardwood flooring calculator, LVP flooring calculator, flooring cost calculator by zip code, how many boxes of flooring do I need">
+  <meta name="author" content="SmartToolsHub">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="SmartToolsHub - Free Financial & Home Calculators">
+  <meta property="og:description" content="Free flooring calculator 2026. Calculate exact square footage, boxes needed, and total cost for hardwood, LVP, carpet, tile and more. Multiple rooms, stairs, ZIP-based labor costs.">
+  <meta property="og:url" content="https://toolshubfree.netlify.app/floorcalcpro.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SmartToolsHub - Free Calculators">
+  <meta name="twitter:description" content="Free flooring calculator 2026. Calculate exact square footage, boxes needed, and total cost for hardwood, LVP, carpet, tile and more. Multiple rooms, stairs, ZIP-based labor costs.">
+</head>
+<body>
+
+<header>
+  <div class="hi">
+    <div class="logo">Floor<span>Calc</span> Pro</div>
+    <div class="hbg">100% Free</div>
+  </div>
+</header>
+
+<div class="hero">
+  <h1>The <span>Smarter Flooring</span><br>Calculator — With Local Pricing</h1>
+  <p>Enter your ZIP code for real labor rates in YOUR city. Calculate materials, get box counts, find local pros — all in one place.</p>
+  <div class="hbs">
+    <span class="hb">📍 ZIP-Based Pricing</span>
+    <span class="hb">🏠 Multi-Room</span>
+    <span class="hb">📦 Box Counter</span>
+    <span class="hb">🪜 Stairs</span>
+    <span class="hb">👷 Find Local Pros</span>
+    <span class="hb">🖨️ Print Quote</span>
+  </div>
+</div>
+
+<div class="zip-banner">
+  <p>📍 Enter your ZIP for local pricing:</p>
+  <div class="ziw">
+    <input type="text" id="zipInput" placeholder="e.g. 90210" maxlength="5">
+    <button class="zbtn" onclick="lookupZip()">Get Local Prices</button>
+  </div>
+  <div class="zres" id="zRes"></div>
+</div>
+
+<div class="main">
+<div><!-- LEFT COL -->
+
+<div style="margin-bottom:8px">
+  <div class="tabs">
+    <button class="tabb active" onclick="setUnit('ft',this)">Feet (ft)</button>
+    <button class="tabb" onclick="setUnit('m',this)">Meters (m)</button>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ct"><span class="ic">🪵</span> Choose Flooring Type</div>
+  <div class="ftypes">
+    <button class="ftb active" data-type="hardwood" onclick="selFloor(this)"><span class="fi">🪵</span><span class="fl">Hardwood</span></button>
+    <button class="ftb" data-type="laminate" onclick="selFloor(this)"><span class="fi">🟫</span><span class="fl">Laminate</span></button>
+    <button class="ftb" data-type="lvp" onclick="selFloor(this)"><span class="fi">🔷</span><span class="fl">LVP/Vinyl</span></button>
+    <button class="ftb" data-type="tile" onclick="selFloor(this)"><span class="fi">⬜</span><span class="fl">Tile</span></button>
+    <button class="ftb" data-type="carpet" onclick="selFloor(this)"><span class="fi">🟥</span><span class="fl">Carpet</span></button>
+    <button class="ftb" data-type="engineered" onclick="selFloor(this)"><span class="fi">🟤</span><span class="fl">Engineered</span></button>
+    <button class="ftb" data-type="bamboo" onclick="selFloor(this)"><span class="fi">🎋</span><span class="fl">Bamboo</span></button>
+    <button class="ftb" data-type="epoxy" onclick="selFloor(this)"><span class="fi">🌊</span><span class="fl">Epoxy</span></button>
+  </div>
+  <div class="row3" style="margin-bottom:12px">
+    <div class="ig">
+      <label>Layout Pattern</label>
+      <select id="patSel" onchange="chkCW()">
+        <option value="10">Straight (+10%)</option>
+        <option value="15">Diagonal (+15%)</option>
+        <option value="20">Herringbone (+20%)</option>
+        <option value="custom">Custom %</option>
+      </select>
+    </div>
+    <div class="ig" id="cwg" style="display:none">
+      <label>Custom Waste %</label>
+      <input type="number" id="cw" value="10" min="0" max="50">
+    </div>
+    <div class="ig">
+      <label>Price / <span class="ulbl">sq ft</span></label>
+      <input type="number" id="ppu" value="9.00" min="0" step="0.01">
+    </div>
+    <div class="ig">
+      <label>Box Coverage (<span class="ulbl">sq ft</span>)</label>
+      <input type="number" id="bcov" value="20" min="1" step="0.1">
+    </div>
+  </div>
+  <div class="ig">
+    <label>Material Quality</label>
+    <select id="quality" onchange="applyQ()">
+      <option value="0.7">Budget / Builder Grade</option>
+      <option value="1.0" selected>Mid-Range (Most Popular)</option>
+      <option value="1.55">Premium / Luxury</option>
+    </select>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ct"><span class="ic">🔧</span> Optional Add-Ons</div>
+  <div class="tog-row" onclick="togA('removal')"><div class="tsw" id="ta_removal"></div><span class="tl">Old floor removal <span style="color:#aaa;font-size:.78rem">($1–$3/sq ft)</span></span></div>
+  <div class="tog-row" onclick="togA('subfloor')"><div class="tsw" id="ta_subfloor"></div><span class="tl">Subfloor repair <span style="color:#aaa;font-size:.78rem">($2–$7/sq ft)</span></span></div>
+  <div class="tog-row" onclick="togA('underlay')"><div class="tsw" id="ta_underlay"></div><span class="tl">Underlayment / padding <span style="color:#aaa;font-size:.78rem">($0.50–$1/sq ft)</span></span></div>
+  <div class="tog-row" style="margin-bottom:0" onclick="togA('boards')"><div class="tsw" id="ta_boards"></div><span class="tl">Baseboard removal &amp; reinstall <span style="color:#aaa;font-size:.78rem">(flat ~$400)</span></span></div>
+</div>
+
+<div class="card">
+  <div class="ct"><span class="ic">🏠</span> Your Rooms</div>
+  <div id="roomList" style="display:flex;flex-direction:column;gap:12px"></div>
+  <button class="add-btn" onclick="addRoom()">+ Add Another Room</button>
+</div>
+
+<div class="card">
+  <div class="ct"><span class="ic">🪜</span> Stairs (Optional)</div>
+  <div class="tog-row" onclick="togStairs()"><div class="tsw" id="stT"></div><span class="tl">Include stair flooring</span></div>
+  <div id="stIn" style="display:none">
+    <div class="row3" style="margin-top:10px;background:var(--cream);padding:12px;border-radius:8px">
+      <div class="ig"><label>Steps</label><input type="number" id="stCt" value="13" min="1"></div>
+      <div class="ig"><label>Width (<span class="stU">ft</span>)</label><input type="number" id="stW" value="3" step="0.1"></div>
+      <div class="ig"><label>Tread (<span class="stU">ft</span>)</label><input type="number" id="stTr" value="0.83" step="0.01"></div>
+    </div>
+  </div>
+</div>
+
+<button class="calc-btn" onclick="calculate()">🔢 Calculate My Flooring Cost</button>
+
+<div class="res-sec card" id="resSec">
+  <div class="ct"><span class="ic">✅</span> Your Estimate</div>
+  <div id="regBadge"></div>
+  <div class="rg" id="rGrid"></div>
+  <div style="overflow-x:auto;margin-bottom:14px"><table class="bt" id="bTable"></table></div>
+  <div id="addBreak" style="display:none">
+    <div class="ct" style="margin-top:10px"><span class="ic">➕</span> Add-On Costs</div>
+    <div id="addList"></div>
+  </div>
+  <div class="ar">
+    <button class="pbtn" onclick="window.print()">🖨️ Print / PDF</button>
+    <button class="pbtn" onclick="cpQuote()">📋 Copy Quote</button>
+    <button class="pbtn" onclick="resetC()">🔄 Start Over</button>
+  </div>
+</div>
+
+</div><!-- /left -->
+
+<div class="sidebar">
+
+  <div class="tt-card">
+    <div class="tt-title">👷 Find Local Flooring Pros</div>
+    <div class="tt-sub">Get up to 3 free quotes from top-rated contractors in your area. No commitment required.</div>
+    <div class="tt-plats">
+      <span class="tp">⭐ Thumbtack</span>
+      <span class="tp">🏠 Angi</span>
+      <span class="tp">📋 HomeAdvisor</span>
+    </div>
+    <a class="tt-btn" id="ttLink" href="https://www.thumbtack.com/k/flooring/near-me" target="_blank" rel="noopener">🔍 Get Free Quotes Near Me →</a>
+    <p style="font-size:.7rem;color:rgba(255,255,255,.5);margin-top:8px;text-align:center">Takes 60 seconds · Totally free</p>
+  </div>
+
+  <div class="lead-form">
+    <div class="lf-t">📬 Want Contractors to Call YOU?</div>
+    <div class="lf-s">Leave your info and get matched with local pros who will quote your project.</div>
+    <input class="lf-i" type="text" id="lfN" placeholder="Your name">
+    <input class="lf-i" type="tel" id="lfP" placeholder="Phone number">
+    <input class="lf-i" type="email" id="lfE" placeholder="Email address">
+    <input class="lf-i" type="text" id="lfZ" placeholder="ZIP code">
+    <button class="lf-btn" onclick="submitLead()">Send My Project Details →</button>
+    <p class="lf-n">🔒 We never sell your info. No spam.</p>
+  </div>
+
+  <div class="card">
+    <div class="ct"><span class="ic">📍</span> <span id="pgTitle">2026 Price Guide (National Avg)</span></div>
+    <div class="price-row"><span class="fn">🪵 Hardwood</span><span class="pr" id="pg_hw">$6–$12/sq ft</span></div>
+    <div class="price-row"><span class="fn">🟤 Engineered</span><span class="pr" id="pg_eng">$4–$9/sq ft</span></div>
+    <div class="price-row"><span class="fn">🟫 Laminate</span><span class="pr" id="pg_lam">$2–$5/sq ft</span></div>
+    <div class="price-row"><span class="fn">🔷 LVP/Vinyl</span><span class="pr" id="pg_lvp">$2–$7/sq ft</span></div>
+    <div class="price-row"><span class="fn">⬜ Tile</span><span class="pr" id="pg_tile">$3–$10/sq ft</span></div>
+    <div class="price-row"><span class="fn">🟥 Carpet</span><span class="pr" id="pg_carp">$2–$6/sq ft</span></div>
+    <div class="price-row"><span class="fn">🔧 Labor (local)</span><span class="pr" id="pg_lab">$2–$6/sq ft</span></div>
+    <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">
+      <span class="wb low">Straight: +10%</span>
+      <span class="wb mid">Diagonal: +15%</span>
+      <span class="wb hi">Herringbone: +20%</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.5px;color:#bbb;margin-bottom:11px">🛒 Shop &amp; Compare Prices</div>
+    <div class="aff-links">
+      <a class="al" href="https://www.homedepot.com/b/Flooring/N-5yc1vZbql3" target="_blank">
+        <div class="al-l"><div class="al-logo" style="background:#F96302">HD</div><div><div class="al-name">Home Depot</div><div class="al-sub">Same-day pickup available</div></div></div><span style="color:var(--oak)">→</span>
+      </a>
+      <a class="al" href="https://www.lowes.com/store/flooring" target="_blank">
+        <div class="al-l"><div class="al-logo" style="background:#004990">L</div><div><div class="al-name">Lowe's</div><div class="al-sub">Compare brands &amp; prices</div></div></div><span style="color:var(--oak)">→</span>
+      </a>
+      <a class="al" href="https://www.flooranddecor.com/" target="_blank">
+        <div class="al-l"><div class="al-logo" style="background:#005580">F&amp;D</div><div><div class="al-name">Floor &amp; Decor</div><div class="al-sub">Contractor pricing available</div></div></div><span style="color:var(--oak)">→</span>
+      </a>
+      <a class="al" href="https://www.amazon.com/s?k=flooring+materials" target="_blank">
+        <div class="al-l"><div class="al-logo" style="background:#FF9900;color:#111">a</div><div><div class="al-name">Amazon</div><div class="al-sub">Fast 2-day delivery</div></div></div><span style="color:var(--oak)">→</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-t">💡 Pro Tip</div>
+    <p>Always order <strong style="color:var(--oak-l)">10–15% extra</strong>. Running short mid-job means color mismatches from new batches. Order once, order right.</p>
+  </div>
+
+</div><!-- /sidebar -->
+</div><!-- /main -->
+
+<footer>
+  <strong style="color:rgba(255,255,255,.85)">FloorCalc Pro</strong> — Free Flooring &amp; Carpet Calculator for Homeowners &amp; Contractors<br>
+  Prices are 2026 US regional averages. Always get 3 contractor quotes for accuracy.<br>
+  <a href="#">Privacy Policy</a> · <a href="#">About</a> · <a href="#">Contact</a>
+</footer>
+
+<script>
+const FD={hardwood:{p:9,b:20},laminate:{p:3.5,b:22},lvp:{p:4,b:24},tile:{p:6.5,b:10},carpet:{p:4,b:0},engineered:{p:6.5,b:20},bamboo:{p:6,b:22},epoxy:{p:8,b:0}};
+const ZR={'0':[1.25,1.12,'Northeast (CT/MA/RI)',3.5,7],'1':[1.30,1.18,'Northeast (NY/NJ/PA)',4,8],'2':[1.10,1.05,'Mid-Atlantic (DC/VA/MD)',3,6],'3':[0.92,0.95,'Southeast (FL/GA/AL)',2,5],'4':[0.90,0.92,'Midwest (OH/IN/MI)',2,4.5],'5':[0.88,0.90,'Midwest (MN/IA/WI)',1.8,4],'6':[0.95,0.95,'Central (IL/KS/NE)',2.2,5],'7':[0.88,0.90,'South (TX/OK/LA)',1.8,4.5],'8':[1.05,1.02,'Mountain West (CO/AZ/NV)',2.5,5.5],'9':[1.40,1.25,'West Coast (CA/WA/OR)',4,9]};
+let unit='ft',selT='hardwood',stOn=false,addons={removal:false,subfloor:false,underlay:false,boards:false},rc=0,reg=null;
+
+function lookupZip(){
+  const z=document.getElementById('zipInput').value.trim();
+  if(z.length!==5||isNaN(z)){alert('Enter a valid 5-digit ZIP code.');return;}
+  const d=ZR[z[0]]||[1,1,'National Average',2,6];
+  reg={lm:d[0],mm:d[1],name:d[2],ll:d[3],lh:d[4]};
+  const el=document.getElementById('zRes');
+  el.textContent='📍 '+d[2]+' — Labor adj: '+(d[0]>1?'+':'')+Math.round((d[0]-1)*100)+'%';
+  el.style.display='inline-flex';
+  document.getElementById('pgTitle').textContent='Prices for '+d[2];
+  document.getElementById('pg_lab').textContent='$'+d[3]+'–$'+d[4]+'/sq ft';
+  document.getElementById('pg_hw').textContent='$'+Math.round(6*d[1])+'–$'+Math.round(12*d[1])+'/sq ft';
+  document.getElementById('pg_lam').textContent='$'+Math.round(2*d[1])+'–$'+Math.round(5*d[1])+'/sq ft';
+  document.getElementById('pg_lvp').textContent='$'+Math.round(2*d[1])+'–$'+Math.round(7*d[1])+'/sq ft';
+  document.getElementById('pg_tile').textContent='$'+Math.round(3*d[1])+'–$'+Math.round(10*d[1])+'/sq ft';
+  document.getElementById('pg_carp').textContent='$'+Math.round(2*d[1])+'–$'+Math.round(6*d[1])+'/sq ft';
+  document.getElementById('ttLink').href='https://www.thumbtack.com/k/flooring/near-me?zip='+z;
+  document.getElementById('lfZ').value=z;
+  applyQ();
+}
+
+function selFloor(btn){
+  document.querySelectorAll('.ftb').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  selT=btn.dataset.type;
+  applyQ();
+}
+
+function applyQ(){
+  const q=parseFloat(document.getElementById('quality').value)||1;
+  const mm=reg?reg.mm:1;
+  document.getElementById('ppu').value=(FD[selT].p*q*mm).toFixed(2);
+  if(FD[selT].b>0)document.getElementById('bcov').value=FD[selT].b;
+}
+
+function chkCW(){
+  document.getElementById('cwg').style.display=document.getElementById('patSel').value==='custom'?'block':'none';
+}
+
+function getW(){
+  const v=document.getElementById('patSel').value;
+  return v==='custom'?parseFloat(document.getElementById('cw').value)||10:parseFloat(v);
+}
+
+function setUnit(u,btn){
+  unit=u;
+  document.querySelectorAll('.tabb').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.ulbl').forEach(el=>el.textContent=u==='ft'?'sq ft':'sq m');
+  document.querySelectorAll('.stU').forEach(el=>el.textContent=u);
+  document.getElementById('bcov').value=u==='m'?1.86:FD[selT].b||20;
+}
+
+function togA(k){addons[k]=!addons[k];document.getElementById('ta_'+k).classList.toggle('on',addons[k]);}
+function togStairs(){stOn=!stOn;document.getElementById('stT').classList.toggle('on',stOn);document.getElementById('stIn').style.display=stOn?'block':'none';}
+
+function addRoom(n){
+  rc++;
+  const id='r'+rc;
+  const names=['Living Room','Master Bedroom','Kitchen','Bathroom','Hallway','Dining Room','Office','Basement','Guest Room','Garage'];
+  const dn=n||names[rc-1]||'Room '+rc;
+  const d=document.createElement('div');
+  d.className='ri';d.id=id;
+  d.innerHTML=`<div class="rh"><input class="rname" type="text" value="${dn}" placeholder="Room name"><button class="rmbtn" onclick="document.getElementById('${id}').remove()">✕</button></div><div class="row3"><div class="ig"><label>Length (${unit})</label><input type="number" class="rl" min="0.1" step="0.1" placeholder="e.g. 12"></div><div class="ig"><label>Width (${unit})</label><input type="number" class="rw" min="0.1" step="0.1" placeholder="e.g. 10"></div><div class="ig"><label>Shape</label><select class="rs2"><option value="1">Rectangle</option><option value="1.4">L-Shape</option><option value="0.5">Triangle</option></select></div></div>`;
+  document.getElementById('roomList').appendChild(d);
+}
+
+function calculate(){
+  const rooms=document.querySelectorAll('.ri');
+  if(!rooms.length){alert('Add at least one room!');return;}
+  const price=parseFloat(document.getElementById('ppu').value)||0;
+  const bc=parseFloat(document.getElementById('bcov').value)||20;
+  const wp=getW();
+  const wm=1+wp/100;
+  const ll=reg?reg.ll:2;
+  const lh=reg?reg.lh:6;
+  const rn=reg?reg.name:'National Average';
+  let tot=0,rows='',ok=true;
+  rooms.forEach(r=>{
+    const nm=r.querySelector('.rname').value||'Room';
+    const l=parseFloat(r.querySelector('.rl').value);
+    const w=parseFloat(r.querySelector('.rw').value);
+    const s=parseFloat(r.querySelector('.rs2').value);
+    if(!l||!w){ok=false;return;}
+    let a=l*w*s;
+    let af=unit==='m'?a*10.764:a;
+    const aw=af*wm;
+    const bx=bc>0?Math.ceil(aw/bc):'—';
+    tot+=af;
+    rows+=`<tr><td><strong>${nm}</strong></td><td>${a.toFixed(1)} ${unit==='ft'?'sq ft':'sq m'}</td><td>${aw.toFixed(1)} sq ft</td><td>${bx!=='—'?bx+' boxes':'—'}</td><td>$${(aw*price).toFixed(2)}</td></tr>`;
+  });
+  if(!ok){alert('Fill in all room dimensions!');return;}
+  if(stOn){
+    const sc=parseInt(document.getElementById('stCt').value)||0;
+    const sw=parseFloat(document.getElementById('stW').value)||0;
+    const str=parseFloat(document.getElementById('stTr').value)||0;
+    let sa=sc*sw*(str+0.6);
+    if(unit==='m')sa*=10.764;
+    const saw=sa*wm;
+    rows+=`<tr><td><strong>🪜 Stairs</strong></td><td>${sa.toFixed(1)} sq ft</td><td>${saw.toFixed(1)} sq ft</td><td>${bc>0?Math.ceil(saw/bc)+' boxes':'—'}</td><td>$${(saw*price).toFixed(2)}</td></tr>`;
+    tot+=sa;
+  }
+  const tw=tot*wm;
+  const tb=bc>0?Math.ceil(tw/bc):0;
+  const mc=tw*price;
+  const lcl=tw*ll,lch=tw*lh;
+  rows+=`<tr class="tr"><td>TOTAL</td><td>${tot.toFixed(1)} sq ft</td><td>${tw.toFixed(1)} sq ft</td><td>${tb>0?tb+' boxes':'—'}</td><td>$${mc.toFixed(2)}</td></tr>`;
+  let ac=0,ah='';
+  if(addons.removal){const c=tw*2;ac+=c;ah+=ar2('Old Floor Removal','$1–$3/sq ft',c);}
+  if(addons.subfloor){const c=tw*4.5;ac+=c;ah+=ar2('Subfloor Repair','$2–$7/sq ft',c);}
+  if(addons.underlay){const c=tw*0.75;ac+=c;ah+=ar2('Underlayment/Padding','~$0.75/sq ft',c);}
+  if(addons.boards){const c=400;ac+=c;ah+=ar2('Baseboard Removal & Reinstall','Flat estimate',c);}
+  const gl=mc+lcl+ac,gh=mc+lch+ac;
+  document.getElementById('rGrid').innerHTML=`
+    <div class="rs hl"><div class="sl">Area Needed</div><div class="sv">${tw.toFixed(0)}</div><div class="ss">sq ft · ${wp}% waste included</div></div>
+    <div class="rs hl"><div class="sl">Material Cost</div><div class="sv">$${mc.toFixed(0)}</div><div class="ss">@ $${price}/sq ft</div></div>
+    <div class="rs"><div class="sl">Boxes to Buy</div><div class="sv">${tb>0?tb:'—'}</div><div class="ss">${bc} sq ft/box</div></div>
+    <div class="rs"><div class="sl">Labor · ${rn}</div><div class="sv">$${lcl.toFixed(0)}–$${lch.toFixed(0)}</div><div class="ss">$${ll}–$${lh}/sq ft local avg</div></div>
+    <div class="rs hl2" style="grid-column:span 2"><div class="sl">💵 Total All-In Estimate</div><div class="sv" style="font-size:1.85rem">$${gl.toFixed(0)} – $${gh.toFixed(0)}</div><div class="ss">Materials + Labor${ac>0?' + Add-Ons':''} · Get 3 quotes for accuracy</div></div>`;
+  document.getElementById('regBadge').innerHTML=reg?`<div class="reg-badge">📍 Prices adjusted for ${rn}</div>`:'';
+  document.getElementById('bTable').innerHTML=`<tr><th>Room</th><th>Net Area</th><th>With Waste</th><th>Boxes</th><th>Material Cost</th></tr>${rows}`;
+  if(ah){document.getElementById('addBreak').style.display='block';document.getElementById('addList').innerHTML=ah+`<div class="addon-row"><div><div class="an" style="font-weight:700">Add-On Subtotal</div></div><div class="addon-cost" style="font-size:1rem">$${ac.toFixed(0)}</div></div>`;}
+  else document.getElementById('addBreak').style.display='none';
+  const s=document.getElementById('resSec');s.classList.add('vis');s.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function ar2(n,s,c){return `<div class="addon-row"><div><div class="an">${n}</div><div class="as">${s}</div></div><div class="addon-cost">~$${c.toFixed(0)}</div></div>`;}
+
+function cpQuote(){
+  const rows=[...document.querySelectorAll('#bTable tr')];
+  let t='FloorCalc Pro — Project Quote\n'+'='.repeat(38)+'\n';
+  rows.forEach(r=>{t+=[...r.querySelectorAll('th,td')].map(c=>c.textContent.trim()).join(' | ')+'\n';});
+  navigator.clipboard.writeText(t).then(()=>alert('Quote copied to clipboard!'));
+}
+
+function resetC(){document.getElementById('resSec').classList.remove('vis');window.scrollTo({top:0,behavior:'smooth'});}
+
+function submitLead(){
+  const n=document.getElementById('lfN').value;
+  const p=document.getElementById('lfP').value;
+  const z=document.getElementById('lfZ').value;
+  if(!n||!p){alert('Please enter your name and phone number.');return;}
+  alert(`Thanks ${n}! Connecting you with local pros now...`);
+  window.open('https://www.thumbtack.com/k/flooring/near-me?zip='+z,'_blank');
+}
+
+addRoom();addRoom();
+</script>
+<div id="installBanner" style="display:none;position:fixed;bottom:20px;right:20px;z-index:9999">
+  <button id="installBtn" onclick="installApp()" style="display:none;background:#C8F135;color:#0D1B2A;border:none;padding:12px 20px;border-radius:50px;font-weight:900;font-size:.9rem;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.3);font-family:sans-serif">
+    📲 Install App
+  </button>
+</div>
+<script>
+var btn=document.getElementById("installBtn");
+if(btn){btn.style.display="block";}
+</script>
+<script>
+let deferredPrompt;
+window.addEventListener("beforeinstallprompt", function(e){
+  e.preventDefault();
+  deferredPrompt = e;
+  var btn = document.getElementById("installBtn");
+  if(btn){ btn.style.display = "block"; }
+});
+function installApp(){
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(function(r){
+      deferredPrompt = null;
+      var btn = document.getElementById("installBtn");
+      if(btn){ btn.style.display = "none"; }
+    });
+  }
+}
+</script>
+<script>
+if("serviceWorker" in navigator){
+  window.addEventListener("load",function(){
+    navigator.serviceWorker.register("/sw.js")
+      .then(function(r){console.log("SW ready");})
+      .catch(function(e){console.log("SW error",e);});
+  });
+}
+</script>
+</body>
+</html>

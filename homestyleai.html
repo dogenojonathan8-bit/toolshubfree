@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HomeStyle AI – Free AI Home Decision Tool 2026 | Flooring, Colors, Renovation</title>
+<meta name="description" content="Can't decide on flooring, paint colors, or which renovation to do first? Our free AI home advisor answers in seconds based on your lifestyle, budget and home. No signup needed.">
+<meta name="keywords" content="what flooring should I choose, best flooring for pets, best paint color for living room, should I renovate or move, home improvement AI advisor, flooring color picker 2026">
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+:root{
+  --bg:#0A0E17;--bg2:#111827;--bg3:#1C2639;
+  --accent:#FF6B35;--accent2:#FF8C5A;--accent-glow:rgba(255,107,53,0.2);
+  --gold:#FFD166;--mint:#06D6A0;--blue:#118AB2;
+  --white:#F8F9FA;--gray:#9CA3AF;--border:rgba(255,255,255,0.08);
+  --r:16px;--shadow:0 8px 32px rgba(0,0,0,0.4);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--white);min-height:100vh}
+
+/* HEADER */
+header{background:rgba(10,14,23,0.95);backdrop-filter:blur(20px);position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border)}
+.hi{max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;color:var(--white);letter-spacing:-.5px}
+.logo span{color:var(--accent)}
+.hbg{background:var(--accent);color:var(--white);font-size:.68rem;font-weight:700;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px}
+
+/* HERO */
+.hero{padding:60px 24px 50px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:500px;background:radial-gradient(ellipse at top,rgba(255,107,53,.12) 0%,transparent 65%);pointer-events:none}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,107,53,.12);border:1px solid rgba(255,107,53,.3);color:var(--accent2);padding:6px 16px;border-radius:20px;font-size:.78rem;font-weight:600;margin-bottom:20px;letter-spacing:.3px}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,5vw,3.4rem);font-weight:800;line-height:1.08;letter-spacing:-1.5px;margin-bottom:14px}
+.hero h1 .hl{color:var(--accent)}
+.hero p{color:var(--gray);font-size:1rem;max-width:520px;margin:0 auto 28px;line-height:1.65}
+.hbs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.hb{background:rgba(255,255,255,.05);border:1px solid var(--border);color:rgba(255,255,255,.75);padding:5px 14px;border-radius:20px;font-size:.74rem;font-weight:500}
+
+/* MAIN */
+.main{max-width:1100px;margin:0 auto;padding:28px 20px 60px;display:grid;grid-template-columns:1fr 320px;gap:22px;align-items:start}
+@media(max-width:860px){.main{grid-template-columns:1fr}}
+
+/* TOPIC SELECTOR */
+.topic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+@media(max-width:500px){.topic-grid{grid-template-columns:repeat(2,1fr)}}
+.topic-btn{background:var(--bg3);border:1.5px solid var(--border);border-radius:12px;padding:16px 10px;cursor:pointer;text-align:center;transition:all .2s;font-family:'DM Sans',sans-serif}
+.topic-btn:hover{border-color:var(--accent);background:rgba(255,107,53,.08)}
+.topic-btn.active{border-color:var(--accent);background:rgba(255,107,53,.12);box-shadow:0 0 0 3px rgba(255,107,53,.15)}
+.tb-icon{font-size:1.6rem;display:block;margin-bottom:6px}
+.tb-label{font-size:.78rem;font-weight:600;color:var(--gray)}
+.topic-btn.active .tb-label{color:var(--accent2)}
+
+/* CARD */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:24px;margin-bottom:18px}
+.ct{font-family:'Syne',sans-serif;font-weight:700;font-size:.98rem;color:var(--white);margin-bottom:16px;display:flex;align-items:center;gap:8px;letter-spacing:-.3px}
+.ct .ic{width:26px;height:26px;background:var(--bg3);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+
+/* QUICK QUESTIONS */
+.qq-grid{display:flex;flex-direction:column;gap:14px}
+.qq{background:var(--bg3);border-radius:12px;padding:14px}
+.qq-label{font-size:.72rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.qq-options{display:flex;gap:7px;flex-wrap:wrap}
+.qo{padding:6px 14px;border:1.5px solid var(--border);border-radius:20px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;color:var(--gray);background:transparent;transition:all .2s}
+.qo:hover{border-color:var(--accent);color:var(--white)}
+.qo.active{border-color:var(--accent);background:var(--accent);color:var(--white)}
+
+/* TEXT INPUT */
+.ai-input-wrap{position:relative;margin-bottom:12px}
+.ai-input{width:100%;background:var(--bg3);border:1.5px solid var(--border);border-radius:12px;padding:14px 50px 14px 16px;font-family:'DM Sans',sans-serif;font-size:.92rem;color:var(--white);outline:none;resize:vertical;min-height:80px;transition:border-color .2s;line-height:1.5}
+.ai-input::placeholder{color:var(--gray)}
+.ai-input:focus{border-color:var(--accent)}
+
+/* ASK BTN */
+.ask-btn{width:100%;padding:15px;background:linear-gradient(135deg,var(--accent),#E55A2B);color:var(--white);border:none;border-radius:12px;font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:all .2s;box-shadow:0 4px 20px var(--accent-glow);letter-spacing:-.2px}
+.ask-btn:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(255,107,53,.4)}
+.ask-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+/* RESPONSE AREA */
+.response-area{display:none}
+.response-area.visible{display:block;animation:fU .3s ease}
+@keyframes fU{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+.ai-response{background:var(--bg3);border:1px solid rgba(255,107,53,.2);border-radius:14px;padding:22px;margin-bottom:14px;position:relative}
+.ai-label{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.ai-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.ai-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.82rem;color:var(--accent2);text-transform:uppercase;letter-spacing:.5px}
+.ai-text{font-size:.92rem;line-height:1.75;color:rgba(255,255,255,.88)}
+.ai-text h3{font-family:'Syne',sans-serif;font-weight:700;color:var(--accent2);margin:14px 0 6px;font-size:.95rem}
+.ai-text ul{padding-left:18px;margin:6px 0}
+.ai-text li{margin-bottom:5px;color:rgba(255,255,255,.8)}
+.ai-text strong{color:var(--gold)}
+.ai-text .tip-box{background:rgba(6,214,160,.08);border:1px solid rgba(6,214,160,.2);border-radius:8px;padding:12px;margin:10px 0;font-size:.85rem;color:var(--mint)}
+.ai-text .warn-box{background:rgba(255,209,102,.08);border:1px solid rgba(255,209,102,.2);border-radius:8px;padding:12px;margin:10px 0;font-size:.85rem;color:var(--gold)}
+
+/* LOADING */
+.loading{display:none;text-align:center;padding:30px}
+.loading.show{display:block}
+.dots{display:flex;gap:6px;justify-content:center;margin-bottom:10px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:bounce .8s infinite}
+.dot:nth-child(2){animation-delay:.15s}
+.dot:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,80%,100%{transform:scale(1)}40%{transform:scale(1.4)}}
+.loading p{color:var(--gray);font-size:.85rem}
+
+/* SAMPLE QUESTIONS */
+.sample-q{display:flex;flex-direction:column;gap:7px;margin-top:12px}
+.sq{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 14px;cursor:pointer;font-size:.82rem;color:var(--gray);transition:all .2s;text-align:left}
+.sq:hover{border-color:var(--accent);color:var(--white);background:rgba(255,107,53,.06)}
+
+/* ACTION BTNS */
+.action-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.abtn{flex:1;min-width:100px;padding:9px 12px;border:1.5px solid var(--border);background:transparent;border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.82rem;color:var(--gray);transition:all .2s;display:flex;align-items:center;justify-content:center;gap:5px}
+.abtn:hover{border-color:var(--accent);color:var(--white)}
+
+/* SIDEBAR */
+.trending-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:20px;margin-bottom:16px}
+.trend-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.trend-item:last-child{border-bottom:none;padding-bottom:0}
+.trend-num{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:var(--accent);flex-shrink:0;width:24px}
+.trend-text{font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.4}
+.trend-tag{font-size:.68rem;font-weight:700;color:var(--mint);text-transform:uppercase;letter-spacing:.3px}
+
+.links-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:20px;margin-bottom:16px}
+.tool-link{display:flex;align-items:center;justify-content:space-between;padding:11px 13px;border-radius:9px;border:1px solid var(--border);background:var(--bg3);text-decoration:none;transition:all .2s;margin-bottom:8px}
+.tool-link:last-child{margin-bottom:0}
+.tool-link:hover{border-color:var(--accent);transform:translateX(3px)}
+.tl-left{display:flex;align-items:center;gap:8px}
+.tl-icon{font-size:1.1rem}
+.tl-name{font-weight:600;font-size:.85rem;color:var(--white)}
+.tl-sub{font-size:.7rem;color:var(--gray)}
+
+.share-card{background:linear-gradient(135deg,var(--accent),#C0392B);border-radius:var(--r);padding:20px;margin-bottom:16px;text-align:center}
+.sc-title{font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;color:var(--white);margin-bottom:6px}
+.sc-sub{font-size:.78rem;color:rgba(255,255,255,.75);margin-bottom:14px;line-height:1.5}
+.sc-btns{display:flex;gap:8px;flex-wrap:wrap}
+.scb{flex:1;padding:9px;background:rgba(255,255,255,.15);border:none;border-radius:8px;color:var(--white);font-family:'DM Sans',sans-serif;font-weight:700;font-size:.78rem;cursor:pointer;transition:all .2s}
+.scb:hover{background:rgba(255,255,255,.25)}
+
+/* HISTORY */
+.history{margin-top:6px}
+.hist-item{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:8px;cursor:pointer;transition:all .2s}
+.hist-item:hover{border-color:var(--accent)}
+.hi-q{font-size:.82rem;color:rgba(255,255,255,.8);margin-bottom:4px;font-weight:500}
+.hi-time{font-size:.7rem;color:var(--gray)}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);color:var(--gray);text-align:center;padding:22px;font-size:.75rem;line-height:1.7}
+footer a{color:var(--accent2);text-decoration:none}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hi">
+    <div class="logo">HomeStyle<span>AI</span></div>
+    <div class="hbg">Free AI Advisor</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-tag">✨ Powered by Real AI — Not Just Random Picks</div>
+  <h1>Stop Guessing.<br><span class="hl">Ask Your Home AI.</span></h1>
+  <p>Can't decide on flooring? Paint colors? Which renovation gives you the best return? Ask anything home-related and get a smart, personalized answer in seconds.</p>
+  <div class="hbs">
+    <span class="hb">🪵 Flooring Picker</span>
+    <span class="hb">🎨 Color Advisor</span>
+    <span class="hb">💰 Renovation ROI</span>
+    <span class="hb">🐾 Pet-Friendly Picks</span>
+    <span class="hb">📊 Budget Planner</span>
+    <span class="hb">🏡 Should I Move or Renovate?</span>
+  </div>
+</div>
+
+<div class="main">
+<div>
+
+<!-- TOPIC SELECTOR -->
+<div class="card">
+  <div class="ct"><span class="ic">🎯</span> What Do You Need Help With?</div>
+  <div class="topic-grid" id="topicGrid">
+    <button class="topic-btn active" data-topic="flooring" onclick="selectTopic(this)">
+      <span class="tb-icon">🪵</span><span class="tb-label">Flooring</span>
+    </button>
+    <button class="topic-btn" data-topic="paint" onclick="selectTopic(this)">
+      <span class="tb-icon">🎨</span><span class="tb-label">Paint Colors</span>
+    </button>
+    <button class="topic-btn" data-topic="renovation" onclick="selectTopic(this)">
+      <span class="tb-icon">🔨</span><span class="tb-label">Renovation ROI</span>
+    </button>
+    <button class="topic-btn" data-topic="budget" onclick="selectTopic(this)">
+      <span class="tb-icon">💰</span><span class="tb-label">Budget Help</span>
+    </button>
+    <button class="topic-btn" data-topic="decision" onclick="selectTopic(this)">
+      <span class="tb-icon">🤔</span><span class="tb-label">Move or Renovate?</span>
+    </button>
+    <button class="topic-btn" data-topic="anything" onclick="selectTopic(this)">
+      <span class="tb-icon">✨</span><span class="tb-label">Anything Else</span>
+    </button>
+  </div>
+</div>
+
+<!-- QUICK FILTERS -->
+<div class="card" id="quickFilters">
+  <div class="ct"><span class="ic">⚡</span> Quick Info (Optional)</div>
+  <div class="qq-grid">
+    <div class="qq">
+      <div class="qq-label">Budget Range</div>
+      <div class="qq-options">
+        <button class="qo" onclick="toggleQ(this,'budget')">Under $2K</button>
+        <button class="qo" onclick="toggleQ(this,'budget')">$2K–$10K</button>
+        <button class="qo" onclick="toggleQ(this,'budget')">$10K–$30K</button>
+        <button class="qo" onclick="toggleQ(this,'budget')">$30K+</button>
+      </div>
+    </div>
+    <div class="qq">
+      <div class="qq-label">Home Situation</div>
+      <div class="qq-options">
+        <button class="qo" onclick="toggleQ(this,'situation')">Have Kids</button>
+        <button class="qo" onclick="toggleQ(this,'situation')">Have Pets</button>
+        <button class="qo" onclick="toggleQ(this,'situation')">Renting Out</button>
+        <button class="qo" onclick="toggleQ(this,'situation')">Selling Soon</button>
+      </div>
+    </div>
+    <div class="qq">
+      <div class="qq-label">Your Style</div>
+      <div class="qq-options">
+        <button class="qo" onclick="toggleQ(this,'style')">Modern</button>
+        <button class="qo" onclick="toggleQ(this,'style')">Cozy/Warm</button>
+        <button class="qo" onclick="toggleQ(this,'style')">Farmhouse</button>
+        <button class="qo" onclick="toggleQ(this,'style')">Bold/Colorful</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ASK AI -->
+<div class="card">
+  <div class="ct"><span class="ic">🤖</span> Ask HomeStyle AI</div>
+  <div class="ai-input-wrap">
+    <textarea class="ai-input" id="userQuestion" placeholder="Type your question here... e.g. 'What flooring is best for my kitchen with two dogs?' or 'Should I renovate my bathroom or kitchen first?'" rows="3"></textarea>
+  </div>
+
+  <!-- SAMPLE QUESTIONS -->
+  <div style="margin-bottom:14px">
+    <p style="font-size:.72rem;color:var(--gray);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Try these popular questions:</p>
+    <div class="sample-q" id="sampleQuestions"></div>
+  </div>
+
+  <button class="ask-btn" onclick="askAI()" id="askBtn">✨ Get My AI Answer</button>
+</div>
+
+<!-- LOADING -->
+<div class="loading" id="loading">
+  <div class="dots">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+  <p>HomeStyle AI is thinking about your home...</p>
+</div>
+
+<!-- RESPONSE -->
+<div class="response-area card" id="responseArea">
+  <div class="ai-label">
+    <div class="ai-dot"></div>
+    <span class="ai-name">HomeStyle AI Response</span>
+  </div>
+  <div class="ai-text" id="aiResponse"></div>
+  <div class="action-row" style="margin-top:16px">
+    <button class="abtn" onclick="copyAnswer()">📋 Copy Answer</button>
+    <button class="abtn" onclick="askAnother()">🔄 Ask Another</button>
+    <button class="abtn" onclick="shareAnswer()">📲 Share</button>
+  </div>
+</div>
+
+<!-- HISTORY -->
+<div id="historySection" style="display:none">
+  <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;color:var(--gray);margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px">Recent Questions</div>
+  <div class="history" id="historyList"></div>
+</div>
+
+</div><!-- /left -->
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+  <!-- TRENDING TOPICS -->
+  <div class="trending-card">
+    <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;color:var(--white);margin-bottom:14px">🔥 Trending Home Questions 2026</div>
+    <div class="trend-item">
+      <span class="trend-num">1</span>
+      <div><div class="trend-text">What flooring hides dog scratches best?</div><span class="trend-tag">Pet owners</span></div>
+    </div>
+    <div class="trend-item">
+      <span class="trend-num">2</span>
+      <div><div class="trend-text">Should I do LVP or hardwood in 2026?</div><span class="trend-tag">Flooring</span></div>
+    </div>
+    <div class="trend-item">
+      <span class="trend-num">3</span>
+      <div><div class="trend-text">Kitchen or bathroom remodel — which adds more value?</div><span class="trend-tag">ROI</span></div>
+    </div>
+    <div class="trend-item">
+      <span class="trend-num">4</span>
+      <div><div class="trend-text">What paint colors are replacing gray in 2026?</div><span class="trend-tag">Colors</span></div>
+    </div>
+    <div class="trend-item">
+      <span class="trend-num">5</span>
+      <div><div class="trend-text">How do I avoid going over budget on renovation?</div><span class="trend-tag">Budget</span></div>
+    </div>
+  </div>
+
+  <!-- 2026 INSIGHT -->
+  <div style="background:rgba(6,214,160,.08);border:1px solid rgba(6,214,160,.2);border-radius:var(--r);padding:18px;margin-bottom:16px">
+    <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:.8rem;color:var(--mint);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">📊 2026 Home Stat</div>
+    <p style="font-size:.83rem;color:rgba(255,255,255,.75);line-height:1.55">85% of homeowners faced unexpected repair costs in 2025. Ask AI what to budget for BEFORE you start — not after.</p>
+  </div>
+
+  <!-- TOOL LINKS -->
+  <div class="links-card">
+    <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;color:var(--white);margin-bottom:12px">🛠️ Free Calculator Tools</div>
+    <a class="tool-link" href="floorcalcpro.html">
+      <div class="tl-left"><span class="tl-icon">🪵</span><div><div class="tl-name">FloorCalc Pro</div><div class="tl-sub">How many boxes do I need?</div></div></div>
+      <span style="color:var(--accent);font-size:.85rem">→</span>
+    </a>
+    <a class="tool-link" href="homefixtcost.html">
+      <div class="tl-left"><span class="tl-icon">🏠</span><div><div class="tl-name">HomeFixCost</div><div class="tl-sub">How much will it cost?</div></div></div>
+      <span style="color:var(--accent);font-size:.85rem">→</span>
+    </a>
+    <a class="tool-link" href="homebuycalc.html">
+      <div class="tl-left"><span class="tl-icon">🏡</span><div><div class="tl-name">HomeBuy Calc</div><div class="tl-sub">Can I afford that house?</div></div></div>
+      <span style="color:var(--accent);font-size:.85rem">→</span>
+    </a>
+    <a class="tool-link" href="paycalcpro.html">
+      <div class="tl-left"><span class="tl-icon">💰</span><div><div class="tl-name">PayCalc Pro</div><div class="tl-sub">What's my take-home pay?</div></div></div>
+      <span style="color:var(--accent);font-size:.85rem">→</span>
+    </a>
+  </div>
+
+  <!-- SHARE -->
+  <div class="share-card">
+    <div class="sc-title">Love HomeStyle AI?</div>
+    <div class="sc-sub">Share it with friends who can't decide on their home projects</div>
+    <div class="sc-btns">
+      <button class="scb" onclick="shareToFB()">📘 Facebook</button>
+      <button class="scb" onclick="shareCopy()">🔗 Copy Link</button>
+    </div>
+  </div>
+
+</div>
+</div><!-- /main -->
+
+<footer>
+  <strong style="color:rgba(255,255,255,.8)">HomeStyle AI</strong> — Free AI Home Advisor · Part of SmartToolsHub<br>
+  AI responses are suggestions only. Always consult licensed contractors for major projects.<br>
+  <a href="index.html">← Back to All Tools</a> · <a href="#">Privacy</a>
+</footer>
+
+<script>
+// ===================== SAMPLE QUESTIONS BY TOPIC =====================
+const SAMPLES = {
+  flooring: [
+    "What flooring is best for a kitchen with two dogs and kids?",
+    "Should I choose LVP or hardwood for my living room in 2026?",
+    "What's the most durable flooring for high traffic areas?",
+    "Is gray flooring outdated in 2026? What should I replace it with?"
+  ],
+  paint: [
+    "What paint colors are replacing gray in 2026?",
+    "What color should I paint a dark living room to make it feel bigger?",
+    "What's a good warm neutral paint color for an open floor plan?",
+    "What paint color pairs best with light oak floors?"
+  ],
+  renovation: [
+    "Kitchen or bathroom first — which adds more resale value?",
+    "What home renovations give the best return on investment in 2026?",
+    "Is it worth converting carpet to hardwood floors?",
+    "Should I renovate my basement or add a bathroom?"
+  ],
+  budget: [
+    "How do I avoid going over budget on a kitchen remodel?",
+    "What's a realistic budget for a full bathroom remodel in 2026?",
+    "What renovations can I do under $5,000 that add the most value?",
+    "How much should I set aside for unexpected renovation costs?"
+  ],
+  decision: [
+    "Should I renovate my current house or buy a new one?",
+    "My house needs $40,000 in repairs — is it worth it or should I sell?",
+    "I want to sell in 2 years — what renovations are worth doing now?",
+    "Is it better to renovate room by room or all at once?"
+  ],
+  anything: [
+    "What's trending in home design for 2026?",
+    "How do I make a small room feel bigger without renovating?",
+    "What are the biggest home renovation mistakes to avoid?",
+    "How do I find a good contractor without getting ripped off?"
+  ]
+};
+
+// ===================== CONTEXT FROM QUICK FILTERS =====================
+let selections = { budget: '', situation: '', style: '' };
+let currentTopic = 'flooring';
+let history = [];
+
+function selectTopic(btn) {
+  document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentTopic = btn.dataset.topic;
+  updateSamples();
+}
+
+function updateSamples() {
+  const qs = SAMPLES[currentTopic] || SAMPLES.anything;
+  document.getElementById('sampleQuestions').innerHTML = qs.map(q =>
+    `<button class="sq" onclick="useSample(this)">${q}</button>`
+  ).join('');
+}
+
+function useSample(btn) {
+  document.getElementById('userQuestion').value = btn.textContent;
+  document.getElementById('userQuestion').focus();
+}
+
+function toggleQ(btn, group) {
+  document.querySelectorAll(`.qo[onclick*="${group}"]`).forEach(b => b.classList.remove('active'));
+  btn.classList.toggle('active');
+  selections[group] = btn.classList.contains('active') ? btn.textContent : '';
+}
+
+// ===================== AI CALL =====================
+async function askAI() {
+  const question = document.getElementById('userQuestion').value.trim();
+  if (!question) { 
+    document.getElementById('userQuestion').focus();
+    return; 
+  }
+
+  const btn = document.getElementById('askBtn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Thinking...';
+  document.getElementById('loading').classList.add('show');
+  document.getElementById('responseArea').classList.remove('visible');
+
+  // Build context from filters
+  let context = '';
+  if (selections.budget) context += `Budget: ${selections.budget}. `;
+  if (selections.situation) context += `Situation: ${selections.situation}. `;
+  if (selections.style) context += `Style preference: ${selections.style}. `;
+
+  const systemPrompt = `You are HomeStyle AI, an expert home improvement and interior design advisor for American homeowners in 2026. You give practical, specific, honest advice about flooring, paint colors, renovations, budgeting, and home decisions.
+
+Key facts to use:
+- 85% of homeowners face unexpected repair costs — always remind users to budget 15-20% extra
+- 70% go over budget — give realistic ranges
+- 74% have renovation regrets — help them think it through
+- 2026 trends: warm wood tones (honey/caramel/chestnut), matte finishes, LVP is top choice for most homes, gray floors are outdated, warm neutrals replacing cool grays
+- Best ROI renovations: kitchen (minor remodel 110%+ ROI), bathroom, curb appeal, converting carpet to hardwood
+- For pets/kids: LVP is #1 choice — waterproof, scratch resistant, cheaper than hardwood
+- Always mention when they should use the free calculators on SmartToolsHub (FloorCalc Pro, HomeFixCost, HomeBuy Calc)
+
+Format your response with:
+- A direct clear recommendation first (bold the main answer)
+- 2-3 key reasons why
+- A "Pro Tip" in a tip box
+- A "Watch Out" warning if relevant
+- End with a relevant free tool suggestion from SmartToolsHub
+
+Keep it conversational, friendly, and practical. Like advice from a trusted contractor friend. Max 300 words.`;
+
+  const userMessage = `${context}Topic: ${currentTopic}. Question: ${question}`;
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: userMessage }]
+      })
+    });
+
+    const data = await response.json();
+    const text = data.content?.[0]?.text || 'Sorry, I could not get an answer. Please try again.';
+    
+    // Format the response
+    const formatted = formatResponse(text);
+    document.getElementById('aiResponse').innerHTML = formatted;
+    document.getElementById('responseArea').classList.add('visible');
+    
+    // Add to history
+    addToHistory(question, text);
+    
+    document.getElementById('responseArea').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  } catch (err) {
+    document.getElementById('aiResponse').innerHTML = `<p style="color:var(--accent)">⚠️ Something went wrong. Please check your connection and try again.</p>`;
+    document.getElementById('responseArea').classList.add('visible');
+  }
+
+  document.getElementById('loading').classList.remove('show');
+  btn.disabled = false;
+  btn.textContent = '✨ Get My AI Answer';
+}
+
+function formatResponse(text) {
+  // Convert markdown-like formatting to HTML
+  let html = text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/## (.*?)$/gm, '<h3>$1</h3>')
+    .replace(/^- (.*?)$/gm, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>')
+    .replace(/Pro Tip:(.*?)(?=Watch Out:|$)/gs, '<div class="tip-box">💡 <strong>Pro Tip:</strong>$1</div>')
+    .replace(/Watch Out:(.*?)(?=\n\n|$)/gs, '<div class="warn-box">⚠️ <strong>Watch Out:</strong>$1</div>')
+    .replace(/\n\n/g, '<br><br>')
+    .replace(/\n/g, '<br>');
+  return html;
+}
+
+function addToHistory(question, answer) {
+  history.unshift({ question, answer, time: new Date().toLocaleTimeString() });
+  if (history.length > 5) history.pop();
+  
+  const section = document.getElementById('historySection');
+  const list = document.getElementById('historyList');
+  
+  if (history.length > 0) {
+    section.style.display = 'block';
+    list.innerHTML = history.map((h, i) => `
+      <div class="hist-item" onclick="loadHistory(${i})">
+        <div class="hi-q">${h.question.substring(0, 70)}${h.question.length > 70 ? '...' : ''}</div>
+        <div class="hi-time">${h.time}</div>
+      </div>
+    `).join('');
+  }
+}
+
+function loadHistory(i) {
+  const h = history[i];
+  document.getElementById('userQuestion').value = h.question;
+  document.getElementById('aiResponse').innerHTML = formatResponse(h.answer);
+  document.getElementById('responseArea').classList.add('visible');
+  document.getElementById('responseArea').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function askAnother() {
+  document.getElementById('userQuestion').value = '';
+  document.getElementById('responseArea').classList.remove('visible');
+  document.getElementById('userQuestion').focus();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function copyAnswer() {
+  const text = document.getElementById('aiResponse').innerText;
+  navigator.clipboard.writeText('HomeStyle AI says:\n\n' + text).then(() => alert('Copied to clipboard!'));
+}
+
+function shareAnswer() {
+  const text = document.getElementById('userQuestion').value;
+  const url = `https://toolshubfree.netlify.app/homestyleai.html`;
+  if (navigator.share) {
+    navigator.share({ title: 'HomeStyle AI Answer', text: `I asked: "${text}" — Get your free home advice at:`, url });
+  } else {
+    navigator.clipboard.writeText(url).then(() => alert('Link copied! Share it anywhere.'));
+  }
+}
+
+function shareToFB() {
+  const url = encodeURIComponent('https://toolshubfree.netlify.app/homestyleai.html');
+  window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+}
+
+function shareCopy() {
+  navigator.clipboard.writeText('https://toolshubfree.netlify.app/homestyleai.html').then(() => alert('Link copied! Share it with friends.'));
+}
+
+// Handle Enter key
+document.addEventListener('DOMContentLoaded', function() {
+  updateSamples();
+  document.getElementById('userQuestion').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && e.ctrlKey) askAI();
+  });
+});
+</script>
+</body>
+</html>

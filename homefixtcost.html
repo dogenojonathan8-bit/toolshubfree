@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HomeFixCost – Free Home Renovation Cost Estimator 2026</title>
+<meta name="description" content="Free home renovation cost estimator. Get instant pricing for kitchen, bathroom, roofing, HVAC, flooring and more. ZIP-based local pricing.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#1B4332;--forest-m:#2D6A4F;--forest-l:#40916C;
+  --gold:#D4A017;--gold-l:#F0C040;--gold-d:#A07810;
+  --cream:#FEFAE0;--cream-d:#F5ECC8;--warm:#FFF8E7;
+  --slate:#1A1A2E;--red:#C62828;
+  --shadow:0 6px 28px rgba(27,67,50,0.13);--r:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--slate);min-height:100vh}
+/* HEADER */
+header{background:var(--forest);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.3)}
+.hi{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;letter-spacing:-.3px}
+.logo span{color:var(--gold-l)}
+.hbg{background:var(--gold);color:var(--forest);font-size:.68rem;font-weight:700;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:.6px}
+/* HERO */
+.hero{background:linear-gradient(160deg,var(--forest) 0%,var(--forest-m) 50%,var(--forest-l) 100%);padding:56px 24px 48px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.9rem);font-weight:800;color:#fff;line-height:1.15;margin-bottom:12px;position:relative}
+.hero h1 span{color:var(--gold-l)}
+.hero p{color:rgba(255,255,255,.75);font-size:1rem;max-width:540px;margin:0 auto 24px;line-height:1.6;position:relative}
+.hbs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;position:relative}
+.hb{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.88);padding:5px 14px;border-radius:20px;font-size:.75rem;font-weight:700;letter-spacing:.3px}
+/* ZIP BANNER */
+.zb{background:var(--gold);padding:16px 24px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.zb p{color:var(--forest);font-weight:700;font-size:.9rem}
+.ziw{display:flex;gap:8px}
+.ziw input{padding:9px 14px;border:2px solid var(--forest);border-radius:8px;font-family:'Lato',sans-serif;font-size:.9rem;width:130px;outline:none;font-weight:700}
+.zbtn{background:var(--forest);color:#fff;border:none;padding:9px 18px;border-radius:8px;cursor:pointer;font-family:'Lato',sans-serif;font-weight:700;font-size:.85rem;transition:all .2s}
+.zbtn:hover{background:var(--slate)}
+.zres{background:var(--forest);color:#fff;padding:6px 14px;border-radius:20px;font-size:.8rem;font-weight:700;display:none}
+/* MAIN */
+.main{max-width:1160px;margin:0 auto;padding:32px 20px 60px;display:grid;grid-template-columns:1fr 340px;gap:26px;align-items:start}
+@media(max-width:880px){.main{grid-template-columns:1fr}}
+/* CARD */
+.card{background:#fff;border-radius:var(--r);box-shadow:var(--shadow);padding:26px;margin-bottom:20px}
+.ct{font-family:'Playfair Display',serif;font-weight:700;font-size:1.05rem;color:var(--forest);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.ct .ic{width:30px;height:30px;background:var(--cream-d);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+/* PROJECT GRID */
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:6px}
+@media(max-width:540px){.proj-grid{grid-template-columns:repeat(2,1fr)}}
+.pb{border:2px solid var(--cream-d);background:#fff;border-radius:12px;padding:14px 8px;cursor:pointer;text-align:center;transition:all .2s;font-family:'Lato',sans-serif;position:relative}
+.pb .pi{font-size:1.5rem;display:block;margin-bottom:5px}
+.pb .pn{font-size:.78rem;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:.3px}
+.pb .pr{font-size:.7rem;color:#aaa;margin-top:2px}
+.pb.active{border-color:var(--forest-l);background:#F0FAF4;box-shadow:0 0 0 3px rgba(64,145,108,.15)}
+.pb.active .pn{color:var(--forest)}
+.pb .ck{position:absolute;top:6px;right:6px;width:16px;height:16px;background:var(--forest-l);border-radius:50%;color:#fff;font-size:.6rem;display:none;align-items:center;justify-content:center}
+.pb.active .ck{display:flex}
+/* QUALITY */
+.qual-row{display:flex;gap:8px;margin-bottom:16px}
+.qb{flex:1;padding:10px 6px;border:2px solid var(--cream-d);border-radius:10px;text-align:center;cursor:pointer;transition:all .2s;font-family:'Lato',sans-serif}
+.qb .ql{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:#888}
+.qb .qp{font-size:.7rem;color:#bbb;margin-top:2px}
+.qb.active{border-color:var(--gold);background:#FFFBEF}
+.qb.active .ql{color:var(--gold-d)}
+/* INPUT */
+.ig label{display:block;font-size:.71rem;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
+.ig input,.ig select{width:100%;padding:10px 12px;border:2px solid var(--cream-d);border-radius:8px;font-family:'Lato',sans-serif;font-size:.9rem;color:var(--slate);background:#fff;transition:border-color .2s;outline:none}
+.ig input:focus,.ig select:focus{border-color:var(--forest-l)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+/* CALC BTN */
+.calc-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--forest),var(--forest-m));color:#fff;border:none;border-radius:10px;font-family:'Playfair Display',serif;font-weight:700;font-size:1.05rem;cursor:pointer;transition:all .2s;box-shadow:0 4px 18px rgba(27,67,50,.35);margin-top:6px;letter-spacing:.3px}
+.calc-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(27,67,50,.45)}
+/* RESULTS */
+.res{display:none}.res.vis{display:block;animation:fU .35s ease}
+@keyframes fU{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.rg{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:16px}
+.rs{background:var(--cream);border-radius:10px;padding:16px;text-align:center}
+.rs.hl{background:linear-gradient(135deg,var(--forest),var(--forest-m));color:#fff}
+.rs.gd{background:linear-gradient(135deg,var(--gold-d),var(--gold));color:#fff}
+.sl{font-size:.69rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#999;margin-bottom:5px}
+.rs.hl .sl,.rs.gd .sl{color:rgba(255,255,255,.7)}
+.sv{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;color:var(--slate);line-height:1}
+.rs.hl .sv,.rs.gd .sv{color:#fff}
+.ss{font-size:.72rem;color:#bbb;margin-top:3px}
+.rs.hl .ss,.rs.gd .ss{color:rgba(255,255,255,.65)}
+/* BREAKDOWN */
+.bt{width:100%;border-collapse:collapse;font-size:.86rem}
+.bt th{background:var(--forest);color:#fff;padding:9px 11px;text-align:left;font-family:'Lato',sans-serif;font-weight:700;font-size:.76rem;text-transform:uppercase;letter-spacing:.3px}
+.bt th:first-child{border-radius:8px 0 0 0}.bt th:last-child{border-radius:0 8px 0 0}
+.bt td{padding:9px 11px;border-bottom:1px solid var(--cream-d)}
+.bt tr:last-child td{border-bottom:none}
+.bt tr:nth-child(even) td{background:var(--cream)}
+.bt .tr td{font-weight:700;background:#F0FAF4!important;border-top:2px solid var(--forest-l);color:var(--forest);font-family:'Playfair Display',serif}
+.ar{display:flex;gap:9px;margin-top:14px;flex-wrap:wrap}
+.pbtn{flex:1;min-width:110px;padding:10px;border:2px solid var(--cream-d);background:#fff;border-radius:8px;cursor:pointer;font-family:'Lato',sans-serif;font-weight:700;font-size:.84rem;color:var(--slate);transition:all .2s;display:flex;align-items:center;justify-content:center;gap:5px}
+.pbtn:hover{border-color:var(--forest);background:var(--cream)}
+/* SIDEBAR */
+.lead-card{background:linear-gradient(160deg,var(--forest),var(--forest-m));border-radius:var(--r);padding:24px;margin-bottom:20px}
+.lct{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:#fff;margin-bottom:6px}
+.lcs{font-size:.82rem;color:rgba(255,255,255,.75);margin-bottom:14px;line-height:1.55}
+.lci{width:100%;padding:10px 12px;border:none;border-radius:8px;font-family:'Lato',sans-serif;font-size:.88rem;color:var(--slate);margin-bottom:9px;outline:none;font-weight:700}
+.lcb{width:100%;padding:12px;background:var(--gold);color:var(--forest);border:none;border-radius:8px;font-family:'Playfair Display',serif;font-weight:700;font-size:.95rem;cursor:pointer;transition:all .2s;letter-spacing:.2px}
+.lcb:hover{background:var(--gold-l)}
+.lcn{font-size:.68rem;color:rgba(255,255,255,.45);margin-top:8px;text-align:center}
+.price-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--cream-d);font-size:.86rem}
+.price-row:last-child{border-bottom:none}
+.fn{font-weight:700;display:flex;align-items:center;gap:6px}
+.pr{font-size:.78rem;color:var(--forest-l);font-weight:700;background:rgba(45,106,79,.1);padding:3px 9px;border-radius:12px}
+.al-links{display:flex;flex-direction:column;gap:7px}
+.al{display:flex;align-items:center;justify-content:space-between;padding:11px 13px;border-radius:8px;border:2px solid var(--cream-d);background:#fff;text-decoration:none;transition:all .2s}
+.al:hover{border-color:var(--forest-l);background:var(--cream);transform:translateX(2px)}
+.al-l{display:flex;align-items:center;gap:9px}
+.al-logo{width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:#fff;font-family:'Playfair Display',serif;flex-shrink:0}
+.al-name{font-weight:700;font-size:.86rem;color:var(--slate)}
+.al-sub{font-size:.7rem;color:#aaa}
+.tip{background:var(--cream-d);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:14px;margin-bottom:12px}
+.tip .tt{font-weight:700;font-size:.8rem;color:var(--gold-d);text-transform:uppercase;letter-spacing:.4px;margin-bottom:5px}
+.tip p{font-size:.82rem;color:#555;line-height:1.5}
+footer{background:var(--forest);color:rgba(255,255,255,.5);text-align:center;padding:22px;font-size:.76rem;line-height:1.7}
+footer a{color:var(--gold-l);text-decoration:none}
+@media print{header,.hero,.zb,.sidebar,.calc-btn,.ar,footer,.lead-card{display:none!important}.main{grid-template-columns:1fr;padding:0}.card{box-shadow:none;border:1px solid #ddd}}
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907111543523765" crossorigin="anonymous"></script>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ToolsHub">
+  <meta name="theme-color" content="#0D1B2A">
+  <meta name="keywords" content="home renovation cost estimator 2026, kitchen remodel cost calculator, bathroom renovation cost, roofing cost estimator, HVAC replacement cost, home improvement cost calculator by zip code">
+  <meta name="author" content="SmartToolsHub">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="SmartToolsHub - Free Financial & Home Calculators">
+  <meta property="og:description" content="Free home renovation cost estimator 2026. Get instant local pricing for kitchen, bathroom, roofing, HVAC, flooring, windows and more. Adjusted for your ZIP code.">
+  <meta property="og:url" content="https://toolshubfree.netlify.app/homefixtcost.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SmartToolsHub - Free Calculators">
+  <meta name="twitter:description" content="Free home renovation cost estimator 2026. Get instant local pricing for kitchen, bathroom, roofing, HVAC, flooring, windows and more. Adjusted for your ZIP code.">
+</head>
+<body>
+<header>
+  <div class="hi">
+    <div class="logo">HomeFix<span>Cost</span></div>
+    <div class="hbg">Free Estimator</div>
+  </div>
+</header>
+<div class="hero">
+  <h1>What Will Your<br><span>Home Renovation Cost?</span></h1>
+  <p>Get an instant cost estimate for any home project — kitchen, bathroom, roofing, HVAC and more. Adjusted for your ZIP code.</p>
+  <div class="hbs">
+    <span class="hb">🏠 15+ Project Types</span>
+    <span class="hb">📍 ZIP-Based Pricing</span>
+    <span class="hb">👷 Find Local Pros</span>
+    <span class="hb">💰 Free Quotes</span>
+  </div>
+</div>
+<div class="zb">
+  <p>📍 Enter ZIP for local pricing:</p>
+  <div class="ziw">
+    <input type="text" id="zi" placeholder="e.g. 33101" maxlength="5">
+    <button class="zbtn" onclick="lookupZ()">Apply</button>
+  </div>
+  <div class="zres" id="zr"></div>
+</div>
+<div class="main">
+<div>
+<!-- SELECT PROJECTS -->
+<div class="card">
+  <div class="ct"><span class="ic">🔨</span> Select Your Project(s)</div>
+  <p style="font-size:.82rem;color:#888;margin-bottom:14px">Pick one or more — we'll estimate each one</p>
+  <div class="proj-grid" id="projGrid">
+    <div class="pb" data-id="kitchen" data-low="15000" data-high="45000" data-mid="26000" onclick="toggleP(this)">
+      <div class="ck">✓</div><span class="pi">🍳</span><span class="pn">Kitchen</span><span class="pr">$15K–$45K</span>
+    </div>
+    <div class="pb" data-id="bathroom" data-low="8000" data-high="25000" data-mid="14000" onclick="toggleP(this)">
+      <div class="ck">✓</div><span class="pi">🚿</span><span class="pn">Bathroom</span><span class="pr">$8K–$25K</span>
+    </div>
+    <div class="pb" data-id="roofing" data-low="5500" data-high="18000" data-mid="10000" onclick="toggleP(this)">
+      <div class="ck">✓</div><span class="pi">🏠</span><span class="pn">Roofing</span><span class="pr">$5.5K–$18K</span>
+    </div>
+    <div class="pb" data-id="hvac" data-low="4000" data-high="12000" data-mid="7000" onclick="toggleP(this)">
+      <div class="ck">✓</div><span class="pi">❄️</span><span class="pn">HVAC/AC</span><span class="pr">$4K–$12K</span>
+    </div>
+    <div class="pb" data-id="flooring" data-low="3000" data-high="12000" data-mid="6500" onclick="toggleP(this)">
+      <div class="ck">✓</div><span class="pi">🪵</span><span class="pn">Flooring</span><span class="pr">$3K–$12K</span>
+    </div>
+    <div class="pb" data-id="windows" data-low="3000" data-high="10000" data-mid="6000" onclick="toggleP(this)">
+      <div class="ck">✓</div><span class="pi">🪟</span><span class="pn">Windows</span><span class="pr">$3K–$10K</span>
+    </div>
+    <div class="pb" data-id="deck" data-low="4000" data-high="14000" data-mid="8000" onclick="toggleP(this)">
+      <div class="ck">✓</div><span class="pi">🌳</span><span class="pn">Deck/Patio</span><span class="pr">$4K–$14K</span>
+    </div>
+    <div class="pb" data-id="basement" data-low="10000" data-high="35000" data-mid="20000" onclick="toggleP(this)">
+      <div class="ck">✓</div><span class="pi">🏚️</span><span class="pn">Basement</span><span class="pr">$10K–$35K</span>
+    </div>
+    <div class="pb" data-id="painting" data-low="1500" data-high="6000" data-mid="3200" onclick="toggleP(this)">
+      <div class="ck">✓</div><span class="pi">🎨</span><span class="pn">Painting</span><span class="pr">$1.5K–$6K</span>
+    </div>
+    <div class="pb" data-id="siding" data-low="5000" data-high="16000" data-mid="9000" onclick="toggleP(this)">
+      <div class="ck">✓</div><span class="pi">🧱</span><span class="pn">Siding</span><span class="pr">$5K–$16K</span>
+    </div>
+    <div class="pb" data-id="plumbing" data-low="1000" data-high="8000" data-mid="3500" onclick="toggleP(this)">
+      <div class="ck">✓</div><span class="pi">🔧</span><span class="pn">Plumbing</span><span class="pr">$1K–$8K</span>
+    </div>
+    <div class="pb" data-id="electric" data-low="1500" data-high="9000" data-mid="4000" onclick="toggleP(this)">
+      <div class="ck">✓</div><span class="pi">⚡</span><span class="pn">Electrical</span><span class="pr">$1.5K–$9K</span>
+    </div>
+  </div>
+</div>
+<!-- QUALITY -->
+<div class="card">
+  <div class="ct"><span class="ic">⭐</span> Material & Finish Quality</div>
+  <div class="qual-row">
+    <div class="qb active" data-q="0.75" onclick="selQ(this)"><div class="ql">Budget</div><div class="qp">Builder grade</div></div>
+    <div class="qb" data-q="1.0" onclick="selQ(this)"><div class="ql">Mid-Range</div><div class="qp">Most popular</div></div>
+    <div class="qb" data-q="1.55" onclick="selQ(this)"><div class="ql">Premium</div><div class="qp">High-end finishes</div></div>
+  </div>
+  <div class="row2">
+    <div class="ig"><label>Home Size (sq ft)</label>
+      <select id="homeSize">
+        <option value="0.7">Under 1,000 sq ft</option>
+        <option value="0.85">1,000–1,500 sq ft</option>
+        <option value="1.0" selected>1,500–2,000 sq ft</option>
+        <option value="1.2">2,000–2,500 sq ft</option>
+        <option value="1.45">2,500–3,500 sq ft</option>
+        <option value="1.7">3,500+ sq ft</option>
+      </select>
+    </div>
+    <div class="ig"><label>Home Age</label>
+      <select id="homeAge">
+        <option value="1.0">Built after 2000</option>
+        <option value="1.1">1980–2000</option>
+        <option value="1.2">1960–1980</option>
+        <option value="1.35">Before 1960 (older materials)</option>
+      </select>
+    </div>
+  </div>
+</div>
+<button class="calc-btn" onclick="calc()">💰 Get My Renovation Estimate</button>
+<!-- RESULTS -->
+<div class="res card" id="resSec">
+  <div class="ct"><span class="ic">✅</span> Your Renovation Estimate</div>
+  <div id="regBadge" style="margin-bottom:12px"></div>
+  <div class="rg" id="rg"></div>
+  <div style="overflow-x:auto;margin-bottom:14px"><table class="bt" id="bt"></table></div>
+  <div style="background:var(--cream);border-radius:10px;padding:16px;margin-bottom:12px">
+    <p style="font-size:.82rem;color:#666;line-height:1.6">⚠️ <strong>These are estimates only.</strong> Actual costs depend on your local market, contractor availability, material choices, and site conditions. Always get 3 quotes from licensed contractors before starting any project.</p>
+  </div>
+  <div class="ar">
+    <button class="pbtn" onclick="window.print()">🖨️ Print Quote</button>
+    <button class="pbtn" onclick="navigator.clipboard.writeText(document.getElementById('qt').textContent).then(()=>alert('Copied!'))">📋 Copy</button>
+    <button class="pbtn" onclick="document.getElementById('resSec').classList.remove('vis');window.scrollTo({top:0,behavior:'smooth'})">🔄 Reset</button>
+  </div>
+  <pre id="qt" style="display:none"></pre>
+</div>
+</div><!-- /left -->
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="lead-card">
+    <div class="lct">👷 Get Free Contractor Quotes</div>
+    <div class="lcs">Connect with up to 3 licensed local contractors who will quote your exact project. No commitment required.</div>
+    <input class="lci" type="text" id="lfN" placeholder="Your name">
+    <input class="lci" type="tel" id="lfP" placeholder="Phone number">
+    <input class="lci" type="text" id="lfZ2" placeholder="ZIP code">
+    <button class="lcb" onclick="submitLead()">Get My Free Quotes →</button>
+    <p class="lcn">🔒 Your info is never sold. No spam.</p>
+  </div>
+
+  <div class="card">
+    <div class="ct"><span class="ic">📍</span> <span id="pgT">2026 National Avg Costs</span></div>
+    <div class="price-row"><span class="fn">🍳 Kitchen Remodel</span><span class="pr" id="pc_k">$15K–$45K</span></div>
+    <div class="price-row"><span class="fn">🚿 Bathroom</span><span class="pr" id="pc_b">$8K–$25K</span></div>
+    <div class="price-row"><span class="fn">🏠 New Roof</span><span class="pr" id="pc_r">$5.5K–$18K</span></div>
+    <div class="price-row"><span class="fn">❄️ HVAC System</span><span class="pr" id="pc_h">$4K–$12K</span></div>
+    <div class="price-row"><span class="fn">🪟 Windows (10)</span><span class="pr" id="pc_w">$3K–$10K</span></div>
+    <div class="price-row"><span class="fn">🌳 Deck/Patio</span><span class="pr" id="pc_d">$4K–$14K</span></div>
+  </div>
+
+  <div class="card">
+    <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:.85rem;color:#bbb;margin-bottom:11px;text-transform:uppercase;letter-spacing:.5px">🛠️ Get Quotes & Find Pros</div>
+    <div class="al-links">
+      <a class="al" href="https://www.thumbtack.com/k/home-remodeling/near-me" target="_blank" rel="noopener">
+        <div class="al-l"><div class="al-logo" style="background:#009FD4">TT</div><div><div class="al-name">Thumbtack</div><div class="al-sub">Free local contractor quotes</div></div></div><span style="color:var(--forest-l)">→</span>
+      </a>
+      <a class="al" href="https://www.angi.com" target="_blank" rel="noopener">
+        <div class="al-l"><div class="al-logo" style="background:#FF6B2B">An</div><div><div class="al-name">Angi</div><div class="al-sub">Vetted local professionals</div></div></div><span style="color:var(--forest-l)">→</span>
+      </a>
+      <a class="al" href="https://www.homedepot.com/services/home-services" target="_blank" rel="noopener">
+        <div class="al-l"><div class="al-logo" style="background:#F96302">HD</div><div><div class="al-name">Home Depot Services</div><div class="al-sub">Installation + materials</div></div></div><span style="color:var(--forest-l)">→</span>
+      </a>
+      <a class="al" href="https://www.lowes.com/l/install.html" target="_blank" rel="noopener">
+        <div class="al-l"><div class="al-logo" style="background:#004990">L</div><div><div class="al-name">Lowe's Install</div><div class="al-sub">Professional installation</div></div></div><span style="color:var(--forest-l)">→</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="tip">
+    <div class="tt">💡 Save Money Tip</div>
+    <p>Get <strong>at least 3 quotes</strong> from different contractors. Prices can vary by 30–50% for the same job. Never pay more than 30% upfront before work begins.</p>
+  </div>
+
+  <div class="card" style="text-align:center">
+    <p style="font-size:.8rem;color:#888;margin-bottom:10px">Also need flooring estimates?</p>
+    <a href="flooring-calculator-v2.html" style="display:block;padding:11px;background:var(--forest);color:#fff;border-radius:8px;text-decoration:none;font-family:'Playfair Display',serif;font-weight:700;font-size:.9rem">🪵 Try FloorCalc Pro →</a>
+  </div>
+</div>
+</div><!-- /main -->
+<footer>
+  <strong style="color:rgba(255,255,255,.85)">HomeFixCost</strong> — Free Home Renovation Cost Estimator<br>
+  Estimates are based on 2026 US national averages. Always obtain multiple contractor quotes. <a href="#">Privacy</a> · <a href="#">About</a>
+</footer>
+
+<script>
+const ZR={'0':[1.22,1.1,'Northeast'],'1':[1.28,1.15,'New York/NJ/PA'],'2':[1.08,1.03,'Mid-Atlantic'],'3':[0.9,0.93,'Southeast'],'4':[0.88,0.9,'Midwest'],'5':[0.86,0.88,'Upper Midwest'],'6':[0.93,0.93,'Central'],'7':[0.87,0.9,'South/Texas'],'8':[1.03,1.0,'Mountain West'],'9':[1.38,1.22,'West Coast']};
+let reg=null, selQ_val=0.75;
+
+function lookupZ(){
+  const z=document.getElementById('zi').value.trim();
+  if(z.length!==5||isNaN(z)){alert('Enter a valid 5-digit ZIP.');return;}
+  const d=ZR[z[0]]||[1,1,'National Average'];
+  reg={lm:d[0],mm:d[1],name:d[2]};
+  const el=document.getElementById('zr');
+  el.textContent='📍 '+d[2]+' (×'+d[0].toFixed(2)+')';
+  el.style.display='inline-flex';
+  document.getElementById('pgT').textContent='Prices for '+d[2];
+  document.getElementById('lfZ2').value=z;
+  // update price guide
+  const m=d[1];
+  document.getElementById('pc_k').textContent='$'+Math.round(15000*m/1000)+'K–$'+Math.round(45000*m/1000)+'K';
+  document.getElementById('pc_b').textContent='$'+Math.round(8000*m/1000)+'K–$'+Math.round(25000*m/1000)+'K';
+  document.getElementById('pc_r').textContent='$'+Math.round(5500*m/1000)+'K–$'+Math.round(18000*m/1000)+'K';
+  document.getElementById('pc_h').textContent='$'+Math.round(4000*m/1000)+'K–$'+Math.round(12000*m/1000)+'K';
+  document.getElementById('pc_w').textContent='$'+Math.round(3000*m/1000)+'K–$'+Math.round(10000*m/1000)+'K';
+  document.getElementById('pc_d').textContent='$'+Math.round(4000*m/1000)+'K–$'+Math.round(14000*m/1000)+'K';
+}
+
+function toggleP(el){el.classList.toggle('active');}
+function selQ(el){document.querySelectorAll('.qb').forEach(b=>b.classList.remove('active'));el.classList.add('active');selQ_val=parseFloat(el.dataset.q);}
+
+function fmt(n){return n>=1000000?'$'+(n/1000000).toFixed(1)+'M':n>=1000?'$'+(n/1000).toFixed(0)+'K':'$'+n;}
+
+function calc(){
+  const sel=document.querySelectorAll('.pb.active');
+  if(!sel.length){alert('Please select at least one project!');return;}
+  const sz=parseFloat(document.getElementById('homeSize').value);
+  const age=parseFloat(document.getElementById('homeAge').value);
+  const rm=reg?reg.mm:1;
+  const mult=selQ_val*sz*age*rm;
+  let totL=0,totH=0,rows='',qtxt='HomeFixCost — Renovation Estimate\n'+'='.repeat(36)+'\n';
+  sel.forEach(p=>{
+    const nm=p.querySelector('.pn').textContent;
+    const low=Math.round(parseFloat(p.dataset.low)*mult);
+    const high=Math.round(parseFloat(p.dataset.high)*mult);
+    const mid=Math.round((low+high)/2);
+    totL+=low;totH+=high;
+    rows+=`<tr><td><strong>${p.querySelector('.pi').textContent} ${nm}</strong></td><td>${fmt(low)}</td><td>${fmt(high)}</td><td>${fmt(mid)}</td></tr>`;
+    qtxt+=`${nm}: ${fmt(low)} – ${fmt(high)}\n`;
+  });
+  rows+=`<tr class="tr"><td>TOTAL ESTIMATE</td><td>${fmt(totL)}</td><td>${fmt(totH)}</td><td>${fmt(Math.round((totL+totH)/2))}</td></tr>`;
+  qtxt+=`\nTOTAL: ${fmt(totL)} – ${fmt(totH)}\n`;
+  const mid=Math.round((totL+totH)/2);
+  document.getElementById('rg').innerHTML=`
+    <div class="rs hl"><div class="sl">Low Estimate</div><div class="sv">${fmt(totL)}</div><div class="ss">Budget materials</div></div>
+    <div class="rs hl"><div class="sl">High Estimate</div><div class="sv">${fmt(totH)}</div><div class="ss">Premium finishes</div></div>
+    <div class="rs gd" style="grid-column:span 2"><div class="sl">💰 Your Middle-Ground Target Budget</div><div class="sv" style="font-size:2rem">${fmt(mid)}</div><div class="ss">${reg?'Adjusted for '+reg.name:'National average'} · ${sel.length} project(s) selected</div></div>`;
+  document.getElementById('bt').innerHTML=`<tr><th>Project</th><th>Low</th><th>High</th><th>Midpoint</th></tr>${rows}`;
+  document.getElementById('regBadge').innerHTML=reg?`<span style="display:inline-flex;align-items:center;gap:6px;background:rgba(27,67,50,.08);border:1px solid rgba(27,67,50,.2);color:var(--forest);padding:6px 14px;border-radius:20px;font-size:.8rem;font-weight:700">📍 Adjusted for ${reg.name}</span>`:'';
+  document.getElementById('qt').textContent=qtxt;
+  const s=document.getElementById('resSec');s.classList.add('vis');s.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function submitLead(){
+  const n=document.getElementById('lfN').value;
+  const p=document.getElementById('lfP').value;
+  const z=document.getElementById('lfZ2').value||'';
+  if(!n||!p){alert('Enter your name and phone number.');return;}
+  alert('Thanks '+n+'! Connecting you with local contractors now...');
+  window.open('https://www.thumbtack.com/k/home-remodeling/near-me'+(z?'?zip='+z:''),'_blank');
+}
+</script>
+<div id="installBanner" style="display:none;position:fixed;bottom:20px;right:20px;z-index:9999">
+  <button id="installBtn" onclick="installApp()" style="display:none;background:#C8F135;color:#0D1B2A;border:none;padding:12px 20px;border-radius:50px;font-weight:900;font-size:.9rem;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.3);font-family:sans-serif">
+    📲 Install App
+  </button>
+</div>
+<script>
+var btn=document.getElementById("installBtn");
+if(btn){btn.style.display="block";}
+</script>
+<script>
+let deferredPrompt;
+window.addEventListener("beforeinstallprompt", function(e){
+  e.preventDefault();
+  deferredPrompt = e;
+  var btn = document.getElementById("installBtn");
+  if(btn){ btn.style.display = "block"; }
+});
+function installApp(){
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(function(r){
+      deferredPrompt = null;
+      var btn = document.getElementById("installBtn");
+      if(btn){ btn.style.display = "none"; }
+    });
+  }
+}
+</script>
+<script>
+if("serviceWorker" in navigator){
+  window.addEventListener("load",function(){
+    navigator.serviceWorker.register("/sw.js")
+      .then(function(r){console.log("SW ready");})
+      .catch(function(e){console.log("SW error",e);});
+  });
+}
+</script>
+</body>
+</html>
