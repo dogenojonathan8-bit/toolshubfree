@@ -3,330 +3,509 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FloorCalc Pro – Free Local Flooring Calculator with ZIP Code Pricing</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-:root{--oak:#C8853A;--oak-l:#E8B472;--oak-d:#8B5A1E;--slate:#1C2B3A;--slate-m:#2D3F52;--slate-l:#3D5166;--cream:#FAF6F0;--cream-d:#EDE5D8;--green:#3D7A5C;--red:#C0392B;--blue:#2563EB;--shadow:0 4px 24px rgba(28,43,58,0.12);--r:14px}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--slate);min-height:100vh}
-header{background:var(--slate);position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.25)}
-.hi{max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.45rem;color:#fff;letter-spacing:-.5px}
-.logo span{color:var(--oak-l)}
-.hbg{background:var(--oak);color:#fff;font-size:.68rem;font-weight:600;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px}
-.hero{background:linear-gradient(135deg,var(--slate) 0%,var(--slate-m) 55%,var(--slate-l) 100%);padding:52px 24px 44px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(200,133,58,.18) 0%,transparent 70%)}
-.hero h1{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,4vw,2.7rem);font-weight:800;color:#fff;line-height:1.15;margin-bottom:10px}
-.hero h1 span{color:var(--oak-l)}
-.hero p{color:rgba(255,255,255,.72);font-size:.98rem;max-width:520px;margin:0 auto 22px;line-height:1.6}
-.hbs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-.hb{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.85);padding:4px 13px;border-radius:20px;font-size:.75rem;font-weight:500}
-.zip-banner{background:linear-gradient(135deg,var(--oak-d),var(--oak));padding:18px 24px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
-.zip-banner p{color:#fff;font-weight:500;font-size:.92rem}
-.ziw{display:flex;gap:8px;align-items:center}
-.ziw input{padding:9px 14px;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.92rem;width:140px;outline:none}
-.zbtn{background:var(--slate);color:#fff;border:none;padding:9px 18px;border-radius:8px;cursor:pointer;font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;transition:all .2s}
-.zbtn:hover{background:#000}
-.zres{background:rgba(255,255,255,.15);color:#fff;padding:6px 14px;border-radius:20px;font-size:.82rem;font-weight:600;display:none}
-.main{max-width:1140px;margin:0 auto;padding:32px 20px 60px;display:grid;grid-template-columns:1fr 340px;gap:26px;align-items:start}
-@media(max-width:870px){.main{grid-template-columns:1fr}}
-.card{background:#fff;border-radius:var(--r);box-shadow:var(--shadow);padding:26px;margin-bottom:20px}
-.ct{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--slate);margin-bottom:16px;display:flex;align-items:center;gap:8px}
-.ct .ic{width:28px;height:28px;background:var(--cream-d);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
-.tabs{display:flex;background:var(--cream-d);border-radius:8px;padding:3px;width:fit-content;margin-bottom:18px}
-.tabb{padding:7px 20px;border:none;background:transparent;border-radius:6px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;font-size:.84rem;color:var(--slate-l);transition:all .2s}
-.tabb.active{background:var(--slate);color:#fff;box-shadow:0 2px 8px rgba(28,43,58,.2)}
-.ftypes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
-@media(max-width:520px){.ftypes{grid-template-columns:repeat(3,1fr)}}
-.ftb{border:1.5px solid var(--cream-d);background:#fff;border-radius:10px;padding:10px 5px;cursor:pointer;text-align:center;transition:all .2s;font-family:'DM Sans',sans-serif}
-.ftb .fi{font-size:1.25rem;display:block;margin-bottom:3px}
-.ftb .fl{font-size:.7rem;font-weight:500;color:#777}
-.ftb.active{border-color:var(--oak);background:#FFF8F0;box-shadow:0 0 0 2px rgba(200,133,58,.15)}
-.ftb.active .fl{color:var(--oak-d);font-weight:600}
-.ig label{display:block;font-size:.71rem;font-weight:500;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
-.ig input,.ig select{width:100%;padding:9px 12px;border:1.5px solid var(--cream-d);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--slate);background:#fff;transition:border-color .2s;outline:none}
-.ig input:focus,.ig select:focus{border-color:var(--oak)}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
-@media(max-width:480px){.row3{grid-template-columns:1fr 1fr}}
-.ri{background:var(--cream);border:1.5px solid var(--cream-d);border-radius:10px;padding:15px;transition:border-color .2s}
-.ri:hover{border-color:var(--oak-l)}
-.rh{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.rname{font-family:'Syne',sans-serif;font-weight:700;font-size:.93rem;border:none;background:transparent;color:var(--slate);width:160px;padding:0;outline:none}
-.rname:focus{border-bottom:1.5px solid var(--oak)}
-.rmbtn{background:none;border:none;cursor:pointer;color:#bbb;font-size:1rem;padding:2px 6px;transition:color .2s}
-.rmbtn:hover{color:var(--red)}
-.tog-row{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;margin-bottom:10px}
-.tsw{width:36px;height:20px;background:var(--cream-d);border-radius:10px;position:relative;transition:background .2s;flex-shrink:0}
-.tsw::after{content:'';position:absolute;left:2px;top:2px;width:16px;height:16px;background:#fff;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
-.tsw.on{background:var(--oak)}
-.tsw.on::after{transform:translateX(16px)}
-.tl{font-weight:500;font-size:.88rem}
-.calc-btn{width:100%;padding:15px;background:linear-gradient(135deg,var(--oak),var(--oak-d));color:#fff;border:none;border-radius:10px;font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(200,133,58,.4);margin-top:6px}
-.calc-btn:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(200,133,58,.5)}
-.add-btn{width:100%;padding:11px;border:2px dashed var(--cream-d);background:transparent;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--slate-l);font-weight:500;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px}
-.add-btn:hover{border-color:var(--oak);color:var(--oak);background:#FFF8F0}
-.res-sec{display:none}
-.res-sec.vis{display:block;animation:fadeUp .35s ease}
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.rg{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:16px}
-.rs{background:var(--cream);border-radius:10px;padding:15px;text-align:center}
-.rs.hl{background:linear-gradient(135deg,var(--oak),var(--oak-d));color:#fff}
-.rs.hl2{background:linear-gradient(135deg,var(--slate),var(--slate-m));color:#fff}
-.rs .sl{font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:#999;margin-bottom:5px}
-.rs.hl .sl,.rs.hl2 .sl{color:rgba(255,255,255,.7)}
-.rs .sv{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--slate);line-height:1}
-.rs.hl .sv,.rs.hl2 .sv{color:#fff}
-.rs .ss{font-size:.73rem;color:#bbb;margin-top:3px}
-.rs.hl .ss,.rs.hl2 .ss{color:rgba(255,255,255,.6)}
-.reg-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.2);color:var(--blue);padding:6px 14px;border-radius:20px;font-size:.8rem;font-weight:600;margin-bottom:14px}
-.bt{width:100%;border-collapse:collapse;font-size:.86rem}
-.bt th{background:var(--slate);color:#fff;padding:9px 11px;text-align:left;font-family:'Syne',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:.3px}
-.bt th:first-child{border-radius:8px 0 0 0}.bt th:last-child{border-radius:0 8px 0 0}
-.bt td{padding:8px 11px;border-bottom:1px solid var(--cream-d);color:var(--slate)}
-.bt tr:last-child td{border-bottom:none}
-.bt tr:nth-child(even) td{background:var(--cream)}
-.bt .tr td{font-weight:700;background:#FFF8F0!important;border-top:2px solid var(--oak-l);color:var(--oak-d);font-family:'Syne',sans-serif}
-.ar{display:flex;gap:9px;margin-top:14px;flex-wrap:wrap}
-.pbtn{flex:1;min-width:110px;padding:10px;border:1.5px solid var(--cream-d);background:#fff;border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;font-size:.85rem;color:var(--slate);transition:all .2s;display:flex;align-items:center;justify-content:center;gap:5px}
-.pbtn:hover{border-color:var(--slate);background:var(--cream)}
-.tt-card{background:linear-gradient(135deg,#009FD4,#006B8F);border-radius:var(--r);padding:22px;color:#fff;margin-bottom:20px}
-.tt-title{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;margin-bottom:6px}
-.tt-sub{font-size:.83rem;color:rgba(255,255,255,.8);margin-bottom:14px;line-height:1.5}
-.tt-btn{display:block;width:100%;padding:12px;background:#fff;color:#006B8F;border:none;border-radius:8px;font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;text-align:center;text-decoration:none;transition:all .2s}
-.tt-btn:hover{background:var(--cream-d)}
-.tt-plats{display:flex;gap:7px;margin-bottom:13px;flex-wrap:wrap}
-.tp{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;padding:4px 10px;border-radius:12px;font-size:.73rem;font-weight:500}
-.lead-form{background:linear-gradient(135deg,var(--slate),var(--slate-m));border-radius:var(--r);padding:22px;margin-bottom:20px}
-.lf-t{font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:#fff;margin-bottom:6px}
-.lf-s{font-size:.8rem;color:rgba(255,255,255,.7);margin-bottom:13px}
-.lf-i{width:100%;padding:9px 12px;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--slate);margin-bottom:8px;outline:none}
-.lf-btn{width:100%;padding:11px;background:var(--oak);color:#fff;border:none;border-radius:8px;font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s}
-.lf-btn:hover{background:var(--oak-d)}
-.lf-n{font-size:.7rem;color:rgba(255,255,255,.5);margin-top:8px;text-align:center}
-.price-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--cream-d);font-size:.86rem}
-.price-row:last-child{border-bottom:none}
-.price-row .fn{font-weight:500;display:flex;align-items:center;gap:5px}
-.pr{font-size:.78rem;color:var(--green);font-weight:600;background:rgba(61,122,92,.08);padding:2px 8px;border-radius:12px}
-.aff-links{display:flex;flex-direction:column;gap:7px}
-.al{display:flex;align-items:center;justify-content:space-between;padding:11px 13px;border-radius:8px;border:1.5px solid var(--cream-d);background:#fff;text-decoration:none;transition:all .2s;cursor:pointer}
-.al:hover{border-color:var(--oak-l);background:#FFF8F0;transform:translateX(2px)}
-.al-l{display:flex;align-items:center;gap:8px}
-.al-logo{width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;color:#fff;font-family:'Syne',sans-serif;flex-shrink:0}
-.al-name{font-weight:600;font-size:.86rem;color:var(--slate)}
-.al-sub{font-size:.7rem;color:#aaa}
-.tip-box{background:linear-gradient(135deg,var(--slate),var(--slate-m));border-radius:10px;padding:15px;color:#fff;margin-bottom:12px}
-.tip-t{font-family:'Syne',sans-serif;font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.5px;color:var(--oak-l);margin-bottom:7px}
-.tip-box p{font-size:.81rem;color:rgba(255,255,255,.75);line-height:1.5}
-.wb{font-size:.72rem;padding:4px 10px;border-radius:12px;font-weight:500}
-.wb.low{background:rgba(61,122,92,.1);color:var(--green)}
-.wb.mid{background:rgba(200,133,58,.1);color:var(--oak-d)}
-.wb.hi{background:rgba(192,57,43,.1);color:var(--red)}
-.addon-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--cream-d)}
-.addon-row:last-child{border-bottom:none}
-.an{font-weight:500;font-size:.88rem}
-.as{font-size:.74rem;color:#aaa}
-.addon-cost{font-weight:700;font-size:.9rem;color:var(--oak-d)}
-.amz-section{background:linear-gradient(135deg,#232F3E,#37475A);border-radius:var(--r);padding:22px;margin-bottom:20px}
-.amz-header{display:flex;align-items:center;gap:10px;margin-bottom:6px}
-.amz-logo{background:#FF9900;color:#111;font-family:'Syne',sans-serif;font-weight:900;font-size:.9rem;padding:4px 10px;border-radius:6px}
-.amz-title{font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:#fff}
-.amz-sub{font-size:.8rem;color:rgba(255,255,255,.7);margin-bottom:14px;line-height:1.5}
-.amz-products{display:flex;flex-direction:column;gap:8px}
-.amz-product{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:11px 13px;text-decoration:none;transition:all .2s}
-.amz-product:hover{background:rgba(255,153,0,.15);border-color:#FF9900;transform:translateX(2px)}
-.amz-pl{display:flex;align-items:center;gap:10px}
-.amz-icon{font-size:1.3rem}
-.amz-pname{font-weight:600;font-size:.85rem;color:#fff}
-.amz-psub{font-size:.7rem;color:rgba(255,255,255,.55)}
-.amz-arrow{color:#FF9900;font-weight:700;font-size:.9rem}
-.amz-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(255,153,0,.2);border:1px solid rgba(255,153,0,.4);color:#FF9900;padding:3px 9px;border-radius:12px;font-size:.68rem;font-weight:700;margin-bottom:12px}
-.amz-disclaimer{font-size:.65rem;color:rgba(255,255,255,.35);margin-top:10px;text-align:center;line-height:1.4}
-footer{background:var(--slate);color:rgba(255,255,255,.5);text-align:center;padding:22px;font-size:.76rem;line-height:1.7}
-footer a{color:var(--oak-l);text-decoration:none}
-@media print{header,.hero,.zip-banner,.sidebar,.add-btn,.calc-btn,.ar,footer,.tt-card,.lead-form,.amz-section{display:none!important}.main{grid-template-columns:1fr;padding:0}.card{box-shadow:none;border:1px solid #ddd}}
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907111543523765" crossorigin="anonymous"></script>
+<title>SmartToolsHub – Free Financial & Home Calculators 2026</title>
+<meta name="description" content="Free online calculators for paycheck, home affordability, renovation costs, and flooring. All 50 states. ZIP-based pricing. Updated for 2026 One Big Beautiful Bill tax changes. No signup required.">
+<meta name="keywords" content="free paycheck calculator 2026, home affordability calculator, flooring calculator, renovation cost estimator, take home pay calculator, salary calculator all 50 states, gig worker tax calculator">
+<meta name="author" content="SmartToolsHub">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="SmartToolsHub – Free Financial & Home Calculators 2026">
+<meta property="og:description" content="Free financial and home improvement calculators. All 50 states. Updated for 2026 tax laws. No signup required.">
+<meta property="og:url" content="https://toolshubfree.com/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolshubfree.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SmartToolsHub – Free Calculators 2026">
+<meta name="twitter:description" content="Free paycheck, home affordability, flooring & renovation calculators. All 50 states. No signup.">
+<meta name="fo-verify" content="9435c51b-fadd-4ca3-a6d5-d79a730b51cf">
 <link rel="manifest" href="/manifest.json">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsHub">
 <meta name="theme-color" content="#0D1B2A">
-<meta name="keywords" content="flooring calculator, how much flooring do I need, carpet calculator, hardwood flooring calculator, LVP flooring calculator">
-<meta name="robots" content="index, follow">
-<meta name="fo-verify" content="9435c51b-fadd-4ca3-a6d5-d79a730b51cf" />
+<!-- Schema.org structured data for Google -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"SmartToolsHub",
+  "url":"https://toolshubfree.com",
+  "description":"Free financial and home improvement calculators for all 50 states",
+  "potentialAction":{
+    "@type":"SearchAction",
+    "target":"https://toolshubfree.com/?q={search_term_string}",
+    "query-input":"required name=search_term_string"
+  }
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907111543523765" crossorigin="anonymous"></script>
+<style>
+:root{--ink:#0D1B2A;--lime:#C8F135;--lime-d:#9BBF1A;--silver:#F0F4F8;--white:#fff;--shadow:0 8px 32px rgba(13,27,42,0.13)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Cabinet Grotesk',sans-serif;background:var(--silver);color:var(--ink)}
+.disclosure-bar{background:rgba(13,27,42,0.06);text-align:center;padding:9px 16px;font-size:0.73rem;color:#555;font-weight:600;border-bottom:1px solid rgba(13,27,42,0.1)}
+header{background:var(--ink);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,0.2)}
+.logo{font-size:1.4rem;font-weight:900;color:#fff;letter-spacing:-1px;text-decoration:none}.logo span{color:var(--lime)}
+.header-right{display:flex;align-items:center;gap:12px}
+.header-badge{background:rgba(200,241,53,.13);border:1px solid rgba(200,241,53,.3);color:var(--lime);font-size:.68rem;font-weight:800;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px}
+.lang-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);font-size:.72rem;font-weight:700;padding:5px 12px;border-radius:20px;cursor:pointer;text-decoration:none}
+/* HERO */
+.hero{background:var(--ink);padding:64px 24px 56px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(200,241,53,.07) 0%,transparent 65%)}
+.hero-badge{display:inline-block;background:rgba(200,241,53,.12);border:1px solid rgba(200,241,53,.3);color:var(--lime);font-size:.7rem;font-weight:800;padding:5px 14px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:16px;position:relative}
+.hero h1{font-size:clamp(2rem,5vw,3.6rem);font-weight:900;color:#fff;line-height:1.05;letter-spacing:-2px;margin-bottom:14px;position:relative}
+.hero h1 span{color:var(--lime)}
+.hero p{color:rgba(255,255,255,.65);font-size:1rem;max-width:500px;margin:0 auto 28px;line-height:1.65;position:relative}
+.hbs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;position:relative}
+.hb{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.85);padding:5px 14px;border-radius:20px;font-size:.74rem;font-weight:700}
+/* NEW LAW BANNER */
+.law-banner{background:linear-gradient(135deg,#1B3A5C,#0D2440);border-bottom:3px solid var(--lime);padding:14px 20px;text-align:center}
+.law-banner-inner{max-width:800px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.law-tag{background:var(--lime);color:var(--ink);font-size:.68rem;font-weight:900;padding:3px 10px;border-radius:20px;text-transform:uppercase;white-space:nowrap}
+.law-text{color:rgba(255,255,255,.85);font-size:.82rem;font-weight:600}
+.law-link{color:var(--lime);font-size:.82rem;font-weight:800;text-decoration:none}
+/* TOOLS GRID */
+.tools{max-width:1160px;margin:0 auto;padding:48px 20px 64px;display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+@media(max-width:760px){.tools{grid-template-columns:1fr}}
+.tool-card{background:var(--white);border-radius:18px;box-shadow:var(--shadow);overflow:hidden;transition:transform .2s,box-shadow .2s;text-decoration:none;display:flex;flex-direction:column}
+.tool-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(13,27,42,.18)}
+.tc-top{padding:30px 26px 22px;flex:1}
+.tc-icon{font-size:2.5rem;margin-bottom:14px;display:block}
+.tc-badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:12px;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+.tc-title{font-size:1.3rem;font-weight:900;color:var(--ink);letter-spacing:-.5px;margin-bottom:8px;line-height:1.15}
+.tc-desc{font-size:.88rem;color:#666;line-height:1.6;margin-bottom:16px}
+.tc-features{display:flex;flex-direction:column;gap:6px}
+.tcf{font-size:.8rem;color:#555;display:flex;align-items:center;gap:7px;font-weight:500}
+.tcf::before{content:'✓';color:var(--lime-d);font-weight:900;font-size:.85rem;flex-shrink:0}
+.tc-btn{display:block;padding:16px 24px;text-align:center;font-weight:900;font-size:.95rem;letter-spacing:-.3px;transition:all .2s;text-decoration:none}
+.c1 .tc-top{border-top:5px solid var(--lime)}.c1 .tc-badge{background:rgba(200,241,53,.2);color:var(--lime-d)}.c1 .tc-btn{background:var(--lime);color:var(--ink)}.c1 .tc-btn:hover{background:var(--lime-d);color:#fff}
+.c2 .tc-top{border-top:5px solid #0B3D91}.c2 .tc-badge{background:rgba(11,61,145,.1);color:#0B3D91}.c2 .tc-btn{background:#0B3D91;color:#fff}.c2 .tc-btn:hover{background:#1557C0}
+.c3 .tc-top{border-top:5px solid #2D6A4F}.c3 .tc-badge{background:rgba(45,106,79,.12);color:#2D6A4F}.c3 .tc-btn{background:#1B4332;color:#fff}.c3 .tc-btn:hover{background:#2D6A4F}
+.c4 .tc-top{border-top:5px solid #C8853A}.c4 .tc-badge{background:rgba(200,133,58,.12);color:#8B5A1E}.c4 .tc-btn{background:#C8853A;color:#fff}.c4 .tc-btn:hover{background:#8B5A1E}
+.c5 .tc-top{border-top:5px solid #FF6B35}.c5 .tc-badge{background:rgba(255,107,53,.15);color:#C0392B}
+.c6 .tc-top{border-top:5px solid #00B87D}.c6 .tc-badge{background:rgba(0,184,125,.12);color:#007A52}
+/* AD STRIP */
+.ad-strip{grid-column:1 / -1;background:linear-gradient(135deg,#fff9e6,#fffde7);border:2px dashed #FF6B35;padding:28px 24px;border-radius:18px;text-align:center;box-shadow:var(--shadow)}
+.ad-strip h3{font-size:1.4rem;font-weight:900;margin-bottom:6px;letter-spacing:-0.5px;color:var(--ink)}
+.ad-strip p{font-size:.9rem;color:#555;margin-bottom:16px;line-height:1.5;max-width:500px;margin-left:auto;margin-right:auto}
+.ad-strip .aff-btn{display:inline-block;padding:13px 32px;border-radius:9px;background:#FF6B35;color:#fff;text-decoration:none;font-weight:900;font-size:.95rem;transition:background .2s;margin-bottom:4px}
+.ad-strip .aff-btn:hover{background:#0D1B2A}
+.ad-note{font-size:.68rem;color:#999;margin-top:6px}
+/* QUICK CALC WIDGET */
+.quick-calc{background:var(--white);padding:36px 20px;border-bottom:2px solid var(--silver)}
+.qc-inner{max-width:700px;margin:0 auto;text-align:center}
+.qc-inner h2{font-size:1.4rem;font-weight:900;margin-bottom:6px;letter-spacing:-.5px}
+.qc-inner p{font-size:.85rem;color:#666;margin-bottom:20px}
+.qc-form{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center}
+.qc-input{padding:12px 18px;border:2px solid #D8E2EC;border-radius:10px;font-family:'Cabinet Grotesk',sans-serif;font-size:.92rem;outline:none;min-width:180px}
+.qc-input:focus{border-color:var(--lime)}
+.qc-select{padding:12px 14px;border:2px solid #D8E2EC;border-radius:10px;font-family:'Cabinet Grotesk',sans-serif;font-size:.88rem;outline:none;background:#fff;cursor:pointer}
+.qc-btn{padding:12px 24px;background:var(--lime);color:var(--ink);border:none;border-radius:10px;font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:.92rem;cursor:pointer;transition:background .2s;white-space:nowrap}
+.qc-btn:hover{background:var(--lime-d)}
+.qc-result{margin-top:16px;padding:16px 24px;background:var(--ink);color:#fff;border-radius:12px;display:none;font-size:.95rem;font-weight:700}
+.qc-result span{color:var(--lime);font-size:1.4rem;font-weight:900}
+/* EMAIL CAPTURE */
+.email-section{background:var(--ink);padding:52px 24px;text-align:center}
+.email-inner{max-width:520px;margin:0 auto}
+.email-section h2{font-size:1.8rem;font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:8px}
+.email-section p{color:rgba(255,255,255,.6);font-size:.9rem;margin-bottom:24px;line-height:1.6}
+.email-form{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.email-input{flex:1;min-width:220px;padding:13px 18px;border:2px solid rgba(255,255,255,.15);border-radius:10px;background:rgba(255,255,255,.08);color:#fff;font-family:'Cabinet Grotesk',sans-serif;font-size:.92rem;outline:none}
+.email-input::placeholder{color:rgba(255,255,255,.35)}
+.email-input:focus{border-color:var(--lime)}
+.email-submit{padding:13px 24px;background:var(--lime);color:var(--ink);border:none;border-radius:10px;font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:.92rem;cursor:pointer;transition:background .2s;white-space:nowrap}
+.email-submit:hover{background:var(--lime-d)}
+.email-privacy{font-size:.68rem;color:rgba(255,255,255,.3);margin-top:10px}
+/* TRUST */
+.trust-section{background:var(--white);padding:28px 20px;border-top:1px solid #E8EEF4;border-bottom:1px solid #E8EEF4}
+.trust-inner{max-width:1160px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:24px}
+.trust-item{display:flex;align-items:center;gap:8px;font-size:.82rem;font-weight:700;color:#555}
+.trust-icon{font-size:1.2rem}
+/* STATS */
+.stats{background:var(--ink);padding:40px 24px;border-top:1px solid rgba(255,255,255,.07)}
+.stats-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:24px;text-align:center}
+@media(max-width:600px){.stats-inner{grid-template-columns:1fr 1fr}}
+.stat-num{font-size:2rem;font-weight:900;color:var(--lime);letter-spacing:-1px}
+.stat-lbl{font-size:.75rem;color:rgba(255,255,255,.5);font-weight:600;margin-top:4px;text-transform:uppercase;letter-spacing:.4px}
+/* WHY */
+.why{max-width:1160px;margin:0 auto;padding:48px 20px}
+.why h2{font-size:1.8rem;font-weight:900;color:var(--ink);letter-spacing:-1px;margin-bottom:28px;text-align:center}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:700px){.why-grid{grid-template-columns:1fr}}
+.why-item{background:var(--white);border-radius:14px;padding:22px;box-shadow:0 2px 12px rgba(13,27,42,.07)}
+.wi-icon{font-size:1.5rem;margin-bottom:10px;display:block}
+.wi-title{font-weight:800;font-size:.95rem;color:var(--ink);margin-bottom:6px}
+.wi-desc{font-size:.82rem;color:#666;line-height:1.55}
+/* FAQ */
+.faq-section{background:var(--silver);padding:48px 20px}
+.faq-inner{max-width:760px;margin:0 auto}
+.faq-inner h2{font-size:1.8rem;font-weight:900;letter-spacing:-1px;margin-bottom:24px;text-align:center}
+.faq-item{background:var(--white);border-radius:12px;margin-bottom:10px;overflow:hidden;box-shadow:0 2px 8px rgba(13,27,42,.06)}
+.faq-q{padding:16px 20px;font-weight:800;font-size:.92rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
+.faq-q::after{content:'＋';font-size:1.1rem;color:var(--lime-d);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{padding:0 20px;max-height:0;overflow:hidden;transition:max-height .3s,padding .2s;font-size:.84rem;color:#555;line-height:1.65}
+.faq-item.open .faq-a{max-height:200px;padding:0 20px 16px}
+/* BOTTOM NAV */
+.bottom-nav{background:var(--ink);padding:22px 20px 28px;border-top:1px solid rgba(255,255,255,.07)}
+.bottom-nav-label{font-size:.68rem;font-weight:800;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1px;text-align:center;margin-bottom:12px}
+.bottom-nav-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:1160px;margin:0 auto}
+.bottom-nav-links a{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.75);font-size:.8rem;font-weight:700;padding:8px 16px;border-radius:20px;text-decoration:none;transition:all .18s}
+.bottom-nav-links a:hover,.bottom-nav-links a.active{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+/* FOOTER */
+footer{background:#1B3A5C;color:rgba(255,255,255,.4);text-align:center;padding:28px 20px;font-size:.75rem;line-height:1.8}
+footer a{color:var(--lime);text-decoration:none}
+footer strong{color:rgba(255,255,255,.8)}
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 24px;border-radius:50px;font-size:.85rem;font-weight:700;box-shadow:0 8px 32px rgba(0,0,0,.3);opacity:0;transition:opacity .3s;pointer-events:none;z-index:9999;white-space:nowrap}
+.toast.show{opacity:1}
+#installBtn{display:none;position:fixed;bottom:20px;right:20px;z-index:9998;background:var(--lime);color:var(--ink);border:none;padding:12px 20px;border-radius:50px;font-weight:900;font-size:.9rem;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.3);font-family:'Cabinet Grotesk',sans-serif}
+</style>
 </head>
 <body>
-<header><div class="hi"><div class="logo">Floor<span>Calc</span> Pro</div><div class="hbg">100% Free</div></div></header>
+
+<!-- LEGAL DISCLOSURE -->
+<div class="disclosure-bar">
+  ⚠️ As an Amazon Associate and CJ Affiliate, I earn from qualifying purchases. All calculators are for informational purposes only — not financial or legal advice.
+</div>
+
+<!-- HEADER -->
+<header>
+  <a class="logo" href="/">Smart<span>Tools</span>Hub</a>
+  <div class="header-right">
+    <span class="header-badge">100% Free</span>
+    <a class="lang-btn" href="#">🌎 ES</a>
+  </div>
+</header>
+
+<!-- NEW 2026 LAW BANNER — SEO + engagement boost -->
+<div class="law-banner">
+  <div class="law-banner-inner">
+    <span class="law-tag">🆕 2026 Update</span>
+    <span class="law-text">The "One Big Beautiful Bill" changed your paycheck — tips now tax-free, overtime deductions added, car loan interest deductible.</span>
+    <a class="law-link" href="/paycalcpro.html">Recalculate your pay →</a>
+  </div>
+</div>
+
+<!-- HERO -->
 <div class="hero">
-  <h1>The <span>Smarter Flooring</span><br>Calculator — With Local Pricing</h1>
-  <p>Enter your ZIP code for real labor rates in YOUR city. Calculate materials, get box counts, find local pros — all in one place.</p>
-  <div class="hbs"><span class="hb">📍 ZIP-Based Pricing</span><span class="hb">🏠 Multi-Room</span><span class="hb">📦 Box Counter</span><span class="hb">🪜 Stairs</span><span class="hb">👷 Find Local Pros</span><span class="hb">🖨️ Print Quote</span></div>
-</div>
-<div class="zip-banner">
-  <p>📍 Enter your ZIP for local pricing:</p>
-  <div class="ziw"><input type="text" id="zipInput" placeholder="e.g. 90210" maxlength="5"><button class="zbtn" onclick="lookupZip()">Get Local Prices</button></div>
-  <div class="zres" id="zRes"></div>
-</div>
-<div class="main">
-<div>
-<div style="margin-bottom:8px"><div class="tabs"><button class="tabb active" onclick="setUnit('ft',this)">Feet (ft)</button><button class="tabb" onclick="setUnit('m',this)">Meters (m)</button></div></div>
-<div class="card">
-  <div class="ct"><span class="ic">🪵</span> Choose Flooring Type</div>
-  <div class="ftypes">
-    <button class="ftb active" data-type="hardwood" onclick="selFloor(this)"><span class="fi">🪵</span><span class="fl">Hardwood</span></button>
-    <button class="ftb" data-type="laminate" onclick="selFloor(this)"><span class="fi">🟫</span><span class="fl">Laminate</span></button>
-    <button class="ftb" data-type="lvp" onclick="selFloor(this)"><span class="fi">🔷</span><span class="fl">LVP/Vinyl</span></button>
-    <button class="ftb" data-type="tile" onclick="selFloor(this)"><span class="fi">⬜</span><span class="fl">Tile</span></button>
-    <button class="ftb" data-type="carpet" onclick="selFloor(this)"><span class="fi">🟥</span><span class="fl">Carpet</span></button>
-    <button class="ftb" data-type="engineered" onclick="selFloor(this)"><span class="fi">🟤</span><span class="fl">Engineered</span></button>
-    <button class="ftb" data-type="bamboo" onclick="selFloor(this)"><span class="fi">🎋</span><span class="fl">Bamboo</span></button>
-    <button class="ftb" data-type="epoxy" onclick="selFloor(this)"><span class="fi">🌊</span><span class="fl">Epoxy</span></button>
+  <div class="hero-badge">⚡ 7 Free Tools · All 50 States · 2026 Tax Data</div>
+  <h1>Free Tools That<br><span>Save You Money</span></h1>
+  <p>Paycheck calculator, home affordability, renovation estimator, and flooring calculator — all free, no signup, no ads in the way.</p>
+  <div class="hbs">
+    <span class="hb">💵 Paycheck After Taxes</span>
+    <span class="hb">🏡 Home Affordability</span>
+    <span class="hb">🏠 Renovation Costs</span>
+    <span class="hb">🪵 Flooring Calculator</span>
+    <span class="hb">📍 ZIP Pricing</span>
+    <span class="hb">🌎 English &amp; Español</span>
   </div>
-  <div class="row3" style="margin-bottom:12px">
-    <div class="ig"><label>Layout Pattern</label><select id="patSel" onchange="chkCW()"><option value="10">Straight (+10%)</option><option value="15">Diagonal (+15%)</option><option value="20">Herringbone (+20%)</option><option value="custom">Custom %</option></select></div>
-    <div class="ig" id="cwg" style="display:none"><label>Custom Waste %</label><input type="number" id="cw" value="10" min="0" max="50"></div>
-    <div class="ig"><label>Price / <span class="ulbl">sq ft</span></label><input type="number" id="ppu" value="9.00" min="0" step="0.01"></div>
-    <div class="ig"><label>Box Coverage (<span class="ulbl">sq ft</span>)</label><input type="number" id="bcov" value="20" min="1" step="0.1"></div>
-  </div>
-  <div class="ig"><label>Material Quality</label><select id="quality" onchange="applyQ()"><option value="0.7">Budget / Builder Grade</option><option value="1.0" selected>Mid-Range (Most Popular)</option><option value="1.55">Premium / Luxury</option></select></div>
 </div>
-<div class="card">
-  <div class="ct"><span class="ic">🔧</span> Optional Add-Ons</div>
-  <div class="tog-row" onclick="togA('removal')"><div class="tsw" id="ta_removal"></div><span class="tl">Old floor removal <span style="color:#aaa;font-size:.78rem">($1–$3/sq ft)</span></span></div>
-  <div class="tog-row" onclick="togA('subfloor')"><div class="tsw" id="ta_subfloor"></div><span class="tl">Subfloor repair <span style="color:#aaa;font-size:.78rem">($2–$7/sq ft)</span></span></div>
-  <div class="tog-row" onclick="togA('underlay')"><div class="tsw" id="ta_underlay"></div><span class="tl">Underlayment / padding <span style="color:#aaa;font-size:.78rem">($0.50–$1/sq ft)</span></span></div>
-  <div class="tog-row" style="margin-bottom:0" onclick="togA('boards')"><div class="tsw" id="ta_boards"></div><span class="tl">Baseboard removal &amp; reinstall <span style="color:#aaa;font-size:.78rem">(flat ~$400)</span></span></div>
-</div>
-<div class="card">
-  <div class="ct"><span class="ic">🏠</span> Your Rooms</div>
-  <div id="roomList" style="display:flex;flex-direction:column;gap:12px"></div>
-  <button class="add-btn" onclick="addRoom()">+ Add Another Room</button>
-</div>
-<div class="card">
-  <div class="ct"><span class="ic">🪜</span> Stairs (Optional)</div>
-  <div class="tog-row" onclick="togStairs()"><div class="tsw" id="stT"></div><span class="tl">Include stair flooring</span></div>
-  <div id="stIn" style="display:none">
-    <div class="row3" style="margin-top:10px;background:var(--cream);padding:12px;border-radius:8px">
-      <div class="ig"><label>Steps</label><input type="number" id="stCt" value="13" min="1"></div>
-      <div class="ig"><label>Width (<span class="stU">ft</span>)</label><input type="number" id="stW" value="3" step="0.1"></div>
-      <div class="ig"><label>Tread (<span class="stU">ft</span>)</label><input type="number" id="stTr" value="0.83" step="0.01"></div>
+
+<!-- QUICK CALC WIDGET — instant value, keeps users on page -->
+<div class="quick-calc">
+  <div class="qc-inner">
+    <h2>⚡ Quick Paycheck Check</h2>
+    <p>Enter your salary to instantly see your take-home pay estimate</p>
+    <div class="qc-form">
+      <input class="qc-input" type="number" id="qcSalary" placeholder="Annual salary (e.g. 65000)" min="0">
+      <select class="qc-select" id="qcState">
+        <option value="0.05">Average US State</option>
+        <option value="0">Texas / Florida (no state tax)</option>
+        <option value="0.0925">California</option>
+        <option value="0.0685">New York</option>
+        <option value="0.0575">Maryland</option>
+        <option value="0.05">Pennsylvania</option>
+      </select>
+      <button class="qc-btn" onclick="quickCalc()">Calculate →</button>
+    </div>
+    <div class="qc-result" id="qcResult">
+      Your estimated monthly take-home: <span id="qcAmount"></span>
+      <br><small style="color:rgba(255,255,255,.6);font-size:.75rem">For full breakdown with overtime, tips & gig income → <a href="/paycalcpro.html" style="color:var(--lime)">Open PayCalc Pro</a></small>
     </div>
   </div>
 </div>
-<button class="calc-btn" onclick="calculate()">🔢 Calculate My Flooring Cost</button>
-<div class="res-sec card" id="resSec">
-  <div class="ct"><span class="ic">✅</span> Your Estimate</div>
-  <div id="regBadge"></div>
-  <div class="rg" id="rGrid"></div>
-  <div style="overflow-x:auto;margin-bottom:14px"><table class="bt" id="bTable"></table></div>
-  <div id="addBreak" style="display:none"><div class="ct" style="margin-top:10px"><span class="ic">➕</span> Add-On Costs</div><div id="addList"></div></div>
-  <div class="ar">
-    <button class="pbtn" onclick="window.print()">🖨️ Print / PDF</button>
-    <button class="pbtn" onclick="cpQuote()">📋 Copy Quote</button>
-    <button class="pbtn" onclick="resetC()">🔄 Start Over</button>
-  </div>
-</div>
-</div>
-<div class="sidebar">
-  <div class="tt-card">
-    <div class="tt-title">👷 Find Local Flooring Pros</div>
-    <div class="tt-sub">Get up to 3 free quotes from top-rated contractors in your area. No commitment required.</div>
-    <div class="tt-plats"><span class="tp">⭐ Thumbtack</span><span class="tp">🏠 Angi</span><span class="tp">📋 HomeAdvisor</span></div>
-    <a class="tt-btn" id="ttLink" href="https://www.thumbtack.com/k/flooring/near-me" target="_blank" rel="noopener">🔍 Get Free Quotes Near Me →</a>
-    <p style="font-size:.7rem;color:rgba(255,255,255,.5);margin-top:8px;text-align:center">Takes 60 seconds · Totally free</p>
+
+<!-- TOOLS GRID -->
+<div class="tools">
+
+  <a class="tool-card c1" href="paycalcpro.html">
+    <div class="tc-top">
+      <span class="tc-icon">💰</span>
+      <div class="tc-badge">Most Popular · 5M+ Searches/Mo</div>
+      <div class="tc-title">PayCalc Pro</div>
+      <div class="tc-desc">See your exact take-home pay after all taxes. All 50 states, 2026 tax brackets including new tip &amp; overtime deductions.</div>
+      <div class="tc-features">
+        <div class="tcf">Salary &amp; hourly workers</div>
+        <div class="tcf">Overtime, tips &amp; bonuses</div>
+        <div class="tcf">Gig worker / 1099 mode</div>
+        <div class="tcf">Compare 2 jobs side by side</div>
+        <div class="tcf">2026 One Big Beautiful Bill updates</div>
+        <div class="tcf">English &amp; Español</div>
+      </div>
+    </div>
+    <div class="tc-btn">Open Paycheck Calculator →</div>
+  </a>
+
+  <a class="tool-card c2" href="homebuycalc.html">
+    <div class="tc-top">
+      <span class="tc-icon">🏡</span>
+      <div class="tc-badge">Highest CPC · $15–$80 per click</div>
+      <div class="tc-title">HomeBuy Calc</div>
+      <div class="tc-desc">Find out exactly how much house you can afford based on your salary, ZIP code, and real local property taxes.</div>
+      <div class="tc-features">
+        <div class="tcf">ZIP-based property tax rates</div>
+        <div class="tcf">3 budget scenarios (safe/stretch/max)</div>
+        <div class="tcf">Down payment slider 3%–30%</div>
+        <div class="tcf">Full monthly payment breakdown</div>
+        <div class="tcf">Mortgage pre-approval links</div>
+        <div class="tcf">English &amp; Español</div>
+      </div>
+    </div>
+    <div class="tc-btn">Open Home Affordability Calculator →</div>
+  </a>
+
+  <!-- CJ AFFILIATE STRIP — replace YOUR_CJ_AFFILIATE_LINK_HERE -->
+  <div class="ad-strip">
+    <span style="font-size:2rem">🏠</span>
+    <h3>Need Funding for Your Next Home Project?</h3>
+    <p>Don't burn through your savings. Compare rates on home equity loans and get personalized financing from top verified lenders — takes 60 seconds.</p>
+    <a class="aff-btn" href="YOUR_CJ_AFFILIATE_LINK_HERE" target="_blank" rel="nofollow sponsored">View Top Loan Offers →</a>
+    <div class="ad-note">Sponsored · As seen on LendingTree &amp; Bankrate</div>
   </div>
 
-  <!-- AMAZON AFFILIATE SECTION — tag: toolshubfree-20 -->
-  <div class="amz-section">
-    <div class="amz-header"><div class="amz-logo">amazon</div><div class="amz-title">Top-Rated Flooring Products</div></div>
-    <div class="amz-badge">⭐ Best Sellers · Fast 2-Day Delivery</div>
-    <div class="amz-sub">Shop the most popular flooring materials — compare prices before you buy.</div>
-    <div class="amz-products">
-      <a class="amz-product" href="https://www.amazon.com/s?k=hardwood+flooring&tag=toolshubfree-20" target="_blank" rel="noopener">
-        <div class="amz-pl"><span class="amz-icon">🪵</span><div><div class="amz-pname">Hardwood Flooring</div><div class="amz-psub">Browse best sellers</div></div></div><span class="amz-arrow">→</span>
-      </a>
-      <a class="amz-product" href="https://www.amazon.com/s?k=lvp+vinyl+plank+flooring&tag=toolshubfree-20" target="_blank" rel="noopener">
-        <div class="amz-pl"><span class="amz-icon">🔷</span><div><div class="amz-pname">LVP Vinyl Plank</div><div class="amz-psub">Waterproof · Easy install</div></div></div><span class="amz-arrow">→</span>
-      </a>
-      <a class="amz-product" href="https://www.amazon.com/s?k=laminate+flooring&tag=toolshubfree-20" target="_blank" rel="noopener">
-        <div class="amz-pl"><span class="amz-icon">🟫</span><div><div class="amz-pname">Laminate Flooring</div><div class="amz-psub">Budget-friendly options</div></div></div><span class="amz-arrow">→</span>
-      </a>
-      <a class="amz-product" href="https://www.amazon.com/s?k=flooring+underlayment&tag=toolshubfree-20" target="_blank" rel="noopener">
-        <div class="amz-pl"><span class="amz-icon">📦</span><div><div class="amz-pname">Underlayment &amp; Padding</div><div class="amz-psub">Essential for any install</div></div></div><span class="amz-arrow">→</span>
-      </a>
-      <a class="amz-product" href="https://www.amazon.com/s?k=flooring+installation+tools+kit&tag=toolshubfree-20" target="_blank" rel="noopener">
-        <div class="amz-pl"><span class="amz-icon">🔨</span><div><div class="amz-pname">Installation Tool Kits</div><div class="amz-psub">Tapping blocks, pull bars &amp; more</div></div></div><span class="amz-arrow">→</span>
-      </a>
-      <a class="amz-product" href="https://www.amazon.com/s?k=area+rugs+carpet&tag=toolshubfree-20" target="_blank" rel="noopener">
-        <div class="amz-pl"><span class="amz-icon">🟥</span><div><div class="amz-pname">Carpet &amp; Area Rugs</div><div class="amz-psub">All sizes · Free returns</div></div></div><span class="amz-arrow">→</span>
-      </a>
+  <a class="tool-card c3" href="homefixtcost.html">
+    <div class="tc-top">
+      <span class="tc-icon">🏠</span>
+      <div class="tc-badge">Highest Lead Value · $40–$230/lead</div>
+      <div class="tc-title">HomeFixCost</div>
+      <div class="tc-desc">Get instant cost estimates for kitchen remodels, bathrooms, roofing, HVAC, windows, decks and more.</div>
+      <div class="tc-features">
+        <div class="tcf">12 project types covered</div>
+        <div class="tcf">ZIP-based local pricing</div>
+        <div class="tcf">Budget vs premium quality</div>
+        <div class="tcf">Connect with local contractors</div>
+        <div class="tcf">Free printable quote</div>
+      </div>
     </div>
-    <div class="amz-disclaimer">As an Amazon Associate, SmartToolsHub earns from qualifying purchases.</div>
-  </div>
+    <div class="tc-btn">Open Renovation Estimator →</div>
+  </a>
 
-  <div class="lead-form">
-    <div class="lf-t">📬 Want Contractors to Call YOU?</div>
-    <div class="lf-s">Leave your info and get matched with local pros who will quote your project.</div>
-    <input class="lf-i" type="text" id="lfN" placeholder="Your name">
-    <input class="lf-i" type="tel" id="lfP" placeholder="Phone number">
-    <input class="lf-i" type="email" id="lfE" placeholder="Email address">
-    <input class="lf-i" type="text" id="lfZ" placeholder="ZIP code">
-    <button class="lf-btn" onclick="submitLead()">Send My Project Details →</button>
-    <p class="lf-n">🔒 We never sell your info. No spam.</p>
+  <a class="tool-card c4" href="floorcalcpro.html">
+    <div class="tc-top">
+      <span class="tc-icon">🪵</span>
+      <div class="tc-badge">Contractor Favorite</div>
+      <div class="tc-title">FloorCalc Pro</div>
+      <div class="tc-desc">Calculate exact square footage, box count, and total cost for any flooring type in multiple rooms.</div>
+      <div class="tc-features">
+        <div class="tcf">8 flooring types</div>
+        <div class="tcf">Multiple rooms at once</div>
+        <div class="tcf">Stairs calculator included</div>
+        <div class="tcf">Exact box count to buy</div>
+        <div class="tcf">ZIP-adjusted labor costs</div>
+      </div>
+    </div>
+    <div class="tc-btn">Open Flooring Calculator →</div>
+  </a>
+
+  <a class="tool-card c5" href="homestyleai.html">
+    <div class="tc-top">
+      <span class="tc-icon">🤖</span>
+      <div class="tc-badge">NEW · Goes Viral</div>
+      <div class="tc-title">HomeStyle AI</div>
+      <div class="tc-desc">Can't decide on flooring, paint colors or which renovation to do first? Ask our free AI home advisor and get a smart answer in seconds.</div>
+      <div class="tc-features">
+        <div class="tcf">Flooring type &amp; color picker</div>
+        <div class="tcf">Paint color advisor 2026</div>
+        <div class="tcf">Renovation ROI checker</div>
+        <div class="tcf">Budget regret preventer</div>
+        <div class="tcf">Move or renovate? advisor</div>
+        <div class="tcf">Powered by real AI</div>
+      </div>
+    </div>
+    <div class="tc-btn" style="background:linear-gradient(135deg,#FF6B35,#C0392B);color:#fff">Ask HomeStyle AI →</div>
+  </a>
+
+  <a class="tool-card c6" href="moneymappro.html">
+    <div class="tc-top">
+      <span class="tc-icon">🗺️</span>
+      <div class="tc-badge">NEW · Most Useful</div>
+      <div class="tc-title">MoneyMap Pro</div>
+      <div class="tc-desc">See exactly what comes in, what goes out, how much car you can afford, and your real FREE MONEY every month — all in one place.</div>
+      <div class="tc-features">
+        <div class="tcf">Car affordability + AutoTrader link</div>
+        <div class="tcf">Monthly bill tracker (toggle on/off)</div>
+        <div class="tcf">Annual expense breakdown</div>
+        <div class="tcf">Free money dashboard</div>
+        <div class="tcf">50/30/20 budget check</div>
+        <div class="tcf">Savings goals timeline</div>
+      </div>
+    </div>
+    <div class="tc-btn" style="background:linear-gradient(135deg,#00E5A0,#00B87D);color:#0C0F14">Open MoneyMap Pro →</div>
+  </a>
+
+</div>
+
+<!-- EMAIL CAPTURE -->
+<div class="email-section">
+  <div class="email-inner">
+    <h2>Get Free Money Tips Weekly 💰</h2>
+    <p>Join 10,000+ people who get our free salary tips, home buying guides, and money-saving tools every week. No spam ever.</p>
+    <div class="email-form">
+      <input class="email-input" type="email" id="emailInput" placeholder="Enter your email address..." autocomplete="email">
+      <button class="email-submit" onclick="submitEmail()">Get Free Tips →</button>
+    </div>
+    <div class="email-privacy">🔒 We never sell your info. Unsubscribe anytime.</div>
   </div>
-  <div class="card">
-    <div class="ct"><span class="ic">📍</span> <span id="pgTitle">2026 Price Guide (National Avg)</span></div>
-    <div class="price-row"><span class="fn">🪵 Hardwood</span><span class="pr" id="pg_hw">$6–$12/sq ft</span></div>
-    <div class="price-row"><span class="fn">🟤 Engineered</span><span class="pr" id="pg_eng">$4–$9/sq ft</span></div>
-    <div class="price-row"><span class="fn">🟫 Laminate</span><span class="pr" id="pg_lam">$2–$5/sq ft</span></div>
-    <div class="price-row"><span class="fn">🔷 LVP/Vinyl</span><span class="pr" id="pg_lvp">$2–$7/sq ft</span></div>
-    <div class="price-row"><span class="fn">⬜ Tile</span><span class="pr" id="pg_tile">$3–$10/sq ft</span></div>
-    <div class="price-row"><span class="fn">🟥 Carpet</span><span class="pr" id="pg_carp">$2–$6/sq ft</span></div>
-    <div class="price-row"><span class="fn">🔧 Labor (local)</span><span class="pr" id="pg_lab">$2–$6/sq ft</span></div>
-    <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap"><span class="wb low">Straight: +10%</span><span class="wb mid">Diagonal: +15%</span><span class="wb hi">Herringbone: +20%</span></div>
+</div>
+
+<!-- TRUST BADGES -->
+<div class="trust-section">
+  <div class="trust-inner">
+    <div class="trust-item"><span class="trust-icon">🔒</span> SSL Secured</div>
+    <div class="trust-item"><span class="trust-icon">✅</span> No Signup Required</div>
+    <div class="trust-item"><span class="trust-icon">🚫</span> No Hidden Fees</div>
+    <div class="trust-item"><span class="trust-icon">📍</span> ZIP-Based Accuracy</div>
+    <div class="trust-item"><span class="trust-icon">🌎</span> English &amp; Español</div>
+    <div class="trust-item"><span class="trust-icon">📅</span> 2026 Tax Data</div>
   </div>
-  <div class="card">
-    <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.5px;color:#bbb;margin-bottom:11px">🛒 Shop &amp; Compare Prices</div>
-    <div class="aff-links">
-      <a class="al" href="https://www.homedepot.com/b/Flooring/N-5yc1vZbql3" target="_blank"><div class="al-l"><div class="al-logo" style="background:#F96302">HD</div><div><div class="al-name">Home Depot</div><div class="al-sub">Same-day pickup available</div></div></div><span style="color:var(--oak)">→</span></a>
-      <a class="al" href="https://www.lowes.com/store/flooring" target="_blank"><div class="al-l"><div class="al-logo" style="background:#004990">L</div><div><div class="al-name">Lowe's</div><div class="al-sub">Compare brands &amp; prices</div></div></div><span style="color:var(--oak)">→</span></a>
-      <a class="al" href="https://www.flooranddecor.com/" target="_blank"><div class="al-l"><div class="al-logo" style="background:#005580">F&amp;D</div><div><div class="al-name">Floor &amp; Decor</div><div class="al-sub">Contractor pricing available</div></div></div><span style="color:var(--oak)">→</span></a>
-      <a class="al" href="https://www.amazon.com/s?k=flooring+materials&tag=toolshubfree-20" target="_blank"><div class="al-l"><div class="al-logo" style="background:#FF9900;color:#111">a</div><div><div class="al-name">Amazon</div><div class="al-sub">Fast 2-day delivery</div></div></div><span style="color:var(--oak)">→</span></a>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div><div class="stat-num">7</div><div class="stat-lbl">Free Tools</div></div>
+    <div><div class="stat-num">50</div><div class="stat-lbl">States</div></div>
+    <div><div class="stat-num">$0</div><div class="stat-lbl">Cost</div></div>
+    <div><div class="stat-num">2026</div><div class="stat-lbl">Tax Data</div></div>
+    <div><div class="stat-num">ES</div><div class="stat-lbl">Español</div></div>
+  </div>
+</div>
+
+<!-- WHY SECTION -->
+<div class="why">
+  <h2>Why People Use These Tools</h2>
+  <div class="why-grid">
+    <div class="why-item"><span class="wi-icon">⚡</span><div class="wi-title">Instant Results</div><div class="wi-desc">No signup, no email, no waiting. Get your answer in under 10 seconds.</div></div>
+    <div class="why-item"><span class="wi-icon">📍</span><div class="wi-title">Local Pricing</div><div class="wi-desc">Enter your ZIP code and get numbers that actually match your city and state.</div></div>
+    <div class="why-item"><span class="wi-icon">📜</span><div class="wi-title">2026 Tax Laws</div><div class="wi-desc">Updated for the One Big Beautiful Bill — tips, overtime, and car loan interest deductions.</div></div>
+    <div class="why-item"><span class="wi-icon">🏡</span><div class="wi-title">Home Buyer Ready</div><div class="wi-desc">Know your real buying power before talking to any lender or realtor.</div></div>
+    <div class="why-item"><span class="wi-icon">🚗</span><div class="wi-title">Gig Worker Friendly</div><div class="wi-desc">Uber, DoorDash, and freelance workers get accurate self-employment tax calculations.</div></div>
+    <div class="why-item"><span class="wi-icon">🌎</span><div class="wi-title">English &amp; Español</div><div class="wi-desc">Full Spanish translation built in — one click switches the entire interface.</div></div>
+  </div>
+</div>
+
+<!-- FAQ — Boosts Google ranking -->
+<div class="faq-section">
+  <div class="faq-inner">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How accurate is the paycheck calculator?</div>
+      <div class="faq-a">Our PayCalc Pro uses 2026 IRS tax brackets updated for the One Big Beautiful Bill, including new tip and overtime deductions. It covers all 50 states with local tax rates. Results are estimates — always confirm with your HR department or a tax professional.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Do I need to sign up to use these tools?</div>
+      <div class="faq-a">No. All 7 tools are 100% free with zero signup required. No email, no credit card, no account. Just open and use.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Are these tools updated for 2026 tax laws?</div>
+      <div class="faq-a">Yes. All calculators are updated for 2026 including the new standard deductions ($16,100 single), tip income exclusions, overtime deductions, and car loan interest deductions from the One Big Beautiful Bill.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How does the ZIP code pricing work?</div>
+      <div class="faq-a">When you enter your ZIP code, our tools pull local property tax rates, labor cost averages, and cost-of-living data for your specific city and county — giving you far more accurate estimates than national averages.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Can I use these tools on my phone?</div>
+      <div class="faq-a">Yes — all tools are fully mobile optimized. You can also install SmartToolsHub as a free app on your phone for instant access anytime.</div>
     </div>
   </div>
-  <div class="tip-box"><div class="tip-t">💡 Pro Tip</div><p>Always order <strong style="color:var(--oak-l)">10–15% extra</strong>. Running short mid-job means color mismatches from new batches. Order once, order right.</p></div>
 </div>
+
+<!-- BOTTOM NAVIGATION -->
+<div class="bottom-nav">
+  <div class="bottom-nav-label">🧭 All Free Tools</div>
+  <div class="bottom-nav-links">
+    <a href="/" class="active">🏠 Home</a>
+    <a href="/paycalcpro.html">💵 PayCalc Pro</a>
+    <a href="/homebuycalc.html">🏡 HomeBuy Calc</a>
+    <a href="/homefixtcost.html">🔨 HomeFixCost</a>
+    <a href="/floorcalcpro.html">🪵 FloorCalc Pro</a>
+    <a href="/homestyleai.html">🤖 HomeStyle AI</a>
+    <a href="/moneymappro.html">🗺️ MoneyMap Pro</a>
+  </div>
 </div>
+
+<!-- FOOTER -->
 <footer>
-  <strong style="color:rgba(255,255,255,.85)">FloorCalc Pro</strong> — Free Flooring &amp; Carpet Calculator<br>
-  Prices are 2026 US regional averages. Always get 3 contractor quotes.<br>
-  <a href="#">Privacy Policy</a> · <a href="#">About</a> · <a href="#">Contact</a>
+  <strong>SmartToolsHub</strong> — Free Financial &amp; Home Improvement Calculators<br>
+  All estimates are for informational purposes only. Not financial or legal advice.<br>
+  As an Amazon Associate and CJ Affiliate, we earn from qualifying purchases made through links on this site.<br>
+  &copy; 2026 SmartToolsHub · <a href="#">Privacy Policy</a> · <a href="#">About</a> · <a href="#">Contact</a>
 </footer>
+
+<div class="toast" id="toast"></div>
+<button id="installBtn" onclick="installApp()">📲 Install App</button>
+
 <script>
-const FD={hardwood:{p:9,b:20},laminate:{p:3.5,b:22},lvp:{p:4,b:24},tile:{p:6.5,b:10},carpet:{p:4,b:0},engineered:{p:6.5,b:20},bamboo:{p:6,b:22},epoxy:{p:8,b:0}};
-const ZR={'0':[1.25,1.12,'Northeast (CT/MA/RI)',3.5,7],'1':[1.30,1.18,'Northeast (NY/NJ/PA)',4,8],'2':[1.10,1.05,'Mid-Atlantic (DC/VA/MD)',3,6],'3':[0.92,0.95,'Southeast (FL/GA/AL)',2,5],'4':[0.90,0.92,'Midwest (OH/IN/MI)',2,4.5],'5':[0.88,0.90,'Midwest (MN/IA/WI)',1.8,4],'6':[0.95,0.95,'Central (IL/KS/NE)',2.2,5],'7':[0.88,0.90,'South (TX/OK/LA)',1.8,4.5],'8':[1.05,1.02,'Mountain West (CO/AZ/NV)',2.5,5.5],'9':[1.40,1.25,'West Coast (CA/WA/OR)',4,9]};
-let unit='ft',selT='hardwood',stOn=false,addons={removal:false,subfloor:false,underlay:false,boards:false},rc=0,reg=null;
-function lookupZip(){const z=document.getElementById('zipInput').value.trim();if(z.length!==5||isNaN(z)){alert('Enter a valid 5-digit ZIP code.');return;}const d=ZR[z[0]]||[1,1,'National Average',2,6];reg={lm:d[0],mm:d[1],name:d[2],ll:d[3],lh:d[4]};const el=document.getElementById('zRes');el.textContent='📍 '+d[2]+' — Labor adj: '+(d[0]>1?'+':'')+Math.round((d[0]-1)*100)+'%';el.style.display='inline-flex';document.getElementById('pgTitle').textContent='Prices for '+d[2];document.getElementById('pg_lab').textContent='$'+d[3]+'–$'+d[4]+'/sq ft';document.getElementById('pg_hw').textContent='$'+Math.round(6*d[1])+'–$'+Math.round(12*d[1])+'/sq ft';document.getElementById('pg_lam').textContent='$'+Math.round(2*d[1])+'–$'+Math.round(5*d[1])+'/sq ft';document.getElementById('pg_lvp').textContent='$'+Math.round(2*d[1])+'–$'+Math.round(7*d[1])+'/sq ft';document.getElementById('pg_tile').textContent='$'+Math.round(3*d[1])+'–$'+Math.round(10*d[1])+'/sq ft';document.getElementById('pg_carp').textContent='$'+Math.round(2*d[1])+'–$'+Math.round(6*d[1])+'/sq ft';document.getElementById('ttLink').href='https://www.thumbtack.com/k/flooring/near-me?zip='+z;document.getElementById('lfZ').value=z;applyQ();}
-function selFloor(btn){document.querySelectorAll('.ftb').forEach(b=>b.classList.remove('active'));btn.classList.add('active');selT=btn.dataset.type;applyQ();}
-function applyQ(){const q=parseFloat(document.getElementById('quality').value)||1;const mm=reg?reg.mm:1;document.getElementById('ppu').value=(FD[selT].p*q*mm).toFixed(2);if(FD[selT].b>0)document.getElementById('bcov').value=FD[selT].b;}
-function chkCW(){document.getElementById('cwg').style.display=document.getElementById('patSel').value==='custom'?'block':'none';}
-function getW(){const v=document.getElementById('patSel').value;return v==='custom'?parseFloat(document.getElementById('cw').value)||10:parseFloat(v);}
-function setUnit(u,btn){unit=u;document.querySelectorAll('.tabb').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.ulbl').forEach(el=>el.textContent=u==='ft'?'sq ft':'sq m');document.querySelectorAll('.stU').forEach(el=>el.textContent=u);document.getElementById('bcov').value=u==='m'?1.86:FD[selT].b||20;}
-function togA(k){addons[k]=!addons[k];document.getElementById('ta_'+k).classList.toggle('on',addons[k]);}
-function togStairs(){stOn=!stOn;document.getElementById('stT').classList.toggle('on',stOn);document.getElementById('stIn').style.display=stOn?'block':'none';}
-function addRoom(n){rc++;const id='r'+rc;const names=['Living Room','Master Bedroom','Kitchen','Bathroom','Hallway','Dining Room','Office','Basement','Guest Room','Garage'];const dn=n||names[rc-1]||'Room '+rc;const d=document.createElement('div');d.className='ri';d.id=id;d.innerHTML=`<div class="rh"><input class="rname" type="text" value="${dn}" placeholder="Room name"><button class="rmbtn" onclick="document.getElementById('${id}').remove()">✕</button></div><div class="row3"><div class="ig"><label>Length (${unit})</label><input type="number" class="rl" min="0.1" step="0.1" placeholder="e.g. 12"></div><div class="ig"><label>Width (${unit})</label><input type="number" class="rw" min="0.1" step="0.1" placeholder="e.g. 10"></div><div class="ig"><label>Shape</label><select class="rs2"><option value="1">Rectangle</option><option value="1.4">L-Shape</option><option value="0.5">Triangle</option></select></div></div>`;document.getElementById('roomList').appendChild(d);}
-function calculate(){const rooms=document.querySelectorAll('.ri');if(!rooms.length){alert('Add at least one room!');return;}const price=parseFloat(document.getElementById('ppu').value)||0;const bc=parseFloat(document.getElementById('bcov').value)||20;const wp=getW();const wm=1+wp/100;const ll=reg?reg.ll:2;const lh=reg?reg.lh:6;const rn=reg?reg.name:'National Average';let tot=0,rows='',ok=true;rooms.forEach(r=>{const nm=r.querySelector('.rname').value||'Room';const l=parseFloat(r.querySelector('.rl').value);const w=parseFloat(r.querySelector('.rw').value);const s=parseFloat(r.querySelector('.rs2').value);if(!l||!w){ok=false;return;}let a=l*w*s;let af=unit==='m'?a*10.764:a;const aw=af*wm;const bx=bc>0?Math.ceil(aw/bc):'—';tot+=af;rows+=`<tr><td><strong>${nm}</strong></td><td>${a.toFixed(1)} ${unit==='ft'?'sq ft':'sq m'}</td><td>${aw.toFixed(1)} sq ft</td><td>${bx!=='—'?bx+' boxes':'—'}</td><td>$${(aw*price).toFixed(2)}</td></tr>`;});if(!ok){alert('Fill in all room dimensions!');return;}if(stOn){const sc=parseInt(document.getElementById('stCt').value)||0;const sw=parseFloat(document.getElementById('stW').value)||0;const str=parseFloat(document.getElementById('stTr').value)||0;let sa=sc*sw*(str+0.6);if(unit==='m')sa*=10.764;const saw=sa*wm;rows+=`<tr><td><strong>🪜 Stairs</strong></td><td>${sa.toFixed(1)} sq ft</td><td>${saw.toFixed(1)} sq ft</td><td>${bc>0?Math.ceil(saw/bc)+' boxes':'—'}</td><td>$${(saw*price).toFixed(2)}</td></tr>`;tot+=sa;}const tw=tot*wm;const tb=bc>0?Math.ceil(tw/bc):0;const mc=tw*price;const lcl=tw*ll,lch=tw*lh;rows+=`<tr class="tr"><td>TOTAL</td><td>${tot.toFixed(1)} sq ft</td><td>${tw.toFixed(1)} sq ft</td><td>${tb>0?tb+' boxes':'—'}</td><td>$${mc.toFixed(2)}</td></tr>`;let ac=0,ah='';if(addons.removal){const c=tw*2;ac+=c;ah+=ar2('Old Floor Removal','$1–$3/sq ft',c);}if(addons.subfloor){const c=tw*4.5;ac+=c;ah+=ar2('Subfloor Repair','$2–$7/sq ft',c);}if(addons.underlay){const c=tw*0.75;ac+=c;ah+=ar2('Underlayment/Padding','~$0.75/sq ft',c);}if(addons.boards){const c=400;ac+=c;ah+=ar2('Baseboard Removal & Reinstall','Flat estimate',c);}const gl=mc+lcl+ac,gh=mc+lch+ac;document.getElementById('rGrid').innerHTML=`<div class="rs hl"><div class="sl">Area Needed</div><div class="sv">${tw.toFixed(0)}</div><div class="ss">sq ft · ${wp}% waste included</div></div><div class="rs hl"><div class="sl">Material Cost</div><div class="sv">$${mc.toFixed(0)}</div><div class="ss">@ $${price}/sq ft</div></div><div class="rs"><div class="sl">Boxes to Buy</div><div class="sv">${tb>0?tb:'—'}</div><div class="ss">${bc} sq ft/box</div></div><div class="rs"><div class="sl">Labor · ${rn}</div><div class="sv">$${lcl.toFixed(0)}–$${lch.toFixed(0)}</div><div class="ss">$${ll}–$${lh}/sq ft local avg</div></div><div class="rs hl2" style="grid-column:span 2"><div class="sl">💵 Total All-In Estimate</div><div class="sv" style="font-size:1.85rem">$${gl.toFixed(0)} – $${gh.toFixed(0)}</div><div class="ss">Materials + Labor${ac>0?' + Add-Ons':''} · Get 3 quotes for accuracy</div></div>`;document.getElementById('regBadge').innerHTML=reg?`<div class="reg-badge">📍 Prices adjusted for ${rn}</div>`:'';document.getElementById('bTable').innerHTML=`<tr><th>Room</th><th>Net Area</th><th>With Waste</th><th>Boxes</th><th>Material Cost</th></tr>${rows}`;if(ah){document.getElementById('addBreak').style.display='block';document.getElementById('addList').innerHTML=ah+`<div class="addon-row"><div><div class="an" style="font-weight:700">Add-On Subtotal</div></div><div class="addon-cost" style="font-size:1rem">$${ac.toFixed(0)}</div></div>`;}else document.getElementById('addBreak').style.display='none';const s=document.getElementById('resSec');s.classList.add('vis');s.scrollIntoView({behavior:'smooth',block:'start'});}
-function ar2(n,s,c){return `<div class="addon-row"><div><div class="an">${n}</div><div class="as">${s}</div></div><div class="addon-cost">~$${c.toFixed(0)}</div></div>`;}
-function cpQuote(){const rows=[...document.querySelectorAll('#bTable tr')];let t='FloorCalc Pro — Project Quote\n'+'='.repeat(38)+'\n';rows.forEach(r=>{t+=[...r.querySelectorAll('th,td')].map(c=>c.textContent.trim()).join(' | ')+'\n';});navigator.clipboard.writeText(t).then(()=>alert('Quote copied to clipboard!'));}
-function resetC(){document.getElementById('resSec').classList.remove('vis');window.scrollTo({top:0,behavior:'smooth'});}
-function submitLead(){const n=document.getElementById('lfN').value;const p=document.getElementById('lfP').value;const z=document.getElementById('lfZ').value;if(!n||!p){alert('Please enter your name and phone number.');return;}alert(`Thanks ${n}! Connecting you with local pros now...`);window.open('https://www.thumbtack.com/k/flooring/near-me?zip='+z,'_blank');}
-addRoom();addRoom();
-</script>
-<script>
-let deferredPrompt;
-window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();deferredPrompt=e;var btn=document.getElementById("installBtn");if(btn){btn.style.display="block";}});
-function installApp(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(function(r){deferredPrompt=null;});}}
-if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js");});}
+// Quick calc widget
+function quickCalc(){
+  var salary = parseFloat(document.getElementById('qcSalary').value);
+  var stateRate = parseFloat(document.getElementById('qcState').value);
+  if(!salary || salary < 1000){showToast('Please enter a valid salary');return;}
+  var federal = salary * 0.22;
+  var fica = salary * 0.0765;
+  var state = salary * stateRate;
+  var net = salary - federal - fica - state;
+  var monthly = (net / 12).toFixed(0);
+  var fmt = '$' + parseInt(monthly).toLocaleString();
+  document.getElementById('qcAmount').textContent = fmt + '/month';
+  document.getElementById('qcResult').style.display = 'block';
+}
+
+// FAQ accordion
+function toggleFaq(el){
+  var item = el.parentElement;
+  item.classList.toggle('open');
+}
+
+// Email capture
+function submitEmail(){
+  var email = document.getElementById('emailInput').value;
+  if(!email || !email.includes('@')){showToast('Please enter a valid email ✉️');return;}
+  showToast('🎉 You\'re in! Check your email for free tips.');
+  document.getElementById('emailInput').value = '';
+}
+
+// Toast
+function showToast(msg){
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show');},3500);
+}
+
+// PWA
+var deferredPrompt;
+window.addEventListener('beforeinstallprompt',function(e){
+  e.preventDefault();deferredPrompt=e;
+  document.getElementById('installBtn').style.display='block';
+});
+function installApp(){
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(function(){
+      deferredPrompt=null;
+      document.getElementById('installBtn').style.display='none';
+    });
+  }
+}
+if('serviceWorker' in navigator){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js').catch(function(){});
+  });
+}
 </script>
 </body>
 </html>
