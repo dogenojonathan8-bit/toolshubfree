@@ -1,31 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://toolshubfree.com/</loc>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://toolshubfree.com/paycalcpro.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://toolshubfree.com/homebuycalc.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://toolshubfree.com/floorcalcpro.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://toolshubfree.com/homefixtcost.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://toolshubfree.com/moneymappro.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolshubfree.com/homestyleai.html</loc>
-    <priority>0.8</priority>
-  </url>
+<url><loc>https://toolshubfree.com/</loc><priority>1.0</priority></url>
+<url><loc>https://toolshubfree.com/paycalcpro.html</loc><priority>0.9</priority></url>
+<url><loc>https://toolshubfree.com/homebuycalc.html</loc><priority>0.9</priority></url>
+<url><loc>https://toolshubfree.com/floorcalcpro.html</loc><priority>0.9</priority></url>
+<url><loc>https://toolshubfree.com/homefixtcost.html</loc><priority>0.9</priority></url>
+<url><loc>https://toolshubfree.com/homestyleai.html</loc><priority>0.9</priority></url>
+<url><loc>https://toolshubfree.com/moneymappro.html</loc><priority>0.9</priority></url>
+<url><loc>https://toolshubfree.com/tools/best-free-ai-tools-for-real-estate.html</loc><priority>0.8</priority></url>
+<url><loc>https://toolshubfree.com/tools/best-free-ai-tools-for-small-business.html</loc><priority>0.8</priority></url>
+<url><loc>https://toolshubfree.com/tools/canva-alternatives.html</loc><priority>0.8</priority></url>
+<url><loc>https://toolshubfree.com/tools/shopify-alternatives.html</loc><priority>0.8</priority></url>
+<url><loc>https://toolshubfree.com/tools/best-free-seo-tools.html</loc><priority>0.8</priority></url>
 </urlset>
