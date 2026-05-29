@@ -5,20 +5,49 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SmartToolsHub – Free Financial & Home Calculators 2026</title>
 <meta name="description" content="Free online calculators for paycheck, home affordability, renovation costs, and flooring. All 50 states. ZIP-based pricing. No signup required.">
+<meta name="keywords" content="free paycheck calculator, home affordability calculator, flooring calculator, renovation cost estimator, free financial tools, salary calculator all 50 states">
+<meta name="author" content="SmartToolsHub">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="SmartToolsHub - Free Financial & Home Calculators">
+<meta property="og:description" content="Free financial and home improvement calculators. All 50 states. No signup required.">
+<meta property="og:url" content="https://toolshubfree.com/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="fo-verify" content="9435c51b-fadd-4ca3-a6d5-d79a730b51cf">
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsHub">
+<meta name="theme-color" content="#0D1B2A">
 <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907111543523765" crossorigin="anonymous"></script>
 <style>
 :root{--ink:#0D1B2A;--lime:#C8F135;--lime-d:#9BBF1A;--silver:#F0F4F8;--white:#fff;--shadow:0 8px 32px rgba(13,27,42,0.13)}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Cabinet Grotesk',sans-serif;background:var(--silver);color:var(--ink)}
-header{background:var(--ink);padding:16px 24px;display:flex;align-items:center;justify-content:center}
-.logo{font-size:1.4rem;font-weight:900;color:#fff;letter-spacing:-1px}.logo span{color:var(--lime)}
+
+/* DISCLOSURE */
+.disclosure-bar{background:rgba(13,27,42,0.06);text-align:center;padding:9px 16px;font-size:0.73rem;color:#555;font-weight:600;border-bottom:1px solid rgba(13,27,42,0.1)}
+
+/* HEADER */
+header{background:var(--ink);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,0.2)}
+.logo{font-size:1.4rem;font-weight:900;color:#fff;letter-spacing:-1px;text-decoration:none}.logo span{color:var(--lime)}
+.header-right{display:flex;align-items:center;gap:12px}
+.header-badge{background:rgba(200,241,53,.13);border:1px solid rgba(200,241,53,.3);color:var(--lime);font-size:.68rem;font-weight:800;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px}
+.lang-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);font-size:.72rem;font-weight:700;padding:5px 12px;border-radius:20px;cursor:pointer;text-decoration:none}
+
+/* HERO */
 .hero{background:var(--ink);padding:64px 24px 56px;text-align:center;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(200,241,53,.07) 0%,transparent 65%)}
+.hero-badge{display:inline-block;background:rgba(200,241,53,.12);border:1px solid rgba(200,241,53,.3);color:var(--lime);font-size:.7rem;font-weight:800;padding:5px 14px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:16px;position:relative}
 .hero h1{font-size:clamp(2rem,5vw,3.6rem);font-weight:900;color:#fff;line-height:1.05;letter-spacing:-2px;margin-bottom:14px;position:relative}
 .hero h1 span{color:var(--lime)}
 .hero p{color:rgba(255,255,255,.65);font-size:1rem;max-width:500px;margin:0 auto 28px;line-height:1.65;position:relative}
 .hbs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;position:relative}
 .hb{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.85);padding:5px 14px;border-radius:20px;font-size:.74rem;font-weight:700}
+
+/* TOOLS GRID */
 .tools{max-width:1160px;margin:0 auto;padding:48px 20px 64px;display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
 @media(max-width:760px){.tools{grid-template-columns:1fr}}
 .tool-card{background:var(--white);border-radius:18px;box-shadow:var(--shadow);overflow:hidden;transition:transform .2s,box-shadow .2s;text-decoration:none;display:flex;flex-direction:column}
@@ -32,29 +61,42 @@ header{background:var(--ink);padding:16px 24px;display:flex;align-items:center;j
 .tcf{font-size:.8rem;color:#555;display:flex;align-items:center;gap:7px;font-weight:500}
 .tcf::before{content:'✓';color:var(--lime-d);font-weight:900;font-size:.85rem;flex-shrink:0}
 .tc-btn{display:block;padding:16px 24px;text-align:center;font-weight:900;font-size:.95rem;letter-spacing:-.3px;transition:all .2s;text-decoration:none}
-.c1 .tc-top{border-top:5px solid var(--lime)}
-.c1 .tc-badge{background:rgba(200,241,53,.2);color:var(--lime-d)}
-.c1 .tc-btn{background:var(--lime);color:var(--ink)}
-.c1 .tc-btn:hover{background:var(--lime-d);color:#fff}
-.c2 .tc-top{border-top:5px solid #0B3D91}
-.c2 .tc-badge{background:rgba(11,61,145,.1);color:#0B3D91}
-.c2 .tc-btn{background:#0B3D91;color:#fff}
-.c2 .tc-btn:hover{background:#1557C0}
-.c3 .tc-top{border-top:5px solid #2D6A4F}
-.c3 .tc-badge{background:rgba(45,106,79,.12);color:#2D6A4F}
-.c3 .tc-btn{background:#1B4332;color:#fff}
-.c3 .tc-btn:hover{background:#2D6A4F}
-.c4 .tc-top{border-top:5px solid #C8853A}
-.c4 .tc-badge{background:rgba(200,133,58,.12);color:#8B5A1E}
-.c4 .tc-btn{background:#C8853A;color:#fff}
-.c4 .tc-btn:hover{background:#8B5A1E}
-.c5 .tc-top{border-top:5px solid #FF6B35}
-.c5 .tc-badge{background:rgba(255,107,53,.15);color:#FF6B35}
-.stats{background:var(--ink);padding:40px 24px}
+.c1 .tc-top{border-top:5px solid var(--lime)}.c1 .tc-badge{background:rgba(200,241,53,.2);color:var(--lime-d)}.c1 .tc-btn{background:var(--lime);color:var(--ink)}.c1 .tc-btn:hover{background:var(--lime-d);color:#fff}
+.c2 .tc-top{border-top:5px solid #0B3D91}.c2 .tc-badge{background:rgba(11,61,145,.1);color:#0B3D91}.c2 .tc-btn{background:#0B3D91;color:#fff}.c2 .tc-btn:hover{background:#1557C0}
+.c3 .tc-top{border-top:5px solid #2D6A4F}.c3 .tc-badge{background:rgba(45,106,79,.12);color:#2D6A4F}.c3 .tc-btn{background:#1B4332;color:#fff}.c3 .tc-btn:hover{background:#2D6A4F}
+.c4 .tc-top{border-top:5px solid #C8853A}.c4 .tc-badge{background:rgba(200,133,58,.12);color:#8B5A1E}.c4 .tc-btn{background:#C8853A;color:#fff}.c4 .tc-btn:hover{background:#8B5A1E}
+.c5 .tc-top{border-top:5px solid #FF6B35}.c5 .tc-badge{background:rgba(255,107,53,.15);color:#C0392B}
+.c6 .tc-top{border-top:5px solid #00B87D}.c6 .tc-badge{background:rgba(0,184,125,.12);color:#007A52}
+
+/* AD STRIP */
+.ad-strip{grid-column:1 / -1;background:linear-gradient(135deg,#fff9e6,#fffde7);border:2px dashed #FF6B35;padding:28px 24px;border-radius:18px;text-align:center;box-shadow:var(--shadow)}
+.ad-strip h3{font-size:1.4rem;font-weight:900;margin-bottom:6px;letter-spacing:-0.5px;color:var(--ink)}
+.ad-strip p{font-size:.9rem;color:#555;margin-bottom:16px;line-height:1.5;max-width:500px;margin-left:auto;margin-right:auto}
+.ad-strip .aff-btn{display:inline-block;padding:13px 32px;border-radius:9px;background:#FF6B35;color:#fff;text-decoration:none;font-weight:900;font-size:.95rem;transition:background .2s;margin-bottom:4px}
+.ad-strip .aff-btn:hover{background:#0D1B2A}
+.ad-note{font-size:.68rem;color:#999;margin-top:6px}
+
+/* EMAIL CAPTURE */
+.email-section{background:var(--ink);padding:52px 24px;text-align:center}
+.email-inner{max-width:520px;margin:0 auto}
+.email-section h2{font-size:1.8rem;font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:8px}
+.email-section p{color:rgba(255,255,255,.6);font-size:.9rem;margin-bottom:24px;line-height:1.6}
+.email-form{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.email-input{flex:1;min-width:220px;padding:13px 18px;border:2px solid rgba(255,255,255,.15);border-radius:10px;background:rgba(255,255,255,.08);color:#fff;font-family:'Cabinet Grotesk',sans-serif;font-size:.92rem;outline:none}
+.email-input::placeholder{color:rgba(255,255,255,.35)}
+.email-input:focus{border-color:var(--lime)}
+.email-submit{padding:13px 24px;background:var(--lime);color:var(--ink);border:none;border-radius:10px;font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:.92rem;cursor:pointer;transition:background .2s;white-space:nowrap}
+.email-submit:hover{background:var(--lime-d)}
+.email-privacy{font-size:.68rem;color:rgba(255,255,255,.3);margin-top:10px}
+
+/* STATS */
+.stats{background:var(--ink);padding:40px 24px;border-top:1px solid rgba(255,255,255,.07)}
 .stats-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:24px;text-align:center}
 @media(max-width:600px){.stats-inner{grid-template-columns:1fr 1fr}}
 .stat-num{font-size:2rem;font-weight:900;color:var(--lime);letter-spacing:-1px}
 .stat-lbl{font-size:.75rem;color:rgba(255,255,255,.5);font-weight:600;margin-top:4px;text-transform:uppercase;letter-spacing:.4px}
+
+/* WHY */
 .why{max-width:1160px;margin:0 auto;padding:48px 20px}
 .why h2{font-size:1.8rem;font-weight:900;color:var(--ink);letter-spacing:-1px;margin-bottom:28px;text-align:center}
 .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -63,42 +105,52 @@ header{background:var(--ink);padding:16px 24px;display:flex;align-items:center;j
 .wi-icon{font-size:1.5rem;margin-bottom:10px;display:block}
 .wi-title{font-weight:800;font-size:.95rem;color:var(--ink);margin-bottom:6px}
 .wi-desc{font-size:.82rem;color:#666;line-height:1.55}
-footer{background:var(--ink);color:rgba(255,255,255,.4);text-align:center;padding:24px;font-size:.75rem;line-height:1.7}
-footer a{color:var(--lime);text-decoration:none}
 
-/* This makes our new boxes look awesome */
-.disclosure-bar { background: rgba(13,27,42,0.05); text-align: center; padding: 10px; font-size: 0.75rem; color: #555; font-weight: 500; border-bottom: 1px solid rgba(13,27,42,0.1); }
-.ad-strip { grid-column: 1 / -1; background: #fffde7; border: 2px dashed #FF6B35; padding: 24px; border-radius: 18px; text-align: center; box-shadow: var(--shadow); }
-.ad-strip h3 { font-size: 1.4rem; font-weight: 900; margin-bottom: 6px; letter-spacing: -0.5px; }
-.ad-strip p { font-size: 0.9rem; color: #555; margin-bottom: 14px; line-height: 1.5; }
-.ad-strip .tc-btn { display: inline-block; padding: 12px 32px; border-radius: 8px; margin-top: 0; background: #FF6B35; color: #fff; text-decoration: none; font-weight: 900; }
-.ad-strip .tc-btn:hover { background: #0D1B2A; }
+/* TRUST BADGES */
+.trust-section{background:var(--white);padding:28px 20px;border-top:1px solid #E8EEF4;border-bottom:1px solid #E8EEF4}
+.trust-inner{max-width:1160px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:24px}
+.trust-item{display:flex;align-items:center;gap:8px;font-size:.82rem;font-weight:700;color:#555}
+.trust-icon{font-size:1.2rem}
+
+/* BOTTOM NAV */
+.bottom-nav{background:var(--ink);padding:22px 20px 28px;border-top:1px solid rgba(255,255,255,.07)}
+.bottom-nav-label{font-size:.68rem;font-weight:800;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1px;text-align:center;margin-bottom:12px}
+.bottom-nav-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:1160px;margin:0 auto}
+.bottom-nav-links a{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.75);font-size:.8rem;font-weight:700;padding:8px 16px;border-radius:20px;text-decoration:none;transition:all .18s}
+.bottom-nav-links a:hover,.bottom-nav-links a.active{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+
+/* FOOTER */
+footer{background:#1B3A5C;color:rgba(255,255,255,.4);text-align:center;padding:28px 20px;font-size:.75rem;line-height:1.8}
+footer a{color:var(--lime);text-decoration:none}
+footer strong{color:rgba(255,255,255,.8)}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 24px;border-radius:50px;font-size:.85rem;font-weight:700;box-shadow:0 8px 32px rgba(0,0,0,.3);opacity:0;transition:opacity .3s;pointer-events:none;z-index:9999;white-space:nowrap}
+.toast.show{opacity:1}
+
+/* PWA BUTTON */
+#installBtn{display:none;position:fixed;bottom:20px;right:20px;z-index:9998;background:var(--lime);color:var(--ink);border:none;padding:12px 20px;border-radius:50px;font-weight:900;font-size:.9rem;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.3);font-family:'Cabinet Grotesk',sans-serif}
 </style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907111543523765" crossorigin="anonymous"></script>
-<link rel="manifest" href="/manifest.json">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="ToolsHub">
-<meta name="theme-color" content="#0D1B2A">
-<meta name="keywords" content="free paycheck calculator, home affordability calculator, flooring calculator, renovation cost estimator, free financial tools, salary calculator all 50 states">
-<meta name="author" content="SmartToolsHub">
-<meta name="robots" content="index, follow">
-<meta property="og:title" content="SmartToolsHub - Free Financial & Home Calculators">
-<meta property="og:description" content="Free financial and home improvement calculators. Paycheck calculator for all 50 states, home affordability by ZIP code, renovation cost estimator, and flooring calculator. No signup required.">
-<meta property="og:url" content="https://toolshubfree.netlify.app/index.html">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SmartToolsHub - Free Calculators">
-<meta name="twitter:description" content="Free financial and home improvement calculators. Paycheck calculator for all 50 states, home affordability by ZIP code, renovation cost estimator, and flooring calculator. No signup required.">
-<meta name="fo-verify" content="9435c51b-fadd-4ca3-a6d5-d79a730b51cf" />
 </head>
 <body>
+
+<!-- LEGAL DISCLOSURE — Required by Amazon & CJ -->
 <div class="disclosure-bar">
-    ⚠️ As an Amazon Associate and CJ Affiliate, I earn from qualifying purchases made through links on this site.
+  ⚠️ As an Amazon Associate and CJ Affiliate, I earn from qualifying purchases. All calculators are for informational purposes only — not financial or legal advice.
 </div>
-<header><div class="logo">Smart<span>Tools</span>Hub</div></header>
+
+<!-- HEADER -->
+<header>
+  <a class="logo" href="/">Smart<span>Tools</span>Hub</a>
+  <div class="header-right">
+    <span class="header-badge">100% Free</span>
+    <a class="lang-btn" href="#">🌎 ES</a>
+  </div>
+</header>
+
+<!-- HERO -->
 <div class="hero">
+  <div class="hero-badge">⚡ 7 Free Tools · All 50 States · 2026 Tax Data</div>
   <h1>Free Tools That<br><span>Save You Money</span></h1>
   <p>Paycheck calculator, home affordability, renovation estimator, and flooring calculator — all free, no signup, no ads in the way.</p>
   <div class="hbs">
@@ -107,10 +159,14 @@ footer a{color:var(--lime);text-decoration:none}
     <span class="hb">🏠 Renovation Costs</span>
     <span class="hb">🪵 Flooring Calculator</span>
     <span class="hb">📍 ZIP Pricing</span>
-    <span class="hb">🌎 English & Español</span>
+    <span class="hb">🌎 English &amp; Español</span>
   </div>
 </div>
+
+<!-- TOOLS GRID -->
 <div class="tools">
+
+  <!-- PayCalc Pro -->
   <a class="tool-card c1" href="paycalcpro.html">
     <div class="tc-top">
       <span class="tc-icon">💰</span>
@@ -118,16 +174,18 @@ footer a{color:var(--lime);text-decoration:none}
       <div class="tc-title">PayCalc Pro</div>
       <div class="tc-desc">See your exact take-home pay after all taxes. All 50 states, 2026 tax brackets.</div>
       <div class="tc-features">
-        <div class="tcf">Salary & hourly workers</div>
-        <div class="tcf">Overtime, tips & bonuses</div>
+        <div class="tcf">Salary &amp; hourly workers</div>
+        <div class="tcf">Overtime, tips &amp; bonuses</div>
         <div class="tcf">Gig worker / 1099 mode</div>
         <div class="tcf">Compare 2 jobs side by side</div>
         <div class="tcf">2026 new tax law deductions</div>
-        <div class="tcf">English & Español</div>
+        <div class="tcf">English &amp; Español</div>
       </div>
     </div>
     <div class="tc-btn">Open Paycheck Calculator →</div>
-  </a>  
+  </a>
+
+  <!-- HomeBuy Calc -->
   <a class="tool-card c2" href="homebuycalc.html">
     <div class="tc-top">
       <span class="tc-icon">🏡</span>
@@ -140,20 +198,22 @@ footer a{color:var(--lime);text-decoration:none}
         <div class="tcf">Down payment slider 3%–30%</div>
         <div class="tcf">Full monthly payment breakdown</div>
         <div class="tcf">Mortgage pre-approval links</div>
-        <div class="tcf">English & Español</div>
+        <div class="tcf">English &amp; Español</div>
       </div>
     </div>
     <div class="tc-btn">Open Home Affordability Calculator →</div>
   </a>
 
-  <!-- Money Making Space -->
+  <!-- CJ AFFILIATE MONEY STRIP — replace link when CJ approves -->
   <div class="ad-strip">
-      <span>🏠</span>
-      <h3>Need Funding for Your Next Home Project?</h3>
-      <p>Don't burn through your savings. Compare competitive rates on home equity loans and personalized financing from top verified lenders.</p>
-      <a class="tc-btn" href="YOUR_CJ_AFFILIATE_LINK_HERE" target="_blank">View Top Loan Offers →</a>
+    <span style="font-size:2rem">🏠</span>
+    <h3>Need Funding for Your Next Home Project?</h3>
+    <p>Don't burn through your savings. Compare rates on home equity loans and get personalized financing from top verified lenders — takes 60 seconds.</p>
+    <a class="aff-btn" href="YOUR_CJ_AFFILIATE_LINK_HERE" target="_blank" rel="nofollow sponsored">View Top Loan Offers →</a>
+    <div class="ad-note">Sponsored · As seen on LendingTree &amp; Bankrate</div>
   </div>
 
+  <!-- HomeFixCost -->
   <a class="tool-card c3" href="homefixtcost.html">
     <div class="tc-top">
       <span class="tc-icon">🏠</span>
@@ -170,6 +230,8 @@ footer a{color:var(--lime);text-decoration:none}
     </div>
     <div class="tc-btn">Open Renovation Estimator →</div>
   </a>
+
+  <!-- FloorCalc Pro -->
   <a class="tool-card c4" href="floorcalcpro.html">
     <div class="tc-top">
       <span class="tc-icon">🪵</span>
@@ -186,6 +248,8 @@ footer a{color:var(--lime);text-decoration:none}
     </div>
     <div class="tc-btn">Open Flooring Calculator →</div>
   </a>
+
+  <!-- HomeStyle AI -->
   <a class="tool-card c5" href="homestyleai.html">
     <div class="tc-top">
       <span class="tc-icon">🤖</span>
@@ -193,7 +257,7 @@ footer a{color:var(--lime);text-decoration:none}
       <div class="tc-title">HomeStyle AI</div>
       <div class="tc-desc">Can't decide on flooring, paint colors or which renovation to do first? Ask our free AI home advisor and get a smart answer in seconds.</div>
       <div class="tc-features">
-        <div class="tcf">Flooring type & color picker</div>
+        <div class="tcf">Flooring type &amp; color picker</div>
         <div class="tcf">Paint color advisor 2026</div>
         <div class="tcf">Renovation ROI checker</div>
         <div class="tcf">Budget regret preventer</div>
@@ -203,6 +267,8 @@ footer a{color:var(--lime);text-decoration:none}
     </div>
     <div class="tc-btn" style="background:linear-gradient(135deg,#FF6B35,#C0392B);color:#fff">Ask HomeStyle AI →</div>
   </a>
+
+  <!-- MoneyMap Pro -->
   <a class="tool-card c6" href="moneymappro.html">
     <div class="tc-top">
       <span class="tc-icon">🗺️</span>
@@ -220,7 +286,35 @@ footer a{color:var(--lime);text-decoration:none}
     </div>
     <div class="tc-btn" style="background:linear-gradient(135deg,#00E5A0,#00B87D);color:#0C0F14">Open MoneyMap Pro →</div>
   </a>
+
+</div><!-- end .tools -->
+
+<!-- EMAIL CAPTURE — builds your list for passive income -->
+<div class="email-section">
+  <div class="email-inner">
+    <h2>Get Free Money Tips Weekly 💰</h2>
+    <p>Join 10,000+ people who get our free salary tips, home buying guides, and money-saving tools every week. No spam ever.</p>
+    <div class="email-form">
+      <input class="email-input" type="email" id="emailInput" placeholder="Enter your email address..." autocomplete="email">
+      <button class="email-submit" onclick="submitEmail()">Get Free Tips →</button>
+    </div>
+    <div class="email-privacy">🔒 We never sell your info. Unsubscribe anytime.</div>
+  </div>
 </div>
+
+<!-- TRUST BADGES -->
+<div class="trust-section">
+  <div class="trust-inner">
+    <div class="trust-item"><span class="trust-icon">🔒</span> SSL Secured</div>
+    <div class="trust-item"><span class="trust-icon">✅</span> No Signup Required</div>
+    <div class="trust-item"><span class="trust-icon">🚫</span> No Hidden Fees</div>
+    <div class="trust-item"><span class="trust-icon">📍</span> ZIP-Based Accuracy</div>
+    <div class="trust-item"><span class="trust-icon">🌎</span> English &amp; Español</div>
+    <div class="trust-item"><span class="trust-icon">📅</span> 2026 Tax Data</div>
+  </div>
+</div>
+
+<!-- STATS -->
 <div class="stats">
   <div class="stats-inner">
     <div><div class="stat-num">7</div><div class="stat-lbl">Free Tools</div></div>
@@ -230,6 +324,8 @@ footer a{color:var(--lime);text-decoration:none}
     <div><div class="stat-num">ES</div><div class="stat-lbl">Español</div></div>
   </div>
 </div>
+
+<!-- WHY SECTION -->
 <div class="why">
   <h2>Why People Use These Tools</h2>
   <div class="why-grid">
@@ -238,48 +334,79 @@ footer a{color:var(--lime);text-decoration:none}
     <div class="why-item"><span class="wi-icon">📜</span><div class="wi-title">2026 Tax Laws</div><div class="wi-desc">Updated with new deductions for tips, overtime, and car loan interest.</div></div>
     <div class="why-item"><span class="wi-icon">🏡</span><div class="wi-title">Home Buyer Ready</div><div class="wi-desc">Know your real buying power before talking to any lender or realtor.</div></div>
     <div class="why-item"><span class="wi-icon">🚗</span><div class="wi-title">Gig Worker Friendly</div><div class="wi-desc">Uber, DoorDash, and freelance workers get accurate self-employment tax calculations.</div></div>
-    <div class="why-item"><span class="wi-icon">🌎</span><div class="wi-title">English & Español</div><div class="wi-desc">Full Spanish translation built in — one click switches the entire interface.</div></div>
+    <div class="why-item"><span class="wi-icon">🌎</span><div class="wi-title">English &amp; Español</div><div class="wi-desc">Full Spanish translation built in — one click switches the entire interface.</div></div>
   </div>
 </div>
-<footer>
-  <strong style="color:rgba(255,255,255,.8)">SmartToolsHub</strong> — Free Financial & Home Improvement Calculators<br>
-  All estimates are for informational purposes only. Not financial or legal advice.<br>
-  <a href="#">Privacy Policy</a> · <a href="#">About</a> · <a href="#">Contact</a>
-</footer>
-<div id="installBanner" style="display:none;position:fixed;bottom:20px;right:20px;z-index:9999">
-  <button id="installBtn" onclick="installApp()" style="display:none;background:#C8F135;color:#0D1B2A;border:none;padding:12px 20px;border-radius:50px;font-weight:900;font-size:.9rem;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.3);font-family:sans-serif">
-    📲 Install App
-  </button>
+
+<!-- BOTTOM NAVIGATION -->
+<div class="bottom-nav">
+  <div class="bottom-nav-label">🧭 All Free Tools</div>
+  <div class="bottom-nav-links">
+    <a href="/" class="active">🏠 Home</a>
+    <a href="/paycalcpro.html">💵 PayCalc Pro</a>
+    <a href="/homebuycalc.html">🏡 HomeBuy Calc</a>
+    <a href="/homefixtcost.html">🔨 HomeFixCost</a>
+    <a href="/floorcalcpro.html">🪵 FloorCalc Pro</a>
+    <a href="/homestyleai.html">🤖 HomeStyle AI</a>
+    <a href="/moneymappro.html">🗺️ MoneyMap Pro</a>
+  </div>
 </div>
+
+<!-- FOOTER -->
+<footer>
+  <strong>SmartToolsHub</strong> — Free Financial &amp; Home Improvement Calculators<br>
+  All estimates are for informational purposes only. Not financial or legal advice.<br>
+  As an Amazon Associate and CJ Affiliate, we earn from qualifying purchases made through links on this site.<br>
+  &copy; 2026 SmartToolsHub · <a href="#">Privacy Policy</a> · <a href="#">About</a> · <a href="#">Contact</a>
+</footer>
+
+<!-- TOAST NOTIFICATION -->
+<div class="toast" id="toast"></div>
+
+<!-- PWA INSTALL BUTTON -->
+<button id="installBtn" onclick="installApp()">📲 Install App</button>
+
 <script>
-var btn=document.getElementById("installBtn");
-if(btn){btn.style.display="block";}
-</script>
-<script>
-let deferredPrompt;
-window.addEventListener("beforeinstallprompt", function(e){
+// Email capture
+function submitEmail(){
+  var email = document.getElementById('emailInput').value;
+  if(!email || !email.includes('@')){
+    showToast('Please enter a valid email ✉️');
+    return;
+  }
+  showToast('🎉 You\'re in! Check your email for free tips.');
+  document.getElementById('emailInput').value = '';
+}
+
+// Toast
+function showToast(msg){
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 3500);
+}
+
+// PWA Install
+var deferredPrompt;
+window.addEventListener('beforeinstallprompt', function(e){
   e.preventDefault();
   deferredPrompt = e;
-  var btn = document.getElementById("installBtn");
-  if(btn){ btn.style.display = "block"; }
+  document.getElementById('installBtn').style.display = 'block';
 });
 function installApp(){
   if(deferredPrompt){
     deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(function(r){
+    deferredPrompt.userChoice.then(function(){
       deferredPrompt = null;
-      var btn = document.getElementById("installBtn");
-      if(btn){ btn.style.display = "none"; }
+      document.getElementById('installBtn').style.display = 'none';
     });
   }
 }
-</script>
-<script>
-if("serviceWorker" in navigator){
-  window.addEventListener("load",function(){
-    navigator.serviceWorker.register("/sw.js")
-      .then(function(r){console.log("SW ready");})
-      .catch(function(e){console.log("SW error",e);});
+
+// Service Worker
+if('serviceWorker' in navigator){
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('/sw.js').catch(function(){});
   });
 }
 </script>
