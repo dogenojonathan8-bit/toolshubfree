@@ -34,6 +34,8 @@ header{background:var(--sky);position:sticky;top:0;z-index:100;box-shadow:0 2px 
 .hero p{color:rgba(255,255,255,.72);font-size:.98rem;max-width:540px;margin:0 auto 24px;line-height:1.65;position:relative}
 .hbs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;position:relative}
 .hb{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.88);padding:5px 14px;border-radius:20px;font-size:.74rem;font-weight:600}
+.ad-wrap{max-width:1160px;margin:0 auto;padding:16px 20px 0;text-align:center}
+.ad-label{font-size:.58rem;text-transform:uppercase;letter-spacing:1px;color:#aab4be;font-weight:700;margin-bottom:4px}
 .main{max-width:1160px;margin:0 auto;padding:30px 20px 60px;display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start}
 @media(max-width:900px){.main{grid-template-columns:1fr}}
 .card{background:var(--white);border-radius:var(--r);box-shadow:var(--shadow);padding:26px;margin-bottom:20px}
@@ -124,6 +126,11 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 .tip-card{background:var(--gold-ll);border-left:4px solid var(--gold-d);border-radius:0 12px 12px 0;padding:16px;margin-bottom:18px}
 .tc-t{font-weight:700;font-size:.78rem;color:var(--gold-d);text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px}
 .tip-card p{font-size:.82rem;color:#554400;line-height:1.55}
+.dpa-card{background:linear-gradient(135deg,#1B5E20,#2E7D32);border-radius:var(--r);padding:20px;margin-bottom:18px;color:#fff}
+.dpa-card h3{font-family:'Fraunces',serif;font-weight:900;font-size:1.05rem;margin-bottom:6px;display:flex;align-items:center;gap:7px}
+.dpa-card p{font-size:.82rem;color:rgba(255,255,255,.85);line-height:1.55;margin-bottom:12px}
+.dpa-btn{display:inline-block;background:var(--gold);color:var(--sky);text-decoration:none;font-weight:800;font-size:.82rem;padding:10px 18px;border-radius:9px}
+.dpa-btn:hover{background:#fff}
 .rate-card{background:var(--white);border-radius:var(--r);box-shadow:var(--shadow);padding:20px;margin-bottom:18px}
 .rate-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--cream-d);font-size:.85rem}
 .rate-row:last-child{border-bottom:none}
@@ -150,9 +157,49 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 .amz-badge{display:inline-flex;align-items:center;background:rgba(255,153,0,.2);border:1px solid rgba(255,153,0,.4);color:#FF9900;padding:3px 9px;border-radius:12px;font-size:.68rem;font-weight:700;margin-bottom:12px}
 .amz-disclaimer{font-size:.65rem;color:rgba(255,255,255,.35);margin-top:10px;text-align:center}
 
+/* ===== CHECKLIST TOOL (matches blue/gold theme) ===== */
+.hbc-tool{max-width:1160px;margin:0 auto 36px;background:var(--white);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.hbc-head{background:linear-gradient(150deg,var(--sky),var(--sky-m));color:#fff;padding:26px 26px 22px;position:relative;overflow:hidden}
+.hbc-head::before{content:'';position:absolute;top:-60px;right:-40px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(245,200,66,.12),transparent 65%)}
+.hbc-eyebrow{display:inline-block;background:rgba(245,200,66,.18);border:1px solid rgba(245,200,66,.4);color:var(--gold);font-size:.64rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:12px;position:relative}
+.hbc-head h2{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:900;letter-spacing:-.5px;margin:0 0 6px;position:relative;line-height:1.1}
+.hbc-head p{font-size:.88rem;color:rgba(255,255,255,.7);margin:0;position:relative;line-height:1.5}
+.hbc-prog-wrap{margin-top:18px;position:relative}
+.hbc-prog-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.hbc-prog-label{font-size:.76rem;font-weight:600;color:rgba(255,255,255,.8)}
+.hbc-prog-pct{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:900;color:var(--gold)}
+.hbc-prog-bar{height:10px;background:rgba(255,255,255,.14);border-radius:20px;overflow:hidden}
+.hbc-prog-fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold-d),var(--gold));border-radius:20px;transition:width .4s ease}
+.hbc-body{padding:18px 22px 8px}
+.hbc-item{border:1px solid var(--cream-d);border-radius:12px;margin-bottom:11px;overflow:hidden;transition:all .2s}
+.hbc-item.done{border-color:var(--gold-d);background:var(--gold-ll)}
+.hbc-row{display:flex;align-items:flex-start;gap:13px;padding:15px 16px;cursor:pointer;user-select:none}
+.hbc-check{flex-shrink:0;width:24px;height:24px;border:2.5px solid #C5D0DB;border-radius:7px;display:flex;align-items:center;justify-content:center;transition:all .2s;margin-top:1px}
+.hbc-item.done .hbc-check{background:var(--gold);border-color:var(--gold)}
+.hbc-check svg{width:14px;height:14px;opacity:0;transform:scale(.5);transition:all .2s}
+.hbc-item.done .hbc-check svg{opacity:1;transform:scale(1)}
+.hbc-main{flex:1}
+.hbc-title{font-size:.97rem;font-weight:700;color:var(--sky);line-height:1.3}
+.hbc-item.done .hbc-title{text-decoration:line-through;color:#8a97a4}
+.hbc-sub{font-size:.81rem;color:#667;margin-top:3px;line-height:1.45}
+.hbc-learnbtn{display:inline-flex;align-items:center;gap:5px;margin-top:9px;background:var(--cream-d);border:1px solid #d8e0ea;color:var(--sky);font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:700;padding:5px 11px;border-radius:18px;cursor:pointer;transition:background .15s}
+.hbc-learnbtn:hover{background:rgba(245,200,66,.3)}
+.hbc-learn{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.hbc-learn.open{max-height:360px}
+.hbc-learn-inner{padding:13px 15px;font-size:.83rem;color:#445;line-height:1.6;border-left:3px solid var(--gold);background:var(--cream);border-radius:8px}
+.hbc-learn-inner strong{color:var(--sky)}
+.hbc-foot{padding:8px 22px 22px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.hbc-actions{display:flex;gap:9px;flex-wrap:wrap}
+.hbc-btn{font-family:'DM Sans',sans-serif;font-weight:700;font-size:.83rem;padding:11px 18px;border-radius:10px;cursor:pointer;border:none}
+.hbc-btn-print{background:var(--sky);color:#fff}
+.hbc-btn-reset{background:var(--cream-d);color:#566}
+.hbc-done-msg{font-size:.85rem;font-weight:700;color:var(--gold-d);display:none;padding:0 22px 6px}
+.hbc-done-msg.show{display:block}
+.hbc-disc{padding:0 22px 22px;font-size:.68rem;color:#9aa6b2;line-height:1.5}
+
 footer{background:var(--sky);color:rgba(255,255,255,.45);text-align:center;padding:22px;font-size:.75rem;line-height:1.7}
 footer a{color:var(--gold);text-decoration:none}
-@media print{header,.hero,.sidebar,.calc-btn,.ar,footer,.lender-card,.amz-section{display:none!important}.main{grid-template-columns:1fr;padding:0}.card{box-shadow:none;border:1px solid #ddd}}
+@media print{header,.hero,.sidebar,.calc-btn,.ar,footer,.lender-card,.amz-section,.ad-wrap,.hbc-actions,.hbc-learnbtn{display:none!important}.main{grid-template-columns:1fr;padding:0}.card{box-shadow:none;border:1px solid #ddd}.hbc-learn{max-height:none!important}}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907111543523765" crossorigin="anonymous"></script>
 <link rel="manifest" href="/manifest.json">
@@ -188,6 +235,13 @@ footer a{color:var(--gold);text-decoration:none}
     <span class="hb" data-t="b4">📊 3 Budget Scenarios</span>
     <span class="hb" data-t="b5">🌎 English & Español</span>
   </div>
+</div>
+
+<!-- AD #1 — paste your AdSense slot number where it says REPLACE_WITH_SLOT_ID -->
+<div class="ad-wrap">
+  <div class="ad-label">Advertisement</div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9907111543523765" data-ad-slot="REPLACE_WITH_SLOT_ID" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
 <div class="main">
@@ -278,27 +332,41 @@ footer a{color:var(--gold);text-decoration:none}
 <!-- SIDEBAR -->
 <div class="sidebar">
 
+  <!-- AD #2 (sidebar) — paste your second slot number below -->
+  <div class="ad-wrap" style="padding:0 0 18px">
+    <div class="ad-label">Advertisement</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9907111543523765" data-ad-slot="REPLACE_WITH_SLOT_ID_2" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
   <div class="lender-card">
     <div class="lct" data-t="getPreApproved">Get Pre-Approved Today</div>
-    <div class="lcs" data-t="preApprovedSub">See your real rate in minutes. No commitment. These lenders pay us a referral fee — never costs you extra.</div>
+    <div class="lcs" data-t="preApprovedSub">Compare real mortgage rates in minutes. No commitment, and it costs you nothing to check.</div>
     <div class="lend-links">
-      <a class="ll" href="https://www.rocketmortgage.com" target="_blank" rel="noopener">
+      <a class="ll" href="https://www.rocketmortgage.com" target="_blank" rel="noopener nofollow">
         <div class="ll-left"><div class="ll-logo" style="background:#E31837;color:#fff">RM</div><div><div class="ll-name">Rocket Mortgage</div><div class="ll-sub">Check rate in 3 min</div></div></div>
-        <span class="ll-badge">$0 fee</span>
+        <span class="ll-badge">Compare</span>
       </a>
-      <a class="ll" href="https://www.lendingtree.com/home/mortgage" target="_blank" rel="noopener">
+      <a class="ll" href="https://www.lendingtree.com/home/mortgage" target="_blank" rel="noopener nofollow">
         <div class="ll-left"><div class="ll-logo" style="background:#00A550;color:#fff">LT</div><div><div class="ll-name">LendingTree</div><div class="ll-sub">Compare multiple lenders</div></div></div>
         <span class="ll-badge">Free</span>
       </a>
-      <a class="ll" href="https://www.zillow.com/mortgage-rates" target="_blank" rel="noopener">
+      <a class="ll" href="https://www.zillow.com/mortgage-rates" target="_blank" rel="noopener nofollow">
         <div class="ll-left"><div class="ll-logo" style="background:#006AFF;color:#fff">Z</div><div><div class="ll-name">Zillow Home Loans</div><div class="ll-sub">Instant online quotes</div></div></div>
         <span class="ll-badge">Free</span>
       </a>
-      <a class="ll" href="https://www.betterway.com" target="_blank" rel="noopener">
+      <a class="ll" href="https://www.better.com" target="_blank" rel="noopener nofollow">
         <div class="ll-left"><div class="ll-logo" style="background:#00B386;color:#fff">B</div><div><div class="ll-name">Better Mortgage</div><div class="ll-sub">100% online, no commissions</div></div></div>
-        <span class="ll-badge">$0 fee</span>
+        <span class="ll-badge">Free</span>
       </a>
     </div>
+  </div>
+
+  <!-- Down Payment Assistance callout (competitor-inspired, NerdWallet leads with this) -->
+  <div class="dpa-card">
+    <h3>💸 Free Down Payment Help</h3>
+    <p>Most first-time buyers don't know this: all 50 states offer down-payment assistance, often $5,000–$25,000+. You may qualify even with average credit.</p>
+    <a class="dpa-btn" href="#hbcTool">See the checklist step →</a>
   </div>
 
   <!-- ===== AMAZON HOME BUYING SECTION — tag: toolshubfree-20 ===== -->
@@ -307,27 +375,27 @@ footer a{color:var(--gold);text-decoration:none}
     <div class="amz-badge">⭐ Top Rated · Fast Delivery</div>
     <div class="amz-sub">Everything you need as a new homeowner — trusted by millions of buyers.</div>
     <div class="amz-products">
-      <a class="amz-product" href="https://www.amazon.com/s?k=home+inspection+checklist+book&tag=toolshubfree-20" target="_blank" rel="noopener">
+      <a class="amz-product" href="https://www.amazon.com/s?k=home+inspection+checklist+book&tag=toolshubfree-20" target="_blank" rel="noopener sponsored">
         <div class="amz-pl"><span class="amz-icon">📋</span><div><div class="amz-pname">Home Buying Books</div><div class="amz-psub">First-time buyer guides</div></div></div>
         <span class="amz-arrow">→</span>
       </a>
-      <a class="amz-product" href="https://www.amazon.com/s?k=home+improvement+tools+kit&tag=toolshubfree-20" target="_blank" rel="noopener">
+      <a class="amz-product" href="https://www.amazon.com/s?k=home+improvement+tools+kit&tag=toolshubfree-20" target="_blank" rel="noopener sponsored">
         <div class="amz-pl"><span class="amz-icon">🔧</span><div><div class="amz-pname">Home Tool Kits</div><div class="amz-psub">Essential for new homeowners</div></div></div>
         <span class="amz-arrow">→</span>
       </a>
-      <a class="amz-product" href="https://www.amazon.com/s?k=smart+home+security+system&tag=toolshubfree-20" target="_blank" rel="noopener">
+      <a class="amz-product" href="https://www.amazon.com/s?k=smart+home+security+system&tag=toolshubfree-20" target="_blank" rel="noopener sponsored">
         <div class="amz-pl"><span class="amz-icon">🔐</span><div><div class="amz-pname">Home Security Systems</div><div class="amz-psub">Protect your investment</div></div></div>
         <span class="amz-arrow">→</span>
       </a>
-      <a class="amz-product" href="https://www.amazon.com/s?k=moving+boxes+packing+supplies&tag=toolshubfree-20" target="_blank" rel="noopener">
+      <a class="amz-product" href="https://www.amazon.com/s?k=moving+boxes+packing+supplies&tag=toolshubfree-20" target="_blank" rel="noopener sponsored">
         <div class="amz-pl"><span class="amz-icon">📦</span><div><div class="amz-pname">Moving & Packing Supplies</div><div class="amz-psub">Boxes, tape, bubble wrap</div></div></div>
         <span class="amz-arrow">→</span>
       </a>
-      <a class="amz-product" href="https://www.amazon.com/s?k=smart+thermostat+nest&tag=toolshubfree-20" target="_blank" rel="noopener">
+      <a class="amz-product" href="https://www.amazon.com/s?k=smart+thermostat+nest&tag=toolshubfree-20" target="_blank" rel="noopener sponsored">
         <div class="amz-pl"><span class="amz-icon">🌡️</span><div><div class="amz-pname">Smart Thermostats</div><div class="amz-psub">Save on energy bills</div></div></div>
         <span class="amz-arrow">→</span>
       </a>
-      <a class="amz-product" href="https://www.amazon.com/s?k=home+warranty+appliance+protection&tag=toolshubfree-20" target="_blank" rel="noopener">
+      <a class="amz-product" href="https://www.amazon.com/s?k=home+warranty+appliance+protection&tag=toolshubfree-20" target="_blank" rel="noopener sponsored">
         <div class="amz-pl"><span class="amz-icon">🏠</span><div><div class="amz-pname">Home Appliance Bundles</div><div class="amz-psub">Washer, dryer & more</div></div></div>
         <span class="amz-arrow">→</span>
       </a>
@@ -363,14 +431,38 @@ footer a{color:var(--gold);text-decoration:none}
 </div>
 </div>
 
+<!-- ===================== FIRST-TIME HOME BUYER CHECKLIST ===================== -->
+<section class="hbc-tool" id="hbcTool">
+  <div class="hbc-head">
+    <span class="hbc-eyebrow">📋 Free Interactive Checklist · 2026</span>
+    <h2>First-Time Home Buyer Checklist</h2>
+    <p>Check off each step as you go. Tap "Learn" on any item if a word is new. Your progress saves automatically on this device.</p>
+    <div class="hbc-prog-wrap">
+      <div class="hbc-prog-top"><span class="hbc-prog-label">Your progress</span><span class="hbc-prog-pct" id="hbcPct">0%</span></div>
+      <div class="hbc-prog-bar"><div class="hbc-prog-fill" id="hbcFill"></div></div>
+    </div>
+  </div>
+  <div class="hbc-body" id="hbcList"></div>
+  <p class="hbc-done-msg" id="hbcDone">🎉 You did it — every step checked. You're ready to buy with confidence.</p>
+  <div class="hbc-foot">
+    <span class="hbc-prog-label" style="color:#566" id="hbcCount">0 of 0 done</span>
+    <div class="hbc-actions">
+      <button class="hbc-btn hbc-btn-print" onclick="window.print()">🖨️ Print / Save PDF</button>
+      <button class="hbc-btn hbc-btn-reset" id="hbcReset">↺ Reset</button>
+    </div>
+  </div>
+  <p class="hbc-disc">This checklist is for general information only and is not financial, tax, or legal advice. Loan terms, grants, and rules vary — always confirm with a licensed lender or housing counselor.</p>
+</section>
+<!-- =================== END CHECKLIST =================== -->
+
 <footer>
   <strong style="color:rgba(255,255,255,.85)">HomeBuyCalc</strong> — <span data-t="footerText">Free Home Affordability Calculator · All 50 States · 2026 Mortgage Data</span><br>
   <span data-t="footerDisc">Estimates only. Not financial advice. Always consult a licensed mortgage professional.</span><br>
-  <a href="#">Privacy</a> · <a href="#">About</a> · <a href="#">Disclaimer</a>
+  <a href="/privacy.html">Privacy</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a>
 </footer>
 
 <script>
-const LANG={en:{heroTitle:'How Much House',heroSpan:'Can You Afford?',heroSub:'Enter your salary and ZIP code. Get the exact home price you can safely afford based on your real take-home pay, local property taxes, and 2026 mortgage rates.',b1:'📍 ZIP-Based Property Tax',b2:'💰 Salary → Take-Home Link',b3:'🏦 2026 Mortgage Rates',b4:'📊 3 Budget Scenarios',b5:'🌎 English & Español',modeSal:'By Salary',modePay:'By Payment',yourIncome:'Your Income & Debts',annIncome:'Annual Salary ($)',zipLabel:'ZIP Code',zipLabel2:'ZIP Code',filing:'Filing Status',single:'Single',married:'Married',hoh:'Head of Household',carPay:'Car Payment ($/mo)',studentLoan:'Student Loans ($/mo)',otherDebt:'Other Debts ($/mo)',maxPay:'Max Monthly Payment ($)',loanDetails:'Loan Details',loanType:'Loan Type',rate:'Interest Rate (%)',downPay:'Down Payment',hoa:'HOA Fees ($/mo)',creditScore:'Credit Score Range',calcBtn:'🏡 Calculate My Home Budget',yourResult:'Your Home Buying Power',scenarios:'Your 3 Budget Scenarios',monthlyBreak:'Monthly Payment Breakdown',dtiTitle:'Debt-to-Income Ratio (DTI)',safe:'Safe (<28%)',stretch:'Stretching (28–36%)',tooMuch:'Too Much (>36%)',getPreApproved:'Get Pre-Approved Today',preApprovedSub:'See your real rate in minutes. No commitment. These lenders pay us a referral fee — never costs you extra.',rates2026:'2026 Mortgage Rates',tipTitle:'💡 The 28/36 Rule',tipText:'No more than 28% of your gross monthly income should go to housing. No more than 36% to ALL debt combined. These are the two numbers lenders use to approve or deny your mortgage.',moreTools:'More Free Tools',xlPay:'Paycheck Calculator',xlReno:'Renovation Cost Estimator',xlFloor:'Flooring Calculator',ctaText:'Want to see your exact take-home pay first?',ctaBtn:'💰 Open PayCalc Pro →',print:'Print',copy:'Copy',reset:'Reset',footerText:'Free Home Affordability Calculator · All 50 States · 2026 Mortgage Data',footerDisc:'Estimates only. Not financial advice. Always consult a licensed mortgage professional.',free2026:'Free · 2026',scSafe:'✅ Safe Budget',scStretch:'⚠️ Stretching',scMax:'🔴 Max Limit',perMonth:'per month'},es:{heroTitle:'¿Cuánta Casa',heroSpan:'Puedes Pagar?',heroSub:'Ingresa tu salario y código postal. Obtén el precio exacto de la casa que puedes pagar basado en tu sueldo neto, impuestos locales y tasas hipotecarias 2026.',b1:'📍 Impuesto por ZIP',b2:'💰 Salario → Sueldo Neto',b3:'🏦 Tasas 2026',b4:'📊 3 Escenarios',b5:'🌎 Inglés & Español',modeSal:'Por Salario',modePay:'Por Pago Mensual',yourIncome:'Tus Ingresos y Deudas',annIncome:'Salario Anual ($)',zipLabel:'Código Postal',zipLabel2:'Código Postal',filing:'Estado Civil',single:'Soltero/a',married:'Casado/a',hoh:'Jefe/a de Familia',carPay:'Pago de Auto ($/mes)',studentLoan:'Préstamos Estudiantiles ($/mes)',otherDebt:'Otras Deudas ($/mes)',maxPay:'Pago Mensual Máximo ($)',loanDetails:'Detalles del Préstamo',loanType:'Tipo de Préstamo',rate:'Tasa de Interés (%)',downPay:'Pago Inicial',hoa:'Cuotas HOA ($/mes)',creditScore:'Rango de Crédito',calcBtn:'🏡 Calcular Mi Presupuesto de Casa',yourResult:'Tu Poder de Compra',scenarios:'Tus 3 Escenarios de Presupuesto',monthlyBreak:'Desglose del Pago Mensual',dtiTitle:'Relación Deuda-Ingreso (DTI)',safe:'Seguro (<28%)',stretch:'Ajustado (28–36%)',tooMuch:'Demasiado (>36%)',getPreApproved:'Obtén Pre-Aprobación Hoy',preApprovedSub:'Ve tu tasa real en minutos. Sin compromiso.',rates2026:'Tasas Hipotecarias 2026',tipTitle:'💡 La Regla 28/36',tipText:'No más del 28% de tu ingreso mensual debe ir a vivienda. No más del 36% a TODAS las deudas combinadas.',moreTools:'Más Herramientas Gratis',xlPay:'Calculadora de Cheque',xlReno:'Estimador de Renovación',xlFloor:'Calculadora de Pisos',ctaText:'¿Quieres ver tu sueldo neto primero?',ctaBtn:'💰 Abrir PayCalc Pro →',print:'Imprimir',copy:'Copiar',reset:'Reiniciar',footerText:'Calculadora de Asequibilidad Gratis · 50 Estados · Datos 2026',footerDisc:'Solo estimaciones. No es asesoramiento financiero.',free2026:'Gratis · 2026',scSafe:'✅ Presupuesto Seguro',scStretch:'⚠️ Ajustado',scMax:'🔴 Límite Máximo',perMonth:'por mes'}};
+const LANG={en:{heroTitle:'How Much House',heroSpan:'Can You Afford?',heroSub:'Enter your salary and ZIP code. Get the exact home price you can safely afford based on your real take-home pay, local property taxes, and 2026 mortgage rates.',b1:'📍 ZIP-Based Property Tax',b2:'💰 Salary → Take-Home Link',b3:'🏦 2026 Mortgage Rates',b4:'📊 3 Budget Scenarios',b5:'🌎 English & Español',modeSal:'By Salary',modePay:'By Payment',yourIncome:'Your Income & Debts',annIncome:'Annual Salary ($)',zipLabel:'ZIP Code',zipLabel2:'ZIP Code',filing:'Filing Status',single:'Single',married:'Married',hoh:'Head of Household',carPay:'Car Payment ($/mo)',studentLoan:'Student Loans ($/mo)',otherDebt:'Other Debts ($/mo)',maxPay:'Max Monthly Payment ($)',loanDetails:'Loan Details',loanType:'Loan Type',rate:'Interest Rate (%)',downPay:'Down Payment',hoa:'HOA Fees ($/mo)',creditScore:'Credit Score Range',calcBtn:'🏡 Calculate My Home Budget',yourResult:'Your Home Buying Power',scenarios:'Your 3 Budget Scenarios',monthlyBreak:'Monthly Payment Breakdown',dtiTitle:'Debt-to-Income Ratio (DTI)',safe:'Safe (<28%)',stretch:'Stretching (28–36%)',tooMuch:'Too Much (>36%)',getPreApproved:'Get Pre-Approved Today',preApprovedSub:'Compare real mortgage rates in minutes. No commitment, and it costs you nothing to check.',rates2026:'2026 Mortgage Rates',tipTitle:'💡 The 28/36 Rule',tipText:'No more than 28% of your gross monthly income should go to housing. No more than 36% to ALL debt combined. These are the two numbers lenders use to approve or deny your mortgage.',moreTools:'More Free Tools',xlPay:'Paycheck Calculator',xlReno:'Renovation Cost Estimator',xlFloor:'Flooring Calculator',ctaText:'Want to see your exact take-home pay first?',ctaBtn:'💰 Open PayCalc Pro →',print:'Print',copy:'Copy',reset:'Reset',footerText:'Free Home Affordability Calculator · All 50 States · 2026 Mortgage Data',footerDisc:'Estimates only. Not financial advice. Always consult a licensed mortgage professional.',free2026:'Free · 2026',scSafe:'✅ Safe Budget',scStretch:'⚠️ Stretching',scMax:'🔴 Max Limit',perMonth:'per month'},es:{heroTitle:'¿Cuánta Casa',heroSpan:'Puedes Pagar?',heroSub:'Ingresa tu salario y código postal. Obtén el precio exacto de la casa que puedes pagar basado en tu sueldo neto, impuestos locales y tasas hipotecarias 2026.',b1:'📍 Impuesto por ZIP',b2:'💰 Salario → Sueldo Neto',b3:'🏦 Tasas 2026',b4:'📊 3 Escenarios',b5:'🌎 Inglés & Español',modeSal:'Por Salario',modePay:'Por Pago Mensual',yourIncome:'Tus Ingresos y Deudas',annIncome:'Salario Anual ($)',zipLabel:'Código Postal',zipLabel2:'Código Postal',filing:'Estado Civil',single:'Soltero/a',married:'Casado/a',hoh:'Jefe/a de Familia',carPay:'Pago de Auto ($/mes)',studentLoan:'Préstamos Estudiantiles ($/mes)',otherDebt:'Otras Deudas ($/mes)',maxPay:'Pago Mensual Máximo ($)',loanDetails:'Detalles del Préstamo',loanType:'Tipo de Préstamo',rate:'Tasa de Interés (%)',downPay:'Pago Inicial',hoa:'Cuotas HOA ($/mes)',creditScore:'Rango de Crédito',calcBtn:'🏡 Calcular Mi Presupuesto de Casa',yourResult:'Tu Poder de Compra',scenarios:'Tus 3 Escenarios de Presupuesto',monthlyBreak:'Desglose del Pago Mensual',dtiTitle:'Relación Deuda-Ingreso (DTI)',safe:'Seguro (<28%)',stretch:'Ajustado (28–36%)',tooMuch:'Demasiado (>36%)',getPreApproved:'Obtén Pre-Aprobación Hoy',preApprovedSub:'Compara tasas hipotecarias reales en minutos. Sin compromiso y sin costo.',rates2026:'Tasas Hipotecarias 2026',tipTitle:'💡 La Regla 28/36',tipText:'No más del 28% de tu ingreso mensual debe ir a vivienda. No más del 36% a TODAS las deudas combinadas.',moreTools:'Más Herramientas Gratis',xlPay:'Calculadora de Cheque',xlReno:'Estimador de Renovación',xlFloor:'Calculadora de Pisos',ctaText:'¿Quieres ver tu sueldo neto primero?',ctaBtn:'💰 Abrir PayCalc Pro →',print:'Imprimir',copy:'Copiar',reset:'Reiniciar',footerText:'Calculadora de Asequibilidad Gratis · 50 Estados · Datos 2026',footerDisc:'Solo estimaciones. No es asesoramiento financiero.',free2026:'Gratis · 2026',scSafe:'✅ Presupuesto Seguro',scStretch:'⚠️ Ajustado',scMax:'🔴 Límite Máximo',perMonth:'por mes'}};
 let lang='en';
 function setLang(l,btn){lang=l;document.querySelectorAll('.ltb').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('[data-t]').forEach(el=>{const k=el.getAttribute('data-t');if(LANG[l][k])el.textContent=LANG[l][k];});}
 const ZIP_TAX={'0':1.1,'1':1.7,'2':0.9,'3':0.85,'4':1.3,'5':1.1,'6':1.5,'7':1.4,'8':0.55,'9':0.75};
@@ -387,6 +479,50 @@ function calculate(){const zip=(calcMode==='salary'?document.getElementById('zip
 function copyResult(){const v=document.getElementById('verdictTitle').textContent;const g=document.getElementById('rGrid');const vals=[...g.querySelectorAll('.sv')].map(e=>e.textContent).join(' | ');navigator.clipboard.writeText('HomeBuyCalc Result\n'+v+'\n'+vals).then(()=>alert('Copied!'));}
 updateDP();
 </script>
+
+<!-- Checklist logic -->
+<script>
+(function(){
+  var STORAGE_KEY="hbc_homebuyer_v1";
+  var ITEMS=[
+    {t:"Check your credit score",s:"Pull your free report and fix any errors before you apply.",l:"Your credit score sets your mortgage rate. <strong>620+</strong> for most conventional loans, <strong>580+</strong> for FHA, and <strong>740+</strong> for the best rates. Get your free report at annualcreditreport.com — checking your own score does not hurt it."},
+    {t:"Set your budget with the 28/36 rule",s:"Know your safe price range before you fall in love with a house.",l:"A common guide: your total housing payment should stay under <strong>28%</strong> of your gross monthly income, and all debt payments under <strong>36%</strong>. Use the calculator above to get your number."},
+    {t:"Understand your DTI (debt-to-income)",s:"Lenders judge you on this more than your salary.",l:"DTI = your monthly debt payments divided by your gross monthly income. Example: $2,000 in debts on $6,000 income = a 33% DTI. Lower is better. Paying down a credit card before applying can boost how much you qualify for."},
+    {t:"Save your down payment",s:"You may need far less than you think.",l:"<strong>FHA</strong> loans allow 3.5% down. Some <strong>conventional</strong> loans go as low as 3%. <strong>VA</strong> and <strong>USDA</strong> can be 0% down. Putting less than 20% down usually means PMI (private mortgage insurance), often $100–$300/month until you build enough equity."},
+    {t:"Gather your documents early",s:"Having these ready prevents delays.",l:"Most lenders want: 2 years of W-2s or tax returns, recent pay stubs, and 2–3 months of bank statements. Self-employed buyers usually need extra paperwork, so start early."},
+    {t:"Get pre-approved (not just pre-qualified)",s:"This makes sellers take you seriously.",l:"<strong>Pre-qualification</strong> is just an estimate. <strong>Pre-approval</strong> is a real commitment from a lender after they check your income, assets, and credit. Shop at least 3 lenders — even a small rate difference saves thousands."},
+    {t:"Look into first-time buyer programs",s:"Free money you might be leaving on the table.",l:"Down-payment assistance grants exist in all 50 states, often <strong>$5,000–$25,000+</strong>, plus special FHA, VA, and USDA loan options. Search your state's housing finance agency for what you qualify for."},
+    {t:"Choose a buyer's agent",s:"Usually free to you, and a big help.",l:"A good agent guides you, spots problems, and negotiates for you. In most cases the seller pays the agent commissions, so a buyer's agent is typically free to you — confirm this up front."},
+    {t:"Research the neighborhood",s:"You're buying the area, not just the house.",l:"Look at school ratings (they affect resale even if you have no kids), property tax rates, commute time, crime stats, and any planned development nearby. Two identical houses can have very different costs based on local taxes."},
+    {t:"Make a smart offer",s:"The highest offer doesn't always win.",l:"Earnest money (a good-faith deposit) is usually 1–2% of the price. Keep contingencies that protect you, and never let emotion push your bid past your budget."},
+    {t:"Get a home inspection",s:"A small cost that can save you thousands.",l:"A standard inspection runs around <strong>$400</strong> and checks structure, roof, plumbing, and electrical. In some regions, add radon or sewer-line tests. Never waive the inspection to win a bid."},
+    {t:"Budget for closing costs",s:"Separate from your down payment.",l:"Closing costs are usually about <strong>3% of the price</strong> and cover loan fees, taxes, and insurance. Remember PITI — Principal, Interest, Taxes, and Insurance — is your true monthly cost, not just the loan payment quote."},
+    {t:"Close and get your keys",s:"The finish line.",l:"Do a final walkthrough, review the closing documents, bring your funds, and sign. Closing usually takes 30–45 days from accepted offer. Then the home is yours."}
+  ];
+  var list=document.getElementById('hbcList');
+  if(!list)return;
+  var saved={};
+  try{saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}");}catch(e){saved={};}
+  ITEMS.forEach(function(item,i){
+    var done=!!saved[i];
+    var el=document.createElement('div');
+    el.className='hbc-item'+(done?' done':'');
+    el.innerHTML='<div class="hbc-row"><div class="hbc-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#0B3D91" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="hbc-main"><div class="hbc-title">'+(i+1)+'. '+item.t+'</div><div class="hbc-sub">'+item.s+'</div><button type="button" class="hbc-learnbtn">💡 Learn</button></div></div><div class="hbc-learn"><div class="hbc-learn-inner">'+item.l+'</div></div>';
+    list.appendChild(el);
+    el.querySelector('.hbc-row').addEventListener('click',function(ev){
+      if(ev.target.classList.contains('hbc-learnbtn'))return;
+      el.classList.toggle('done');saved[i]=el.classList.contains('done');persist();update();
+    });
+    var learn=el.querySelector('.hbc-learn');
+    el.querySelector('.hbc-learnbtn').addEventListener('click',function(ev){ev.stopPropagation();learn.classList.toggle('open');});
+  });
+  function persist(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(saved));}catch(e){}}
+  function update(){var total=ITEMS.length,done=0;for(var k in saved){if(saved[k])done++;}var pct=Math.round(done/total*100);document.getElementById('hbcFill').style.width=pct+'%';document.getElementById('hbcPct').textContent=pct+'%';document.getElementById('hbcCount').textContent=done+' of '+total+' done';document.getElementById('hbcDone').classList.toggle('show',done===total);}
+  document.getElementById('hbcReset').addEventListener('click',function(){saved={};persist();document.querySelectorAll('.hbc-item').forEach(function(el){el.classList.remove('done');});update();});
+  update();
+})();
+</script>
+
 <script>
 let deferredPrompt;
 window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();deferredPrompt=e;var btn=document.getElementById("installBtn");if(btn){btn.style.display="block";}});
