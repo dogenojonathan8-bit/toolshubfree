@@ -377,13 +377,13 @@ function calcFloor(){
   document.getElementById('rGrid').innerHTML=
     '<div class="rs"><div class="sl">Room Area</div><div class="sv">'+Math.round(baseArea).toLocaleString()+' sq ft</div><div class="ss">'+rooms.length+' room(s)'+(steps>0?' + '+steps+' steps':'')+'</div></div>'+
     '<div class="rs"><div class="sl">With '+wastePct+'% Waste</div><div class="sv">'+Math.round(withWaste).toLocaleString()+' sq ft</div><div class="ss">order at least this much</div></div>'+
-    '<div class="rs hl"><div class="sl">Material Cost</div><div class="sv">'+fmt(material)+'</div><div class="ss">'+(boxcov>0?boxes+' boxes':'by roll')+' @ '+fmt(price).replace('$','$')+'/sq ft</div></div>'+
+    '<div class="rs hl"><div class="sl">Material Cost</div><div class="sv">'+fmt(material)+'</div><div class="ss">'+(boxcov>0?boxes+' boxes':'by roll')+' @ '+'$'+price.toFixed(2)+'/sq ft</div></div>'+
     '<div class="rs hl"><div class="sl">Total Project</div><div class="sv">'+fmt(total)+'</div><div class="ss">'+(laborMode==='pro'?'incl. pro install':'DIY, no labor')+'</div></div>';
 
   var bd='<div class="bd-row"><span>Material ('+(boxcov>0?boxes+' boxes':'roll')+')</span><span>'+fmt(material)+'</span></div>';
   if(underlayCost>0)bd+='<div class="bd-row"><span>Underlayment</span><span>'+fmt(underlayCost)+'</span></div>';
   if(trimCost>0)bd+='<div class="bd-row"><span>Trim & transitions</span><span>'+fmt(trimCost)+'</span></div>';
-  if(laborCost>0)bd+='<div class="bd-row"><span>Pro labor ('+fmt(TYPES[ftype].labor).replace('$','$')+'/sq ft)</span><span>'+fmt(laborCost)+'</span></div>';
+  if(laborCost>0)bd+='<div class="bd-row"><span>Pro labor ('+'$'+TYPES[ftype].labor+'/sq ft)</span><span>'+fmt(laborCost)+'</span></div>';
   bd+='<div class="bd-row"><span>Total</span><span>'+fmt(total)+'</span></div>';
   document.getElementById('bd').innerHTML=bd;
 
