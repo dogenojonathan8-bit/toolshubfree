@@ -59,7 +59,6 @@ header{background:var(--ink);padding:14px 24px;display:flex;align-items:center;j
 .qc-btn:hover{background:var(--lime-d)}
 .qc-result{margin-top:16px;padding:16px 24px;background:var(--ink);color:#fff;border-radius:12px;display:none;font-size:.95rem;font-weight:700}
 .qc-result span{color:var(--lime);font-size:1.4rem;font-weight:900}
-/* Ad container — keeps Google ads tidy and labeled */
 .ad-wrap{max-width:1160px;margin:0 auto;padding:18px 20px;text-align:center}
 .ad-label{font-size:.6rem;text-transform:uppercase;letter-spacing:1px;color:#aab4be;font-weight:700;margin-bottom:4px}
 .tools{max-width:1160px;margin:0 auto;padding:48px 20px 64px;display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
@@ -115,7 +114,6 @@ header{background:var(--ink);padding:14px 24px;display:flex;align-items:center;j
 .wi-icon{font-size:1.5rem;margin-bottom:10px;display:block}
 .wi-title{font-weight:800;font-size:.95rem;color:var(--ink);margin-bottom:6px}
 .wi-desc{font-size:.82rem;color:#666;line-height:1.55}
-/* SEO read section */
 .seo-read{background:var(--white);padding:44px 20px;border-top:1px solid #E8EEF4}
 .seo-read-inner{max-width:760px;margin:0 auto}
 .seo-read h2{font-size:1.5rem;font-weight:900;letter-spacing:-.5px;margin-bottom:14px;color:var(--ink)}
@@ -130,8 +128,6 @@ header{background:var(--ink);padding:14px 24px;display:flex;align-items:center;j
 .faq-item.open .faq-q::after{transform:rotate(45deg)}
 .faq-a{padding:0 20px;max-height:0;overflow:hidden;transition:max-height .3s,padding .2s;font-size:.84rem;color:#555;line-height:1.65}
 .faq-item.open .faq-a{max-height:260px;padding:0 20px 16px}
-
-/* ── CATEGORIZED BOTTOM NAV ── */
 .bottom-nav{background:var(--ink);padding:28px 20px 36px;border-top:3px solid var(--lime)}
 .bottom-nav-label{font-size:.7rem;font-weight:800;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:1.2px;text-align:center;margin-bottom:20px}
 .bottom-nav-categories{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
@@ -141,7 +137,6 @@ header{background:var(--ink);padding:14px 24px;display:flex;align-items:center;j
 .bnc-links{display:flex;flex-direction:column;gap:6px}
 .bnc-links a{color:rgba(255,255,255,.7);font-size:.82rem;font-weight:700;text-decoration:none;padding:6px 10px;border-radius:8px;transition:all .18s;display:block}
 .bnc-links a:hover,.bnc-links a.active{background:var(--lime);color:var(--ink)}
-
 footer{background:#1B3A5C;color:rgba(255,255,255,.4);text-align:center;padding:28px 20px;font-size:.75rem;line-height:1.8}
 footer a{color:var(--lime);text-decoration:none}
 footer strong{color:rgba(255,255,255,.8)}
@@ -158,7 +153,6 @@ footer strong{color:rgba(255,255,255,.8)}
   <a class="logo" href="/">Smart<span>Tools</span>Hub</a>
   <div class="header-right">
     <span class="header-badge">100% Free</span>
-    <a class="lang-btn" href="#">🌎 ES</a>
   </div>
 </header>
 
@@ -209,11 +203,6 @@ footer strong{color:rgba(255,255,255,.8)}
   </div>
 </div>
 
-<!-- ============================================================= -->
-<!-- AD #1  (top, after the quick calculator — high visibility)    -->
-<!-- TO ACTIVATE: in AdSense, create a Display ad unit, copy its   -->
-<!-- slot number, and paste it in place of REPLACE_WITH_SLOT_ID    -->
-<!-- ============================================================= -->
 <div class="ad-wrap">
   <div class="ad-label">Advertisement</div>
   <ins class="adsbygoogle"
@@ -260,18 +249,12 @@ footer strong{color:rgba(255,255,255,.8)}
     </div>
     <div class="tc-btn">Open Home Affordability Calculator →</div>
   </a>
-  <!-- ========================================================= -->
-  <!-- AFFILIATE STRIP — money button.                           -->
-  <!-- ⚠️ The link below is a PLACEHOLDER and goes nowhere.      -->
-  <!-- Paste your approved CJ loan/home-equity link where it     -->
-  <!-- says YOUR_CJ_AFFILIATE_LINK_HERE, or this button is dead. -->
-  <!-- ========================================================= -->
   <div class="ad-strip">
     <span style="font-size:2rem">🏠</span>
-    <h3>Need Funding for Your Next Home Project?</h3>
-    <p>Compare rates on home equity loans from top lenders. Takes 60 seconds — no commitment required.</p>
-    <a class="aff-btn" href="YOUR_CJ_AFFILIATE_LINK_HERE" target="_blank" rel="nofollow sponsored">View Loan Offers →</a>
-    <div class="ad-note">Sponsored — we may earn a commission. Always compare lenders before you decide.</div>
+    <h3>Planning a Home Project?</h3>
+    <p>Use our free Renovation Cost Estimator to see what your project will really cost — before you talk to any lender or contractor.</p>
+    <a class="aff-btn" href="/homefixtcost.html">Estimate My Project Cost →</a>
+    <div class="ad-note">Free tool · No signup required</div>
   </div>
   <a class="tool-card c3" href="homefixtcost.html">
     <div class="tc-top">
@@ -382,14 +365,10 @@ footer strong{color:rgba(255,255,255,.8)}
     <div class="why-item"><span class="wi-icon">📜</span><div class="wi-title">2026 Tax Laws</div><div class="wi-desc">Updated for the One Big Beautiful Bill — tips, overtime, and car loan interest deductions.</div></div>
     <div class="why-item"><span class="wi-icon">🏡</span><div class="wi-title">Home Buyer Ready</div><div class="wi-desc">Know your real buying power before talking to any lender or realtor.</div></div>
     <div class="why-item"><span class="wi-icon">🚗</span><div class="wi-title">Gig Worker Friendly</div><div class="wi-desc">Uber, DoorDash, and freelance workers get accurate self-employment tax calculations.</div></div>
-    <div class="why-item"><span class="wi-icon">🌎</span><div class="wi-title">English &amp; Español</div><div class="wi-desc">Full Spanish translation built in — one click switches the entire interface.</div></div>
+    <div class="why-item"><span class="wi-icon">🌎</span><div class="wi-title">English &amp; Español</div><div class="wi-desc">Spanish translation is built into our paycheck and home affordability tools — one click switches the interface.</div></div>
   </div>
 </div>
 
-<!-- ============================================================= -->
-<!-- AD #2  (mid-page, after the value section)                    -->
-<!-- Same setup: paste your second ad unit's slot number here.     -->
-<!-- ============================================================= -->
 <div class="ad-wrap">
   <div class="ad-label">Advertisement</div>
   <ins class="adsbygoogle"
@@ -401,7 +380,6 @@ footer strong{color:rgba(255,255,255,.8)}
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
-<!-- SEO + AdSense-approval text: real, useful words on the page -->
 <div class="seo-read">
   <div class="seo-read-inner">
     <h2>Free Paycheck and Home Calculators for All 50 States</h2>
@@ -442,7 +420,6 @@ footer strong{color:rgba(255,255,255,.8)}
   </div>
 </div>
 
-<!-- CATEGORIZED BOTTOM NAVIGATION -->
 <div class="bottom-nav">
   <div class="bottom-nav-label">🧭 Navigate SmartToolsHub — All Free Tools</div>
   <div class="bottom-nav-categories">
