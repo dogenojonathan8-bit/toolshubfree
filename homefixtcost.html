@@ -104,8 +104,6 @@ header{background:var(--forest);position:sticky;top:0;z-index:100;box-shadow:0 2
 .tip{background:var(--cream-d);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:14px;margin-bottom:12px}
 .tip .tt{font-weight:700;font-size:.8rem;color:var(--gold-d);text-transform:uppercase;letter-spacing:.4px;margin-bottom:5px}
 .tip p{font-size:.82rem;color:#555;line-height:1.5}
-
-/* ===== AMAZON SECTION ===== */
 .amz-section{background:linear-gradient(135deg,#232F3E,#37475A);border-radius:var(--r);padding:22px;margin-bottom:20px}
 .amz-header{display:flex;align-items:center;gap:10px;margin-bottom:6px}
 .amz-logo{background:#FF9900;color:#111;font-family:'Playfair Display',serif;font-weight:900;font-size:.9rem;padding:4px 10px;border-radius:6px}
@@ -121,21 +119,32 @@ header{background:var(--forest);position:sticky;top:0;z-index:100;box-shadow:0 2
 .amz-arrow{color:#FF9900;font-weight:700}
 .amz-badge{display:inline-flex;align-items:center;background:rgba(255,153,0,.2);border:1px solid rgba(255,153,0,.4);color:#FF9900;padding:3px 9px;border-radius:12px;font-size:.68rem;font-weight:700;margin-bottom:12px}
 .amz-disclaimer{font-size:.65rem;color:rgba(255,255,255,.35);margin-top:10px;text-align:center}
-
+.adbox{max-width:1160px;margin:0 auto;padding:16px 20px;text-align:center}
+.adlabel{font-size:.6rem;text-transform:uppercase;letter-spacing:1px;color:#b3a98a;font-weight:700;margin-bottom:4px}
+.seo-wrap{background:#fff;border-top:1px solid var(--cream-d);padding:40px 20px}
+.seo-inner{max-width:780px;margin:0 auto}
+.seo-inner h2{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:800;color:var(--forest);margin-bottom:10px}
+.seo-inner h3{font-size:1.02rem;font-weight:700;color:var(--forest);margin:16px 0 6px}
+.seo-inner p{font-size:.9rem;color:#555;line-height:1.7;margin-bottom:10px}
+.faq-q3{background:var(--cream);border-radius:10px;padding:14px 16px;cursor:pointer;margin-bottom:8px}
+.faq-q3 .qh{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:.9rem;color:var(--forest)}
+.faq-q3 .qa{display:none;font-size:.85rem;color:#555;line-height:1.65;margin-top:10px}
+.faq-q3.open .qa{display:block}
 footer{background:var(--forest);color:rgba(255,255,255,.5);text-align:center;padding:22px;font-size:.76rem;line-height:1.7}
 footer a{color:var(--gold-l);text-decoration:none}
-@media print{header,.hero,.zb,.sidebar,.calc-btn,.ar,footer,.lead-card,.amz-section{display:none!important}.main{grid-template-columns:1fr;padding:0}.card{box-shadow:none;border:1px solid #ddd}}
+@media print{header,.hero,.zb,.sidebar,.calc-btn,.ar,footer,.lead-card,.amz-section,.adbox,.seo-wrap{display:none!important}.main{grid-template-columns:1fr;padding:0}.card{box-shadow:none;border:1px solid #ddd}}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907111543523765" crossorigin="anonymous"></script>
 <link rel="manifest" href="/manifest.json">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#0D1B2A">
+<meta name="theme-color" content="#1B4332">
 <meta name="keywords" content="home renovation cost estimator 2026, kitchen remodel cost calculator, bathroom renovation cost, roofing cost estimator, HVAC replacement cost">
 <meta name="robots" content="index, follow">
 <meta name="fo-verify" content="9435c51b-fadd-4ca3-a6d5-d79a730b51cf" />
 </head>
 <body>
+<div style="background:var(--cream-d);text-align:center;padding:9px 16px;font-size:.72rem;color:#7a6f4a;font-weight:600">⚠️ As an Amazon Associate, SmartToolsHub earns from qualifying purchases. Estimates are for informational purposes only — always get licensed contractor quotes.</div>
 <header>
   <div class="hi">
     <div class="logo">HomeFix<span>Cost</span></div>
@@ -156,6 +165,11 @@ footer a{color:var(--gold-l);text-decoration:none}
   <p>📍 Enter ZIP for local pricing:</p>
   <div class="ziw"><input type="text" id="zi" placeholder="e.g. 33101" maxlength="5"><button class="zbtn" onclick="lookupZ()">Apply</button></div>
   <div class="zres" id="zr"></div>
+</div>
+<div class="adbox">
+  <div class="adlabel">Advertisement</div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9907111543523765" data-ad-slot="REPLACE_WITH_SLOT_ID" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 <div class="main">
 <div>
@@ -207,8 +221,6 @@ footer a{color:var(--gold-l);text-decoration:none}
   <pre id="qt" style="display:none"></pre>
 </div>
 </div>
-
-<!-- SIDEBAR -->
 <div class="sidebar">
   <div class="lead-card">
     <div class="lct">👷 Get Free Contractor Quotes</div>
@@ -220,7 +232,6 @@ footer a{color:var(--gold-l);text-decoration:none}
     <p class="lcn">🔒 Your info is never sold. No spam.</p>
   </div>
 
-  <!-- ===== AMAZON AFFILIATE SECTION — tag: toolshubfree-20 ===== -->
   <div class="amz-section">
     <div class="amz-header"><div class="amz-logo">amazon</div><div class="amz-title">Top Renovation Products</div></div>
     <div class="amz-badge">⭐ Contractor Favorites · Fast Delivery</div>
@@ -253,7 +264,6 @@ footer a{color:var(--gold-l);text-decoration:none}
     </div>
     <div class="amz-disclaimer">As an Amazon Associate, SmartToolsHub earns from qualifying purchases.</div>
   </div>
-  <!-- ===== END AMAZON SECTION ===== -->
 
   <div class="card">
     <div class="ct"><span class="ic">📍</span> <span id="pgT">2026 National Avg Costs</span></div>
@@ -280,16 +290,49 @@ footer a{color:var(--gold-l);text-decoration:none}
     <p>Get <strong>at least 3 quotes</strong> from different contractors. Prices can vary by 30–50% for the same job. Never pay more than 30% upfront before work begins.</p>
   </div>
 
-  <div class="card" style="text-align:center">
-    <p style="font-size:.8rem;color:#888;margin-bottom:10px">Also need flooring estimates?</p>
-    <a href="floorcalcpro.html" style="display:block;padding:11px;background:var(--forest);color:#fff;border-radius:8px;text-decoration:none;font-family:'Playfair Display',serif;font-weight:700;font-size:.9rem">🪵 Try FloorCalc Pro →</a>
+  <div class="card">
+    <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:.85rem;color:#bbb;margin-bottom:11px;text-transform:uppercase;letter-spacing:.5px">🧰 More Free Tools</div>
+    <div class="al-links">
+      <a class="al" href="floorcalcpro.html"><div class="al-l"><div class="al-logo" style="background:var(--forest)">🪵</div><div><div class="al-name">FloorCalc Pro</div><div class="al-sub">Flooring cost & materials</div></div></div><span style="color:var(--forest-l)">→</span></a>
+      <a class="al" href="homebuycalc.html"><div class="al-l"><div class="al-logo" style="background:var(--forest)">🏡</div><div><div class="al-name">HomeBuy Calc</div><div class="al-sub">How much house you can afford</div></div></div><span style="color:var(--forest-l)">→</span></a>
+      <a class="al" href="rentvsbuycalc.html"><div class="al-l"><div class="al-logo" style="background:var(--forest)">⚖️</div><div><div class="al-name">Rent vs Buy</div><div class="al-sub">Which saves you more</div></div></div><span style="color:var(--forest-l)">→</span></a>
+      <a class="al" href="paycalcpro.html"><div class="al-l"><div class="al-logo" style="background:var(--forest)">💰</div><div><div class="al-name">PayCalc Pro</div><div class="al-sub">Your real take-home pay</div></div></div><span style="color:var(--forest-l)">→</span></a>
+      <a class="al" href="cost-of-living-by-state.html"><div class="al-l"><div class="al-logo" style="background:var(--forest)">📊</div><div><div class="al-name">Cost of Living by State</div><div class="al-sub">Compare all 50 states</div></div></div><span style="color:var(--forest-l)">→</span></a>
+    </div>
   </div>
 </div>
 </div>
 
+<div class="adbox">
+  <div class="adlabel">Advertisement</div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9907111543523765" data-ad-slot="REPLACE_WITH_SLOT_ID_2" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="seo-wrap">
+  <div class="seo-inner">
+    <h2>How HomeFixCost Works</h2>
+    <p>HomeFixCost gives you an instant ballpark for any home renovation project. You pick the projects you're planning, choose a finish quality, set your home size and age, and add your ZIP code. The tool then adjusts national average costs to your region and shows a low, high, and middle-ground target budget for each project.</p>
+    <h3>Why your ZIP code changes the price</h3>
+    <p>Labor and material costs are not the same everywhere. The same kitchen remodel can cost 30 to 40 percent more in the Northeast or on the West Coast than in the Midwest or South. HomeFixCost applies a regional multiplier based on the first digit of your ZIP code so your estimate reflects local pricing instead of a flat national number.</p>
+    <h3>How finish quality affects cost</h3>
+    <p>Material choice is one of the biggest cost drivers in any remodel. Builder-grade finishes keep costs low, mid-range is what most homeowners pick, and premium finishes like stone counters or custom cabinets can push a project 50 percent higher. The quality selector lets you see all three so you can plan realistically.</p>
+    <h3>Where our numbers come from</h3>
+    <p>Cost ranges are built from 2026 US national averages reported by remodeling industry cost guides and home services data. Regional multipliers reflect typical cost-of-construction differences across US regions. These are planning estimates, not quotes. Actual prices depend on your specific home, contractor, and material choices — always get at least three quotes from licensed contractors before starting work.</p>
+
+    <h2 style="margin-top:28px">Frequently Asked Questions</h2>
+    <div class="faq-q3" onclick="this.classList.toggle('open')"><div class="qh"><span>How much does a kitchen remodel cost in 2026?</span><span style="color:var(--gold-d)">▾</span></div><div class="qa">A typical kitchen remodel runs about $15,000 to $45,000 depending on size, finish quality, and your region. Budget builder-grade kitchens land near the low end, while premium finishes with custom cabinets and stone counters reach the high end. Enter your ZIP above for a local estimate.</div></div>
+    <div class="faq-q3" onclick="this.classList.toggle('open')"><div class="qh"><span>How accurate is this renovation estimator?</span><span style="color:var(--gold-d)">▾</span></div><div class="qa">It gives a solid planning range based on 2026 national averages adjusted for your region, home size, age, and finish quality. It's meant for budgeting — not a binding quote. Final costs vary by contractor and materials, so always get three quotes before you commit.</div></div>
+    <div class="faq-q3" onclick="this.classList.toggle('open')"><div class="qh"><span>How many contractor quotes should I get?</span><span style="color:var(--gold-d)">▾</span></div><div class="qa">Always get at least three quotes from licensed contractors. Prices for the same job can vary 30 to 50 percent. As a rule of thumb, never pay more than about 30 percent of the total upfront before work begins.</div></div>
+    <div class="faq-q3" onclick="this.classList.toggle('open')"><div class="qh"><span>Is HomeFixCost free to use?</span><span style="color:var(--gold-d)">▾</span></div><div class="qa">Yes — it's 100% free with no signup or email required. The tool stays free through ads and relevant affiliate links to retailers and contractor services. You never pay to use it.</div></div>
+  </div>
+</div>
+
 <footer>
-  <strong style="color:rgba(255,255,255,.85)">HomeFixCost</strong> — Free Home Renovation Cost Estimator<br>
-  Estimates are based on 2026 US national averages. Always obtain multiple contractor quotes. <a href="#">Privacy</a> · <a href="#">About</a>
+  <strong style="color:rgba(255,255,255,.85)">HomeFixCost</strong> — Free Home Renovation Cost Estimator · Part of SmartToolsHub<br>
+  Estimates are based on 2026 US national averages. Always obtain multiple contractor quotes.<br>
+  As an Amazon Associate, SmartToolsHub earns from qualifying purchases.<br>
+  <a href="/privacy.html">Privacy Policy</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a>
 </footer>
 
 <script>
