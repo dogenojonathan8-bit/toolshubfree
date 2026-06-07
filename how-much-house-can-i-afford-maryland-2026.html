@@ -1,1 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How Much House Can I Afford in Maryland in 2026? | SmartToolsHub</title>
+  <meta name="description" content="Find out exactly how much house you can afford in Maryland in 2026. Real numbers on home prices, down payments, mortgage rules, and first-time buyer programs." />
+  <meta name="keywords" content="how much house can I afford Maryland, Maryland home affordability 2026, Maryland first time home buyer, Maryland mortgage calculator, home buying Maryland" />
+  <link rel="canonical" href="https://toolshubfree.com/how-much-house-can-i-afford-maryland-2026.html" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0D1B2A;
+      --lime: #C8F135;
+      --white: #FFFFFF;
+      --muted: #4a5568;
+      --light-bg: #f7f9f3;
+      --border: #e2e8d5;
+      --card-bg: #ffffff;
+    }
+
+    body {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      background: var(--light-bg);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    nav {
+      background: var(--ink);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--lime); }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--lime); }
+
+    .hero {
+      background: var(--ink);
+      color: var(--white);
+      padding: 60px 24px 48px;
+      text-align: center;
+    }
+    .hero .badge {
+      display: inline-block;
+      background: var(--lime);
+      color: var(--ink);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      max-width: 720px;
+      margin: 0 auto 16px;
+    }
+    .hero h1 em { color: var(--lime); font-style: normal; }
+    .hero .subtitle {
+      color: #b0bec5;
+      font-size: 1rem;
+      max-width: 560px;
+      margin: 0 auto 20px;
+    }
+    .hero .meta { font-size: 0.82rem; color: #78909c; }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 24px 64px;
+    }
+
+    .toc {
+      background: var(--card-bg);
+      border: 2px solid var(--lime);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 40px;
+    }
+    .toc h2 {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin-bottom: 6px; }
+    .toc a {
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .toc a:hover { color: #2d7a3a; text-decoration: underline; }
+
+    h2.section-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin: 48px 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--lime);
+    }
+    h3.sub-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 28px 0 10px;
+    }
+
+    p { margin-bottom: 16px; }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 16px;
+      margin: 28px 0;
+    }
+    .stat-card {
+      background: var(--ink);
+      color: var(--white);
+      border-radius: 12px;
+      padding: 22px 18px;
+      text-align: center;
+    }
+    .stat-card .number {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--lime);
+      line-height: 1.1;
+    }
+    .stat-card .label {
+      font-size: 0.8rem;
+      color: #b0bec5;
+      margin-top: 6px;
+      font-weight: 500;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95rem;
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .data-table thead {
+      background: var(--ink);
+      color: var(--white);
+    }
+    .data-table thead th {
+      padding: 14px 18px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .data-table thead th:last-child { color: var(--lime); }
+    .data-table tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+    .data-table tbody tr:last-child { border-bottom: none; }
+    .data-table tbody tr:hover { background: #f0f7e8; }
+    .data-table tbody td { padding: 13px 18px; font-weight: 500; }
+    .data-table tbody td:last-child { font-weight: 700; color: #1a5e2a; }
+
+    .highlight-box {
+      background: var(--lime);
+      color: var(--ink);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 32px 0;
+    }
+    .highlight-box p { margin-bottom: 0; font-weight: 600; font-size: 1rem; }
+    .highlight-box strong { font-weight: 800; font-size: 1.05rem; }
+
+    .warning-box {
+      background: #fff8e1;
+      border-left: 4px solid #f59e0b;
+      border-radius: 0 10px 10px 0;
+      padding: 18px 22px;
+      margin: 28px 0;
+      font-size: 0.95rem;
+    }
+    .warning-box strong { color: #92400e; }
+
+    .info-box {
+      background: #e8f4fd;
+      border-left: 4px solid #3b82f6;
+      border-radius: 0 10px 10px 0;
+      padding: 18px 22px;
+      margin: 28px 0;
+      font-size: 0.95rem;
+    }
+    .info-box strong { color: #1e40af; }
+
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .program-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .program-card .prog-name {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .program-card .prog-benefit {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #1a5e2a;
+      margin-bottom: 4px;
+    }
+    .program-card .prog-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .program-card.featured { border-color: var(--lime); border-width: 2px; }
+
+    .step-list { margin: 20px 0; }
+    .step-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      align-items: flex-start;
+    }
+    .step-num {
+      background: var(--ink);
+      color: var(--lime);
+      font-weight: 800;
+      font-size: 1rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-content strong {
+      display: block;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+    .step-content p { margin-bottom: 0; font-size: 0.95rem; }
+
+    .cta-section {
+      background: var(--ink);
+      color: var(--white);
+      border-radius: 16px;
+      padding: 40px 32px;
+      text-align: center;
+      margin: 48px 0;
+    }
+    .cta-section h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: var(--white);
+      border: none;
+      padding: 0;
+    }
+    .cta-section p { color: #b0bec5; margin-bottom: 24px; }
+    .cta-btn {
+      display: inline-block;
+      background: var(--lime);
+      color: var(--ink);
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 14px 32px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(200,241,53,0.35);
+    }
+
+    .sources {
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 48px;
+      padding-top: 20px;
+    }
+
+    footer {
+      background: var(--ink);
+      color: #78909c;
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.82rem;
+    }
+    footer a { color: #b0bec5; text-decoration: none; margin: 0 10px; }
+    footer a:hover { color: var(--lime); }
+    .footer-links { margin-bottom: 10px; }
+
+    .disclosure {
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero { padding: 40px 20px 36px; }
+      .container { padding: 32px 16px 48px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/index.html" class="nav-logo">Smart<span>Tools</span>Hub</a>
+  <div class="nav-links">
+    <a href="/index.html">Home</a>
+    <a href="/homebuycalc.html">Home Calculator</a>
+    <a href="/paycalcpro.html">Paycheck Calculator</a>
+    <a href="/about.html">About</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="badge">Home Buying Guide · 2026</div>
+  <h1>How Much House Can I Afford<br>in <em>Maryland in 2026?</em></h1>
+  <p class="subtitle">Real numbers on home prices, down payments, mortgage rules, and first-time buyer programs — so you know exactly what you can buy before you start shopping.</p>
+  <p class="meta">Updated June 2026 &nbsp;·&nbsp; Sources: U.S. Census Bureau, MDHCD, Freddie Mac</p>
+</div>
+
+<div class="container">
+
+  <div class="disclosure">
+    <strong>Affiliate Disclosure:</strong> SmartToolsHub may earn a commission from links on this page at no extra cost to you. We only recommend tools and services we believe are genuinely useful.
+  </div>
+
+  <div class="toc">
+    <h2>In This Article</h2>
+    <ol>
+      <li><a href="#snapshot">Maryland Housing Market Snapshot 2026</a></li>
+      <li><a href="#rule">The Basic Affordability Rule</a></li>
+      <li><a href="#byincome">How Much House by Income</a></li>
+      <li><a href="#downpayment">Down Payment: What You Actually Need</a></li>
+      <li><a href="#costs">Hidden Costs Most Buyers Forget</a></li>
+      <li><a href="#programs">Maryland First-Time Buyer Programs</a></li>
+      <li><a href="#steps">6 Steps Before You Buy</a></li>
+      <li><a href="#byarea">Home Prices by Area</a></li>
+    </ol>
+  </div>
+
+  <!-- SECTION 1 -->
+  <h2 class="section-title" id="snapshot">Maryland Housing Market Snapshot 2026</h2>
+  <p>Maryland's housing market is still competitive in 2026. Limited inventory near the DC metro area keeps prices elevated, while western Maryland and the Eastern Shore offer much more affordable options. Here's where things stand:</p>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="number">$415,000</div>
+      <div class="label">Median Home Price (MD Statewide)</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">6.8%</div>
+      <div class="label">Avg. 30-Year Mortgage Rate</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">$2,720</div>
+      <div class="label">Avg. Monthly Mortgage Payment</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">$83K</div>
+      <div class="label">Min. Salary to Buy Median MD Home</div>
+    </div>
+  </div>
+
+  <p>The good news: if you know your numbers going in, you can act fast when the right home comes up — and avoid getting approved for more than you can actually handle.</p>
+
+  <!-- SECTION 2 -->
+  <h2 class="section-title" id="rule">The Basic Affordability Rule</h2>
+  <p>Lenders and financial experts use a simple rule to figure out what you can afford. It's called the <strong>28/36 rule</strong>:</p>
+
+  <div class="highlight-box">
+    <p>🏠 <strong>The 28/36 Rule:</strong> Your monthly mortgage payment should be no more than <strong>28% of your gross monthly income</strong>. Your total debt (mortgage + car + student loans + credit cards) should be no more than <strong>36%</strong>.</p>
+  </div>
+
+  <p>Here's a simple example: If you earn $6,000/month before taxes, your max mortgage payment should be about $1,680/month (28% × $6,000). At today's rates, that gets you a home around $250,000–$270,000.</p>
+
+  <div class="warning-box">
+    <strong>⚠️ Watch out:</strong> Just because a lender <em>approves</em> you for $400,000 doesn't mean you should spend that much. Lenders look at gross income — but you pay bills from your take-home pay. Always calculate based on what you actually bring home.
+  </div>
+
+  <!-- SECTION 3 -->
+  <h2 class="section-title" id="byincome">How Much House by Income in Maryland</h2>
+  <p>Here's a quick reference table based on today's average 30-year mortgage rate of 6.8% and a 10% down payment:</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Annual Salary</th>
+        <th>Max Monthly Payment (28%)</th>
+        <th>Approx. Home Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>$50,000</td><td>$1,167</td><td>~$175,000</td></tr>
+      <tr><td>$65,000</td><td>$1,517</td><td>~$228,000</td></tr>
+      <tr><td>$80,000</td><td>$1,867</td><td>~$280,000</td></tr>
+      <tr><td>$100,000</td><td>$2,333</td><td>~$350,000</td></tr>
+      <tr><td>$120,000</td><td>$2,800</td><td>~$420,000</td></tr>
+      <tr><td>$150,000</td><td>$3,500</td><td>~$525,000</td></tr>
+    </tbody>
+  </table>
+
+  <p>These are estimates. Your actual number depends on your credit score, existing debts, down payment size, and property taxes in your county. Use our <a href="/homebuycalc.html"><strong>free home affordability calculator</strong></a> to get your personalized number in 60 seconds.</p>
+
+  <!-- SECTION 4 -->
+  <h2 class="section-title" id="downpayment">Down Payment: What You Actually Need</h2>
+  <p>This is where a lot of first-time buyers get stuck. They think they need 20% down. You often don't. Here's the real breakdown:</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Loan Type</th>
+        <th>Min. Down Payment</th>
+        <th>Best For</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>FHA Loan</td><td>3.5% (credit 580+)</td><td>First-time buyers, lower credit</td></tr>
+      <tr><td>Conventional Loan</td><td>3% – 5%</td><td>Good credit (680+), stable income</td></tr>
+      <tr><td>VA Loan</td><td>0%</td><td>Veterans and active military</td></tr>
+      <tr><td>USDA Loan</td><td>0%</td><td>Rural Maryland areas</td></tr>
+      <tr><td>Standard Conventional</td><td>20%</td><td>Avoid PMI, lower monthly payment</td></tr>
+    </tbody>
+  </table>
+
+  <div class="info-box">
+    <strong>💡 PMI Explained:</strong> If you put less than 20% down on a conventional loan, you'll pay Private Mortgage Insurance (PMI) — typically $100–$250/month until you reach 20% equity. On an FHA loan, mortgage insurance is required for the life of the loan unless you refinance.
+  </div>
+
+  <p>On a $350,000 Maryland home, a 5% down payment = $17,500. A 20% down payment = $70,000. Most first-time buyers go the 3–5% route and budget for PMI.</p>
+
+  <!-- SECTION 5 -->
+  <h2 class="section-title" id="costs">Hidden Costs Most Buyers Forget</h2>
+  <p>The purchase price is just the beginning. Here's what catches first-time buyers off guard:</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Cost</th>
+        <th>Typical Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Closing Costs</td><td>2% – 5% of loan amount (~$7,000–$17,500 on $350K)</td></tr>
+      <tr><td>Maryland Transfer Tax</td><td>0.5% of purchase price (first-time buyers may be exempt)</td></tr>
+      <tr><td>Home Inspection</td><td>$400 – $600</td></tr>
+      <tr><td>Appraisal Fee</td><td>$500 – $750</td></tr>
+      <tr><td>Homeowners Insurance</td><td>$100 – $200/month</td></tr>
+      <tr><td>Property Taxes (MD avg.)</td><td>0.87% of home value/year (~$3,600/yr on $415K home)</td></tr>
+      <tr><td>HOA Fees (if applicable)</td><td>$100 – $500/month</td></tr>
+      <tr><td>Moving Costs</td><td>$1,000 – $3,500</td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box">
+    <p>📋 <strong>Real budget tip:</strong> On a $350,000 home, plan to have <strong>$30,000–$40,000 saved</strong> — not just for the down payment, but for closing costs, inspections, moving, and a 3-month emergency fund after you close.</p>
+  </div>
+
+  <!-- SECTION 6 -->
+  <h2 class="section-title" id="programs">Maryland First-Time Buyer Programs</h2>
+  <p>Maryland has some of the best first-time buyer programs in the country through the <strong>Maryland Department of Housing and Community Development (MDHCD)</strong>. Here's what's available:</p>
+
+  <div class="program-grid">
+    <div class="program-card featured">
+      <div class="prog-name">Maryland Mortgage Program</div>
+      <div class="prog-benefit">Below-Market Rate Loans</div>
+      <div class="prog-desc">Competitive 30-year fixed rates for first-time buyers. Can be paired with down payment assistance.</div>
+    </div>
+    <div class="program-card">
+      <div class="prog-name">1st Time Advantage</div>
+      <div class="prog-benefit">Up to $6,000 DPA</div>
+      <div class="prog-desc">Down payment assistance as a zero-interest deferred loan. No payments until you sell or refinance.</div>
+    </div>
+    <div class="program-card">
+      <div class="prog-name">Flex 3% Loan</div>
+      <div class="prog-benefit">3% Down Help</div>
+      <div class="prog-desc">Assistance equal to 3% of the loan amount. Works with conventional and FHA loans.</div>
+    </div>
+    <div class="program-card">
+      <div class="prog-name">Maryland HomeCredit</div>
+      <div class="prog-benefit">Federal Tax Credit</div>
+      <div class="prog-desc">Mortgage Credit Certificate reduces your federal tax bill every year you own the home.</div>
+    </div>
+    <div class="program-card">
+      <div class="prog-name">Baltimore City Live Near Your Work</div>
+      <div class="prog-benefit">Up to $18,000</div>
+      <div class="prog-desc">Grant for buyers who work for participating employers in Baltimore City. Does not need to be repaid.</div>
+    </div>
+    <div class="program-card">
+      <div class="prog-name">SmartBuy 3.0</div>
+      <div class="prog-benefit">Student Debt Relief</div>
+      <div class="prog-desc">Helps buyers pay off student loan debt at closing. For Maryland residents with state-eligible debt.</div>
+    </div>
+  </div>
+
+  <p>Most of these programs require completing a homebuyer education course (usually free or low-cost online). Check <strong>mmp.maryland.gov</strong> for current income limits and eligibility.</p>
+
+  <!-- SECTION 7 -->
+  <h2 class="section-title" id="steps">6 Steps Before You Buy in Maryland</h2>
+
+  <div class="step-list">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <strong>Know your real take-home pay</strong>
+        <p>Before anything else, calculate your actual monthly take-home after Maryland taxes. Use our <a href="/paycalcpro.html">paycheck calculator</a> to get the exact number.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <strong>Check your credit score</strong>
+        <p>You need at least 580 for FHA, 620–640 for most conventional loans. Above 740 gets you the best rates. Check for free through your bank or Credit Karma.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <strong>Calculate your real affordability number</strong>
+        <p>Use our <a href="/homebuycalc.html">home affordability calculator</a> with your actual income, debts, and down payment to get a realistic price range.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <strong>Get pre-approved — not just pre-qualified</strong>
+        <p>Pre-qualification is just an estimate. Pre-approval means a lender has checked your credit and income. Sellers take pre-approved buyers seriously.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <strong>Apply for Maryland assistance programs</strong>
+        <p>Check your eligibility for the Maryland Mortgage Program and down payment assistance before you start shopping. Some grants run out of funding during the year.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">6</div>
+      <div class="step-content">
+        <strong>Budget for the full cost — not just the mortgage</strong>
+        <p>Add up your mortgage + property taxes + insurance + HOA + maintenance (budget 1% of home value per year). That's your real monthly housing cost.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 8 -->
+  <h2 class="section-title" id="byarea">Home Prices by Area in Maryland</h2>
+  <p>Location changes everything in Maryland. Here's the median home price by major area in 2026:</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Area</th>
+        <th>Median Home Price</th>
+        <th>Salary Needed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Montgomery County</td><td>$620,000</td><td>~$125,000/yr</td></tr>
+      <tr><td>Howard County</td><td>$545,000</td><td>~$110,000/yr</td></tr>
+      <tr><td>Anne Arundel County</td><td>$460,000</td><td>~$93,000/yr</td></tr>
+      <tr><td>Prince George's County</td><td>$370,000</td><td>~$75,000/yr</td></tr>
+      <tr><td>Baltimore City</td><td>$200,000</td><td>~$42,000/yr</td></tr>
+      <tr><td>Baltimore County</td><td>$330,000</td><td>~$67,000/yr</td></tr>
+      <tr><td>Frederick County</td><td>$395,000</td><td>~$80,000/yr</td></tr>
+      <tr><td>Hagerstown / Washington Co.</td><td>$255,000</td><td>~$52,000/yr</td></tr>
+      <tr><td>Eastern Shore (avg.)</td><td>$290,000</td><td>~$59,000/yr</td></tr>
+    </tbody>
+  </table>
+
+  <div class="info-box">
+    <strong>💡 Best value in 2026:</strong> Prince George's County and Baltimore City offer the most home for the money — and both are close to DC and Baltimore job markets. First-time buyers on a budget should look here first.
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Find Your Real Affordability Number</h2>
+    <p>Plug in your income, debts, and down payment — get your real home price range in 60 seconds. Free, no sign-up needed.</p>
+    <a href="/homebuycalc.html" class="cta-btn">Use the Free Home Calculator →</a>
+  </div>
+
+  <div class="sources">
+    <strong>Sources:</strong> U.S. Census Bureau American Community Survey 2024; Maryland Department of Housing and Community Development (MDHCD) 2026 program data; Freddie Mac Primary Mortgage Market Survey June 2026; Maryland Association of Realtors 2026 market data; National Association of Realtors (NAR) affordability index; USDA loan eligibility maps. Salary estimates based on 28% front-end DTI ratio at 6.8% 30-year fixed rate with 10% down.
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="/privacy.html">Privacy Policy</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+  <p>© 2026 SmartToolsHub · toolshubfree.com · All rights reserved.</p>
+  <p style="margin-top:6px; font-size:0.75rem;">This article is for informational purposes only and does not constitute financial or legal advice.</p>
+</footer>
+
+</body>
+</html>
