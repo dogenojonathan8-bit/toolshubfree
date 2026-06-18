@@ -4,13 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MoneyMap Pro – Free Money Command Center 2026 | Budget, Car & Savings Calculator</title>
-<meta name="description" content="Free money command center. See exactly what comes in, what goes out, what your free money is, how much car you can afford, and track annual expenses. All 50 states. No signup.">
-<meta name="keywords" content="how much car can I afford, free budget calculator, annual expense tracker, subscription tracker, 50/30/20 budget rule, free money calculator, how much money do I have left over, personal finance calculator 2026">
+<meta name="description" content="Free money command center. See exactly what comes in, what goes out, your real free money, how much car you can afford, and track annual expenses. All 50 states. No signup.">
+<meta name="keywords" content="how much car can I afford, free budget calculator, annual expense tracker, 50/30/20 budget rule, free money calculator, how much money do I have left over, personal finance calculator 2026, Maryland budget calculator">
 <meta name="robots" content="index, follow">
+<link rel="canonical" href="https://toolshubfree.com/moneymappro.html" />
 <link rel="manifest" href="/manifest.json">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#0C0F14">
+<meta name="fo-verify" content="9435c51b-fadd-4ca3-a6d5-d79a730b51cf" />
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907111543523765" crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -27,10 +29,13 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--white);min-height:100vh}
 header{background:var(--bg2);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
-.hi{max-width:1100px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--white);letter-spacing:1px}
+.hi{max-width:1100px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--white);letter-spacing:1px;text-decoration:none}
 .logo span{color:var(--green)}
-.hbg{background:var(--green);color:var(--bg);font-size:.65rem;font-weight:800;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px}
+.hnav{display:flex;align-items:center;gap:16px}
+.hnav a{color:var(--gray);text-decoration:none;font-size:.8rem;font-weight:700;transition:color .2s}
+.hnav a:hover{color:var(--green)}
+.hbg{background:var(--green);color:var(--bg);font-size:.65rem;font-weight:800;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
 .hero{background:var(--bg2);padding:44px 20px 36px;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(0,229,160,.06) 0%,transparent 65%);pointer-events:none}
 .hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,6vw,3.8rem);letter-spacing:2px;line-height:1;margin-bottom:10px;position:relative}
@@ -154,6 +159,25 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);position:stic
 .aff-logo{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#fff;flex-shrink:0}
 .aff-name{font-size:.82rem;font-weight:700;color:var(--white)}
 .aff-sub{font-size:.68rem;color:var(--gray)}
+/* CJ CARD */
+.cj-card{background:linear-gradient(135deg,#0a2540,#1a3d5c);border-radius:var(--r);padding:18px;margin-bottom:18px}
+.cj-title{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:1px;color:#fff;margin-bottom:4px}
+.cj-sub{font-size:.78rem;color:rgba(255,255,255,.6);margin-bottom:12px;line-height:1.5}
+.cj-links{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:440px){.cj-links{grid-template-columns:1fr}}
+.cj-link{display:flex;align-items:center;gap:9px;padding:11px 13px;border-radius:9px;border:1.5px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);text-decoration:none;transition:all .2s}
+.cj-link:hover{border-color:#4ade80;background:rgba(74,222,128,.08)}
+.cj-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;flex-shrink:0;color:#fff}
+.cj-name{font-weight:800;font-size:.82rem;color:#fff}
+.cj-desc{font-size:.68rem;color:rgba(255,255,255,.5)}
+/* ARTICLE CARD */
+.art-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:18px;margin-bottom:18px}
+.art-card .at{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:1px;color:#fff;margin-bottom:10px}
+.art-links{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+@media(max-width:600px){.art-links{grid-template-columns:1fr}}
+.art-link{display:block;padding:11px 13px;border-radius:9px;background:var(--bg3);text-decoration:none;font-weight:700;font-size:.82rem;color:var(--white);border:1px solid var(--border);transition:all .2s;line-height:1.4}
+.art-link:hover{border-color:var(--green)}
+.art-link span{display:block;font-size:.7rem;font-weight:400;color:var(--gray);margin-top:2px}
 .ar{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
 .abtn{flex:1;min-width:90px;padding:9px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;cursor:pointer;font-family:'Manrope',sans-serif;font-weight:700;font-size:.8rem;color:var(--gray);transition:all .2s;display:flex;align-items:center;justify-content:center;gap:4px}
 .abtn:hover{border-color:var(--green);color:var(--white)}
@@ -166,6 +190,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);position:stic
 .seo-wrap h2{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:1px;margin-bottom:10px;color:var(--white)}
 .seo-wrap h3{font-size:1rem;font-weight:700;margin:16px 0 6px;color:var(--white)}
 .seo-wrap p{font-size:.88rem;color:var(--gray);line-height:1.7;margin-bottom:10px}
+.seo-wrap a{color:var(--green);text-decoration:none}
 .faq-q2{background:var(--bg3);border-radius:10px;padding:14px 16px;cursor:pointer;margin-bottom:8px}
 .faq-q2 .qh{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:.88rem;color:var(--white)}
 .faq-q2 .qa{display:none;font-size:.83rem;color:var(--gray);line-height:1.6;margin-top:10px}
@@ -183,9 +208,10 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);position:stic
 .amz2 .adisc{font-size:.64rem;color:rgba(255,255,255,.35);margin-top:10px;text-align:center}
 footer{background:var(--bg2);border-top:1px solid var(--border);color:var(--gray);text-align:center;padding:20px;font-size:.74rem;line-height:1.7}
 footer a{color:var(--green);text-decoration:none}
-@media print{header,.hero,.back-bar,footer,.calc-btn,.ar,.adbox,.amz2{display:none!important}.main{padding:0}.sec{page-break-inside:avoid}}
+footer a:hover{color:#fff}
+@media(max-width:600px){.hnav{display:none}}
+@media print{header,.hero,.back-bar,footer,.calc-btn,.ar,.adbox,.amz2,.cj-card,.art-card{display:none!important}.main{padding:0}.sec{page-break-inside:avoid}}
 </style>
-  <meta name="fo-verify" content="9435c51b-fadd-4ca3-a6d5-d79a730b51cf" />
 </head>
 <body>
 
@@ -193,7 +219,12 @@ footer a{color:var(--green);text-decoration:none}
 
 <header>
   <div class="hi">
-    <div class="logo">Money<span>Map</span> Pro</div>
+    <a href="/index.html" class="logo">Money<span>Map</span> Pro</a>
+    <div class="hnav">
+      <a href="/paycalcpro.html">Paycheck</a>
+      <a href="/homebuycalc.html">Home Calc</a>
+      <a href="/homefixtcost.html">Renovation</a>
+    </div>
     <div class="hbg">Free 2026</div>
   </div>
 </header>
@@ -210,6 +241,7 @@ footer a{color:var(--green);text-decoration:none}
   </div>
 </div>
 
+<!-- AD UNIT 1 -->
 <div class="adbox">
   <div class="adlabel">Advertisement</div>
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9907111543523765" data-ad-slot="REPLACE_WITH_SLOT_ID" data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -218,6 +250,7 @@ footer a{color:var(--green);text-decoration:none}
 
 <div class="main">
 
+<!-- STEP 1: INCOME -->
 <div class="sec green">
   <div class="sec-title"><span class="ic">💵</span> Step 1: Money Coming IN <span class="badge badge-green">Monthly</span></div>
   <div class="row3">
@@ -285,28 +318,30 @@ footer a{color:var(--green);text-decoration:none}
   </div>
 </div>
 
+<!-- STEP 2: BILLS -->
 <div class="sec blue">
   <div class="sec-title"><span class="ic">🏠</span> Step 2: Monthly Bills <span class="badge" style="background:rgba(78,159,255,.15);color:var(--blue)">Toggle On/Off</span></div>
   <p style="font-size:.78rem;color:var(--gray);margin-bottom:14px">Toggle each bill on and enter your amount. Only add what actually applies to you.</p>
   <div class="bill-list" id="billList">
-    <div class="bill-row" id="br_rent"><div class="br-left"><span class="br-icon">🏠</span><div><div class="br-label">Rent / Mortgage</div><div class="br-sub">Monthly housing cost</div></div></div><input class="br-input" type="number" id="b_rent" value="1200" min="0" placeholder="0"><div class="tog on" onclick="togBill('rent')"></div></div>
+    <div class="bill-row active" id="br_rent"><div class="br-left"><span class="br-icon">🏠</span><div><div class="br-label">Rent / Mortgage</div><div class="br-sub">Monthly housing cost</div></div></div><input class="br-input" type="number" id="b_rent" value="1200" min="0" placeholder="0"><div class="tog on" onclick="togBill('rent')"></div></div>
     <div class="bill-row" id="br_car"><div class="br-left"><span class="br-icon">🚗</span><div><div class="br-label">Car Payment</div><div class="br-sub">Monthly auto loan</div></div></div><input class="br-input" type="number" id="b_car" value="0" min="0" placeholder="0"><div class="tog" onclick="togBill('car')"></div></div>
     <div class="bill-row" id="br_insurance"><div class="br-left"><span class="br-icon">🛡️</span><div><div class="br-label">Auto Insurance</div><div class="br-sub">Monthly premium</div></div></div><input class="br-input" type="number" id="b_insurance" value="0" min="0" placeholder="0"><div class="tog" onclick="togBill('insurance')"></div></div>
-    <div class="bill-row" id="br_phone"><div class="br-left"><span class="br-icon">📱</span><div><div class="br-label">Phone Bill</div><div class="br-sub">Cell service monthly</div></div></div><input class="br-input" type="number" id="b_phone" value="85" min="0" placeholder="0"><div class="tog on" onclick="togBill('phone')"></div></div>
-    <div class="bill-row" id="br_internet"><div class="br-left"><span class="br-icon">📡</span><div><div class="br-label">Internet</div><div class="br-sub">Home WiFi monthly</div></div></div><input class="br-input" type="number" id="b_internet" value="70" min="0" placeholder="0"><div class="tog on" onclick="togBill('internet')"></div></div>
-    <div class="bill-row" id="br_utilities"><div class="br-left"><span class="br-icon">⚡</span><div><div class="br-label">Utilities</div><div class="br-sub">Electric, gas, water avg</div></div></div><input class="br-input" type="number" id="b_utilities" value="150" min="0" placeholder="0"><div class="tog on" onclick="togBill('utilities')"></div></div>
-    <div class="bill-row" id="br_groceries"><div class="br-left"><span class="br-icon">🛒</span><div><div class="br-label">Groceries / Food</div><div class="br-sub">Monthly food budget</div></div></div><input class="br-input" type="number" id="b_groceries" value="400" min="0" placeholder="0"><div class="tog on" onclick="togBill('groceries')"></div></div>
+    <div class="bill-row active" id="br_phone"><div class="br-left"><span class="br-icon">📱</span><div><div class="br-label">Phone Bill</div><div class="br-sub">Cell service monthly</div></div></div><input class="br-input" type="number" id="b_phone" value="85" min="0" placeholder="0"><div class="tog on" onclick="togBill('phone')"></div></div>
+    <div class="bill-row active" id="br_internet"><div class="br-left"><span class="br-icon">📡</span><div><div class="br-label">Internet</div><div class="br-sub">Home WiFi monthly</div></div></div><input class="br-input" type="number" id="b_internet" value="70" min="0" placeholder="0"><div class="tog on" onclick="togBill('internet')"></div></div>
+    <div class="bill-row active" id="br_utilities"><div class="br-left"><span class="br-icon">⚡</span><div><div class="br-label">Utilities</div><div class="br-sub">Electric, gas, water avg</div></div></div><input class="br-input" type="number" id="b_utilities" value="150" min="0" placeholder="0"><div class="tog on" onclick="togBill('utilities')"></div></div>
+    <div class="bill-row active" id="br_groceries"><div class="br-left"><span class="br-icon">🛒</span><div><div class="br-label">Groceries / Food</div><div class="br-sub">Monthly food budget</div></div></div><input class="br-input" type="number" id="b_groceries" value="400" min="0" placeholder="0"><div class="tog on" onclick="togBill('groceries')"></div></div>
     <div class="bill-row" id="br_gas"><div class="br-left"><span class="br-icon">⛽</span><div><div class="br-label">Gas / Transportation</div><div class="br-sub">Monthly fuel cost</div></div></div><input class="br-input" type="number" id="b_gas" value="0" min="0" placeholder="0"><div class="tog" onclick="togBill('gas')"></div></div>
     <div class="bill-row" id="br_health"><div class="br-left"><span class="br-icon">🏥</span><div><div class="br-label">Health Insurance</div><div class="br-sub">If not taken from paycheck</div></div></div><input class="br-input" type="number" id="b_health" value="0" min="0" placeholder="0"><div class="tog" onclick="togBill('health')"></div></div>
     <div class="bill-row" id="br_student"><div class="br-left"><span class="br-icon">🎓</span><div><div class="br-label">Student Loans</div><div class="br-sub">Monthly payment</div></div></div><input class="br-input" type="number" id="b_student" value="0" min="0" placeholder="0"><div class="tog" onclick="togBill('student')"></div></div>
     <div class="bill-row" id="br_cc"><div class="br-left"><span class="br-icon">💳</span><div><div class="br-label">Credit Cards</div><div class="br-sub">Minimum monthly payment</div></div></div><input class="br-input" type="number" id="b_cc" value="0" min="0" placeholder="0"><div class="tog" onclick="togBill('cc')"></div></div>
     <div class="bill-row" id="br_childcare"><div class="br-left"><span class="br-icon">👶</span><div><div class="br-label">Childcare / Daycare</div><div class="br-sub">Monthly cost</div></div></div><input class="br-input" type="number" id="b_childcare" value="0" min="0" placeholder="0"><div class="tog" onclick="togBill('childcare')"></div></div>
     <div class="bill-row" id="br_gym"><div class="br-left"><span class="br-icon">💪</span><div><div class="br-label">Gym / Fitness</div><div class="br-sub">Monthly membership</div></div></div><input class="br-input" type="number" id="b_gym" value="0" min="0" placeholder="0"><div class="tog" onclick="togBill('gym')"></div></div>
-    <div class="bill-row" id="br_streaming"><div class="br-left"><span class="br-icon">📺</span><div><div class="br-label">Streaming Services</div><div class="br-sub">Netflix, Hulu, Disney+ etc.</div></div></div><input class="br-input" type="number" id="b_streaming" value="45" min="0" placeholder="0"><div class="tog on" onclick="togBill('streaming')"></div></div>
+    <div class="bill-row active" id="br_streaming"><div class="br-left"><span class="br-icon">📺</span><div><div class="br-label">Streaming Services</div><div class="br-sub">Netflix, Hulu, Disney+ etc.</div></div></div><input class="br-input" type="number" id="b_streaming" value="45" min="0" placeholder="0"><div class="tog on" onclick="togBill('streaming')"></div></div>
     <div class="bill-row" id="br_other"><div class="br-left"><span class="br-icon">➕</span><div><div class="br-label">Other Monthly Bills</div><div class="br-sub">Anything else monthly</div></div></div><input class="br-input" type="number" id="b_other" value="0" min="0" placeholder="0"><div class="tog" onclick="togBill('other')"></div></div>
   </div>
 </div>
 
+<!-- STEP 3: ANNUAL -->
 <div class="sec yellow">
   <div class="sec-title"><span class="ic">📅</span> Step 3: Annual Expenses <span class="badge badge-yellow">The Ones People Forget</span></div>
   <p style="font-size:.78rem;color:var(--gray);margin-bottom:14px">Enter yearly costs — we'll break them into monthly so nothing surprises you.</p>
@@ -324,6 +359,7 @@ footer a{color:var(--green);text-decoration:none}
   </div>
 </div>
 
+<!-- STEP 4: CAR -->
 <div class="sec purple">
   <div class="sec-title"><span class="ic">🚗</span> Step 4: Car Affordability <span class="badge" style="background:rgba(155,114,255,.15);color:var(--purple)">Optional</span></div>
   <div class="row3">
@@ -340,10 +376,11 @@ footer a{color:var(--green);text-decoration:none}
   </div>
   <div class="ig" style="margin-bottom:0">
     <label>Your ZIP Code (for AutoTrader search)</label>
-    <input type="text" id="carZip" placeholder="e.g. 33101" maxlength="5" value="33101">
+    <input type="text" id="carZip" placeholder="e.g. 20850" maxlength="5" value="20850">
   </div>
 </div>
 
+<!-- STEP 5: GOALS -->
 <div class="sec green">
   <div class="sec-title"><span class="ic">🎯</span> Step 5: Savings Goals <span class="badge badge-green">Optional</span></div>
   <div class="row3">
@@ -384,7 +421,7 @@ footer a{color:var(--green);text-decoration:none}
   <div class="sec purple" id="carSection">
     <div class="sec-title"><span class="ic">🚗</span> Your Car Budget</div>
     <div class="car-result">
-      <div class="cr-title">BASED ON YOUR INCOME & FREE MONEY</div>
+      <div class="cr-title">BASED ON YOUR INCOME &amp; FREE MONEY</div>
       <div class="car-grid" id="carGrid"></div>
     </div>
     <p style="font-size:.75rem;color:var(--gray);margin-bottom:10px">The 20/4/10 rule: 20% down, max 4yr loan, total car costs under 10% of gross income</p>
@@ -404,7 +441,7 @@ footer a{color:var(--green);text-decoration:none}
         <div><div class="aff-name">CarMax</div><div class="aff-sub">Certified used cars</div></div>
         <span style="color:var(--green);margin-left:auto">→</span>
       </a>
-      <a class="aff-link" href="https://www.lendingtree.com/auto" target="_blank" rel="noopener">
+      <a class="aff-link" href="YOUR_LENDINGTREE_CJ_LINK_HERE" target="_blank" rel="noopener sponsored">
         <div class="aff-logo" style="background:#00A550">LT</div>
         <div><div class="aff-name">Auto Loan Rates</div><div class="aff-sub">Compare lenders</div></div>
         <span style="color:var(--green);margin-left:auto">→</span>
@@ -435,19 +472,55 @@ footer a{color:var(--green);text-decoration:none}
   </div>
 
 </div>
+
+<!-- CJ AFFILIATE -->
+<div class="cj-card">
+  <div class="cj-title">💳 KNOW YOUR CREDIT BEFORE YOU BORROW</div>
+  <div class="cj-sub">Your credit score decides your loan and car interest rate. Check it free — no impact on your score — before you finance anything.</div>
+  <div class="cj-links">
+    <a class="cj-link" href="YOUR_CJ_AFFILIATE_LINK_HERE" target="_blank" rel="noopener sponsored">
+      <div class="cj-icon" style="background:#0052CC">EX</div>
+      <div><div class="cj-name">Experian</div><div class="cj-desc">Free credit report + monitoring</div></div>
+    </a>
+    <a class="cj-link" href="YOUR_LENDINGTREE_CJ_LINK_HERE" target="_blank" rel="noopener sponsored">
+      <div class="cj-icon" style="background:#2e7d32">LT</div>
+      <div><div class="cj-name">LendingTree</div><div class="cj-desc">Compare loan &amp; refi rates</div></div>
+    </a>
+  </div>
+</div>
+
+<!-- ARTICLES -->
+<div class="art-card">
+  <div class="at">📖 MARYLAND MONEY GUIDES</div>
+  <div class="art-links">
+    <a class="art-link" href="/maryland-paycheck-taxes-explained-2026.html">
+      Maryland Paycheck Explained
+      <span>Every tax &amp; deduction decoded</span>
+    </a>
+    <a class="art-link" href="/maryland-cost-of-living-2026.html">
+      Cost of Living 2026
+      <span>What salary you actually need</span>
+    </a>
+    <a class="art-link" href="/how-much-house-can-i-afford-maryland-2026.html">
+      How Much House Can I Afford?
+      <span>Down payments &amp; programs</span>
+    </a>
+  </div>
+</div>
+
 </div>
 
 <div class="back-bar">
-  <a class="bt-link" href="index.html">🏠 Home</a>
-  <a class="bt-link" href="paycalcpro.html">💰 PayCalc Pro</a>
-  <a class="bt-link" href="homebuycalc.html">🏡 HomeBuy Calc</a>
-  <a class="bt-link" href="rentvsbuycalc.html">⚖️ Rent vs Buy</a>
-  <a class="bt-link" href="cost-of-living-by-state.html">📊 Cost of Living</a>
-  <a class="bt-link" href="homefixtcost.html">🔨 HomeFixCost</a>
-  <a class="bt-link" href="floorcalcpro.html">🪵 FloorCalc</a>
-  <a class="bt-link" href="homestyleai.html">🤖 HomeStyle AI</a>
+  <a class="bt-link" href="/index.html">🏠 Home</a>
+  <a class="bt-link" href="/paycalcpro.html">💰 PayCalc Pro</a>
+  <a class="bt-link" href="/homebuycalc.html">🏡 HomeBuy Calc</a>
+  <a class="bt-link" href="/cost-of-living-by-state.html">📊 Cost of Living</a>
+  <a class="bt-link" href="/homefixtcost.html">🔨 HomeFixCost</a>
+  <a class="bt-link" href="/floorcalcpro.html">🪵 FloorCalc</a>
+  <a class="bt-link" href="/homestyleai.html">🤖 HomeStyle AI</a>
 </div>
 
+<!-- AD UNIT 2 -->
 <div class="adbox">
   <div class="adlabel">Advertisement</div>
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9907111543523765" data-ad-slot="REPLACE_WITH_SLOT_ID_2" data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -474,6 +547,8 @@ footer a{color:var(--green);text-decoration:none}
     <p>Most people budget for monthly bills but forget the big once-a-year costs. A $600 holiday season and an $800 insurance premium feel like surprises when they hit, but spread out they are $116 a month. MoneyMap Pro builds those into your free money number so nothing catches you off guard.</p>
     <h3>The 20/4/10 rule for buying a car</h3>
     <p>A simple guideline keeps car costs from wrecking your budget: put 20% down, finance for no more than 4 years, and keep total car costs — payment, insurance, gas, and maintenance — under 10% of your gross income. The car section above runs your numbers against this rule automatically.</p>
+    <h3>Maryland users: don't forget county tax</h3>
+    <p>If you live in Maryland, your real take-home is lower than this tool's estimate because Maryland charges a county income tax (up to 3.2%) on top of state tax. For a precise Maryland number, use our dedicated <a href="/paycalcpro.html">PayCalc Pro paycheck calculator</a> or read the full <a href="/maryland-paycheck-taxes-explained-2026.html">Maryland paycheck guide</a> to see exactly what comes out of each check.</p>
     <h3>Where our numbers come from</h3>
     <p>Tax estimates use the 2026 IRS federal brackets, the standard deduction, and current FICA rates of 6.2% for Social Security and 1.45% for Medicare. State rates reflect each state's published 2026 income tax. The 50/30/20 split is the widely used budgeting guideline popularized by Senator Elizabeth Warren. All results are estimates and not financial advice.</p>
 
@@ -481,6 +556,7 @@ footer a{color:var(--green);text-decoration:none}
     <div class="faq-q2" onclick="this.classList.toggle('open')"><div class="qh"><span>What is "free money" in this calculator?</span><span style="color:var(--green)">▾</span></div><div class="qa">It's the money left over each month after taxes, monthly bills, and your yearly expenses spread across 12 months. It's the realistic amount you can save or spend without falling behind.</div></div>
     <div class="faq-q2" onclick="this.classList.toggle('open')"><div class="qh"><span>How much car can I really afford?</span><span style="color:var(--green)">▾</span></div><div class="qa">Use the 20/4/10 rule: 20% down, a loan no longer than 4 years, and total monthly car costs under 10% of your gross monthly income. The car section above calculates a safe price and a max price for you.</div></div>
     <div class="faq-q2" onclick="this.classList.toggle('open')"><div class="qh"><span>What is the 50/30/20 budget rule?</span><span style="color:var(--green)">▾</span></div><div class="qa">It splits your take-home pay into 50% needs (rent, food, utilities), 30% wants (entertainment, dining out), and 20% savings. The budget check above shows how your real spending compares to these targets.</div></div>
+    <div class="faq-q2" onclick="this.classList.toggle('open')"><div class="qh"><span>How do I find money I'm wasting each month?</span><span style="color:var(--green)">▾</span></div><div class="qa">Start with subscriptions — the average person wastes $200+/month on forgotten ones. Toggle every bill in Step 2 honestly, then look at the "wants" category in your 50/30/20 check. Cancel one streaming service and one unused membership for an instant win.</div></div>
     <div class="faq-q2" onclick="this.classList.toggle('open')"><div class="qh"><span>Is MoneyMap Pro free?</span><span style="color:var(--green)">▾</span></div><div class="qa">Yes — 100% free, no signup or email needed. The tool stays free through ads and relevant affiliate links. You never pay to use it.</div></div>
   </div>
 </div>
@@ -489,95 +565,77 @@ footer a{color:var(--green);text-decoration:none}
   <strong style="color:rgba(255,255,255,.8)">MoneyMap Pro</strong> — Free Personal Finance Command Center · Part of SmartToolsHub<br>
   Estimates only. Not financial advice. Always consult a financial professional for major decisions.<br>
   As an Amazon Associate, SmartToolsHub earns from qualifying purchases.<br>
-  <a href="/privacy.html">Privacy Policy</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a>
+  <a href="/privacy.html">Privacy Policy</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/index.html">Home</a>
 </footer>
 
 <script>
-let bills = {rent:true,car:false,insurance:false,phone:true,internet:true,utilities:true,groceries:true,gas:false,health:false,student:false,cc:false,childcare:false,gym:false,streaming:true,other:false};
+let bills={rent:true,car:false,insurance:false,phone:true,internet:true,utilities:true,groceries:true,gas:false,health:false,student:false,cc:false,childcare:false,gym:false,streaming:true,other:false};
 
-function togBill(key) {
-  bills[key] = !bills[key];
-  const row = document.getElementById('br_' + key);
-  const tog = row.querySelector('.tog');
-  tog.classList.toggle('on', bills[key]);
-  row.classList.toggle('active', bills[key]);
+function togBill(key){
+  bills[key]=!bills[key];
+  const row=document.getElementById('br_'+key);
+  const tog=row.querySelector('.tog');
+  tog.classList.toggle('on',bills[key]);
+  row.classList.toggle('active',bills[key]);
 }
 
-function fedTax(taxable, filing='single') {
-  const B = [[11925,.10],[48475,.12],[103350,.22],[197300,.24],[250525,.32],[626350,.35],[Infinity,.37]];
+function fedTax(taxable){
+  const B=[[11925,.10],[48475,.12],[103350,.22],[197300,.24],[250525,.32],[626350,.35],[Infinity,.37]];
   let tax=0,prev=0;
   for(const[top,rate]of B){if(taxable<=prev)break;tax+=(Math.min(taxable,top)-prev)*rate;prev=top;if(top===Infinity)break;}
   return Math.max(0,tax);
 }
 
-const fmt = n => '$' + Math.round(Math.abs(n)).toLocaleString();
-const fmtK = n => n >= 1000 ? '$' + (n/1000).toFixed(0) + 'K' : '$' + Math.round(n);
+const fmt=n=>'$'+Math.round(Math.abs(n)).toLocaleString();
+const fmtK=n=>n>=1000?'$'+(n/1000).toFixed(0)+'K':'$'+Math.round(n);
 
-function calculate() {
-  const annSal = parseFloat(document.getElementById('salary').value)||0;
-  const stateVal = document.getElementById('state').value.split('|');
-  const stateRate = parseFloat(stateVal[0])||0;
-  const sideInc = parseFloat(document.getElementById('sideIncome').value)||0;
-  const k401pct = (parseFloat(document.getElementById('k401').value)||0)/100;
-  const freq = parseInt(document.getElementById('payFreq').value)||26;
+function getBill(k){return bills[k]?(parseFloat(document.getElementById('b_'+k).value)||0):0;}
 
-  const stdDed = 16100;
-  const k401ann = annSal * k401pct;
-  const taxable = Math.max(0, annSal - k401ann - stdDed);
-  const fedT = fedTax(taxable);
-  const ss = Math.min(annSal * 0.062, 184500*0.062);
-  const med = annSal * 0.0145;
-  const stateT = (annSal - k401ann) * (stateRate/100);
-  const annTakeHome = annSal - fedT - ss - med - stateT - k401ann;
-  const monthlyTakeHome = annTakeHome/12 + sideInc;
-  const monthlyGross = annSal/12;
+function calculate(){
+  const annSal=parseFloat(document.getElementById('salary').value)||0;
+  const stateVal=document.getElementById('state').value.split('|');
+  const stateRate=parseFloat(stateVal[0])||0;
+  const sideInc=parseFloat(document.getElementById('sideIncome').value)||0;
+  const k401pct=(parseFloat(document.getElementById('k401').value)||0)/100;
+  const freq=parseInt(document.getElementById('payFreq').value)||26;
 
-  let totalBills = 0;
-  const billKeys = Object.keys(bills);
-  billKeys.forEach(k => {
-    if(bills[k]) {
-      const val = parseFloat(document.getElementById('b_'+k).value)||0;
-      totalBills += val;
-    }
-  });
+  const stdDed=16100;
+  const k401ann=annSal*k401pct;
+  const taxable=Math.max(0,annSal-k401ann-stdDed);
+  const fedT=fedTax(taxable);
+  const ss=Math.min(annSal*0.062,176100*0.062);
+  const med=annSal*0.0145;
+  const stateT=(annSal-k401ann)*(stateRate/100);
+  const annTakeHome=annSal-fedT-ss-med-stateT-k401ann;
+  const monthlyTakeHome=annTakeHome/12+sideInc;
+  const monthlyGross=annSal/12;
 
-  const annItems = ['carreg','tax','homeins','holiday','vacation','amazon','carmaint','home','clothing','medical'];
-  let totalAnn = 0;
-  annItems.forEach(k => {
-    totalAnn += parseFloat(document.getElementById('a_'+k).value)||0;
-  });
-  const annMonthly = totalAnn / 12;
+  let totalBills=0;
+  Object.keys(bills).forEach(k=>{if(bills[k])totalBills+=getBill(k);});
 
-  const totalOut = totalBills + annMonthly;
-  const freeMoney = monthlyTakeHome - totalOut;
-  const freeMoneyAnn = freeMoney * 12;
+  const annItems=['carreg','tax','homeins','holiday','vacation','amazon','carmaint','home','clothing','medical'];
+  let totalAnn=0;
+  annItems.forEach(k=>{totalAnn+=parseFloat(document.getElementById('a_'+k).value)||0;});
+  const annMonthly=totalAnn/12;
 
-  const needsPct = (totalBills / monthlyTakeHome * 100);
-  const annPct = (annMonthly / monthlyTakeHome * 100);
-  const freePct = (freeMoney / monthlyTakeHome * 100);
+  const totalOut=totalBills+annMonthly;
+  const freeMoney=monthlyTakeHome-totalOut;
+  const freeMoneyAnn=freeMoney*12;
 
-  const hero = document.getElementById('moneyHero');
-  const amtEl = document.getElementById('freeMoneyAmt');
-  const subEl = document.getElementById('moneySubtitle');
-  const verdEl = document.getElementById('moneyVerdict');
-  amtEl.textContent = fmt(freeMoney) + '/mo';
-  subEl.textContent = fmt(Math.abs(freeMoneyAnn)) + ' per year · ' + fmt(monthlyTakeHome - totalBills) + ' before annual expenses';
+  const hero=document.getElementById('moneyHero');
+  document.getElementById('freeMoneyAmt').textContent=fmt(freeMoney)+'/mo';
+  document.getElementById('moneySubtitle').textContent=fmt(Math.abs(freeMoneyAnn))+' per year · '+fmt(monthlyTakeHome-totalBills)+' before annual expenses';
+  const verdEl=document.getElementById('moneyVerdict');
 
-  if(freeMoney >= monthlyTakeHome * 0.2) {
-    hero.className = 'money-hero green-bg';
-    verdEl.className = 'mh-verdict verdict-green';
-    verdEl.textContent = '✅ Healthy — You\'re in great shape';
-  } else if(freeMoney > 0) {
-    hero.className = 'money-hero yellow-bg';
-    verdEl.className = 'mh-verdict verdict-yellow';
-    verdEl.textContent = '⚠️ Tight — Room to improve';
-  } else {
-    hero.className = 'money-hero red-bg';
-    verdEl.className = 'mh-verdict verdict-red';
-    verdEl.textContent = '🔴 Over Budget — Action needed';
+  if(freeMoney>=monthlyTakeHome*0.2){
+    hero.className='money-hero green-bg';verdEl.className='mh-verdict verdict-green';verdEl.textContent="✅ Healthy — You're in great shape";
+  }else if(freeMoney>0){
+    hero.className='money-hero yellow-bg';verdEl.className='mh-verdict verdict-yellow';verdEl.textContent='⚠️ Tight — Room to improve';
+  }else{
+    hero.className='money-hero red-bg';verdEl.className='mh-verdict verdict-red';verdEl.textContent='🔴 Over Budget — Action needed';
   }
 
-  document.getElementById('statGrid').innerHTML = `
+  document.getElementById('statGrid').innerHTML=`
     <div class="stat"><div class="stat-lbl">Take-Home/Mo</div><div class="stat-val">${fmt(monthlyTakeHome)}</div><div class="stat-sub">After all taxes</div></div>
     <div class="stat"><div class="stat-lbl">Total Bills/Mo</div><div class="stat-val" style="color:var(--red)">${fmt(totalBills)}</div><div class="stat-sub">Fixed monthly</div></div>
     <div class="stat"><div class="stat-lbl">Annual/Mo</div><div class="stat-val" style="color:var(--yellow)">${fmt(annMonthly)}</div><div class="stat-sub">Yearly ÷ 12</div></div>
@@ -585,133 +643,133 @@ function calculate() {
     <div class="stat hl"><div class="stat-lbl">Total Out/Mo</div><div class="stat-val" style="color:var(--red)">${fmt(totalOut)}</div><div class="stat-sub">Bills + annual</div></div>
     <div class="stat hl"><div class="stat-lbl">Free Money/Yr</div><div class="stat-val" style="color:var(--green)">${fmtK(freeMoneyAnn)}</div><div class="stat-sub">Per year</div></div>`;
 
-  const barsData = [
-    {label:'💵 Take-Home',val:monthlyTakeHome,color:'var(--green)',pct:100},
-    {label:'🏠 Housing',val:bills.rent?(parseFloat(document.getElementById('b_rent').value)||0):0,color:'var(--blue)'},
-    {label:'🚗 Transportation',val:(bills.car?(parseFloat(document.getElementById('b_car').value)||0):0)+(bills.insurance?(parseFloat(document.getElementById('b_insurance').value)||0):0)+(bills.gas?(parseFloat(document.getElementById('b_gas').value)||0):0),color:'var(--purple)'},
-    {label:'🍕 Food',val:bills.groceries?(parseFloat(document.getElementById('b_groceries').value)||0):0,color:'var(--yellow)'},
+  const barsData=[
+    {label:'💵 Take-Home',val:monthlyTakeHome,color:'var(--green)'},
+    {label:'🏠 Housing',val:getBill('rent'),color:'var(--blue)'},
+    {label:'🚗 Transportation',val:getBill('car')+getBill('insurance')+getBill('gas'),color:'var(--purple)'},
+    {label:'🍕 Food',val:getBill('groceries'),color:'var(--yellow)'},
     {label:'📅 Annual/Mo',val:annMonthly,color:'#FF8C5A'},
-    {label:'💰 Free Money',val:Math.max(0,freeMoney),color:freeMoney>0?'var(--green)':'var(--red)'},
+    {label:'💰 Free Money',val:Math.max(0,freeMoney),color:freeMoney>0?'var(--green)':'var(--red)'}
   ];
-  document.getElementById('bars').innerHTML = barsData.map(b => {
-    const p = Math.max(0,Math.min(100,b.val/monthlyTakeHome*100));
+  document.getElementById('bars').innerHTML=barsData.map(b=>{
+    const p=monthlyTakeHome>0?Math.max(0,Math.min(100,b.val/monthlyTakeHome*100)):0;
     return `<div class="brow"><span class="bl">${b.label}</span><div class="bt"><div class="bf" style="width:${p.toFixed(1)}%;background:${b.color}"></div></div><span class="bv" style="color:${b.color}">${fmt(b.val)}</span></div>`;
   }).join('');
 
-  const rent = bills.rent?(parseFloat(document.getElementById('b_rent').value)||0):0;
-  const utilTotal = (bills.utilities?(parseFloat(document.getElementById('b_utilities').value)||0):0)+(bills.internet?(parseFloat(document.getElementById('b_internet').value)||0):0)+(bills.health?(parseFloat(document.getElementById('b_health').value)||0):0)+(bills.student?(parseFloat(document.getElementById('b_student').value)||0):0)+(bills.cc?(parseFloat(document.getElementById('b_cc').value)||0):0)+(bills.childcare?(parseFloat(document.getElementById('b_childcare').value)||0):0);
-  const needs = rent + utilTotal + (bills.groceries?(parseFloat(document.getElementById('b_groceries').value)||0):0) + (bills.car?(parseFloat(document.getElementById('b_car').value)||0):0) + annMonthly;
-  const wants = (bills.phone?(parseFloat(document.getElementById('b_phone').value)||0):0)+(bills.streaming?(parseFloat(document.getElementById('b_streaming').value)||0):0)+(bills.gym?(parseFloat(document.getElementById('b_gym').value)||0):0)+(bills.gas?(parseFloat(document.getElementById('b_gas').value)||0):0)+(bills.other?(parseFloat(document.getElementById('b_other').value)||0):0);
-  const savingsAmt = Math.max(0,freeMoney);
+  // 50/30/20
+  const rent=getBill('rent');
+  const needsExtra=getBill('utilities')+getBill('internet')+getBill('health')+getBill('student')+getBill('cc')+getBill('childcare');
+  const needs=rent+needsExtra+getBill('groceries')+getBill('car')+getBill('insurance')+annMonthly;
+  const wants=getBill('phone')+getBill('streaming')+getBill('gym')+getBill('gas')+getBill('other');
+  const savingsAmt=Math.max(0,freeMoney);
 
-  const nPct = (needs/monthlyTakeHome*100).toFixed(0);
-  const wPct = (wants/monthlyTakeHome*100).toFixed(0);
-  const sPct = (savingsAmt/monthlyTakeHome*100).toFixed(0);
+  const nPct=monthlyTakeHome>0?(needs/monthlyTakeHome*100):0;
+  const wPct=monthlyTakeHome>0?(wants/monthlyTakeHome*100):0;
+  const sPct=monthlyTakeHome>0?(savingsAmt/monthlyTakeHome*100):0;
 
-  function ruleStatus(actual, target) {
-    const diff = actual - target;
-    if(Math.abs(diff) <= 5) return {cls:'',txt:'✅ On target'};
-    if(diff > 0) return {cls:'color:var(--red)',txt:`⚠️ ${diff.toFixed(0)}% over`};
-    return {cls:'color:var(--green)',txt:`✅ ${Math.abs(diff).toFixed(0)}% under`};
+  function overStatus(actual,target){ // for needs/wants: over target = bad
+    const diff=actual-target;
+    if(Math.abs(diff)<=5)return{cls:'',txt:'✅ On target'};
+    if(diff>0)return{cls:'color:var(--red)',txt:`⚠️ ${diff.toFixed(0)}% over`};
+    return{cls:'color:var(--green)',txt:`✅ ${Math.abs(diff).toFixed(0)}% under`};
   }
-  const ns=ruleStatus(parseFloat(nPct),50),ws=ruleStatus(parseFloat(wPct),30),ss2=ruleStatus(parseFloat(sPct),20,'under');
-  document.getElementById('ruleGrid').innerHTML = `
-    <div class="rule-box needs"><div class="rb-pct">${nPct}%</div><div class="rb-label">Needs</div><div class="rb-target">Target: 50%</div><div class="rb-actual" style="${ns.cls}">${fmt(needs)}/mo</div><div class="rb-status" style="${ns.cls}">${ns.txt}</div></div>
-    <div class="rule-box wants"><div class="rb-pct">${wPct}%</div><div class="rb-label">Wants</div><div class="rb-target">Target: 30%</div><div class="rb-actual" style="${ws.cls}">${fmt(wants)}/mo</div><div class="rb-status" style="${ws.cls}">${ws.txt}</div></div>
-    <div class="rule-box savings"><div class="rb-pct">${sPct}%</div><div class="rb-label">Free/Save</div><div class="rb-target">Target: 20%</div><div class="rb-actual" style="${ss2.cls}">${fmt(savingsAmt)}/mo</div><div class="rb-status" style="${ss2.cls}">${ss2.txt}</div></div>`;
+  function saveStatus(actual,target){ // for savings: under target = bad
+    const diff=actual-target;
+    if(Math.abs(diff)<=5)return{cls:'',txt:'✅ On target'};
+    if(diff>=0)return{cls:'color:var(--green)',txt:`✅ ${diff.toFixed(0)}% over`};
+    return{cls:'color:var(--yellow)',txt:`⚠️ ${Math.abs(diff).toFixed(0)}% under`};
+  }
+  const ns=overStatus(nPct,50),ws=overStatus(wPct,30),ssR=saveStatus(sPct,20);
+  document.getElementById('ruleGrid').innerHTML=`
+    <div class="rule-box needs"><div class="rb-pct">${nPct.toFixed(0)}%</div><div class="rb-label">Needs</div><div class="rb-target">Target: 50%</div><div class="rb-actual" style="${ns.cls}">${fmt(needs)}/mo</div><div class="rb-status" style="${ns.cls}">${ns.txt}</div></div>
+    <div class="rule-box wants"><div class="rb-pct">${wPct.toFixed(0)}%</div><div class="rb-label">Wants</div><div class="rb-target">Target: 30%</div><div class="rb-actual" style="${ws.cls}">${fmt(wants)}/mo</div><div class="rb-status" style="${ws.cls}">${ws.txt}</div></div>
+    <div class="rule-box savings"><div class="rb-pct">${sPct.toFixed(0)}%</div><div class="rb-label">Free/Save</div><div class="rb-target">Target: 20%</div><div class="rb-actual" style="${ssR.cls}">${fmt(savingsAmt)}/mo</div><div class="rb-status" style="${ssR.cls}">${ssR.txt}</div></div>`;
 
-  const carDown = parseFloat(document.getElementById('carDown').value)||0;
-  const carTerm = parseInt(document.getElementById('carTerm').value)||60;
-  const carRate = parseFloat(document.getElementById('carRate').value)||7.5;
-  const carZip = document.getElementById('carZip').value||'33101';
-  const maxCarPmt = monthlyGross * 0.10;
-  const insurEst = 150, gasEst = 100, maintEst = 50;
-  const maxLoanPmt = Math.max(0, maxCarPmt - insurEst - gasEst - maintEst);
-  const r = carRate/100/12;
-  const maxLoan = maxLoanPmt > 0 ? maxLoanPmt * (Math.pow(1+r,carTerm)-1) / (r*Math.pow(1+r,carTerm)) : 0;
-  const maxCarPrice = maxLoan + carDown;
-  const safeCarPrice = maxCarPrice * 0.85;
-  const carPmt = r > 0 ? maxLoan*(r*Math.pow(1+r,carTerm))/(Math.pow(1+r,carTerm)-1) : maxLoan/carTerm;
-  const totalCarCost = carPmt + insurEst + gasEst + maintEst;
+  // Car
+  const carDown=parseFloat(document.getElementById('carDown').value)||0;
+  const carTerm=parseInt(document.getElementById('carTerm').value)||60;
+  const carRate=parseFloat(document.getElementById('carRate').value)||7.5;
+  const carZip=document.getElementById('carZip').value||'20850';
+  const maxCarPmt=monthlyGross*0.10;
+  const insurEst=150,gasEst=100,maintEst=50;
+  const maxLoanPmt=Math.max(0,maxCarPmt-insurEst-gasEst-maintEst);
+  const r=carRate/100/12;
+  const maxLoan=maxLoanPmt>0&&r>0?maxLoanPmt*(Math.pow(1+r,carTerm)-1)/(r*Math.pow(1+r,carTerm)):maxLoanPmt*carTerm;
+  const maxCarPrice=maxLoan+carDown;
+  const safeCarPrice=maxCarPrice*0.85;
+  const carPmt=r>0?maxLoan*(r*Math.pow(1+r,carTerm))/(Math.pow(1+r,carTerm)-1):maxLoan/carTerm;
+  const totalCarCost=carPmt+insurEst+gasEst+maintEst;
 
-  document.getElementById('carGrid').innerHTML = `
+  document.getElementById('carGrid').innerHTML=`
     <div class="cstat"><div class="cs-lbl">Safe Car Price</div><div class="cs-val green">${fmtK(safeCarPrice)}</div></div>
     <div class="cstat"><div class="cs-lbl">Max Car Price</div><div class="cs-val yellow">${fmtK(maxCarPrice)}</div></div>
     <div class="cstat"><div class="cs-lbl">Est. Monthly Payment</div><div class="cs-val">${fmt(carPmt)}</div></div>
     <div class="cstat"><div class="cs-lbl">True Monthly Cost</div><div class="cs-val red">${fmt(totalCarCost)}</div></div>`;
+  document.getElementById('autotraderLink').href=`https://www.autotrader.com/cars-for-sale/used-cars?zip=${carZip}&maxPrice=${Math.round(maxCarPrice)}&searchRadius=50`;
 
-  document.getElementById('autotraderLink').href = `https://www.autotrader.com/cars-for-sale/used-cars?zip=${carZip}&maxPrice=${Math.round(maxCarPrice)}&searchRadius=50`;
+  // Goals
+  const emergGoal=parseFloat(document.getElementById('g_emergency').value)||0;
+  const saved=parseFloat(document.getElementById('g_saved').value)||0;
+  const mSave=parseFloat(document.getElementById('g_monthly').value)||Math.max(0,freeMoney*0.5);
+  const vacGoal=parseFloat(document.getElementById('g_vacation').value)||0;
+  const dpGoal=parseFloat(document.getElementById('g_downpay').value)||0;
 
-  const emergGoal = parseFloat(document.getElementById('g_emergency').value)||0;
-  const saved = parseFloat(document.getElementById('g_saved').value)||0;
-  const mSave = parseFloat(document.getElementById('g_monthly').value)||Math.max(0,freeMoney*0.5);
-  const vacGoal = parseFloat(document.getElementById('g_vacation').value)||0;
-  const dpGoal = parseFloat(document.getElementById('g_downpay').value)||0;
-
-  function goalItem(name,goal,already,monthly,icon) {
-    if(!goal||monthly<=0) return '';
-    const needed = Math.max(0,goal-already);
-    const months = Math.ceil(needed/monthly);
-    const pct = Math.min(100, already/goal*100);
-    const yrs = months > 12 ? (months/12).toFixed(1)+' years' : months+' months';
-    return `<div class="goal-item">
-      <div class="gi-header"><span class="gi-name">${icon} ${name}</span><span class="gi-time">${months<=0?'✅ Done!':yrs+' away'}</span></div>
-      <div class="gi-bar-track"><div class="gi-bar-fill" style="width:${pct.toFixed(0)}%"></div></div>
-      <div class="gi-footer"><span>${fmt(already)} saved</span><span>Goal: ${fmt(goal)}</span></div>
-    </div>`;
+  function goalItem(name,goal,already,monthly,icon){
+    if(!goal||monthly<=0)return'';
+    const needed=Math.max(0,goal-already);
+    const months=Math.ceil(needed/monthly);
+    const pct=Math.min(100,already/goal*100);
+    const yrs=months>12?(months/12).toFixed(1)+' years':months+' months';
+    return `<div class="goal-item"><div class="gi-header"><span class="gi-name">${icon} ${name}</span><span class="gi-time">${months<=0?'✅ Done!':yrs+' away'}</span></div><div class="gi-bar-track"><div class="gi-bar-fill" style="width:${pct.toFixed(0)}%"></div></div><div class="gi-footer"><span>${fmt(already)} saved</span><span>Goal: ${fmt(goal)}</span></div></div>`;
   }
-  document.getElementById('goalList').innerHTML =
-    goalItem('Emergency Fund',emergGoal,saved,mSave,'🛡️') +
-    goalItem('Vacation Fund',vacGoal,0,mSave*0.3,'✈️') +
-    goalItem('Down Payment',dpGoal,saved,mSave*0.7,'🏡') ||
-    '<p style="color:var(--gray);font-size:.85rem">Enter goals above to see your savings timeline.</p>';
+  const goalsHTML=goalItem('Emergency Fund',emergGoal,saved,mSave,'🛡️')+goalItem('Vacation Fund',vacGoal,0,mSave*0.3,'✈️')+goalItem('Down Payment',dpGoal,saved,mSave*0.7,'🏡');
+  document.getElementById('goalList').innerHTML=goalsHTML||'<p style="color:var(--gray);font-size:.85rem">Enter goals above to see your savings timeline.</p>';
 
-  const annLabels = {carreg:'🚗 Car Registration',tax:'📄 Tax Prep',homeins:'🏠 Home/Renters Insurance',holiday:'🎄 Holiday & Gifts',vacation:'✈️ Vacation',amazon:'📦 Annual Subscriptions',carmaint:'🔧 Car Maintenance',home:'🏡 Home Repairs/HOA',clothing:'👗 Clothing',medical:'🏥 Medical/Dental'};
-  let annHTML = '<div class="ann-grid">';
-  annItems.forEach(k => {
-    const val = parseFloat(document.getElementById('a_'+k).value)||0;
-    if(val > 0) {
-      annHTML += `<div class="ann-item" style="background:var(--bg4)"><div class="ai-left"><span class="ai-icon">${annLabels[k].split(' ')[0]}</span><div><div class="ai-label">${annLabels[k].substring(2)}</div><div class="ai-sub">${fmt(val/12)}/mo · ${fmt(val)}/yr</div></div></div></div>`;
+  // Annual breakdown
+  const annLabels={carreg:'🚗 Car Registration',tax:'📄 Tax Prep',homeins:'🏠 Home/Renters Insurance',holiday:'🎄 Holiday & Gifts',vacation:'✈️ Vacation',amazon:'📦 Annual Subscriptions',carmaint:'🔧 Car Maintenance',home:'🏡 Home Repairs/HOA',clothing:'👗 Clothing',medical:'🏥 Medical/Dental'};
+  let annHTML='<div class="ann-grid">';
+  annItems.forEach(k=>{
+    const val=parseFloat(document.getElementById('a_'+k).value)||0;
+    if(val>0){
+      annHTML+=`<div class="ann-item" style="background:var(--bg4)"><div class="ai-left"><span class="ai-icon">${annLabels[k].split(' ')[0]}</span><div><div class="ai-label">${annLabels[k].substring(2)}</div><div class="ai-sub">${fmt(val/12)}/mo · ${fmt(val)}/yr</div></div></div></div>`;
     }
   });
-  annHTML += `</div><div style="margin-top:12px;background:rgba(255,210,63,.08);border:1px solid rgba(255,210,63,.2);border-radius:8px;padding:12px;font-size:.83rem;color:var(--yellow)">📅 Total annual costs: <strong>${fmt(totalAnn)}/year</strong> = <strong>${fmt(annMonthly)}/month</strong> — already included in your free money calculation above.</div>`;
-  document.getElementById('annualBreakdown').innerHTML = annHTML;
+  annHTML+=`</div><div style="margin-top:12px;background:rgba(255,210,63,.08);border:1px solid rgba(255,210,63,.2);border-radius:8px;padding:12px;font-size:.83rem;color:var(--yellow)">📅 Total annual costs: <strong>${fmt(totalAnn)}/year</strong> = <strong>${fmt(annMonthly)}/month</strong> — already included in your free money calculation above.</div>`;
+  document.getElementById('annualBreakdown').innerHTML=annHTML;
 
-  const tips = [];
-  if(freeMoney < 0) tips.push({icon:'🔴',txt:`You're spending <strong>${fmt(Math.abs(freeMoney))}/month MORE than you make</strong>. Immediate action: cut streaming, eating out, or subscriptions first. Small cuts add up fast.`,col:'var(--red)'});
-  if(parseFloat(nPct) > 60) tips.push({icon:'⚠️',txt:`Your needs are <strong>${nPct}% of income</strong> — over the 50% target. Your housing cost is likely the main culprit. Can you get a roommate, refinance, or find cheaper rent?`,col:'var(--yellow)'});
-  if(carDown < 3000) tips.push({icon:'🚗',txt:`A <strong>larger down payment</strong> on a car lowers your monthly payment AND your interest paid. Try to save at least 10–20% down before buying.`,col:'var(--purple)'});
-  if(freeMoney > 0 && freeMoney < 500) tips.push({icon:'💡',txt:`Your free money is tight at <strong>${fmt(freeMoney)}/month</strong>. Even saving $50/month adds up to $600/year. Look for one subscription to cancel — the average American wastes $329/month on forgotten subscriptions.`,col:'var(--blue)'});
-  if(freeMoney > 1000) tips.push({icon:'✅',txt:`You have <strong>${fmt(freeMoney)}/month</strong> free. Put at least 50% ($${Math.round(freeMoney*0.5)}) into savings automatically. "Pay yourself first" is the #1 wealth-building habit.`,col:'var(--green)'});
-  if(k401pct === 0) tips.push({icon:'💰',txt:`You're contributing <strong>0% to your 401(k)</strong>. Even 3–6% saves you $1,000–$3,000 in taxes per year AND if your employer matches — that's free money you're leaving on the table.`,col:'var(--green)'});
-  if(parseFloat(document.getElementById('b_cc').value)||0 > 0) tips.push({icon:'💳',txt:`You have credit card debt. The <strong>avalanche method</strong>: pay minimums on all cards, throw all extra money at the highest interest rate card first. This saves the most money overall.`,col:'var(--red)'});
-  tips.push({icon:'📅',txt:`Your annual expenses cost you <strong>${fmt(annMonthly)}/month</strong> when spread out. Open a separate savings account and automatically transfer this amount monthly so annual bills never surprise you.`,col:'var(--yellow)'});
+  // Tips
+  const ccVal=getBill('cc');
+  const tips=[];
+  if(freeMoney<0)tips.push({icon:'🔴',txt:`You're spending <strong>${fmt(Math.abs(freeMoney))}/month MORE than you make</strong>. Immediate action: cut streaming, eating out, or subscriptions first. Small cuts add up fast.`});
+  if(nPct>60)tips.push({icon:'⚠️',txt:`Your needs are <strong>${nPct.toFixed(0)}% of income</strong> — over the 50% target. Housing is likely the main culprit. Can you get a roommate, refinance, or find cheaper rent?`});
+  if(carDown<3000)tips.push({icon:'🚗',txt:`A <strong>larger down payment</strong> on a car lowers your monthly payment AND your interest paid. Try to save at least 10–20% down before buying.`});
+  if(freeMoney>0&&freeMoney<500)tips.push({icon:'💡',txt:`Your free money is tight at <strong>${fmt(freeMoney)}/month</strong>. Even $50/month adds up to $600/year. The average person wastes $200+/month on forgotten subscriptions — cancel one today.`});
+  if(freeMoney>1000)tips.push({icon:'✅',txt:`You have <strong>${fmt(freeMoney)}/month</strong> free. Put at least 50% (${fmt(freeMoney*0.5)}) into savings automatically. "Pay yourself first" is the #1 wealth-building habit.`});
+  if(k401pct===0)tips.push({icon:'💰',txt:`You're contributing <strong>0% to your 401(k)</strong>. Even 3–6% saves you $1,000–$3,000 in taxes per year AND if your employer matches — that's free money you're leaving on the table.`});
+  if(ccVal>0)tips.push({icon:'💳',txt:`You have credit card debt. Use the <strong>avalanche method</strong>: pay minimums on all cards, throw all extra money at the highest interest rate card first. This saves the most overall. <a href="YOUR_CJ_AFFILIATE_LINK_HERE" target="_blank" rel="noopener sponsored" style="color:var(--green)">Check your credit score free →</a>`});
+  tips.push({icon:'📅',txt:`Your annual expenses cost you <strong>${fmt(annMonthly)}/month</strong> when spread out. Open a separate savings account and auto-transfer this amount monthly so annual bills never surprise you.`});
 
-  document.getElementById('tipsList').innerHTML = tips.map(t =>
-    `<div style="display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)"><span style="font-size:1.1rem;flex-shrink:0">${t.icon}</span><p style="font-size:.83rem;line-height:1.6;color:rgba(255,255,255,.8)">${t.txt}</p></div>`
-  ).join('').replace(/<div[^>]*>(<[^>]*>.*<\/[^>]*>)<\/div>$/,'<div>$1</div>');
+  document.getElementById('tipsList').innerHTML=tips.map(t=>`<div style="display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)"><span style="font-size:1.1rem;flex-shrink:0">${t.icon}</span><p style="font-size:.83rem;line-height:1.6;color:rgba(255,255,255,.8)">${t.txt}</p></div>`).join('');
 
-  const res = document.getElementById('results');
+  const res=document.getElementById('results');
   res.classList.add('vis');
   res.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
-function copyResults() {
-  const free = document.getElementById('freeMoneyAmt').textContent;
-  const verdict = document.getElementById('moneyVerdict').textContent;
-  navigator.clipboard.writeText(`MoneyMap Pro Results\n${verdict}\nFree Money: ${free}\nSee your full money map at toolshubfree — SmartToolsHub`).then(()=>alert('Results copied!'));
+function copyResults(){
+  const free=document.getElementById('freeMoneyAmt').textContent;
+  const verdict=document.getElementById('moneyVerdict').textContent;
+  navigator.clipboard.writeText(`MoneyMap Pro Results\n${verdict}\nFree Money: ${free}\nSee your full money map at toolshubfree.com — SmartToolsHub`).then(()=>alert('Results copied!'));
 }
 
-function shareResults() {
-  const free = document.getElementById('freeMoneyAmt').textContent;
-  const url = 'https://toolshubfree.com/moneymappro.html';
-  if(navigator.share){
-    navigator.share({title:'My MoneyMap Pro Results',text:`My free money this month: ${free} — Check yours free at SmartToolsHub`,url});
-  } else {
-    navigator.clipboard.writeText(url).then(()=>alert('Link copied!'));
-  }
+function shareResults(){
+  const free=document.getElementById('freeMoneyAmt').textContent;
+  const url='https://toolshubfree.com/moneymappro.html';
+  if(navigator.share){navigator.share({title:'My MoneyMap Pro Results',text:`My free money this month: ${free} — Check yours free at SmartToolsHub`,url});}
+  else{navigator.clipboard.writeText(url).then(()=>alert('Link copied!'));}
 }
-if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}
+
+if('serviceWorker'in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});});}
 </script>
 </body>
 </html>
