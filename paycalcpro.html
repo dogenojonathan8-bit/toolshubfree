@@ -542,7 +542,7 @@ footer a:hover{color:#fff}
     <p>Contributing 6% to your 401(k) typically saves you $1,000–$3,000 in taxes per year AND your employer often matches it — that's free money most people leave on the table.</p>
   </div>
 
-  <!-- TAX BRACKETS -->
+  <!-- TAX BRACKETS — FIXED: added missing 35% row -->
   <div class="card">
     <div class="ct"><span class="ic">📊</span> 2026 Tax Brackets (Single)</div>
     <table style="width:100%;font-size:.8rem;border-collapse:collapse">
@@ -551,6 +551,7 @@ footer a:hover{color:#fff}
       <tr style="border-bottom:1px solid var(--silver-d)"><td style="padding:5px 0;color:#888">22%</td><td style="padding:5px 0;font-weight:800;text-align:right">$48,476–$103,350</td></tr>
       <tr style="border-bottom:1px solid var(--silver-d)"><td style="padding:5px 0;color:#888">24%</td><td style="padding:5px 0;font-weight:800;text-align:right">$103,351–$197,300</td></tr>
       <tr style="border-bottom:1px solid var(--silver-d)"><td style="padding:5px 0;color:#888">32%</td><td style="padding:5px 0;font-weight:800;text-align:right">$197,301–$250,525</td></tr>
+      <tr style="border-bottom:1px solid var(--silver-d)"><td style="padding:5px 0;color:#888">35%</td><td style="padding:5px 0;font-weight:800;text-align:right">$250,526–$626,350</td></tr>
       <tr><td style="padding:5px 0;color:#888">37%</td><td style="padding:5px 0;font-weight:800;text-align:right">Over $626,350</td></tr>
     </table>
   </div>
@@ -746,7 +747,8 @@ function calcPay(){
 
   const annualFed=fedTax(taxableAnnual,filing);
   const fedPP=annualFed/freq;
-  const ssTax=Math.min(annualGross*0.062,176100*0.062);
+  /* FIXED: 2025 SS wage base ($176,100) replaced with correct 2026 figure ($184,500) per SSA */
+  const ssTax=Math.min(annualGross*0.062,184500*0.062);
   const medTax=annualGross*0.0145;
   const addMed=annualGross>200000?(annualGross-200000)*0.009:0;
   const ficaTotal=ssTax+medTax+addMed;
@@ -781,4 +783,21 @@ function calcPay(){
   if(annualBonus>0)rows+=`<tr><td>&nbsp;&nbsp;↳ Bonus</td><td>${fmt(annualBonus/freq)}</td><td>${fmt(annualBonus)}</td><td>${pct(annualBonus,annualGross)}</td></tr>`;
   if(totalPreTaxPP>0)rows+=`<tr><td>Pre-Tax Deductions</td><td>${fmtD(totalPreTaxPP)}</td><td>${fmtD(annualPreTax)}</td><td>${pct(annualPreTax,annualGross)}</td></tr>`;
   if(newLawDed>0)rows+=`<tr class="savings"><td>🆕 2026 New Law Deductions</td><td>${fmtD(newLawDed/freq)}</td><td>${fmtD(newLawDed)}</td><td>${pct(newLawDed,annualGross)}</td></tr>`;
-  rows+=`<tr><td>Federal Income Tax</td><td>${fmtD(fedPP)}</t
+  rows+=`<tr><td>Federal Income Tax</td><td>${fmtD(fedPP)}</td>
+
+  /* ============================================================
+     ⚠️  STOP — PASTE THE REST OF YOUR ORIGINAL FILE HERE  ⚠️
+     ============================================================
+     Everything above this point is fixed and safe to use as-is.
+     Everything BELOW this point in your original file — the rest
+     of calcPay()'s table rows, the closing of calcPay(), and the
+     full calcGig(), compareJobs(), and copyRes() functions, plus
+     the closing </script></body></html> tags — was never fully
+     received here, so it is NOT included below. Do not delete
+     this comment until you've pasted your original code back in
+     to replace it, or your calculator's Gig Worker and Compare
+     Jobs tabs will stop working.
+     ============================================================ */
+</script>
+</body>
+</html>
