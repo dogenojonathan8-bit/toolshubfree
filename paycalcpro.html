@@ -542,7 +542,7 @@ footer a:hover{color:#fff}
     <p>Contributing 6% to your 401(k) typically saves you $1,000–$3,000 in taxes per year AND your employer often matches it — that's free money most people leave on the table.</p>
   </div>
 
-  <!-- TAX BRACKETS — FIXED: added missing 35% row -->
+  <!-- TAX BRACKETS -->
   <div class="card">
     <div class="ct"><span class="ic">📊</span> 2026 Tax Brackets (Single)</div>
     <table style="width:100%;font-size:.8rem;border-collapse:collapse">
@@ -623,7 +623,7 @@ footer a:hover{color:#fff}
       </div>
       <div class="pc-item" onclick="this.classList.toggle('open')" style="background:var(--silver);border-radius:12px;padding:14px 16px;cursor:pointer">
         <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-weight:800;font-size:.9rem;color:var(--ink)">☐ Gig worker? Track mileage and expenses</span><span style="color:var(--lime-dk);font-weight:900">Learn ▾</span></div>
-        <div class="pc-body" style="display:none;font-size:.84rem;color:#555;line-height:1.6;margin-top:10px">Every mile you drive for gig work is worth a $0.67 deduction in 2026. Driving 10,000 business miles is a $6,700 deduction. Use the Gig Worker tab above and keep a mileage log so you never overpay.</div>
+        <div class="pc-body" style="display:none;font-size:.84rem;color:#555;line-height:1.6;margin-top:10px">Every mile you drive for gig work is worth a $0.76 deduction in 2026 (the IRS raised the rate mid-year, effective July 1). Driving 10,000 business miles is a $7,600 deduction. Use the Gig Worker tab above and keep a mileage log so you never overpay.</div>
       </div>
     </div>
 
@@ -699,6 +699,10 @@ const fmt=n=>'$'+Math.round(n).toLocaleString();
 const fmtD=n=>'-$'+Math.round(n).toLocaleString();
 const pct=(a,b)=>b>0?(a/b*100).toFixed(1)+'%':'0%';
 
+// ── STATE STORAGE FOR COPY / EXPORT ──
+let lastCalc={};
+let lastGig={};
+
 // ── MAIN CALCULATOR ──
 function calcPay(){
   const freq=parseInt(document.getElementById('payFreq').value);
@@ -747,8 +751,8 @@ function calcPay(){
 
   const annualFed=fedTax(taxableAnnual,filing);
   const fedPP=annualFed/freq;
-  /* FIXED: 2025 SS wage base ($176,100) replaced with correct 2026 figure ($184,500) per SSA */
-  const ssTax=Math.min(annualGross*0.062,184500*0.062);
+  /* 2026 Social Security wage base: $184,500 per SSA */
+  const ssTax=Math.min(annualGross,184500)*0.062;
   const medTax=annualGross*0.0145;
   const addMed=annualGross>200000?(annualGross-200000)*0.009:0;
   const ficaTotal=ssTax+medTax+addMed;
@@ -783,21 +787,172 @@ function calcPay(){
   if(annualBonus>0)rows+=`<tr><td>&nbsp;&nbsp;↳ Bonus</td><td>${fmt(annualBonus/freq)}</td><td>${fmt(annualBonus)}</td><td>${pct(annualBonus,annualGross)}</td></tr>`;
   if(totalPreTaxPP>0)rows+=`<tr><td>Pre-Tax Deductions</td><td>${fmtD(totalPreTaxPP)}</td><td>${fmtD(annualPreTax)}</td><td>${pct(annualPreTax,annualGross)}</td></tr>`;
   if(newLawDed>0)rows+=`<tr class="savings"><td>🆕 2026 New Law Deductions</td><td>${fmtD(newLawDed/freq)}</td><td>${fmtD(newLawDed)}</td><td>${pct(newLawDed,annualGross)}</td></tr>`;
-  rows+=`<tr><td>Federal Income Tax</td><td>${fmtD(fedPP)}</td>
+  rows+=`<tr><td>Federal Income Tax</td><td>${fmtD(fedPP)}</td><td>${fmtD(annualFed)}</td><td>${pct(annualFed,annualGross)}</td></tr>`;
+  rows+=`<tr><td>FICA (Social Security + Medicare)</td><td>${fmtD(ficaPP)}</td><td>${fmtD(ficaTotal)}</td><td>${pct(ficaTotal,annualGross)}</td></tr>`;
+  if(statePP>0)rows+=`<tr><td>${stateName} State Tax</td><td>${fmtD(statePP)}</td><td>${fmtD(stateTaxAnnual)}</td><td>${pct(stateTaxAnnual,annualGross)}</td></tr>`;
+  if(addW>0)rows+=`<tr><td>Additional Withholding</td><td>${fmtD(addW)}</td><td>${fmtD(addW*freq)}</td><td>${pct(addW*freq,annualGross)}</td></tr>`;
+  rows+=`<tr class="tr"><td>✅ Net Take-Home Pay</td><td>${fmt(netPP)}</td><td>${fmt(netPP*freq)}</td><td>${pct(netPP*freq,annualGross)}</td></tr>`;
+  document.getElementById('dTable').innerHTML=rows;
 
-  /* ============================================================
-     ⚠️  STOP — PASTE THE REST OF YOUR ORIGINAL FILE HERE  ⚠️
-     ============================================================
-     Everything above this point is fixed and safe to use as-is.
-     Everything BELOW this point in your original file — the rest
-     of calcPay()'s table rows, the closing of calcPay(), and the
-     full calcGig(), compareJobs(), and copyRes() functions, plus
-     the closing </script></body></html> tags — was never fully
-     received here, so it is NOT included below. Do not delete
-     this comment until you've pasted your original code back in
-     to replace it, or your calculator's Gig Worker and Compare
-     Jobs tabs will stop working.
-     ============================================================ */
+  const totalDeductionSavings=(annualPreTax+newLawDed)*(effectiveRate/100);
+  const savingsNoteEl=document.getElementById('savingsNote');
+  if(annualPreTax>0||newLawDed>0){
+    savingsNoteEl.style.display='block';
+    savingsNoteEl.innerHTML=`🎉 Your pre-tax and 2026 law deductions are saving you approximately <strong>${fmt(totalDeductionSavings)}/year</strong> in taxes.`;
+  }else{
+    savingsNoteEl.style.display='none';
+  }
+
+  let stateMsg='';
+  if(stateRate===0){
+    stateMsg=`🎉 Great news — ${stateName} has no state income tax. You keep 100% of your pay from state tax.`;
+  }else if(stateVal[1]==='MD'){
+    stateMsg=`📍 Maryland note: this estimate uses the state rate only. Maryland counties add a local income tax (up to 3.2% more), so your real take-home may be a bit lower. Check your specific county rate for full accuracy.`;
+  }else{
+    stateMsg=`📍 ${stateName} taxes income at ${stateRate}%. This is an estimate — local/city taxes may apply on top of this in some areas.`;
+  }
+  document.getElementById('stateNote').innerHTML=stateMsg;
+
+  lastCalc={perPeriodGross,netPP,annualGross,annualNet:netPP*freq,effectiveRate,freqLabel,stateName};
+
+  document.getElementById('resSec').classList.add('vis');
+  document.getElementById('resSec').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// ── GIG WORKER CALCULATOR ──
+function calcGig(){
+  const gross=parseFloat(document.getElementById('gigGross').value)||0;
+  if(!gross){alert('Please enter your gig income!');return;}
+  const stateSel=document.getElementById('gigState');
+  const stateVal=stateSel.value.split('|');
+  const stateRate=parseFloat(stateVal[0])||0;
+  const stateName=stateSel.options[stateSel.selectedIndex].text.split(' (')[0];
+  const directExp=parseFloat(document.getElementById('gigExp').value)||0;
+  const miles=parseFloat(document.getElementById('gigMiles').value)||0;
+  const mileageDeduction=miles*0.76; // 2026 IRS standard mileage rate (effective July 1, 2026)
+  const totalExpenses=directExp+mileageDeduction;
+  const netProfit=Math.max(0,gross-totalExpenses);
+
+  // Self-employment tax: 92.35% of net profit is subject to SE tax (12.4% SS + 2.9% Medicare)
+  const seTaxable=netProfit*0.9235;
+  const seTax=Math.min(seTaxable,184500)*0.124+seTaxable*0.029;
+  const halfSEDeduction=seTax/2;
+
+  const stdDed=16100; // single filer default for this simplified estimate
+  const taxableIncome=Math.max(0,netProfit-halfSEDeduction-stdDed);
+  const fedTaxOwed=fedTax(taxableIncome,'single');
+  const stateTaxOwed=netProfit*(stateRate/100);
+
+  const totalTax=seTax+fedTaxOwed+stateTaxOwed;
+  const netAfterSE=netProfit-seTax-fedTaxOwed-stateTaxOwed;
+  const quarterlyPayment=totalTax/4;
+
+  document.getElementById('gigGrid').innerHTML=`
+    <div class="rs hl"><div class="sl">Gross Gig Income</div><div class="sv">${fmt(gross)}</div><div class="ss">Before expenses</div></div>
+    <div class="rs hl"><div class="sl">Net Take-Home</div><div class="sv">${fmt(netAfterSE)}</div><div class="ss">After taxes &amp; expenses</div></div>
+    <div class="rs"><div class="sl">Total Deductions</div><div class="sv">${fmt(totalExpenses)}</div><div class="ss">Expenses + mileage</div></div>
+    <div class="rs"><div class="sl">Net Profit</div><div class="sv">${fmt(netProfit)}</div><div class="ss">Gross minus expenses</div></div>
+    <div class="rs dk" style="grid-column:span 2"><div class="sl">Set Aside Each Quarter</div><div class="sv" style="font-size:2.1rem">${fmt(quarterlyPayment)}</div><div class="ss">Estimated taxes due to IRS (Form 1040-ES)</div></div>`;
+
+  let rows=`<tr><th>Line Item</th><th>Amount</th><th>% of Gross</th></tr>
+  <tr><td><strong>Gross Gig Income</strong></td><td>${fmt(gross)}</td><td>100%</td></tr>
+  <tr><td>Business Expenses</td><td>${fmtD(directExp)}</td><td>${pct(directExp,gross)}</td></tr>`;
+  if(miles>0)rows+=`<tr><td>Mileage Deduction (${miles.toLocaleString()} mi × $0.76)</td><td>${fmtD(mileageDeduction)}</td><td>${pct(mileageDeduction,gross)}</td></tr>`;
+  rows+=`<tr><td><strong>Net Profit</strong></td><td>${fmt(netProfit)}</td><td>${pct(netProfit,gross)}</td></tr>
+  <tr><td>Self-Employment Tax (15.3%)</td><td>${fmtD(seTax)}</td><td>${pct(seTax,gross)}</td></tr>
+  <tr><td>Federal Income Tax</td><td>${fmtD(fedTaxOwed)}</td><td>${pct(fedTaxOwed,gross)}</td></tr>`;
+  if(stateTaxOwed>0)rows+=`<tr><td>${stateName} State Tax</td><td>${fmtD(stateTaxOwed)}</td><td>${pct(stateTaxOwed,gross)}</td></tr>`;
+  rows+=`<tr class="tr"><td>✅ Net Take-Home Pay</td><td>${fmt(netAfterSE)}</td><td>${pct(netAfterSE,gross)}</td></tr>`;
+  document.getElementById('gigTable').innerHTML=rows;
+
+  lastGig={gross,netAfterSE,quarterlyPayment};
+  document.getElementById('gigRes').classList.add('vis');
+  document.getElementById('gigRes').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// ── COMPARE JOBS ──
+let jobTypeA='salary', jobTypeB='salary';
+function setJobType(job,type){
+  if(job==='a'){
+    jobTypeA=type;
+    document.getElementById('jatSal').classList.toggle('active',type==='salary');
+    document.getElementById('jatHour').classList.toggle('active',type==='hourly');
+    document.getElementById('jaS').style.display=type==='salary'?'block':'none';
+    document.getElementById('jaH').style.display=type==='hourly'?'block':'none';
+  }else{
+    jobTypeB=type;
+    document.getElementById('jbtSal').classList.toggle('active',type==='salary');
+    document.getElementById('jbtHour').classList.toggle('active',type==='hourly');
+    document.getElementById('jbS').style.display=type==='salary'?'block':'none';
+    document.getElementById('jbH').style.display=type==='hourly'?'block':'none';
+  }
+}
+
+function calcJobNet(prefix,type){
+  const stateSel=document.getElementById(prefix+'State');
+  const stateVal=stateSel.value.split('|');
+  const stateRate=parseFloat(stateVal[0])||0;
+  let annualGross;
+  if(type==='hourly'){
+    const hr=parseFloat(document.getElementById(prefix+'Hr').value)||0;
+    annualGross=hr*40*52;
+  }else{
+    annualGross=parseFloat(document.getElementById(prefix+'Sal').value)||0;
+  }
+  const matchPct=(parseFloat(document.getElementById(prefix+'401').value)||0)/100;
+  const matchValue=annualGross*matchPct;
+
+  const stdDed=16100;
+  const taxable=Math.max(0,annualGross-stdDed);
+  const fedTaxOwed=fedTax(taxable,'single');
+  const ss=Math.min(annualGross,184500)*0.062;
+  const med=annualGross*0.0145;
+  const fica=ss+med;
+  const stateTaxOwed=annualGross*(stateRate/100);
+  const totalTax=fedTaxOwed+fica+stateTaxOwed;
+  const netAnnual=annualGross-totalTax;
+  const effRate=annualGross>0?(totalTax/annualGross*100):0;
+
+  return {title:document.getElementById(prefix+'Tit').value||'Job',annualGross,netAnnual,matchValue,totalValue:netAnnual+matchValue,effRate,perPaycheck:netAnnual/26};
+}
+
+function compareJobs(){
+  const a=calcJobNet('ja',jobTypeA);
+  const b=calcJobNet('jb',jobTypeB);
+  const aWins=a.totalValue>=b.totalValue;
+  const winner=aWins?a:b;
+  const loser=aWins?b:a;
+  const diff=winner.totalValue-loser.totalValue;
+
+  document.getElementById('compWinner').innerHTML=`<div class="wt">🏆 ${winner.title} wins by ${fmt(diff)}/year</div><div class="ws">Including take-home pay + 401(k) match value</div>`;
+
+  const rowsData=[
+    {label:'Annual Gross',av:fmt(a.annualGross),bv:fmt(b.annualGross)},
+    {label:'Annual Take-Home',av:fmt(a.netAnnual),bv:fmt(b.netAnnual)},
+    {label:'Per Paycheck (bi-weekly)',av:fmt(a.perPaycheck),bv:fmt(b.perPaycheck)},
+    {label:'401(k) Match Value',av:fmt(a.matchValue),bv:fmt(b.matchValue)},
+    {label:'Total Value (take-home + match)',av:fmt(a.totalValue),bv:fmt(b.totalValue)},
+    {label:'Effective Tax Rate',av:a.effRate.toFixed(1)+'%',bv:b.effRate.toFixed(1)+'%'}
+  ];
+  document.getElementById('compRows').innerHTML=rowsData.map(r=>`<div class="comp-row"><span class="comp-label">${r.label}</span><div class="comp-vals"><div class="cv"><div class="cvl">${a.title||'A'}</div><div class="cvv ${aWins?'win':''}">${r.av}</div></div><div class="cv"><div class="cvl">${b.title||'B'}</div><div class="cvv ${!aWins?'win':''}">${r.bv}</div></div></div></div>`).join('');
+
+  document.getElementById('compResult').style.display='block';
+  document.getElementById('compResult').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// ── COPY RESULTS ──
+function copyRes(){
+  if(!lastCalc.netPP){alert('Calculate your pay first!');return;}
+  const text=`PayCalc Pro — Paycheck Breakdown
+Gross per ${lastCalc.freqLabel}: ${fmt(lastCalc.perPeriodGross)}
+Take-home per ${lastCalc.freqLabel}: ${fmt(lastCalc.netPP)}
+Annual Gross: ${fmt(lastCalc.annualGross)}
+Annual Take-Home: ${fmt(lastCalc.annualNet)}
+Effective Tax Rate: ${lastCalc.effectiveRate.toFixed(1)}%
+State: ${lastCalc.stateName}
+— via toolshubfree.com/paycalcpro.html`;
+  navigator.clipboard.writeText(text).then(()=>alert('Copied to clipboard!')).catch(()=>alert('Could not copy — please copy manually.'));
+}
 </script>
 </body>
 </html>
