@@ -159,7 +159,6 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);position:stic
 .aff-logo{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#fff;flex-shrink:0}
 .aff-name{font-size:.82rem;font-weight:700;color:var(--white)}
 .aff-sub{font-size:.68rem;color:var(--gray)}
-/* CJ CARD */
 .cj-card{background:linear-gradient(135deg,#0a2540,#1a3d5c);border-radius:var(--r);padding:18px;margin-bottom:18px}
 .cj-title{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:1px;color:#fff;margin-bottom:4px}
 .cj-sub{font-size:.78rem;color:rgba(255,255,255,.6);margin-bottom:12px;line-height:1.5}
@@ -170,7 +169,6 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);position:stic
 .cj-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;flex-shrink:0;color:#fff}
 .cj-name{font-weight:800;font-size:.82rem;color:#fff}
 .cj-desc{font-size:.68rem;color:rgba(255,255,255,.5)}
-/* ARTICLE CARD */
 .art-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:18px;margin-bottom:18px}
 .art-card .at{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:1px;color:#fff;margin-bottom:10px}
 .art-links{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
@@ -441,7 +439,7 @@ footer a:hover{color:#fff}
         <div><div class="aff-name">CarMax</div><div class="aff-sub">Certified used cars</div></div>
         <span style="color:var(--green);margin-left:auto">→</span>
       </a>
-      <a class="aff-link" href="YOUR_LENDINGTREE_CJ_LINK_HERE" target="_blank" rel="noopener sponsored">
+      <a class="aff-link" href="https://www.lendingtree.com/auto/" target="_blank" rel="noopener">
         <div class="aff-logo" style="background:#00A550">LT</div>
         <div><div class="aff-name">Auto Loan Rates</div><div class="aff-sub">Compare lenders</div></div>
         <span style="color:var(--green);margin-left:auto">→</span>
@@ -478,11 +476,11 @@ footer a:hover{color:#fff}
   <div class="cj-title">💳 KNOW YOUR CREDIT BEFORE YOU BORROW</div>
   <div class="cj-sub">Your credit score decides your loan and car interest rate. Check it free — no impact on your score — before you finance anything.</div>
   <div class="cj-links">
-    <a class="cj-link" href="YOUR_CJ_AFFILIATE_LINK_HERE" target="_blank" rel="noopener sponsored">
+    <a class="cj-link" href="https://www.experian.com/consumer-products/free-credit-report.html" target="_blank" rel="noopener">
       <div class="cj-icon" style="background:#0052CC">EX</div>
       <div><div class="cj-name">Experian</div><div class="cj-desc">Free credit report + monitoring</div></div>
     </a>
-    <a class="cj-link" href="YOUR_LENDINGTREE_CJ_LINK_HERE" target="_blank" rel="noopener sponsored">
+    <a class="cj-link" href="https://www.lendingtree.com/" target="_blank" rel="noopener">
       <div class="cj-icon" style="background:#2e7d32">LT</div>
       <div><div class="cj-name">LendingTree</div><div class="cj-desc">Compare loan &amp; refi rates</div></div>
     </a>
@@ -603,7 +601,7 @@ function calculate(){
   const k401ann=annSal*k401pct;
   const taxable=Math.max(0,annSal-k401ann-stdDed);
   const fedT=fedTax(taxable);
-  const ss=Math.min(annSal*0.062,176100*0.062);
+  const ss=Math.min(annSal*0.062,184500*0.062);
   const med=annSal*0.0145;
   const stateT=(annSal-k401ann)*(stateRate/100);
   const annTakeHome=annSal-fedT-ss-med-stateT-k401ann;
@@ -656,7 +654,6 @@ function calculate(){
     return `<div class="brow"><span class="bl">${b.label}</span><div class="bt"><div class="bf" style="width:${p.toFixed(1)}%;background:${b.color}"></div></div><span class="bv" style="color:${b.color}">${fmt(b.val)}</span></div>`;
   }).join('');
 
-  // 50/30/20
   const rent=getBill('rent');
   const needsExtra=getBill('utilities')+getBill('internet')+getBill('health')+getBill('student')+getBill('cc')+getBill('childcare');
   const needs=rent+needsExtra+getBill('groceries')+getBill('car')+getBill('insurance')+annMonthly;
@@ -667,13 +664,13 @@ function calculate(){
   const wPct=monthlyTakeHome>0?(wants/monthlyTakeHome*100):0;
   const sPct=monthlyTakeHome>0?(savingsAmt/monthlyTakeHome*100):0;
 
-  function overStatus(actual,target){ // for needs/wants: over target = bad
+  function overStatus(actual,target){
     const diff=actual-target;
     if(Math.abs(diff)<=5)return{cls:'',txt:'✅ On target'};
     if(diff>0)return{cls:'color:var(--red)',txt:`⚠️ ${diff.toFixed(0)}% over`};
     return{cls:'color:var(--green)',txt:`✅ ${Math.abs(diff).toFixed(0)}% under`};
   }
-  function saveStatus(actual,target){ // for savings: under target = bad
+  function saveStatus(actual,target){
     const diff=actual-target;
     if(Math.abs(diff)<=5)return{cls:'',txt:'✅ On target'};
     if(diff>=0)return{cls:'color:var(--green)',txt:`✅ ${diff.toFixed(0)}% over`};
@@ -685,7 +682,6 @@ function calculate(){
     <div class="rule-box wants"><div class="rb-pct">${wPct.toFixed(0)}%</div><div class="rb-label">Wants</div><div class="rb-target">Target: 30%</div><div class="rb-actual" style="${ws.cls}">${fmt(wants)}/mo</div><div class="rb-status" style="${ws.cls}">${ws.txt}</div></div>
     <div class="rule-box savings"><div class="rb-pct">${sPct.toFixed(0)}%</div><div class="rb-label">Free/Save</div><div class="rb-target">Target: 20%</div><div class="rb-actual" style="${ssR.cls}">${fmt(savingsAmt)}/mo</div><div class="rb-status" style="${ssR.cls}">${ssR.txt}</div></div>`;
 
-  // Car
   const carDown=parseFloat(document.getElementById('carDown').value)||0;
   const carTerm=parseInt(document.getElementById('carTerm').value)||60;
   const carRate=parseFloat(document.getElementById('carRate').value)||7.5;
@@ -707,7 +703,6 @@ function calculate(){
     <div class="cstat"><div class="cs-lbl">True Monthly Cost</div><div class="cs-val red">${fmt(totalCarCost)}</div></div>`;
   document.getElementById('autotraderLink').href=`https://www.autotrader.com/cars-for-sale/used-cars?zip=${carZip}&maxPrice=${Math.round(maxCarPrice)}&searchRadius=50`;
 
-  // Goals
   const emergGoal=parseFloat(document.getElementById('g_emergency').value)||0;
   const saved=parseFloat(document.getElementById('g_saved').value)||0;
   const mSave=parseFloat(document.getElementById('g_monthly').value)||Math.max(0,freeMoney*0.5);
@@ -725,19 +720,21 @@ function calculate(){
   const goalsHTML=goalItem('Emergency Fund',emergGoal,saved,mSave,'🛡️')+goalItem('Vacation Fund',vacGoal,0,mSave*0.3,'✈️')+goalItem('Down Payment',dpGoal,saved,mSave*0.7,'🏡');
   document.getElementById('goalList').innerHTML=goalsHTML||'<p style="color:var(--gray);font-size:.85rem">Enter goals above to see your savings timeline.</p>';
 
-  // Annual breakdown
   const annLabels={carreg:'🚗 Car Registration',tax:'📄 Tax Prep',homeins:'🏠 Home/Renters Insurance',holiday:'🎄 Holiday & Gifts',vacation:'✈️ Vacation',amazon:'📦 Annual Subscriptions',carmaint:'🔧 Car Maintenance',home:'🏡 Home Repairs/HOA',clothing:'👗 Clothing',medical:'🏥 Medical/Dental'};
   let annHTML='<div class="ann-grid">';
   annItems.forEach(k=>{
     const val=parseFloat(document.getElementById('a_'+k).value)||0;
     if(val>0){
-      annHTML+=`<div class="ann-item" style="background:var(--bg4)"><div class="ai-left"><span class="ai-icon">${annLabels[k].split(' ')[0]}</span><div><div class="ai-label">${annLabels[k].substring(2)}</div><div class="ai-sub">${fmt(val/12)}/mo · ${fmt(val)}/yr</div></div></div></div>`;
+      const lbl=annLabels[k];
+      const spaceIdx=lbl.indexOf(' ');
+      const icon=lbl.substring(0,spaceIdx);
+      const text=lbl.substring(spaceIdx+1);
+      annHTML+=`<div class="ann-item" style="background:var(--bg4)"><div class="ai-left"><span class="ai-icon">${icon}</span><div><div class="ai-label">${text}</div><div class="ai-sub">${fmt(val/12)}/mo · ${fmt(val)}/yr</div></div></div></div>`;
     }
   });
   annHTML+=`</div><div style="margin-top:12px;background:rgba(255,210,63,.08);border:1px solid rgba(255,210,63,.2);border-radius:8px;padding:12px;font-size:.83rem;color:var(--yellow)">📅 Total annual costs: <strong>${fmt(totalAnn)}/year</strong> = <strong>${fmt(annMonthly)}/month</strong> — already included in your free money calculation above.</div>`;
   document.getElementById('annualBreakdown').innerHTML=annHTML;
 
-  // Tips
   const ccVal=getBill('cc');
   const tips=[];
   if(freeMoney<0)tips.push({icon:'🔴',txt:`You're spending <strong>${fmt(Math.abs(freeMoney))}/month MORE than you make</strong>. Immediate action: cut streaming, eating out, or subscriptions first. Small cuts add up fast.`});
@@ -746,7 +743,7 @@ function calculate(){
   if(freeMoney>0&&freeMoney<500)tips.push({icon:'💡',txt:`Your free money is tight at <strong>${fmt(freeMoney)}/month</strong>. Even $50/month adds up to $600/year. The average person wastes $200+/month on forgotten subscriptions — cancel one today.`});
   if(freeMoney>1000)tips.push({icon:'✅',txt:`You have <strong>${fmt(freeMoney)}/month</strong> free. Put at least 50% (${fmt(freeMoney*0.5)}) into savings automatically. "Pay yourself first" is the #1 wealth-building habit.`});
   if(k401pct===0)tips.push({icon:'💰',txt:`You're contributing <strong>0% to your 401(k)</strong>. Even 3–6% saves you $1,000–$3,000 in taxes per year AND if your employer matches — that's free money you're leaving on the table.`});
-  if(ccVal>0)tips.push({icon:'💳',txt:`You have credit card debt. Use the <strong>avalanche method</strong>: pay minimums on all cards, throw all extra money at the highest interest rate card first. This saves the most overall. <a href="YOUR_CJ_AFFILIATE_LINK_HERE" target="_blank" rel="noopener sponsored" style="color:var(--green)">Check your credit score free →</a>`});
+  if(ccVal>0)tips.push({icon:'💳',txt:`You have credit card debt. Use the <strong>avalanche method</strong>: pay minimums on all cards, throw all extra money at the highest interest rate card first. This saves the most overall. <a href="https://www.experian.com/consumer-products/free-credit-report.html" target="_blank" rel="noopener" style="color:var(--green)">Check your credit score free →</a>`});
   tips.push({icon:'📅',txt:`Your annual expenses cost you <strong>${fmt(annMonthly)}/month</strong> when spread out. Open a separate savings account and auto-transfer this amount monthly so annual bills never surprise you.`});
 
   document.getElementById('tipsList').innerHTML=tips.map(t=>`<div style="display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)"><span style="font-size:1.1rem;flex-shrink:0">${t.icon}</span><p style="font-size:.83rem;line-height:1.6;color:rgba(255,255,255,.8)">${t.txt}</p></div>`).join('');
