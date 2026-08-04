@@ -746,7 +746,7 @@ function calcPay(){
   const otDed=Math.min(parseFloat(document.getElementById('otDeduct').value)||0,filing==='married'?25000:12500);
   const carDed=Math.min(parseFloat(document.getElementById('carDeduct').value)||0,10000);
   const newLawDed=tipDed+otDed+carDed;
-  const stdDed=filing==='married'?32200:filing==='hoh'?21900:16100;
+  const stdDed=filing==='married'?32200:filing==='hoh'?24150:16100;
   const taxableAnnual=Math.max(0,annualGross-annualPreTax-stdDed-newLawDed);
 
   const annualFed=fedTax(taxableAnnual,filing);
