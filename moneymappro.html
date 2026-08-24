@@ -578,7 +578,7 @@ function togBill(key){
 }
 
 function fedTax(taxable){
-  const B=[[11925,.10],[48475,.12],[103350,.22],[197300,.24],[250525,.32],[626350,.35],[Infinity,.37]];
+  const B=[[12400,.10],[50400,.12],[105700,.22],[201775,.24],[256225,.32],[640600,.35],[Infinity,.37]];
   let tax=0,prev=0;
   for(const[top,rate]of B){if(taxable<=prev)break;tax+=(Math.min(taxable,top)-prev)*rate;prev=top;if(top===Infinity)break;}
   return Math.max(0,tax);
