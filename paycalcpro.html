@@ -548,13 +548,13 @@ footer a:hover{color:#fff}
   <div class="card">
     <div class="ct"><span class="ic">📊</span> 2026 Tax Brackets (Single)</div>
     <table style="width:100%;font-size:.8rem;border-collapse:collapse">
-      <tr style="border-bottom:1px solid var(--silver-d)"><td style="padding:5px 0;color:#888">10%</td><td style="padding:5px 0;font-weight:800;text-align:right">up to $11,925</td></tr>
-      <tr style="border-bottom:1px solid var(--silver-d)"><td style="padding:5px 0;color:#888">12%</td><td style="padding:5px 0;font-weight:800;text-align:right">$11,926–$48,475</td></tr>
-      <tr style="border-bottom:1px solid var(--silver-d)"><td style="padding:5px 0;color:#888">22%</td><td style="padding:5px 0;font-weight:800;text-align:right">$48,476–$103,350</td></tr>
-      <tr style="border-bottom:1px solid var(--silver-d)"><td style="padding:5px 0;color:#888">24%</td><td style="padding:5px 0;font-weight:800;text-align:right">$103,351–$197,300</td></tr>
-      <tr style="border-bottom:1px solid var(--silver-d)"><td style="padding:5px 0;color:#888">32%</td><td style="padding:5px 0;font-weight:800;text-align:right">$197,301–$250,525</td></tr>
-      <tr style="border-bottom:1px solid var(--silver-d)"><td style="padding:5px 0;color:#888">35%</td><td style="padding:5px 0;font-weight:800;text-align:right">$250,526–$626,350</td></tr>
-      <tr><td style="padding:5px 0;color:#888">37%</td><td style="padding:5px 0;font-weight:800;text-align:right">Over $626,350</td></tr>
+      <tr style="border-bottom:1px solid var(--silver-d)"><td style="padding:5px 0;color:#888">10%</td><td style="padding:5px 0;font-weight:800;text-align:right">up to $12,400</td></tr>
+      <tr style="border-bottom:1px solid var(--silver-d)"><td style="padding:5px 0;color:#888">12%</td><td style="padding:5px 0;font-weight:800;text-align:right">$12,401–$50,400</td></tr>
+      <tr style="border-bottom:1px solid var(--silver-d)"><td style="padding:5px 0;color:#888">22%</td><td style="padding:5px 0;font-weight:800;text-align:right">$50,401–$105,700</td></tr>
+      <tr style="border-bottom:1px solid var(--silver-d)"><td style="padding:5px 0;color:#888">24%</td><td style="padding:5px 0;font-weight:800;text-align:right">$105,701–$201,775</td></tr>
+      <tr style="border-bottom:1px solid var(--silver-d)"><td style="padding:5px 0;color:#888">32%</td><td style="padding:5px 0;font-weight:800;text-align:right">$201,776–$256,225</td></tr>
+      <tr style="border-bottom:1px solid var(--silver-d)"><td style="padding:5px 0;color:#888">35%</td><td style="padding:5px 0;font-weight:800;text-align:right">$256,226–$640,600</td></tr>
+      <tr><td style="padding:5px 0;color:#888">37%</td><td style="padding:5px 0;font-weight:800;text-align:right">Over $640,600</td></tr>
     </table>
   </div>
 
@@ -687,9 +687,9 @@ function togSection(boxId,togId){const box=document.getElementById(boxId);const 
 // ── FEDERAL TAX ──
 function fedTax(taxable,status){
   const B={
-    single:[[11925,.10],[48475,.12],[103350,.22],[197300,.24],[250525,.32],[626350,.35],[Infinity,.37]],
-    married:[[23850,.10],[96950,.12],[206700,.22],[394600,.24],[501050,.32],[751600,.35],[Infinity,.37]],
-    hoh:[[17000,.10],[64850,.12],[103350,.22],[197300,.24],[250500,.32],[626350,.35],[Infinity,.37]]
+    single:[[12400,.10],[50400,.12],[105700,.22],[201775,.24],[256225,.32],[640600,.35],[Infinity,.37]],
+    married:[[24800,.10],[100800,.12],[211400,.22],[403550,.24],[512450,.32],[768700,.35],[Infinity,.37]],
+    hoh:[[17700,.10],[67450,.12],[105700,.22],[201750,.24],[256200,.32],[640600,.35],[Infinity,.37]]
   };
   const brackets=B[status]||B.single;
   let tax=0,prev=0;
