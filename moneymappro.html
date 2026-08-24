@@ -590,7 +590,7 @@ const fmtK=n=>n>=1000?'$'+(n/1000).toFixed(0)+'K':'$'+Math.round(n);
 function getBill(k){return bills[k]?(parseFloat(document.getElementById('b_'+k).value)||0):0;}
 
 function calculate(){
-  const annSal=parseFloat(document.getElementById('salary').value)||0;
+  const annSal=Math.max(0,parseFloat(document.getElementById('salary').value)||0);
   const stateVal=document.getElementById('state').value.split('|');
   const stateRate=parseFloat(stateVal[0])||0;
   const sideInc=parseFloat(document.getElementById('sideIncome').value)||0;
