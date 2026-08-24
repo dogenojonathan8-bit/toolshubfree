@@ -39,6 +39,13 @@ header{background:var(--sky);position:sticky;top:0;z-index:100;box-shadow:0 2px 
 .main{max-width:1160px;margin:0 auto;padding:30px 20px 60px;display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start}
 @media(max-width:900px){.main{grid-template-columns:1fr}}
 .card{background:var(--white);border-radius:var(--r);box-shadow:var(--shadow);padding:26px;margin-bottom:20px}
+.faq-item{background:var(--white);border-radius:12px;margin-bottom:8px;overflow:hidden;box-shadow:0 2px 8px rgba(13,27,42,.06)}
+.faq-q{padding:16px 18px;font-weight:800;font-size:.92rem;cursor:pointer;position:relative;padding-right:40px}
+.faq-q::after{content:'+';position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:1.3rem;font-weight:700;color:var(--lime-d)}
+.faq-item.open .faq-q::after{content:'\2715'}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;padding:0 18px}
+.faq-item.open .faq-a{max-height:260px;padding:0 18px 14px}
+.faq-a p{font-size:.86rem;color:#555;line-height:1.6}
 .ct{font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;color:var(--sky);margin-bottom:16px;display:flex;align-items:center;gap:8px}
 .ct .ic{width:28px;height:28px;background:var(--cream-d);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
 .mtabs{display:flex;background:var(--cream-d);border-radius:10px;padding:4px;margin-bottom:20px;width:fit-content}
@@ -205,6 +212,19 @@ footer a{color:var(--gold);text-decoration:none}
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://toolshubfree.com/homebuycalc.html" />
 <meta name="fo-verify" content="9435c51b-fadd-4ca3-a6d5-d79a730b51cf" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What does the 28/36 rule actually mean?","acceptedAnswer":{"@type":"Answer","text":"It's the ratio lenders use to size your max mortgage. 28% is the most your monthly housing payment should be as a share of your gross monthly income. 36% is the cap on ALL debt combined — housing plus car loans, student loans, credit cards, etc."}},
+    {"@type":"Question","name":"How does entering my ZIP code affect the result?","acceptedAnswer":{"@type":"Answer","text":"Your ZIP code sets the estimated property tax rate used in the affordability math, since property tax varies a lot by county. It's still an estimate — your county assessor's office has the exact current rate for your specific address."}},
+    {"@type":"Question","name":"Where do the 2026 mortgage rate numbers come from?","acceptedAnswer":{"@type":"Answer","text":"The rates shown are general market averages for conventional, FHA, and VA loans, used as a default starting point. Your actual rate depends on your credit score, down payment, loan type, and lender."}},
+    {"@type":"Question","name":"Does this include PMI, insurance, and HOA — not just the loan payment?","acceptedAnswer":{"@type":"Answer","text":"Yes. If your down payment is under 20%, the calculator factors in estimated PMI, plus estimated homeowner's insurance and property tax, so the number reflects your real monthly housing cost."}},
+    {"@type":"Question","name":"Is this the same as a mortgage pre-approval?","acceptedAnswer":{"@type":"Answer","text":"No. This is a free estimate based on the numbers you type in. A real pre-approval comes from a licensed lender who pulls your credit and verifies your income and debts."}}
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -425,6 +445,30 @@ footer a{color:var(--gold);text-decoration:none}
       <a class="xl" href="/how-much-house-can-i-afford-maryland-2026.html">🏡 <span>How Much House Can I Afford? (MD)</span></a>
       <a class="xl" href="/maryland-cost-of-living-2026.html">📊 <span>Maryland Cost of Living 2026</span></a>
       <a class="xl" href="/maryland-paycheck-taxes-explained-2026.html">💵 <span>Maryland Paycheck Taxes</span></a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ct" style="margin-bottom:12px"><span class="ic">❓</span> <span>Frequently Asked Questions</span></div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What does the 28/36 rule actually mean?</div>
+      <div class="faq-a"><p>It's the ratio lenders use to size your max mortgage. 28% is the most your monthly housing payment (principal, interest, taxes, insurance, and HOA) should be as a share of your gross monthly income. 36% is the cap on ALL debt combined — housing plus car loans, student loans, credit cards, etc. This calculator uses both limits, then shows you the lower (safer) number.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does entering my ZIP code affect the result?</div>
+      <div class="faq-a"><p>Your ZIP code sets the estimated property tax rate used in the affordability math, since property tax varies a lot by county — it can swing your monthly payment by hundreds of dollars. It's still an estimate; your county assessor's office has the exact current rate for your specific address.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Where do the 2026 mortgage rate numbers come from?</div>
+      <div class="faq-a"><p>The rates shown are general market averages for conventional, FHA, and VA loans, used as a default starting point. Your actual rate depends on your credit score, down payment, loan type, and lender — always get a real quote before treating this as final.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does this include PMI, insurance, and HOA — not just the loan payment?</div>
+      <div class="faq-a"><p>Yes. If your down payment is under 20%, the calculator factors in estimated PMI (private mortgage insurance), plus estimated homeowner's insurance and property tax, so the affordability number reflects your real monthly housing cost — not just principal and interest.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this the same as a mortgage pre-approval?</div>
+      <div class="faq-a"><p>No. This is a free estimate based on the numbers you type in. A real pre-approval comes from a licensed lender who pulls your credit and verifies your income and debts. Use this tool to get a ballpark before you talk to a lender, not instead of it.</p></div>
     </div>
   </div>
 
