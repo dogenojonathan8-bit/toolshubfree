@@ -527,7 +527,7 @@ var fmt=function(n){return '$'+Math.round(n).toLocaleString();};
 
 function calc(){
   var salary=parseFloat(document.getElementById('salary').value.replace(/[^\d.]/g,''))||0;
-  if(!salary){alert('Enter your salary to see your budget.');return;}
+  if(salary<=0){alert('Enter your salary to see your budget.');return;}
   var monthlyGross=salary/12;
   var otherDebt=parseFloat(document.getElementById('monthlyDebt').value)||0;
   var down=parseFloat(document.getElementById('downPay').value)||0;
