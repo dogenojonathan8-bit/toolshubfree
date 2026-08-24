@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Methodology & Data Sources | SmartToolsHub</title>
+<meta name="description" content="How SmartToolsHub researches tax, housing, and cost-of-living data, how our calculators turn that data into an estimate, and how often we review it.">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800,900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0D1B2A;--lime:#C8F135;--lime-d:#9BBF1A;--silver:#F0F4F8;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Cabinet Grotesk',sans-serif;background:var(--silver);color:var(--ink);line-height:1.7}
+header{background:var(--ink);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{font-size:1.4rem;font-weight:900;color:#fff;letter-spacing:-1px;text-decoration:none}.logo span{color:var(--lime)}
+.lang-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);font-size:.72rem;font-weight:700;padding:5px 12px;border-radius:20px;text-decoration:none}
+.wrap{max-width:820px;margin:0 auto;padding:48px 22px 64px}
+h1{font-size:2rem;font-weight:900;letter-spacing:-1px;margin-bottom:6px}
+.updated{font-size:.8rem;color:#777;margin-bottom:28px}
+h2{font-size:1.2rem;font-weight:800;margin:28px 0 8px;color:var(--ink)}
+h3{font-size:1rem;font-weight:800;margin:18px 0 6px;color:var(--ink)}
+p{font-size:.95rem;color:#444;margin-bottom:12px}
+ul{margin:0 0 12px 22px}li{font-size:.95rem;color:#444;margin-bottom:6px}
+a{color:var(--lime-d);font-weight:700}
+.box{background:#fff;border-radius:14px;padding:26px 28px;box-shadow:0 4px 20px rgba(13,27,42,.08)}
+.callout{background:var(--silver);border-left:4px solid var(--lime-d);border-radius:0 8px 8px 0;padding:14px 18px;margin:14px 0}
+.callout p{margin-bottom:0}
+table{width:100%;border-collapse:collapse;margin:12px 0 18px;font-size:.88rem}
+th{text-align:left;background:var(--silver);padding:8px 10px;font-weight:800;border-bottom:2px solid #ddd}
+td{padding:8px 10px;border-bottom:1px solid #eee;color:#444;vertical-align:top}
+footer{background:#1B3A5C;color:rgba(255,255,255,.45);text-align:center;padding:26px 20px;font-size:.75rem;line-height:1.8}
+footer a{color:var(--lime)}
+.backlink{display:inline-block;margin-bottom:22px;color:var(--lime-d);font-weight:800;text-decoration:none;font-size:.9rem}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/">Smart<span>Tools</span>Hub</a>
+  <a class="lang-btn" href="/">← Back to Tools</a>
+</header>
+
+<div class="wrap">
+  <a class="backlink" href="/">← Home</a>
+  <div class="box">
+    <h1>Methodology &amp; Data Sources</h1>
+    <div class="updated">Last reviewed: August 2026</div>
+
+    <div class="callout">
+      <p><strong>Why this page exists:</strong> every calculator on this site turns published data into an estimate. This page explains where that data comes from, how we turn it into a number, how often we review it, and what our estimates can't account for — so you can judge how much weight to put on a result.</p>
+    </div>
+
+    <h2>Three kinds of numbers on this site</h2>
+    <p>We try to keep these clearly separate wherever a page displays a number:</p>
+    <ul>
+      <li><strong>Official data</strong> — a figure published by a government agency or recognized research body (an IRS tax bracket, a Census median income, a Freddie Mac average mortgage rate). We cite the source and the date.</li>
+      <li><strong>SmartToolsHub estimate</strong> — a result our calculator produced by applying official data and standard financial formulas to the numbers you entered. It's specific to your inputs and will not exactly match anyone else's real bill, paycheck, or approval.</li>
+      <li><strong>General guideline</strong> — a widely used rule of thumb (the 28/36 rule for housing, the 50/30/20 budgeting split, the snowball vs. avalanche debt strategies). These are useful starting points, not requirements any lender or budget must follow.</li>
+    </ul>
+
+    <h2>Where our data comes from</h2>
+    <table>
+      <tr><th>Data type</th><th>Primary sources we use</th></tr>
+      <tr><td>Federal income tax brackets, standard deductions, FICA rates</td><td>Internal Revenue Service (irs.gov) published guidance for the current tax year</td></tr>
+      <tr><td>State income tax rates and brackets</td><td>Each state's official department of revenue or taxation website</td></tr>
+      <tr><td>Mortgage interest rates</td><td>Freddie Mac's Primary Mortgage Market Survey (PMMS), the most widely cited weekly average rate benchmark</td></tr>
+      <tr><td>Home prices</td><td>State and local Realtor association reports and/or Census Bureau housing data, specified per page</td></tr>
+      <tr><td>Property tax rates</td><td>State and county assessment/taxation agencies</td></tr>
+      <tr><td>Income, rent, and cost-of-living figures</td><td>U.S. Census Bureau (American Community Survey), Bureau of Labor Statistics (Consumer Expenditure Survey, CPI), and, where noted, the MIT Living Wage Calculator</td></tr>
+      <tr><td>Down payment assistance / first-time buyer programs</td><td>The official state or local housing finance agency administering the program</td></tr>
+    </table>
+    <p>Where a page cites a source, we're working toward every citation being a clickable link directly to that source rather than a plain text mention — this is an active project, and pages are updated to that standard as we review them (see "Review status" below).</p>
+
+    <h2>How our calculators do the math</h2>
+    <h3>Paycheck calculator (PayCalc Pro)</h3>
+    <p>Applies the current federal income tax brackets and standard deduction to your entered income and filing status, then calculates Social Security (6.2% up to the annual wage base) and Medicare (1.45%, plus the 0.9% Additional Medicare Tax above the applicable threshold), then applies your state's income tax brackets where the state has one. The result is gross pay minus these withholdings, before any employer-specific pre-tax or post-tax deductions you may have (401(k), health insurance, etc.), which you can enter separately where the calculator supports it.</p>
+    <h3>Home &amp; car affordability calculators</h3>
+    <p>Use standard debt-to-income (DTI) guidelines — commonly a 28% housing-to-income ratio and a 36% total-debt-to-income ratio for mortgages, and a lower threshold for auto loans — combined with the interest rate, loan term, and costs (property tax, insurance, HOA where applicable) you enter or that we estimate for your area. This produces an estimated affordable purchase price and monthly payment. It is not a loan pre-approval and does not reflect any specific lender's underwriting rules.</p>
+    <h3>Debt payoff calculator</h3>
+    <p>Runs the standard snowball (smallest balance first) and avalanche (highest interest rate first) payoff formulas against the balances, rates, and minimum payments you enter, and projects a payoff timeline for each strategy using standard amortization math.</p>
+    <h3>Cost-of-living and state pages</h3>
+    <p>Combine Census and BLS income/spending data with state and local tax rates to describe what a household in that state or metro area typically pays for housing, taxes, and everyday costs. These are population-level averages, not a quote for any individual household.</p>
+
+    <h2>What our estimates do not account for</h2>
+    <ul>
+      <li>Your specific lender's or employer's internal rules, credit decisioning, or approval criteria.</li>
+      <li>Local municipal or county taxes not captured in a state-level tax table.</li>
+      <li>Day-to-day market movement — mortgage rates and home prices can change between our "last reviewed" date and the day you use a calculator.</li>
+      <li>Individual circumstances: your specific deductions, benefits, insurance risk profile, or negotiated pricing.</li>
+    </ul>
+
+    <h2>Review status</h2>
+    <p>We're in the middle of an active, page-by-page review of the site (August 2026 onward): adding "last reviewed" dates, replacing plain-text source mentions with clickable links to the original data, and rebuilding pages that relied too heavily on a shared template instead of state-specific research. Pages that have been through this review show a "Last reviewed" date near the top or in the sources section. Pages that haven't been reviewed yet may still use the older format — we'd rather tell you that plainly than pretend every page is already at the same standard.</p>
+
+    <h2>Something looks wrong?</h2>
+    <p>If you spot a number that looks outdated or incorrect, we want to know. Email <a href="mailto:illvisionmedia.co@gmail.com">illvisionmedia.co@gmail.com</a> with the page and the figure in question.</p>
+  </div>
+</div>
+
+<footer>
+  <strong style="color:rgba(255,255,255,.8)">SmartToolsHub</strong> — Free Financial &amp; Home Improvement Calculators<br>
+  &copy; 2026 SmartToolsHub · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a> · <a href="/affiliate-disclosure.html">Affiliate Disclosure</a> · <a href="/methodology.html">Methodology</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a>
+</footer>
+</body>
+</html>
