@@ -722,7 +722,7 @@ function calcPay(){
   }else{
     annualBase=parseFloat(document.getElementById('salary').value)||0;
   }
-  if(!annualBase){alert('Please enter your pay amount!');return;}
+  if(annualBase<=0){alert('Please enter your pay amount!');return;}
 
   const otHrs=parseFloat(document.getElementById('otHours').value)||0;
   const otRate=parseFloat(document.getElementById('otRate').value)||1.5;
@@ -824,7 +824,7 @@ function calcPay(){
 // ── GIG WORKER CALCULATOR ──
 function calcGig(){
   const gross=parseFloat(document.getElementById('gigGross').value)||0;
-  if(!gross){alert('Please enter your gig income!');return;}
+  if(gross<=0){alert('Please enter your gig income!');return;}
   const stateSel=document.getElementById('gigState');
   const stateVal=stateSel.value.split('|');
   const stateRate=parseFloat(stateVal[0])||0;
