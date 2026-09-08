@@ -185,7 +185,7 @@ footer strong{color:rgba(255,255,255,.8)}
 <div class="wrap">
 
   <div class="card">
-    <div class="ct">📐 Your Rooms</div>
+    <h2 class="ct">📐 Your Rooms</h2>
     <div id="roomList"></div>
     <button class="addroom" id="addRoom">+ Add another room</button>
     <div class="grid2" style="margin-top:14px">
@@ -195,7 +195,7 @@ footer strong{color:rgba(255,255,255,.8)}
   </div>
 
   <div class="card">
-    <div class="ct">🪵 Flooring & Cost</div>
+    <h2 class="ct">🪵 Flooring & Cost</h2>
     <div class="grid2">
       <div>
         <label>Flooring Type</label>
@@ -238,7 +238,7 @@ footer strong{color:rgba(255,255,255,.8)}
   <button class="calc-btn" onclick="calcFloor()">🪵 Calculate Flooring & Cost</button>
 
   <div class="res card" id="resSec">
-    <div class="ct">✅ Your Flooring Plan</div>
+    <h2 class="ct">✅ Your Flooring Plan</h2>
     <div class="verdict"><div class="big" id="vBoxes">0</div><div class="lbl" id="vBoxesLbl">boxes to buy</div></div>
     <div class="rg" id="rGrid"></div>
     <div class="breakdown" id="bd"></div>
@@ -307,7 +307,12 @@ footer strong{color:rgba(255,255,255,.8)}
   </div>
 
   <div class="card">
-    <div class="ct">🔗 More Free Tools</div>
+    <h2 class="ct">⚠️ Limitations</h2>
+    <p style="font-size:.86rem;color:#555;line-height:1.7">This calculator estimates material and box count from the room dimensions and waste percentage you enter — it doesn't measure your actual space, account for pattern-matching on directional wood grain, or include labor cost (only a DIY/Pro toggle for planning purposes). It also doesn't know your specific product's exact coverage per box; always confirm that number against the label on the box you're buying, since it varies by manufacturer.</p>
+  </div>
+
+  <div class="card">
+    <h2 class="ct">🔗 More Free Tools</h2>
     <div class="morelinks">
       <a href="homefixtcost.html">🔨 Renovation Cost Estimator</a>
       <a href="homebuycalc.html">🏡 Home Affordability Calculator</a>
@@ -316,7 +321,7 @@ footer strong{color:rgba(255,255,255,.8)}
   </div>
 
   <div class="card">
-    <div class="ct">❓ Frequently Asked Questions</div>
+    <h2 class="ct">❓ Frequently Asked Questions</h2>
     <div class="faq-item">
       <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Why does the calculator round up to full boxes?</div>
       <div class="faq-a"><p>Flooring is sold by the box, not the square foot, and boxes can't be split. Rounding up guarantees you have enough material to finish the room — buying short means a second trip and the risk the store is out of your exact dye lot.</p></div>
